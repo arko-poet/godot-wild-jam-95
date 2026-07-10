@@ -1,10 +1,22 @@
 # Attribution
 ## Collaborators
 
-### Role
-arko
-Person 2  
-[Person w/ Link]()  
+### Game Design
+[arko](https://arko-poet.itch.io/)
+
+### Art
+[Awapaima](https://itch.io/profile/awapaima)
+
+### Music Composition
+[Grunt.](https://gruntofficial.itch.io/)
+
+### Sound Effects
+[Grunt.](https://gruntofficial.itch.io/)
+
+### Programming
+[OrangePainting](https://orangepainting.itch.io/)
+[awfullycrispy](https://awfullycrispy.itch.io/)
+[arko](https://arko-poet.itch.io/)
 
 ## Sourced
 ### Asset Type
