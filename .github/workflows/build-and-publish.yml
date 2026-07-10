@@ -245,6 +245,9 @@ jobs:
         uses: actions/download-artifact@v8
         with:
           path: builds
+      
+      - name: Debug
+        run: ls -laR builds/
 
       - name: Install Butler
         run: |
