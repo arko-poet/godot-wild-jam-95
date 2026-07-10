@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://bxf86kao8satl"]
 
-[ext_resource type="PackedScene" path="res://addons/maaacks_game_template/base/nodes/menus/main_menu/main_menu.tscn" id="1_aha6c"]
-[ext_resource type="Script" path="res://template/scenes/menus/main_menu/main_menu.gd" id="2_gh2py"]
-[ext_resource type="PackedScene" path="res://template/scenes/windows/main_menu_options_window.tscn" id="3_e2xrs"]
-[ext_resource type="PackedScene" path="res://template/scenes/windows/main_menu_credits_window.tscn" id="4_58ijl"]
-[ext_resource type="PackedScene" path="res://addons/maaacks_game_template/base/nodes/windows/confirmation_overlaid_window.tscn" id="5_2luqj"]
+[ext_resource type="PackedScene" uid="uid://c6k5nnpbypshi" path="res://addons/maaacks_game_template/base/nodes/menus/main_menu/main_menu.tscn" id="1_aha6c"]
+[ext_resource type="Script" uid="uid://bnw51n5bminek" path="res://template/scenes/menus/main_menu/main_menu.gd" id="2_gh2py"]
+[ext_resource type="PackedScene" uid="uid://ws3qu4alfdk0" path="res://template/scenes/windows/main_menu_options_window.tscn" id="3_e2xrs"]
+[ext_resource type="PackedScene" uid="uid://bub13x1ejxp3j" path="res://template/scenes/windows/main_menu_credits_window.tscn" id="4_58ijl"]
+[ext_resource type="PackedScene" uid="uid://cwt4p3bufkke5" path="res://addons/maaacks_game_template/base/nodes/windows/confirmation_overlaid_window.tscn" id="5_2luqj"]
 
 [node name="MainMenu" unique_id=869232425 instance=ExtResource("1_aha6c")]
 script = ExtResource("2_gh2py")
@@ -34,6 +34,7 @@ offset_left = -210.0
 offset_top = -100.0
 offset_right = 210.0
 offset_bottom = 100.0
+ignore_siblings = false
 title = "New Game"
 text = "Are you sure you want to start a new game?
 

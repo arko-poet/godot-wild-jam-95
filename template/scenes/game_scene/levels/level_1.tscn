@@ -1,10 +1,12 @@
 [gd_scene format=3 uid="uid://dbqmrirobhe5x"]
 
-[ext_resource type="Script" path="res://template/scenes/game_scene/levels/level.gd" id="1_kil7h"]
-[ext_resource type="Script" path="res://addons/maaacks_game_template/base/nodes/utilities/capture_focus.gd" id="2_b7h42"]
-[ext_resource type="Script" path="res://template/scenes/game_scene/input_display_label.gd" id="3_6c8l5"]
-[ext_resource type="Script" path="res://template/scenes/game_scene/tutorial_manager.gd" id="4_g47k3"]
-[ext_resource type="PackedScene" path="res://template/scenes/game_scene/tutorials/tutorial_1.tscn" id="5_2on1l"]
+[ext_resource type="Script" uid="uid://drqtjbb3yv61t" path="res://template/scenes/game_scene/levels/level.gd" id="1_kil7h"]
+[ext_resource type="Script" uid="uid://1nf36h0gms3q" path="res://addons/maaacks_game_template/base/nodes/utilities/capture_focus.gd" id="2_b7h42"]
+[ext_resource type="Script" uid="uid://bh03wjkre4sot" path="res://template/scenes/game_scene/input_display_label.gd" id="3_6c8l5"]
+[ext_resource type="Script" uid="uid://cxd557pb0bdfp" path="res://template/scenes/game_scene/tutorial_manager.gd" id="4_g47k3"]
+[ext_resource type="PackedScene" uid="uid://3w54nko4ooho" path="res://template/scenes/game_scene/tutorials/tutorial_1.tscn" id="5_2on1l"]
+[ext_resource type="PackedScene" uid="uid://bkcsjsk2ciff" path="res://addons/maaacks_game_template/base/nodes/music_players/background_music_player.tscn" id="6_b7h42"]
+[ext_resource type="AudioStream" uid="uid://dhp073fo2hbwy" path="res://game/audio/music/placeholders/oceanking-alone-not-lost-219740.mp3" id="7_6c8l5"]
 
 [node name="Level1" type="Control" unique_id=235822082]
 layout_mode = 3
@@ -94,6 +96,9 @@ text = "Change Color"
 unique_name_in_owner = true
 script = ExtResource("4_g47k3")
 tutorial_scenes = Array[PackedScene]([ExtResource("5_2on1l")])
+
+[node name="BackgroundMusicPlayer" parent="." unique_id=1446051342 instance=ExtResource("6_b7h42")]
+stream = ExtResource("7_6c8l5")
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/LoseButton" to="." method="_on_lose_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/WinButton" to="." method="_on_win_button_pressed"]
