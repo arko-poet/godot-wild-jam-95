@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://cl42cgom0n6vr"]
 
-[ext_resource type="Script" path="res://template/scenes/game_scene/levels/level.gd" id="1_vfrdm"]
-[ext_resource type="Script" path="res://addons/maaacks_game_template/base/nodes/utilities/capture_focus.gd" id="2_5fmst"]
-[ext_resource type="Script" path="res://template/scenes/game_scene/input_display_label.gd" id="3_qbqlg"]
-[ext_resource type="Script" path="res://template/scenes/game_scene/tutorial_manager.gd" id="4_fwi2y"]
-[ext_resource type="PackedScene" path="res://template/scenes/game_scene/tutorials/tutorial_2.tscn" id="5_rrk6f"]
+[ext_resource type="Script" uid="uid://drqtjbb3yv61t" path="res://template/scenes/game_scene/levels/level.gd" id="1_vfrdm"]
+[ext_resource type="Script" uid="uid://1nf36h0gms3q" path="res://addons/maaacks_game_template/base/nodes/utilities/capture_focus.gd" id="2_5fmst"]
+[ext_resource type="Script" uid="uid://bh03wjkre4sot" path="res://template/scenes/game_scene/input_display_label.gd" id="3_qbqlg"]
+[ext_resource type="Script" uid="uid://cxd557pb0bdfp" path="res://template/scenes/game_scene/tutorial_manager.gd" id="4_fwi2y"]
+[ext_resource type="PackedScene" uid="uid://ddrtv0b28qy55" path="res://template/scenes/game_scene/tutorials/tutorial_2.tscn" id="5_rrk6f"]
 
 [node name="Level2" type="Control" unique_id=2110036821]
 layout_mode = 3
