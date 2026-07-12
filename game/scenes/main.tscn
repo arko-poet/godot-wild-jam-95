@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://j1j4y71oygw3"]
+
+[ext_resource type="Script" uid="uid://dho8u0yajgm23" path="res://game/scripts/main.gd" id="1_20rwd"]
+[ext_resource type="Texture2D" uid="uid://dm5lxhie5gnr7" path="res://game/shaders/test.png" id="2_jbjdl"]
+[ext_resource type="Script" uid="uid://cv0f28axyfkd0" path="res://game/scripts/debug_controls.gd" id="3_gp8w2"]
+
+[node name="Main" type="Node" unique_id=807738320]
+script = ExtResource("1_20rwd")
+
+[node name="Room" type="Node2D" parent="." unique_id=1070448921]
+
+[node name="Sprite" type="Sprite2D" parent="Room" unique_id=1873225203]
+texture = ExtResource("2_jbjdl")
+centered = false
+
+[node name="UILayer" type="CanvasLayer" parent="." unique_id=1011913819]
+
+[node name="UI" type="Control" parent="UILayer" unique_id=261249437]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DebugControls" type="Control" parent="UILayer/UI" unique_id=2036380888]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("3_gp8w2")
+
+[node name="CreatureLabel" type="Label" parent="UILayer/UI/DebugControls" unique_id=1332702779]
+layout_mode = 0
+offset_left = 868.0
+offset_top = 223.0
+offset_right = 1146.0
+offset_bottom = 268.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "1"
