@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://v5d6u7rtp522"]
+
+[ext_resource type="Shader" uid="uid://uw7b7qo618vi" path="res://game/shaders/crt.gdshader" id="1_a1end"]
+[ext_resource type="Script" uid="uid://bsxfkt70612yq" path="res://game/scripts/pc_screen.gd" id="1_xm86i"]
+[ext_resource type="Texture2D" uid="uid://buoe86bqyfknb" path="res://icon.svg" id="2_qgpu0"]
+
+[sub_resource type="Gradient" id="Gradient_88wer"]
+colors = PackedColorArray(1, 1, 1, 1, 0.08627451, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_vgun3"]
+gradient = SubResource("Gradient_88wer")
+width = 660
+height = 490
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qgpu0"]
+shader = ExtResource("1_a1end")
+shader_parameter/resolution = Vector2(660, 490)
+shader_parameter/scan_line_amount = 0.10000000475
+shader_parameter/warp_amount = 0.2000000095
+shader_parameter/noise_amount = 0.03
+shader_parameter/interference_amount = 0.2
+shader_parameter/grille_amount = 0.1
+shader_parameter/grille_size = 1.0
+shader_parameter/vignette_amount = 0.6
+shader_parameter/vignette_intensity = 0.400000019
+shader_parameter/aberation_amount = 0.2000000095
+shader_parameter/roll_line_amount = 0.0
+shader_parameter/roll_speed = 1.0000004274999998
+shader_parameter/scan_line_strength = -7.99999981
+shader_parameter/pixel_strength = -2.0
+
+[node name="PCScreen" type="Node2D" unique_id=1576839333]
+script = ExtResource("1_xm86i")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=433300572]
+offset_right = 640.0
+offset_bottom = 480.0
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=594804747]
+handle_input_locally = false
+size = Vector2i(660, 490)
+render_target_update_mode = 4
+
+[node name="Sprite2D2" type="Sprite2D" parent="SubViewportContainer/SubViewport" unique_id=1446770725]
+scale = Vector2(0.99999994, 1.0020832)
+texture = SubResource("GradientTexture2D_vgun3")
+centered = false
+
+[node name="Sprite2D" type="Sprite2D" parent="SubViewportContainer/SubViewport" unique_id=2061832915]
+position = Vector2(290, 230.00005)
+scale = Vector2(2, 2)
+texture = ExtResource("2_qgpu0")
+
+[node name="Label" type="Label" parent="SubViewportContainer/SubViewport" unique_id=1139896168]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -307.5
+offset_right = 307.5
+offset_bottom = 182.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 64
+text = "SHADERS ARE HARD"
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="SubViewportContainer/SubViewport" unique_id=935427914]
+material = SubResource("ShaderMaterial_qgpu0")
+offset_right = 640.0
+offset_bottom = 480.0
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer/SubViewport/SubViewportContainer" unique_id=596434589]
+handle_input_locally = false
+size = Vector2i(660, 490)
+render_target_update_mode = 4
