@@ -20,12 +20,19 @@ func _on_play_game_button_pressed() -> void:
 	meta_game.hide()
 	
 	current_mingame = MiniGameScenes[0].instantiate()
+	current_mingame.game_won.connect(_on_minigame_won)
+	current_mingame.game_lost.connect(_on_minigame_lost)
+	
 	screen_content.add_child(current_mingame)
-	current_mingame.game_won.connect(_on_minigame_game_won)
 
 
-func _on_minigame_game_won() -> void:
+func _on_minigame_won() -> void:
 	games_won += 1
 	
+	current_mingame.queue_free()
+	meta_game.show()
+
+
+func _on_minigame_lost() -> void:
 	current_mingame.queue_free()
 	meta_game.show()

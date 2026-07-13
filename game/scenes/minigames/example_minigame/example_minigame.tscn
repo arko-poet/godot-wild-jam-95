@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://fj0pef00v8fb"]
 
 [ext_resource type="Script" uid="uid://cxq10itfq3u60" path="res://game/scripts/minigames/example_minigame/example_minigame.gd" id="1_oqxoi"]
+[ext_resource type="PackedScene" uid="uid://bb5isa4txkp3f" path="res://game/scenes/minigames/timer_component.tscn" id="2_qfgo3"]
 
 [sub_resource type="Gradient" id="Gradient_qfgo3"]
 colors = PackedColorArray(0.20392157, 0.2509804, 0, 1, 0.60784316, 0.12156863, 1, 1)
@@ -32,6 +33,10 @@ offset_bottom = 29.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="TimerComponent" parent="VBoxContainer" unique_id=1166255049 instance=ExtResource("2_qfgo3")]
+unique_name_in_owner = true
+layout_mode = 2
+
 [node name="ScoreLabel" type="Label" parent="VBoxContainer" unique_id=230878002]
 unique_name_in_owner = true
 layout_mode = 2
@@ -41,4 +46,5 @@ text = "Score: 0/10"
 layout_mode = 2
 text = "PRESS ME"
 
+[connection signal="out_of_time" from="VBoxContainer/TimerComponent" to="." method="_on_timer_component_out_of_time"]
 [connection signal="pressed" from="VBoxContainer/AddScoreButton" to="." method="_on_add_score_button_pressed"]
