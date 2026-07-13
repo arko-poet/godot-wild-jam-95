@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://bb5isa4txkp3f"]
 
-[ext_resource type="Script" uid="uid://cddq6ju7yg2cb" path="res://game/scripts/minigames/timer_component.gd" id="1_mg8aj"]
+[ext_resource type="Script" uid="uid://cddq6ju7yg2cb" path="res://game/scripts/pc_screen/minigames/timer_component.gd" id="1_cl0bb"]
 
 [node name="TimerComponent" type="Label" unique_id=1166255049]
-script = ExtResource("1_mg8aj")
+script = ExtResource("1_cl0bb")
 
 [node name="Timer" type="Timer" parent="." unique_id=2001481635]
 unique_name_in_owner = true

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://v5d6u7rtp522"]
 
-[ext_resource type="Shader" uid="uid://uw7b7qo618vi" path="res://game/shaders/crt.gdshader" id="1_a1end"]
-[ext_resource type="Script" uid="uid://bsxfkt70612yq" path="res://game/scripts/pc_screen.gd" id="1_xm86i"]
+[ext_resource type="Script" uid="uid://bsxfkt70612yq" path="res://game/scripts/pc_screen/pc_screen.gd" id="1_ib41a"]
+[ext_resource type="Shader" uid="uid://uw7b7qo618vi" path="res://game/shaders/crt.gdshader" id="2_7np4j"]
 
 [sub_resource type="Gradient" id="Gradient_88wer"]
 colors = PackedColorArray(1, 1, 1, 1, 0.08627451, 1, 1, 1)
@@ -12,7 +12,7 @@ width = 660
 height = 490
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qgpu0"]
-shader = ExtResource("1_a1end")
+shader = ExtResource("2_7np4j")
 shader_parameter/resolution = Vector2(660, 490)
 shader_parameter/scan_line_amount = 0.10000000475
 shader_parameter/warp_amount = 0.2000000095
@@ -29,7 +29,7 @@ shader_parameter/scan_line_strength = -7.99999981
 shader_parameter/pixel_strength = -2.0
 
 [node name="PCScreen" type="Node2D" unique_id=1576839333]
-script = ExtResource("1_xm86i")
+script = ExtResource("1_ib41a")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=433300572]
 offset_right = 640.0

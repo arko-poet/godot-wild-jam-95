@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dho8u0yajgm23" path="res://game/scripts/main_game.gd" id="1_1ig1l"]
 [ext_resource type="Texture2D" uid="uid://dm5lxhie5gnr7" path="res://game/art/placeholders/background.png" id="2_yv8p0"]
-[ext_resource type="PackedScene" uid="uid://v5d6u7rtp522" path="res://game/scenes/pc_screen.tscn" id="3_xmhwu"]
+[ext_resource type="PackedScene" uid="uid://v5d6u7rtp522" path="res://game/scenes/pc_screen/pc_screen.tscn" id="3_xmhwu"]
 [ext_resource type="Script" uid="uid://cv0f28axyfkd0" path="res://game/scripts/debug_controls.gd" id="4_cnnha"]
 
 [node name="MainGame" type="Node" unique_id=807738320]
