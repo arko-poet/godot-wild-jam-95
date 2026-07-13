@@ -1,21 +1,21 @@
 [gd_scene format=3 uid="uid://j1j4y71oygw3"]
 
-[ext_resource type="Script" uid="uid://dho8u0yajgm23" path="res://game/scripts/main.gd" id="1_20rwd"]
-[ext_resource type="Texture2D" uid="uid://dm5lxhie5gnr7" path="res://game/art/placeholders/background.png" id="2_8buom"]
-[ext_resource type="PackedScene" uid="uid://v5d6u7rtp522" path="res://game/scenes/pc_screen.tscn" id="3_8buom"]
-[ext_resource type="Script" uid="uid://cv0f28axyfkd0" path="res://game/scripts/debug_controls.gd" id="3_gp8w2"]
+[ext_resource type="Script" uid="uid://dho8u0yajgm23" path="res://game/scripts/main_game.gd" id="1_1ig1l"]
+[ext_resource type="Texture2D" uid="uid://dm5lxhie5gnr7" path="res://game/art/placeholders/background.png" id="2_yv8p0"]
+[ext_resource type="PackedScene" uid="uid://v5d6u7rtp522" path="res://game/scenes/pc_screen.tscn" id="3_xmhwu"]
+[ext_resource type="Script" uid="uid://cv0f28axyfkd0" path="res://game/scripts/debug_controls.gd" id="4_cnnha"]
 
-[node name="Main" type="Node" unique_id=807738320]
-script = ExtResource("1_20rwd")
+[node name="MainGame" type="Node" unique_id=807738320]
+script = ExtResource("1_1ig1l")
 metadata/_edit_vertical_guides_ = [82.0, 739.0]
 
 [node name="Room" type="Node2D" parent="." unique_id=1070448921]
 
 [node name="Background" type="Sprite2D" parent="Room" unique_id=1873225203]
-texture = ExtResource("2_8buom")
+texture = ExtResource("2_yv8p0")
 centered = false
 
-[node name="PcScreen" parent="Room" unique_id=1576839333 instance=ExtResource("3_8buom")]
+[node name="PcScreen" parent="Room" unique_id=1576839333 instance=ExtResource("3_xmhwu")]
 unique_name_in_owner = true
 position = Vector2(82, 93)
 
@@ -35,7 +35,7 @@ metadata/_edit_lock_ = true
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-script = ExtResource("3_gp8w2")
+script = ExtResource("4_cnnha")
 
 [node name="CreatureLabel" type="Label" parent="UILayer/UI/DebugControls" unique_id=1332702779]
 layout_mode = 0
