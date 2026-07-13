@@ -319,6 +319,7 @@ graph_offset = Vector2(-180.277, 49)
 script = ExtResource("2_p7afn")
 level_select_packed_scene = null
 confirm_new_game = true
+game_scene_path = "uid://j1j4y71oygw3"
 options_packed_scene = ExtResource("3_tsej0")
 credits_packed_scene = ExtResource("4_b321b")
 

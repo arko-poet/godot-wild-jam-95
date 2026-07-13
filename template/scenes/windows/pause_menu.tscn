@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://bve4hs4so22il"]
 
-[ext_resource type="PackedScene" path="res://addons/maaacks_game_template/base/nodes/windows/overlaid_window.tscn" id="1_cp8is"]
-[ext_resource type="Script" path="res://template/scenes/windows/pause_menu.gd" id="2_k3w8o"]
-[ext_resource type="PackedScene" path="res://template/scenes/windows/pause_menu_options_window.tscn" id="3_1ajh0"]
-[ext_resource type="PackedScene" path="res://addons/maaacks_game_template/base/nodes/windows/confirmation_overlaid_window.tscn" id="4_4m8h8"]
+[ext_resource type="PackedScene" uid="uid://6gdbfi0172ji" path="res://addons/maaacks_game_template/base/nodes/windows/overlaid_window.tscn" id="1_cp8is"]
+[ext_resource type="Script" uid="uid://dvt144id7rph1" path="res://template/scenes/windows/pause_menu.gd" id="2_k3w8o"]
+[ext_resource type="PackedScene" uid="uid://bsofp4t03hspn" path="res://template/scenes/windows/pause_menu_options_window.tscn" id="3_1ajh0"]
+[ext_resource type="PackedScene" uid="uid://cwt4p3bufkke5" path="res://addons/maaacks_game_template/base/nodes/windows/confirmation_overlaid_window.tscn" id="4_4m8h8"]
 
 [node name="PauseMenu" unique_id=156357199 instance=ExtResource("1_cp8is")]
 process_mode = 3
@@ -22,6 +22,7 @@ main_menu_confirmation_node_path = NodePath("MainMenuConfirmation")
 exit_confirmation_node_path = NodePath("ExitConfirmation")
 menu_container_node_path = NodePath("..")
 pauses_game = true
+ignore_siblings = false
 
 [node name="TitleLabel" parent="ContentContainer/BoxContainer/TitleMargin/BoxContainer" parent_id_path=PackedInt32Array(1788474031) index="0" unique_id=1049966061]
 text = "Paused"
@@ -58,23 +59,26 @@ text = "Exit Game"
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
-text = "Restart the game?"
+ignore_siblings = false
 title = "Confirm Restart"
+text = "Restart the game?"
 
 [node name="MainMenuConfirmation" parent="." index="2" unique_id=1770307648 instance=ExtResource("4_4m8h8")]
 unique_name_in_owner = true
 visible = false
 custom_minimum_size = Vector2(220, 0)
 layout_mode = 2
-text = "Exit to the main menu?"
+ignore_siblings = false
 title = "Confirm Exit"
+text = "Exit to the main menu?"
 
 [node name="ExitConfirmation" parent="." index="3" unique_id=1587469343 instance=ExtResource("4_4m8h8")]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
-text = "Exit the game?"
+ignore_siblings = false
 title = "Confirm Exit"
+text = "Exit the game?"
 
 [connection signal="pressed" from="ContentContainer/BoxContainer/MenuButtonsMargin/MenuButtons/RestartButton" to="." method="_on_restart_button_pressed"]
 [connection signal="pressed" from="ContentContainer/BoxContainer/MenuButtonsMargin/MenuButtons/OptionsButton" to="." method="_on_options_button_pressed"]

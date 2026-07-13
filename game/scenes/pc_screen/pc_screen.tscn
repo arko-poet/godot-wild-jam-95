@@ -1,0 +1,106 @@
+[gd_scene format=3 uid="uid://v5d6u7rtp522"]
+
+[ext_resource type="Script" uid="uid://bsxfkt70612yq" path="res://game/scripts/pc_screen/pc_screen.gd" id="1_ib41a"]
+[ext_resource type="Shader" uid="uid://uw7b7qo618vi" path="res://game/shaders/crt.gdshader" id="2_7np4j"]
+
+[sub_resource type="Gradient" id="Gradient_88wer"]
+colors = PackedColorArray(1, 1, 1, 1, 0.08627451, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_vgun3"]
+gradient = SubResource("Gradient_88wer")
+width = 660
+height = 490
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qgpu0"]
+shader = ExtResource("2_7np4j")
+shader_parameter/resolution = Vector2(660, 490)
+shader_parameter/scan_line_amount = 0.10000000475
+shader_parameter/warp_amount = 0.2000000095
+shader_parameter/noise_amount = 0.03
+shader_parameter/interference_amount = 0.2
+shader_parameter/grille_amount = 0.1
+shader_parameter/grille_size = 1.0
+shader_parameter/vignette_amount = 0.6
+shader_parameter/vignette_intensity = 0.400000019
+shader_parameter/aberation_amount = 0.2000000095
+shader_parameter/roll_line_amount = 0.0
+shader_parameter/roll_speed = 1.0000004274999998
+shader_parameter/scan_line_strength = -7.99999981
+shader_parameter/pixel_strength = -2.0
+
+[node name="PCScreen" type="Node2D" unique_id=1576839333]
+script = ExtResource("1_ib41a")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=433300572]
+offset_right = 640.0
+offset_bottom = 480.0
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=594804747]
+handle_input_locally = false
+size = Vector2i(660, 490)
+render_target_update_mode = 4
+
+[node name="ScreenContent" type="Control" parent="SubViewportContainer/SubViewport" unique_id=625437244]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MetaGame" type="Control" parent="SubViewportContainer/SubViewport/ScreenContent" unique_id=1466885651]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="Sprite2D" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame" unique_id=1446770725]
+scale = Vector2(0.99999994, 1.0020832)
+texture = SubResource("GradientTexture2D_vgun3")
+centered = false
+
+[node name="WinCountLabel" type="Label" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame" unique_id=1139896168]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -307.5
+offset_right = 307.5
+offset_bottom = 182.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 64
+text = "Games Won: 0"
+horizontal_alignment = 1
+
+[node name="PlayGameButton" type="Button" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame" unique_id=2079948144]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -15.5
+offset_right = 64.0
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "PLAY GAME"
+
+[node name="CRTShaderTexture" type="ColorRect" parent="SubViewportContainer/SubViewport" unique_id=1133477946]
+material = SubResource("ShaderMaterial_qgpu0")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(11.890625, 8.53125)
+mouse_filter = 2
+
+[connection signal="pressed" from="SubViewportContainer/SubViewport/ScreenContent/MetaGame/PlayGameButton" to="." method="_on_play_game_button_pressed"]

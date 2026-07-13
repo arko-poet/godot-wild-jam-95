@@ -45,7 +45,8 @@ folder_colors={
 "res://game/audio/": "purple",
 "res://game/resources/": "orange",
 "res://game/scenes/": "blue",
-"res://game/scripts/": "red"
+"res://game/scripts/": "red",
+"res://game/shaders/": "yellow"
 }
 
 [gui]
