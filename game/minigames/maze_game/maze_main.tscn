@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://7ld8ybro56lx"]
+
+[ext_resource type="Script" uid="uid://dira8f6ml4pk6" path="res://game/minigames/maze_game/maze_main.gd" id="1_gsmpd"]
+[ext_resource type="PackedScene" uid="uid://c58j3q1h3y52m" path="res://game/minigames/maze_game/player.tscn" id="2_jiggc"]
+
+[node name="MazeMain" type="Node2D" unique_id=926297470]
+script = ExtResource("1_gsmpd")
+
+[node name="Player" parent="." unique_id=242852718 node_paths=PackedStringArray("maze") instance=ExtResource("2_jiggc")]
+maze = NodePath("..")
