@@ -1,13 +1,19 @@
 [gd_scene format=3 uid="uid://j1j4y71oygw3"]
 
 [ext_resource type="Script" uid="uid://dho8u0yajgm23" path="res://game/scripts/main_game.gd" id="1_1ig1l"]
+[ext_resource type="Script" uid="uid://cyh0d64pfygbl" path="res://addons/maaacks_game_template/base/nodes/utilities/pause_menu_controller.gd" id="2_xmhwu"]
 [ext_resource type="Texture2D" uid="uid://dm5lxhie5gnr7" path="res://game/art/placeholders/background.png" id="2_yv8p0"]
-[ext_resource type="PackedScene" uid="uid://v5d6u7rtp522" path="res://game/scenes/pc_screen/pc_screen.tscn" id="3_xmhwu"]
+[ext_resource type="PackedScene" uid="uid://c1kwgddxp18j1" path="res://template/scenes/windows/pause_menu_layer.tscn" id="3_cnnha"]
 [ext_resource type="Script" uid="uid://cv0f28axyfkd0" path="res://game/scripts/debug_controls.gd" id="4_cnnha"]
+[ext_resource type="PackedScene" uid="uid://v5d6u7rtp522" path="res://game/scenes/pc_screen/pc_screen.tscn" id="5_wemlv"]
 
 [node name="MainGame" type="Node" unique_id=807738320]
 script = ExtResource("1_1ig1l")
 metadata/_edit_vertical_guides_ = [82.0, 739.0]
+
+[node name="PauseMenuController" type="Node" parent="." unique_id=1619908077]
+script = ExtResource("2_xmhwu")
+pause_menu_packed = ExtResource("3_cnnha")
 
 [node name="Room" type="Node2D" parent="." unique_id=1070448921]
 
@@ -15,9 +21,9 @@ metadata/_edit_vertical_guides_ = [82.0, 739.0]
 texture = ExtResource("2_yv8p0")
 centered = false
 
-[node name="PcScreen" parent="Room" unique_id=1576839333 instance=ExtResource("3_xmhwu")]
+[node name="PCScreen" parent="Room" unique_id=1576839333 instance=ExtResource("5_wemlv")]
 unique_name_in_owner = true
-position = Vector2(82, 93)
+position = Vector2(79, 88)
 
 [node name="UILayer" type="CanvasLayer" parent="." unique_id=1011913819]
 
@@ -46,3 +52,13 @@ offset_bottom = 268.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 32
 text = "1"
+
+[node name="MenuButton" type="Label" parent="UILayer/UI" unique_id=1266817094]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -57.0
+offset_bottom = 31.0
+grow_horizontal = 0
+text = "Press `Escape` to Pause"

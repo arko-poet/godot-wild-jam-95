@@ -9,3 +9,7 @@ func game_over() -> void:
 
 func game_won() -> void:
 	pass
+
+
+func _on_menu_button_pressed() -> void:
+	pass # Replace with function body.
