@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://ibp722qiip44"]
+
+[ext_resource type="PackedScene" uid="uid://qpa75motdky" path="res://game/scenes/minigames/minigame.tscn" id="1_g0opo"]
+[ext_resource type="Script" uid="uid://cxq10itfq3u60" path="res://game/scripts/minigames/example_minigame/example_minigame.gd" id="2_qfgo3"]
+
+[sub_resource type="Gradient" id="Gradient_les2i"]
+colors = PackedColorArray(0.20392157, 0.2509804, 0, 1, 0.60784316, 0.12156863, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_j101e"]
+gradient = SubResource("Gradient_les2i")
+width = 660
+height = 490
+fill_from = Vector2(0.3870759, 0.7008547)
+fill_to = Vector2(0.74559706, 0.31196582)
+
+[node name="ExampleMinigame" unique_id=514867879 instance=ExtResource("1_g0opo")]
+script = ExtResource("2_qfgo3")
+
+[node name="Background" type="Sprite2D" parent="." index="0" unique_id=933152548]
+texture = SubResource("GradientTexture2D_j101e")
+centered = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." index="1" unique_id=743849346]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -42.5
+offset_top = -29.0
+offset_right = 42.5
+offset_bottom = 29.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScoreLabel" type="Label" parent="VBoxContainer" index="0" unique_id=89976952]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Score: 0/10"
+
+[node name="Button" type="Button" parent="VBoxContainer" index="1" unique_id=2028509811]
+layout_mode = 2
+text = "PRESS ME"
+
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]
