@@ -41,17 +41,26 @@ handle_input_locally = false
 size = Vector2i(660, 490)
 render_target_update_mode = 4
 
-[node name="Sprite2D2" type="Sprite2D" parent="SubViewportContainer/SubViewport" unique_id=1446770725]
+[node name="ScreenContent" type="Control" parent="SubViewportContainer/SubViewport" unique_id=625437244]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite2D2" type="Sprite2D" parent="SubViewportContainer/SubViewport/ScreenContent" unique_id=1446770725]
 scale = Vector2(0.99999994, 1.0020832)
 texture = SubResource("GradientTexture2D_vgun3")
 centered = false
 
-[node name="Sprite2D" type="Sprite2D" parent="SubViewportContainer/SubViewport" unique_id=2061832915]
+[node name="Sprite2D" type="Sprite2D" parent="SubViewportContainer/SubViewport/ScreenContent" unique_id=2061832915]
 position = Vector2(290, 230.00005)
 scale = Vector2(2, 2)
 texture = ExtResource("2_qgpu0")
 
-[node name="Label" type="Label" parent="SubViewportContainer/SubViewport" unique_id=1139896168]
+[node name="Label" type="Label" parent="SubViewportContainer/SubViewport/ScreenContent" unique_id=1139896168]
+layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -63,12 +72,23 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 64
 text = "SHADERS ARE HARD"
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="SubViewportContainer/SubViewport" unique_id=935427914]
-material = SubResource("ShaderMaterial_qgpu0")
-offset_right = 640.0
-offset_bottom = 480.0
+[node name="Button" type="Button" parent="SubViewportContainer/SubViewport/ScreenContent" unique_id=2079948144]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -15.5
+offset_right = 128.0
+offset_bottom = 15.5
+grow_vertical = 2
+text = "WIN MINIGAME"
 
-[node name="SubViewport" type="SubViewport" parent="SubViewportContainer/SubViewport/SubViewportContainer" unique_id=596434589]
-handle_input_locally = false
-size = Vector2i(660, 490)
-render_target_update_mode = 4
+[node name="CRTShaderTexture" type="ColorRect" parent="SubViewportContainer/SubViewport" unique_id=1133477946]
+material = SubResource("ShaderMaterial_qgpu0")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(11.890625, 8.53125)
+mouse_filter = 2
