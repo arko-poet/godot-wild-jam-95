@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/oceanking-alone-not-lost-219740.mp3-b8fc3d8e1
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://bxcrjj54yj4ok"]
+
+[ext_resource type="Shader" uid="uid://uw7b7qo618vi" path="res://game/shaders/crt.gdshader" id="1_8kps8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_li6ia"]
+shader = ExtResource("1_8kps8")
+shader_parameter/resolution = Vector2(640, 480)
+shader_parameter/scan_line_amount = 0.10000000475
+shader_parameter/warp_amount = 0.2000000095
+shader_parameter/noise_amount = 0.03
+shader_parameter/interference_amount = 0.2
+shader_parameter/grille_amount = 0.1
+shader_parameter/grille_size = 1.0
+shader_parameter/vignette_amount = 0.6
+shader_parameter/vignette_intensity = 0.400000019
+shader_parameter/aberation_amount = 0.2000000095
+shader_parameter/roll_line_amount = 0.0
+shader_parameter/roll_speed = 1.0000004274999998
+shader_parameter/scan_line_strength = -7.99999981
+shader_parameter/pixel_strength = -2.0
+
+[node name="CrtShader" type="CanvasLayer" unique_id=785217092]
+layer = 10
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1113894996]
+material = SubResource("ShaderMaterial_li6ia")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.40392157, 1, 1, 1)
