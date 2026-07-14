@@ -44,6 +44,9 @@ func _on_pc_screen_progress_bar_filled() -> void:
 
 
 func _on_pc_screen_doom_changed(percentage: float) -> void:
+	if percentage < 0.1:
+		return
+	
 	if percentage == 1.0:
 		monster_stage = 5
 	elif percentage >= 0.8:
