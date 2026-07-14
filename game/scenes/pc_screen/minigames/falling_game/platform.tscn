@@ -1,0 +1,87 @@
+[gd_scene format=3 uid="uid://c4nnus1gtftwt"]
+
+[ext_resource type="Script" uid="uid://ddl4w0dvy85xd" path="res://game/scenes/pc_screen/minigames/falling_game/platform.gd" id="1_1kva0"]
+[ext_resource type="PackedScene" uid="uid://bgq5rem8j0e3x" path="res://game/scenes/pc_screen/minigames/falling_game/spike.tscn" id="2_rase0"]
+
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3owqy"]
+size = Vector2(1693.5, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j5h7h"]
+size = Vector2(1693.5, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8upip"]
+size = Vector2(3369, 101)
+
+[node name="Platform" type="Node2D" unique_id=472695447 node_paths=PackedStringArray("all_spikes")]
+script = ExtResource("1_1kva0")
+all_spikes = [NodePath("Right/Spikes/Spike"), NodePath("Right/Spikes/Spike3"), NodePath("Right/Spikes/Spike5"), NodePath("Right/Spikes/Spike7"), NodePath("Left/Spikes/Spike2"), NodePath("Left/Spikes/Spike4"), NodePath("Left/Spikes/Spike6"), NodePath("Left/Spikes/Spike8")]
+
+[node name="Right" type="StaticBody2D" parent="." unique_id=1492098594]
+unique_name_in_owner = true
+position = Vector2(-60, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Right" unique_id=48011338]
+position = Vector2(906.75, 0)
+shape = SubResource("RectangleShape2D_3owqy")
+
+[node name="Polygon2D" type="Polygon2D" parent="Right" unique_id=1872701211]
+position = Vector2(0.035404205, -1.3953476)
+scale = Vector2(0.99941, 0.9302326)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(60, -20, 1755, -20, 1755, 22.999996, 59.999996, 22.999996)
+
+[node name="Spikes" type="Node2D" parent="Right" unique_id=378772373]
+position = Vector2(60, 0)
+
+[node name="Spike" parent="Right/Spikes" unique_id=125552598 instance=ExtResource("2_rase0")]
+position = Vector2(95, -20)
+
+[node name="Spike3" parent="Right/Spikes" unique_id=1136746536 instance=ExtResource("2_rase0")]
+position = Vector2(288, -20)
+
+[node name="Spike5" parent="Right/Spikes" unique_id=1090007471 instance=ExtResource("2_rase0")]
+position = Vector2(445, -20)
+
+[node name="Spike7" parent="Right/Spikes" unique_id=1717981372 instance=ExtResource("2_rase0")]
+position = Vector2(587, -20)
+
+[node name="Left" type="StaticBody2D" parent="." unique_id=693640583]
+unique_name_in_owner = true
+position = Vector2(-1754, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Left" unique_id=510476499]
+position = Vector2(906.75, 0)
+shape = SubResource("RectangleShape2D_j5h7h")
+
+[node name="Polygon2D" type="Polygon2D" parent="Left" unique_id=500477088]
+position = Vector2(0.035404205, -1.3953476)
+scale = Vector2(0.99941, 0.9302326)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(60, -20, 1755, -20, 1755, 22.999996, 59.999996, 22.999996)
+
+[node name="Spikes" type="Node2D" parent="Left" unique_id=220561669]
+position = Vector2(1754, 0)
+
+[node name="Spike2" parent="Left/Spikes" unique_id=177597107 instance=ExtResource("2_rase0")]
+position = Vector2(-631.715, -20)
+
+[node name="Spike4" parent="Left/Spikes" unique_id=457257468 instance=ExtResource("2_rase0")]
+position = Vector2(-461.53, -20)
+
+[node name="Spike6" parent="Left/Spikes" unique_id=1219123929 instance=ExtResource("2_rase0")]
+position = Vector2(-289, -20)
+
+[node name="Spike8" parent="Left/Spikes" unique_id=950872108 instance=ExtResource("2_rase0")]
+position = Vector2(-124, -20)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=131722141]
+
+[node name="PlayerDetector" type="Area2D" parent="." unique_id=2069910948]
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector" unique_id=1633599511]
+position = Vector2(7.5, -31.5)
+shape = SubResource("RectangleShape2D_8upip")
+
+[connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detector_body_entered"]

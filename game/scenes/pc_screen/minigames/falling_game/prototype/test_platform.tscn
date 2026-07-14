@@ -1,0 +1,143 @@
+[gd_scene format=3 uid="uid://b4x4himcnrhxo"]
+
+[ext_resource type="PackedScene" uid="uid://deolci8vffafc" path="res://game/scenes/pc_screen/minigames/falling_game/rolling_player.tscn" id="1_suhij"]
+[ext_resource type="PackedScene" uid="uid://bgq5rem8j0e3x" path="res://game/scenes/pc_screen/minigames/falling_game/spike.tscn" id="2_uf6b7"]
+[ext_resource type="Script" path="res://game/minigames/falling_game/basic_camera.gd" id="3_2cn35"]
+
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_toviy"]
+size = Vector2(1837, 39)
+
+[sub_resource type="Gradient" id="Gradient_suhij"]
+offsets = PackedFloat32Array(0.18674698)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_m58al"]
+gradient = SubResource("Gradient_suhij")
+
+[node name="TestPlatform" type="Node" unique_id=304766509]
+
+[node name="RollingPlayer" parent="." unique_id=1200731382 instance=ExtResource("1_suhij")]
+position = Vector2(149, 36)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=2082963958]
+position = Vector2(-64, 1668)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1953970043]
+position = Vector2(634.5, 438)
+shape = SubResource("RectangleShape2D_toviy")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=343920565]
+position = Vector2(628.50006, 437.00003)
+scale = Vector2(7.1757817, 40.750015)
+texture = SubResource("GradientTexture1D_m58al")
+
+[node name="Spike" parent="StaticBody2D" unique_id=125552598 instance=ExtResource("2_uf6b7")]
+position = Vector2(547, 417)
+
+[node name="Spike2" parent="StaticBody2D" unique_id=134286924 instance=ExtResource("2_uf6b7")]
+position = Vector2(833, 417)
+
+[node name="Spike3" parent="StaticBody2D" unique_id=1598806752 instance=ExtResource("2_uf6b7")]
+position = Vector2(113, 423)
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=1079033341]
+position = Vector2(-778, -279)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2" unique_id=1082826672]
+position = Vector2(634.5, 438)
+shape = SubResource("RectangleShape2D_toviy")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D2" unique_id=1382015351]
+position = Vector2(628.50006, 437.00003)
+scale = Vector2(7.1757817, 40.750015)
+texture = SubResource("GradientTexture1D_m58al")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="." unique_id=215375557]
+position = Vector2(529, -74)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3" unique_id=624080893]
+position = Vector2(634.5, 438)
+shape = SubResource("RectangleShape2D_toviy")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D3" unique_id=1134157353]
+position = Vector2(628.50006, 437.00003)
+scale = Vector2(7.1757817, 40.750015)
+texture = SubResource("GradientTexture1D_m58al")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="." unique_id=1907705408]
+position = Vector2(943, 573)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4" unique_id=1521221501]
+position = Vector2(634.5, 438)
+shape = SubResource("RectangleShape2D_toviy")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D4" unique_id=808937157]
+position = Vector2(628.50006, 437.00003)
+scale = Vector2(7.1757817, 40.750015)
+texture = SubResource("GradientTexture1D_m58al")
+
+[node name="StaticBody2D5" type="StaticBody2D" parent="." unique_id=1935525214]
+position = Vector2(-1297, 579)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D5" unique_id=905331697]
+position = Vector2(634.5, 438)
+shape = SubResource("RectangleShape2D_toviy")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D5" unique_id=834695730]
+position = Vector2(628.50006, 437.00003)
+scale = Vector2(7.1757817, 40.750015)
+texture = SubResource("GradientTexture1D_m58al")
+
+[node name="StaticBody2D6" type="StaticBody2D" parent="." unique_id=769096335]
+position = Vector2(962, 1307)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D6" unique_id=332352500]
+position = Vector2(634.5, 438)
+shape = SubResource("RectangleShape2D_toviy")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D6" unique_id=1025100668]
+position = Vector2(628.50006, 437.00003)
+scale = Vector2(7.1757817, 40.750015)
+texture = SubResource("GradientTexture1D_m58al")
+
+[node name="StaticBody2D7" type="StaticBody2D" parent="." unique_id=1374462567]
+position = Vector2(-1227, 1307)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D7" unique_id=739176111]
+position = Vector2(634.5, 438)
+shape = SubResource("RectangleShape2D_toviy")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D7" unique_id=1631003686]
+position = Vector2(628.50006, 437.00003)
+scale = Vector2(7.1757817, 40.750015)
+texture = SubResource("GradientTexture1D_m58al")
+
+[node name="StaticBody2D8" type="StaticBody2D" parent="." unique_id=1502485806]
+position = Vector2(691, 939)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D8" unique_id=683281167]
+position = Vector2(634.5, 438)
+shape = SubResource("RectangleShape2D_toviy")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D8" unique_id=186786591]
+position = Vector2(628.50006, 437.00003)
+scale = Vector2(7.1757817, 40.750015)
+texture = SubResource("GradientTexture1D_m58al")
+
+[node name="StaticBody2D9" type="StaticBody2D" parent="." unique_id=1011539548]
+position = Vector2(-1482, 944)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D9" unique_id=1507873649]
+position = Vector2(634.5, 438)
+shape = SubResource("RectangleShape2D_toviy")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D9" unique_id=320497478]
+position = Vector2(628.50006, 437.00003)
+scale = Vector2(7.1757817, 40.750015)
+texture = SubResource("GradientTexture1D_m58al")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1183744291 node_paths=PackedStringArray("follow_player")]
+position = Vector2(512, 384)
+script = ExtResource("3_2cn35")
+follow_player = NodePath("../RollingPlayer")

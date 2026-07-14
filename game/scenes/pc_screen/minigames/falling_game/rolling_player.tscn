@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://deolci8vffafc"]
+
+[ext_resource type="Script" uid="uid://bqbr0gwtfhej4" path="res://game/scenes/pc_screen/minigames/falling_game/rolling_player.gd" id="1_gtla6"]
+[ext_resource type="Texture2D" uid="uid://nwfpyr5l7p0t" path="res://game/scenes/pc_screen/minigames/falling_game/prototype/PLACEHOLDER_pokerchip.png" id="2_gmoso"]
+
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_d8xlp"]
+radius = 15.736482
+
+[node name="RollingPlayer" type="CharacterBody2D" unique_id=260473328]
+collision_layer = 3
+script = ExtResource("1_gtla6")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2021905604]
+unique_name_in_owner = true
+scale = Vector2(0.06, 0.06)
+texture = ExtResource("2_gmoso")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=925753793]
+shape = SubResource("CircleShape2D_d8xlp")
+
+[node name="StunTimer" type="Timer" parent="." unique_id=578701313]
+unique_name_in_owner = true
+wait_time = 2.0
+one_shot = true
+
+[node name="InvincibleTimer" type="Timer" parent="." unique_id=1477054747]
+unique_name_in_owner = true
+one_shot = true
+
+[connection signal="timeout" from="StunTimer" to="." method="_on_stun_timer_timeout"]
+[connection signal="timeout" from="InvincibleTimer" to="." method="_on_invincible_timer_timeout"]

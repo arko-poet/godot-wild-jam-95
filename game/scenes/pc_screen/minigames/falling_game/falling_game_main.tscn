@@ -1,0 +1,79 @@
+[gd_scene format=3 uid="uid://fis1f4k8gtks"]
+
+[ext_resource type="Script" uid="uid://rhuct7l135mm" path="res://game/scenes/pc_screen/minigames/falling_game/falling_game_main.gd" id="1_tei26"]
+[ext_resource type="Script" uid="uid://ctuyqbnvia1rb" path="res://game/scenes/pc_screen/minigames/falling_game/falling_camera.gd" id="2_4oggc"]
+[ext_resource type="PackedScene" uid="uid://deolci8vffafc" path="res://game/scenes/pc_screen/minigames/falling_game/rolling_player.tscn" id="2_xp6nb"]
+[ext_resource type="PackedScene" uid="uid://c4nnus1gtftwt" path="res://game/scenes/pc_screen/minigames/falling_game/platform.tscn" id="3_3tvq1"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_3owqy"]
+
+[sub_resource type="Gradient" id="Gradient_tei26"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_3tvq1"]
+gradient = SubResource("Gradient_tei26")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3owqy"]
+size = Vector2(190, 7210)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8upip"]
+size = Vector2(319, 7220)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_drsw1"]
+size = Vector2(1149, 180)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dpga7"]
+size = Vector2(2212, 793.25)
+
+[node name="FallingGameMain" type="Node2D" unique_id=913120179]
+script = ExtResource("1_tei26")
+
+[node name="ResolutionChecker" type="TextureRect" parent="." unique_id=1128284496]
+visible = false
+custom_minimum_size = Vector2(640, 480)
+offset_right = 36.0
+offset_bottom = 43.0
+texture = SubResource("PlaceholderTexture2D_3owqy")
+
+[node name="TempSideWall" type="TextureRect" parent="." unique_id=1329862015]
+z_index = 1
+offset_left = 640.0
+offset_right = 1625.3867
+offset_bottom = 600.14026
+scale = Vector2(0.8630612, 14.254814)
+texture = SubResource("GradientTexture1D_3tvq1")
+
+[node name="Boundaries" type="StaticBody2D" parent="." unique_id=1324533237]
+
+[node name="RightWall" type="CollisionShape2D" parent="Boundaries" unique_id=1819018184]
+position = Vector2(-95, 3598)
+shape = SubResource("RectangleShape2D_3owqy")
+
+[node name="LeftWall" type="CollisionShape2D" parent="Boundaries" unique_id=300602496]
+position = Vector2(799.5, 3594)
+shape = SubResource("RectangleShape2D_8upip")
+
+[node name="Ceiling" type="CollisionShape2D" parent="Boundaries" unique_id=1139967783]
+position = Vector2(384.5, -90)
+shape = SubResource("RectangleShape2D_drsw1")
+
+[node name="KillPlane" type="Area2D" parent="." unique_id=1334885324]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KillPlane" unique_id=859808556]
+position = Vector2(397, 7609.375)
+shape = SubResource("RectangleShape2D_dpga7")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1493938841]
+unique_name_in_owner = true
+position = Vector2(640, 360)
+script = ExtResource("2_4oggc")
+
+[node name="RollingPlayer" parent="." unique_id=260473328 instance=ExtResource("2_xp6nb")]
+unique_name_in_owner = true
+position = Vector2(93, 50)
+
+[node name="Platform" parent="." unique_id=472695447 instance=ExtResource("3_3tvq1")]
+position = Vector2(690, 200)
+first_platform = true
+
+[connection signal="body_entered" from="KillPlane" to="." method="_on_kill_plane_body_entered"]
