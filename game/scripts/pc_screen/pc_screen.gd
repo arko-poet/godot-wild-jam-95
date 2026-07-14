@@ -5,7 +5,7 @@ signal progress_bar_filled
 
 const MiniGameScenes := [
 	preload("res://game/scenes/pc_screen/minigames/example_minigame/example_minigame.tscn"),
-	preload("res://game/scenes/pc_screen/minigames/falling_game/prototype_only/falling_game_static.tscn"),
+	#preload("res://game/scenes/pc_screen/minigames/falling_game/prototype_only/falling_game_static.tscn"),
 ]
 
 const MAX_DOOM := 1.0
@@ -21,6 +21,7 @@ var doom := 0.0:
 		doom = min(value, MAX_DOOM)
 		doom_bar.value = doom
 		doom_changed.emit(doom)
+		
 var progress := 0.0:
 	set(value):
 		progress = value
@@ -63,13 +64,13 @@ func _on_minigame_won() -> void:
 
 
 func _on_minigame_lost() -> void:
-	doom_bar.value += DOOM_STEP * (current_difficulty + 1)	
+	doom += DOOM_STEP * (current_difficulty + 1)	
 	
 	current_minigame.queue_free()
 	meta_game.show()
 
 
 func _roll_dice() -> int:
-	doom_bar.value += DOOM_STEP
+	doom += DOOM_STEP / 2.0
 	
 	return 1 + randi() % 6

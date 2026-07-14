@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bkcsjsk2ciff" path="res://addons/maaacks_game_template/base/nodes/music_players/background_music_player.tscn" id="4_wemlv"]
 [ext_resource type="AudioStream" uid="uid://dhp073fo2hbwy" path="res://game/audio/music/placeholders/oceanking-alone-not-lost-219740.mp3" id="5_ldb66"]
 [ext_resource type="PackedScene" uid="uid://v5d6u7rtp522" path="res://game/scenes/pc_screen/pc_screen.tscn" id="5_wemlv"]
+[ext_resource type="Texture2D" uid="uid://da1tl6w8xc6s7" path="res://game/art/placeholders/arko.png" id="7_ldb66"]
 
 [node name="MainGame" type="Node" unique_id=807738320]
 script = ExtResource("1_1ig1l")
@@ -25,6 +26,11 @@ stream = ExtResource("5_ldb66")
 [node name="Background" type="Sprite2D" parent="Room" unique_id=1873225203]
 texture = ExtResource("2_yv8p0")
 centered = false
+
+[node name="Monster" type="Sprite2D" parent="Room" unique_id=1314040944]
+unique_name_in_owner = true
+visible = false
+texture = ExtResource("7_ldb66")
 
 [node name="PCScreen" parent="Room" unique_id=1576839333 instance=ExtResource("5_wemlv")]
 unique_name_in_owner = true
@@ -47,16 +53,6 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("4_cnnha")
-
-[node name="CreatureLabel" type="Label" parent="UILayer/UI/DebugControls" unique_id=1332702779]
-layout_mode = 0
-offset_left = 868.0
-offset_top = 223.0
-offset_right = 1146.0
-offset_bottom = 268.0
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 32
-text = "1"
 
 [node name="MenuButton" type="Label" parent="UILayer/UI" unique_id=1266817094]
 layout_mode = 1
