@@ -40,6 +40,7 @@ func _on_menu_button_pressed() -> void:
 
 
 func _on_pc_screen_progress_bar_filled() -> void:
+	monster.hide()
 	claim_prize_button.show()
 
 

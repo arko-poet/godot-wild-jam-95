@@ -22,20 +22,24 @@ const _MAZE_GAME_NAME := "searching"
 const _EXAMPLE_GAME_NAME := "stupid"
 const _FALLING_GAME_NAME := "falling"
 
+const BAR_FILL_TIME := 0.5
+
 var _current_minigame: Minigame
 var _current_difficulty: Minigame.Difficulty
 var _current_dice_roll: int
 
 var _doom := 0.0:
 	set(value):
+		var tween = create_tween()
+		tween.tween_property(_doom_bar, ^"value", min(value, _MAX_DOOM), BAR_FILL_TIME)
 		_doom = min(value, _MAX_DOOM)
-		_doom_bar.value = _doom
 		doom_changed.emit(_doom)
 		
 var _progress := 0.0:
 	set(value):
-		_progress = value
-		_progress_bar.value = min(_progress, _MAX_PROGRESS)
+		var tween = create_tween()
+		tween.tween_property(_progress_bar, ^"value", min(value, _MAX_PROGRESS), BAR_FILL_TIME)
+		_progress = min(value, _MAX_PROGRESS)
 		if _progress == _MAX_PROGRESS:
 			progress_bar_filled.emit()
 
@@ -71,7 +75,9 @@ func _ready() -> void:
 
 
 func _on_minigame_won() -> void:
-	_progress_bar.value += _PROGRESS_STEP * (_current_difficulty + 1)
+	print("minigame won")
+	print(_current_difficulty)
+	_progress += _PROGRESS_STEP * (_current_difficulty + 1)
 	
 	_prepare_next_minigame()
 
