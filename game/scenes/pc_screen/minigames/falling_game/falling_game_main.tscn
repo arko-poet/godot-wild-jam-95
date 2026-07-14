@@ -70,7 +70,7 @@ shape = SubResource("RectangleShape2D_dpga7")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1493938841]
 unique_name_in_owner = true
-position = Vector2(640, 360)
+offset = Vector2(330, 0)
 script = ExtResource("2_4oggc")
 
 [node name="TimeLeft" type="Label" parent="Camera2D" unique_id=1855795776]
