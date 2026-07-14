@@ -25,7 +25,6 @@ const _FALLING_GAME_NAME := "falling"
 const BAR_FILL_TIME := 0.5
 
 var _current_minigame: Minigame
-var _current_difficulty: Minigame.Difficulty
 var _current_dice_roll: int
 
 var _doom := 0.0:
@@ -69,21 +68,21 @@ var _progress := 0.0:
 
 func _ready() -> void:
 	_progress_bar.max_value = _MAX_PROGRESS
+	_progress_bar_preview.max_value = _MAX_PROGRESS
 	_doom_bar.max_value = _MAX_DOOM
+	_doom_bar_preview.max_value = _MAX_DOOM
 	
 	_prepare_next_minigame()
 
 
 func _on_minigame_won() -> void:
-	print("minigame won")
-	print(_current_difficulty)
-	_progress += _PROGRESS_STEP * (_current_difficulty + 1)
+	_progress += _PROGRESS_STEP * (_get_difficulty() + 1)
 	
 	_prepare_next_minigame()
 
 
 func _on_minigame_lost() -> void:
-	_doom += _DOOM_STEP * (_current_difficulty + 1)
+	_doom += _DOOM_STEP * (_get_difficulty() + 1)
 	
 	_prepare_next_minigame()
 
@@ -141,6 +140,7 @@ func _on_accept_roll_button_pressed() -> void:
 	
 	_start_button.show()
 	_difficulty_boxes.show()
+	_show_bar_previews()
 
 
 func _on_start_button_pressed() -> void:
@@ -149,13 +149,14 @@ func _on_start_button_pressed() -> void:
 	_current_minigame.game_won.connect(_on_minigame_won)
 	_current_minigame.game_lost.connect(_on_minigame_lost)
 	_current_minigame.dice_roll = _current_dice_roll
-	_current_difficulty =  _get_difficulty()
-	_current_minigame.difficulty = _current_difficulty
+	_current_minigame.difficulty = _get_difficulty()
 	
 	_screen_content.add_child(_current_minigame)
 	
 	_start_button.hide()
 	_difficulty_boxes.hide()
+	_doom_bar_preview.hide()
+	_progress_bar_preview.hide()
 	
 	_roll_dice_button.show()
 
@@ -163,16 +164,22 @@ func _on_start_button_pressed() -> void:
 func _on_easy_check_box_pressed() -> void:
 	_medium_check_box.button_pressed = false
 	_hard_check_box.button_pressed = false
+	
+	_show_bar_previews()
 
 
 func _on_medium_check_box_pressed() -> void:
 	_easy_check_box.button_pressed = false
 	_hard_check_box.button_pressed = false
+	
+	_show_bar_previews()
 
 
 func _on_hard_check_box_pressed() -> void:
 	_easy_check_box.button_pressed = false
 	_medium_check_box.button_pressed = false
+	
+	_show_bar_previews()
 
 
 func _get_difficulty() -> Minigame.Difficulty:
@@ -185,3 +192,10 @@ func _get_difficulty() -> Minigame.Difficulty:
 
 	push_error("No difficulty checkbox is pressed")
 	return Minigame.Difficulty.EASY
+
+
+func _show_bar_previews() -> void:
+	_progress_bar_preview.show()
+	_progress_bar_preview.value = _progress + _PROGRESS_STEP * (_get_difficulty() + 1)
+	_doom_bar_preview.show()
+	_doom_bar_preview.value = _doom + _DOOM_STEP * (_get_difficulty() + 1)
