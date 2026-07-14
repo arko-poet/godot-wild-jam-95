@@ -5,7 +5,7 @@ signal progress_bar_filled
 
 const MiniGameScenes := [
 	preload("res://game/scenes/pc_screen/minigames/example_minigame/example_minigame.tscn"),
-	#preload("res://game/scenes/pc_screen/minigames/falling_game/prototype_only/falling_game_static.tscn"),
+	preload("res://game/scenes/pc_screen/minigames/falling_game/prototype_only/falling_game_static.tscn"),
 ]
 
 const MAX_DOOM := 1.0
@@ -37,23 +37,23 @@ var progress := 0.0:
 @onready var doom_bar: ProgressBar = %DoomBar
 @onready var doom_bar_preview: ProgressBar = %DoomBarPreview
 
+@onready var dice_roll_label: Label = %DiceRollLabel
+
+@onready var roll_dice_button: Button = %RollDiceButton
+@onready var reroll_dice_button: Button = %RerollDiceButton
+@onready var start_button: Button = %StartButton
+@onready var or_label: Label = %ORLabel
+@onready var accept_roll_button: Button = %AcceptRollButton
+
+@onready var difficulty_boxes: GridContainer = %DifficultyBoxes
+@onready var easy_check_box: CheckBox = %EasyCheckBox
+@onready var medium_check_box: CheckBox = %MediumCheckBox
+@onready var hard_check_box: CheckBox = %HardCheckBox
+
 
 func _ready() -> void:
 	progress_bar.max_value = MAX_PROGRESS
 	doom_bar.max_value = MAX_DOOM
-
-
-func _on_play_game_button_pressed() -> void:
-	meta_game.hide()
-	
-	current_minigame = MiniGameScenes.pick_random().instantiate()
-	current_minigame.game_won.connect(_on_minigame_won)
-	current_minigame.game_lost.connect(_on_minigame_lost)
-	current_minigame.dice_roll = _roll_dice()
-	current_difficulty =  Minigame.Difficulty.values().pick_random()
-	current_minigame.difficulty = current_difficulty
-	
-	screen_content.add_child(current_minigame)
 
 
 func _on_minigame_won() -> void:
@@ -74,3 +74,73 @@ func _roll_dice() -> int:
 	doom += DOOM_STEP / 2.0
 	
 	return 1 + randi() % 6
+
+
+func _on_roll_dice_button_pressed() -> void:
+	dice_roll_label.text = "%s" % _roll_dice()
+	
+	roll_dice_button.hide()
+	
+	dice_roll_label.show()
+	reroll_dice_button.show()
+	or_label.show()
+	accept_roll_button.show()
+
+
+func _on_reroll_dice_button_pressed() -> void:
+	dice_roll_label.text = "%s" % _roll_dice()
+
+
+func _on_accept_roll_button_pressed() -> void:
+	reroll_dice_button.hide()
+	or_label.hide()
+	accept_roll_button.hide()
+	dice_roll_label.hide()
+	
+	start_button.show()
+	difficulty_boxes.show()
+
+
+func _on_start_button_pressed() -> void:
+	meta_game.hide()
+
+	current_minigame = MiniGameScenes.pick_random().instantiate()
+	current_minigame.game_won.connect(_on_minigame_won)
+	current_minigame.game_lost.connect(_on_minigame_lost)
+	current_minigame.dice_roll = _roll_dice()
+	current_difficulty =  _get_difficulty()
+	current_minigame.difficulty = current_difficulty
+	
+	screen_content.add_child(current_minigame)
+	
+	start_button.hide()
+	difficulty_boxes.hide()
+	
+	roll_dice_button.show()
+
+
+func _on_easy_check_box_pressed() -> void:
+	medium_check_box.button_pressed = false
+	hard_check_box.button_pressed = false
+
+
+func _on_medium_check_box_pressed() -> void:
+	easy_check_box.button_pressed = false
+	hard_check_box.button_pressed = false
+
+
+func _on_hard_check_box_pressed() -> void:
+	easy_check_box.button_pressed = false
+	medium_check_box.button_pressed = false
+
+
+func _get_difficulty() -> Minigame.Difficulty:
+	if easy_check_box.button_pressed:
+		return Minigame.Difficulty.EASY
+	elif medium_check_box.button_pressed:
+		return Minigame.Difficulty.MEDIUM
+	elif hard_check_box.button_pressed:
+		return Minigame.Difficulty.HARD
+
+	push_error("No difficulty checkbox is pressed")
+	return Minigame.Difficulty.EASY
