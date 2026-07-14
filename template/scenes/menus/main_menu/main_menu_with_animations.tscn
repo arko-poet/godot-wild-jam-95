@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://ws3qu4alfdk0" path="res://template/scenes/windows/main_menu_options_window.tscn" id="3_tsej0"]
 [ext_resource type="PackedScene" uid="uid://bub13x1ejxp3j" path="res://template/scenes/windows/main_menu_credits_window.tscn" id="4_b321b"]
 [ext_resource type="PackedScene" uid="uid://cwt4p3bufkke5" path="res://addons/maaacks_game_template/base/nodes/windows/confirmation_overlaid_window.tscn" id="5_dm2ih"]
-[ext_resource type="AudioStream" uid="uid://cfiud3be6kdth" path="res://game/audio/music/placeholders/oceanking-september-219737.mp3" id="5_p7afn"]
+[ext_resource type="AudioStream" uid="uid://c1hbcvtd7ucmo" path="res://game/audio/music/improv_sessions/1/1.mp3" id="5_p7afn"]
 
 [sub_resource type="Animation" id="1"]
 resource_name = "Intro"
@@ -319,7 +319,7 @@ graph_offset = Vector2(-180.277, 49)
 script = ExtResource("2_p7afn")
 level_select_packed_scene = null
 confirm_new_game = true
-game_scene_path = "uid://j1j4y71oygw3"
+game_scene_path = "uid://biuq87ml2j1jc"
 options_packed_scene = ExtResource("3_tsej0")
 credits_packed_scene = ExtResource("4_b321b")
 

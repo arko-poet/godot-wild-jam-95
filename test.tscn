@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://biuq87ml2j1jc"]
+
+[ext_resource type="PackedScene" uid="uid://bkcsjsk2ciff" path="res://addons/maaacks_game_template/base/nodes/music_players/background_music_player.tscn" id="1_6uqi0"]
+[ext_resource type="Script" uid="uid://c1n7g3jaotxn3" path="res://test.gd" id="1_ppyta"]
+[ext_resource type="AudioStream" uid="uid://dgubalgyxwmrw" path="res://game/audio/music/improv_sessions/2/p1.mp3" id="2_ppyta"]
+[ext_resource type="AudioStream" uid="uid://bw8rpyhkj4qox" path="res://game/audio/music/improv_sessions/2/p2.mp3" id="3_ykrsh"]
+[ext_resource type="AudioStream" uid="uid://c3yqmbbmjsfsi" path="res://game/audio/music/improv_sessions/2/p3.mp3" id="5_ykrsh"]
+
+[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_vgun3"]
+clip_count = 3
+clip_0/name = &"P 1"
+clip_0/stream = ExtResource("2_ppyta")
+clip_0/auto_advance = 0
+clip_1/name = &"P 2"
+clip_1/stream = ExtResource("3_ykrsh")
+clip_1/auto_advance = 0
+clip_2/name = &"P 3"
+clip_2/stream = ExtResource("5_ykrsh")
+clip_2/auto_advance = 0
+_transitions = {
+Vector2i(0, 0): {
+"fade_beats": 1.0,
+"fade_mode": 0,
+"filler_clip": 0,
+"from_time": 3,
+"to_time": 1,
+"use_filler_clip": true
+},
+Vector2i(1, 0): {
+"fade_beats": 1.0,
+"fade_mode": 0,
+"from_time": 3,
+"to_time": 1
+}
+}
+
+[node name="Test" type="Node" unique_id=401299236]
+script = ExtResource("1_ppyta")
+
+[node name="BackgroundMusicPlayer" parent="." unique_id=1446051342 instance=ExtResource("1_6uqi0")]
+stream = SubResource("AudioStreamInteractive_vgun3")
+
+[node name="Button" type="Button" parent="." unique_id=304942883]
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Transition"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
