@@ -1,7 +1,8 @@
 extends Node2D
 
 const MiniGameScenes := [
-	preload("res://game/scenes/pc_screen/minigames/example_minigame/example_minigame.tscn")
+	preload("res://game/scenes/pc_screen/minigames/example_minigame/example_minigame.tscn"),
+	preload("res://game/scenes/pc_screen/minigames/falling_game/prototype_only/falling_game_static.tscn"),
 ]
 
 var games_won := 0:
