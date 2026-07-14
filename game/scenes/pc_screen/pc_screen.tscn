@@ -77,7 +77,18 @@ scale = Vector2(0.99999994, 1.0020832)
 texture = SubResource("GradientTexture2D_vgun3")
 centered = false
 
-[node name="HBoxContainer" type="HBoxContainer" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame" unique_id=1108223770]
+[node name="GameTitleLabel" type="Label" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame" unique_id=1136782896]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 67.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 48
+text = "DEVIL'S GREAT CASINO"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DevilContainer" type="HBoxContainer" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame" unique_id=1108223770]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -86,7 +97,7 @@ grow_horizontal = 2
 theme_override_constants/separation = 0
 alignment = 1
 
-[node name="Devil" type="TextureRect" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame/HBoxContainer" unique_id=2078176918]
+[node name="DevilImage" type="TextureRect" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame/DevilContainer" unique_id=2078176918]
 custom_minimum_size = Vector2(64, 64)
 custom_maximum_size = Vector2(128, 128)
 layout_mode = 2
@@ -94,14 +105,14 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("2_hw7br")
 
-[node name="Panel" type="Panel" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame/HBoxContainer" unique_id=340782439]
+[node name="TextBox" type="Panel" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame/DevilContainer" unique_id=340782439]
 custom_minimum_size = Vector2(300, 64)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_7np4j")
 
-[node name="Label" type="Label" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame/HBoxContainer/Panel" unique_id=969797207]
+[node name="Label" type="Label" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame/DevilContainer/TextBox" unique_id=969797207]
 custom_minimum_size = Vector2(284, 64)
 custom_maximum_size = Vector2(284, 64)
 layout_mode = 1
@@ -113,21 +124,10 @@ offset_right = -8.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Roll the Dice.sssssssssssssssssssssss"
+text = "Roll the Dice."
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
-
-[node name="GameTitleLabel" type="Label" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame" unique_id=1136782896]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_bottom = 45.0
-grow_horizontal = 2
-theme_override_font_sizes/font_size = 48
-text = "DEVIL'S GREAT CASINO"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="PlayGameButton" type="Button" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame" unique_id=2079948144]
 layout_mode = 1

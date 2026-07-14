@@ -1,6 +1,6 @@
 extends Node2D
 
-signal doom_bar_filled
+signal doom_changed(percentage: float)
 signal progress_bar_filled
 
 const MiniGameScenes := [
@@ -20,11 +20,10 @@ var doom := 0.0:
 	set(value):
 		doom = min(value, MAX_DOOM)
 		doom_bar.value = doom
-		if doom == MAX_DOOM:
-			doom_bar_filled.emit()
+		doom_changed.emit(doom)
 var progress := 0.0:
 	set(value):
-		doom = value
+		progress = value
 		progress_bar.value = min(progress, MAX_PROGRESS)
 		if progress == MAX_PROGRESS:
 			progress_bar_filled.emit()
