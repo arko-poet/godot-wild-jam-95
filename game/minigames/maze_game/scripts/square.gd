@@ -25,13 +25,13 @@ func set_type(new_type : String) -> void:
 func _ready() -> void:
 	change_texture()
 
+# changes the texture based on the square type
 func change_texture() -> void:
 	match square_type:
 		SQUARE_TYPE.EMPTY: tile_sprite.texture = load("uid://dbh0lg6phh4fj")
-		# for now, just use the same textures
 		SQUARE_TYPE.WALL: tile_sprite.texture = load("uid://cny0htqqv2p4")
 		SQUARE_TYPE.GOAL: tile_sprite.texture = load("uid://crwmxws8q14e")
-		_: tile_sprite.texture = load("uid://dbh0lg6phh4fj") # empty texture
+		_: tile_sprite.texture = load("uid://dbh0lg6phh4fj") # default empty texture
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

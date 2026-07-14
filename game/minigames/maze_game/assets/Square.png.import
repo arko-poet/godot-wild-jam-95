@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dbh0lg6phh4fj"
-path="res://.godot/imported/PrototypeGridSquare.png-7c4956b8324e766801bcfcb519eba542.ctex"
+uid="uid://cny0htqqv2p4"
+path="res://.godot/imported/Square.png-62cfa99ece6dfae443d5e95f165b59bb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://game/minigames/maze_game/PrototypeGridSquare.png"
-dest_files=["res://.godot/imported/PrototypeGridSquare.png-7c4956b8324e766801bcfcb519eba542.ctex"]
+source_file="res://game/minigames/maze_game/assets/Square.png"
+dest_files=["res://.godot/imported/Square.png-62cfa99ece6dfae443d5e95f165b59bb.ctex"]
 
 [params]
 

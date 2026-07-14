@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://crwmxws8q14e"
-path="res://.godot/imported/goal.png-72c09549e2fe56fad2ca0a4578224d27.ctex"
+path="res://.godot/imported/goal.png-0fe8506b5736be29b996c4b01d22e308.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://game/minigames/maze_game/goal.png"
-dest_files=["res://.godot/imported/goal.png-72c09549e2fe56fad2ca0a4578224d27.ctex"]
+source_file="res://game/minigames/maze_game/assets/goal.png"
+dest_files=["res://.godot/imported/goal.png-0fe8506b5736be29b996c4b01d22e308.ctex"]
 
 [params]
 

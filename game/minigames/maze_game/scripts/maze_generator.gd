@@ -6,7 +6,7 @@ extends Node2D
 func _ready() -> void:
 	pass # Replace with function body.
 
-
+# Uses prims algorithm with a frontier to make a maze with short paths and dead ends
 func generate(width: int, height: int, start_position: Vector2) -> Array[Vector2]:
 	var wall_positions : Array[Vector2] = []
 	var open_squares = {}
@@ -38,7 +38,7 @@ func generate(width: int, height: int, start_position: Vector2) -> Array[Vector2
 	
 	return wall_positions
 
-
+# helper func
 func add_frontier(square: Vector2, width: int, height: int, visited_squares: Dictionary, frontier: Array) -> void:
 	var dirs = [Vector2.UP * 2, Vector2.DOWN * 2, Vector2.LEFT * 2, Vector2.RIGHT * 2]
 	for dir in dirs:
