@@ -93,6 +93,35 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "PLAY GAME"
 
+[node name="ProgressBars" type="HBoxContainer" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame" unique_id=1910302855]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -27.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame/ProgressBars" unique_id=1455111567]
+unique_name_in_owner = true
+layout_mode = 2
+fill_mode = 1
+
+[node name="ProgressBarPreview" type="ProgressBar" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame/ProgressBars/ProgressBar" unique_id=1078128539]
+unique_name_in_owner = true
+layout_mode = 0
+fill_mode = 1
+
+[node name="DoomBar" type="ProgressBar" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame/ProgressBars" unique_id=1258160088]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="DoomBarPreview" type="ProgressBar" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame/ProgressBars/DoomBar" unique_id=1290855872]
+unique_name_in_owner = true
+layout_mode = 0
+
 [node name="CRTShaderTexture" type="ColorRect" parent="SubViewportContainer/SubViewport" unique_id=1133477946]
 material = SubResource("ShaderMaterial_qgpu0")
 anchors_preset = 15

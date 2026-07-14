@@ -4,6 +4,9 @@ const MiniGameScenes := [
 	preload("res://game/scenes/pc_screen/minigames/example_minigame/example_minigame.tscn")
 ]
 
+const MAX_DOOM := 1.0
+const MAX_PROGRESS := 1.0
+
 var games_won := 0:
 	set(value):
 		games_won = value
@@ -11,9 +14,21 @@ var games_won := 0:
 
 var current_minigame: Minigame
 
+var doom := 0.0:
+	set(value):
+		doom = value
+var progress := 0.0:
+	set(value):
+		doom = value
+
 @onready var meta_game: Control = %MetaGame
 @onready var win_count_label: Label = %WinCountLabel
 @onready var screen_content: Control = %ScreenContent
+
+@onready var progress_bar: ProgressBar = %ProgressBar
+@onready var progress_bar_preview: ProgressBar = %ProgressBarPreview
+@onready var doom_bar: ProgressBar = %DoomBar
+@onready var doom_bar_preview: ProgressBar = %DoomBarPreview
 
 
 func _on_play_game_button_pressed() -> void:
