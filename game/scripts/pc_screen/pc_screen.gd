@@ -4,7 +4,8 @@ signal doom_bar_filled
 signal progress_bar_filled
 
 const MiniGameScenes := [
-	preload("res://game/scenes/pc_screen/minigames/example_minigame/example_minigame.tscn")
+	preload("res://game/scenes/pc_screen/minigames/example_minigame/example_minigame.tscn"),
+	preload("res://game/scenes/pc_screen/minigames/falling_game/prototype_only/falling_game_static.tscn"),
 ]
 
 const MAX_DOOM := 1.0

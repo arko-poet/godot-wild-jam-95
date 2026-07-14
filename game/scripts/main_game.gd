@@ -1,7 +1,6 @@
 extends Node
 
-@onready var pc_screen: Node2D = %PcScreen
-
+@onready var pc_screen: Node2D = %PCScreen
 
 func game_over() -> void:
 	pass
