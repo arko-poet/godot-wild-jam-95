@@ -3,16 +3,16 @@
 [ext_resource type="Script" uid="uid://cph0t5nedew1k" path="res://game/scenes/pc_screen/minigames/falling_game/spike.gd" id="1_ngoso"]
 [ext_resource type="Texture2D" uid="uid://bljisgtrsof3a" path="res://game/scenes/pc_screen/minigames/falling_game/prototype/PLACEHOLDER_spike.png" id="2_t8yv6"]
 
-
 [node name="Spike" type="StaticBody2D" unique_id=125552598]
 script = ExtResource("1_ngoso")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=715051253]
-position = Vector2(-17.2, -41.3)
-polygon = PackedVector2Array(18, 2, 31, 41, 5, 41)
+position = Vector2(-10.75, -29.809029)
+scale = Vector2(0.6249999, 0.6597222)
+polygon = PackedVector2Array(17.200003, 19.41579, 28.400005, 45.18421, 6.000001, 45.18421)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=298298826]
-position = Vector2(0.5985832, -20.559008)
+position = Vector2(-0.03279829, -8.665128)
 rotation = 3.1415927
-scale = Vector2(0.02465, 0.041189663)
+scale = Vector2(0.012555162, 0.017646102)
 texture = ExtResource("2_t8yv6")

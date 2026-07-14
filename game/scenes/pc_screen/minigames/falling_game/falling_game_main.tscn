@@ -3,7 +3,8 @@
 [ext_resource type="Script" uid="uid://rhuct7l135mm" path="res://game/scenes/pc_screen/minigames/falling_game/falling_game_main.gd" id="1_tei26"]
 [ext_resource type="Script" uid="uid://ctuyqbnvia1rb" path="res://game/scenes/pc_screen/minigames/falling_game/falling_camera.gd" id="2_4oggc"]
 [ext_resource type="PackedScene" uid="uid://deolci8vffafc" path="res://game/scenes/pc_screen/minigames/falling_game/rolling_player.tscn" id="2_xp6nb"]
-[ext_resource type="PackedScene" uid="uid://c4nnus1gtftwt" path="res://game/scenes/pc_screen/minigames/falling_game/platform.tscn" id="3_3tvq1"]
+[ext_resource type="PackedScene" uid="uid://kaffb8mh04gh" path="res://game/scenes/pc_screen/minigames/falling_game/platform_static.tscn" id="4_wnmnc"]
+[ext_resource type="Texture2D" uid="uid://buoe86bqyfknb" path="res://icon.svg" id="5_5lc5m"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_3owqy"]
 
@@ -25,7 +26,10 @@ size = Vector2(1149, 180)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dpga7"]
 size = Vector2(2212, 793.25)
 
-[node name="FallingGameMain" type="Node2D" unique_id=913120179]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8nwgy"]
+size = Vector2(30, 27)
+
+[node name="FallingGameMain" type="Node" unique_id=927618654]
 script = ExtResource("1_tei26")
 
 [node name="ResolutionChecker" type="TextureRect" parent="." unique_id=1128284496]
@@ -38,8 +42,9 @@ texture = SubResource("PlaceholderTexture2D_3owqy")
 [node name="TempSideWall" type="TextureRect" parent="." unique_id=1329862015]
 z_index = 1
 offset_left = 640.0
+offset_top = -759.0
 offset_right = 1625.3867
-offset_bottom = 600.14026
+offset_bottom = -105.61456
 scale = Vector2(0.8630612, 14.254814)
 texture = SubResource("GradientTexture1D_3tvq1")
 
@@ -68,12 +73,94 @@ unique_name_in_owner = true
 position = Vector2(640, 360)
 script = ExtResource("2_4oggc")
 
+[node name="TimeLeft" type="Label" parent="Camera2D" unique_id=1855795776]
+unique_name_in_owner = true
+offset_left = -47.0
+offset_top = -346.0
+offset_right = -7.0
+offset_bottom = -323.0
+text = "TIME"
+
+[node name="TimeLeft2" type="Label" parent="Camera2D" unique_id=856561547]
+offset_left = -129.0
+offset_top = -322.0
+offset_right = 27.0
+offset_bottom = -299.0
+scale = Vector2(0.79383934, 0.6937194)
+text = "press 'L' to lose now
+press 'K' to win now"
+
+[node name="TestLabel" type="Label" parent="Camera2D" unique_id=1473606364]
+unique_name_in_owner = true
+offset_left = -331.00003
+offset_top = -356.00003
+offset_right = -117.00003
+offset_bottom = -333.00003
+scale = Vector2(0.6847186, 0.6855202)
+text = "dice_roll = 1 | difficulty = 3"
+
 [node name="RollingPlayer" parent="." unique_id=260473328 instance=ExtResource("2_xp6nb")]
 unique_name_in_owner = true
 position = Vector2(93, 50)
 
-[node name="Platform" parent="." unique_id=472695447 instance=ExtResource("3_3tvq1")]
-position = Vector2(690, 200)
-first_platform = true
+[node name="StaticPlatforms" type="Node" parent="." unique_id=522883001]
+unique_name_in_owner = true
+
+[node name="PlatformStatic" parent="StaticPlatforms" unique_id=472695447 instance=ExtResource("4_wnmnc")]
+position = Vector2(490, 124)
+
+[node name="PlatformStatic2" parent="StaticPlatforms" unique_id=555475596 instance=ExtResource("4_wnmnc")]
+position = Vector2(131, 248)
+
+[node name="PlatformStatic3" parent="StaticPlatforms" unique_id=1211705360 instance=ExtResource("4_wnmnc")]
+position = Vector2(298, 383)
+
+[node name="PlatformStatic4" parent="StaticPlatforms" unique_id=1305726015 instance=ExtResource("4_wnmnc")]
+position = Vector2(420, 534)
+
+[node name="PlatformStatic5" parent="StaticPlatforms" unique_id=1248613812 instance=ExtResource("4_wnmnc")]
+position = Vector2(104, 673)
+
+[node name="PlatformStatic6" parent="StaticPlatforms" unique_id=568128400 instance=ExtResource("4_wnmnc")]
+position = Vector2(212, 878)
+
+[node name="PlatformStatic7" parent="StaticPlatforms" unique_id=831230002 instance=ExtResource("4_wnmnc")]
+position = Vector2(360, 1005)
+
+[node name="PlatformStatic8" parent="StaticPlatforms" unique_id=1571317480 instance=ExtResource("4_wnmnc")]
+position = Vector2(236, 1169)
+
+[node name="PlatformStatic9" parent="StaticPlatforms" unique_id=1392086134 instance=ExtResource("4_wnmnc")]
+position = Vector2(380, 1312)
+
+[node name="PlatformStatic10" parent="StaticPlatforms" unique_id=1184775740 instance=ExtResource("4_wnmnc")]
+position = Vector2(21, 1436)
+
+[node name="PlatformStatic11" parent="StaticPlatforms" unique_id=1407281089 instance=ExtResource("4_wnmnc")]
+position = Vector2(188, 1571)
+
+[node name="PlatformStatic12" parent="StaticPlatforms" unique_id=798178103 instance=ExtResource("4_wnmnc")]
+position = Vector2(-535, 1697)
+
+[node name="Goal" type="Area2D" parent="." unique_id=2022441309]
+unique_name_in_owner = true
+position = Vector2(510, 1679)
+
+[node name="Sprite2D" type="Sprite2D" parent="Goal" unique_id=391011188]
+position = Vector2(5.7816505e-06, 1.5258789e-05)
+scale = Vector2(0.23046887, 0.21093774)
+texture = ExtResource("5_5lc5m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Goal" unique_id=1126860301]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_8nwgy")
+
+[node name="LoseTimer" type="Timer" parent="." unique_id=1606559452]
+unique_name_in_owner = true
+wait_time = 99.0
+one_shot = true
+autostart = true
 
 [connection signal="body_entered" from="KillPlane" to="." method="_on_kill_plane_body_entered"]
+[connection signal="body_entered" from="Goal" to="." method="_on_goal_body_entered"]
+[connection signal="timeout" from="LoseTimer" to="." method="_on_timer_timeout"]

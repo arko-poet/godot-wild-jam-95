@@ -10,4 +10,5 @@ func _process(delta: float) -> void:
 		position += position.direction_to(target_pos) * MOVE_SPEED * delta
 
 func _on_platform_player_landed(pos: Vector2) -> void:
-	target_pos.y = pos.y + OFFSET_Y
+	if pos.y + OFFSET_Y > position.y:
+		target_pos.y = pos.y + OFFSET_Y

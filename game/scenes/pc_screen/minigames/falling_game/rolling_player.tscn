@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://bqbr0gwtfhej4" path="res://game/scenes/pc_screen/minigames/falling_game/rolling_player.gd" id="1_gtla6"]
 [ext_resource type="Texture2D" uid="uid://nwfpyr5l7p0t" path="res://game/scenes/pc_screen/minigames/falling_game/prototype/PLACEHOLDER_pokerchip.png" id="2_gmoso"]
 
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_d8xlp"]
 radius = 15.736482
 
@@ -21,7 +20,7 @@ shape = SubResource("CircleShape2D_d8xlp")
 
 [node name="StunTimer" type="Timer" parent="." unique_id=578701313]
 unique_name_in_owner = true
-wait_time = 2.0
+wait_time = 0.75
 one_shot = true
 
 [node name="InvincibleTimer" type="Timer" parent="." unique_id=1477054747]

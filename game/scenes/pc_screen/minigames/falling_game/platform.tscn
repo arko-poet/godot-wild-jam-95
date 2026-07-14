@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://ddl4w0dvy85xd" path="res://game/scenes/pc_screen/minigames/falling_game/platform.gd" id="1_1kva0"]
 [ext_resource type="PackedScene" uid="uid://bgq5rem8j0e3x" path="res://game/scenes/pc_screen/minigames/falling_game/spike.tscn" id="2_rase0"]
 
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3owqy"]
 size = Vector2(1693.5, 40)
 
@@ -13,9 +12,8 @@ size = Vector2(1693.5, 40)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8upip"]
 size = Vector2(3369, 101)
 
-[node name="Platform" type="Node2D" unique_id=472695447 node_paths=PackedStringArray("all_spikes")]
+[node name="Platform" type="Node2D" unique_id=472695447]
 script = ExtResource("1_1kva0")
-all_spikes = [NodePath("Right/Spikes/Spike"), NodePath("Right/Spikes/Spike3"), NodePath("Right/Spikes/Spike5"), NodePath("Right/Spikes/Spike7"), NodePath("Left/Spikes/Spike2"), NodePath("Left/Spikes/Spike4"), NodePath("Left/Spikes/Spike6"), NodePath("Left/Spikes/Spike8")]
 
 [node name="Right" type="StaticBody2D" parent="." unique_id=1492098594]
 unique_name_in_owner = true

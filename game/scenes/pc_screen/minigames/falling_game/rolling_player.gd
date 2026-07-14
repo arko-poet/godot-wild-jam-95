@@ -1,10 +1,10 @@
-extends CharacterBody2D
+class_name RollingPlayer extends CharacterBody2D
 
 const MOVE_SPEED_RAMP = 2.0 ## How quickly the player's momentum increases or decreases
-const AIR_CONTROL = 0.5 ## How much the player can influence direction while airborne, 1.0 is full control
-const MAX_MOVE_SPEED = 300.0 ## The fastest the move speed can be in either direction
-const JUMP_VELOCITY = -250.0 ## jump height, should be negative, lower means jump higher
-const KNOCKBACK_DIST = 150.0 ## How far back the player is knocked when colliding with an obstacle
+const AIR_CONTROL = 0.25 ## How much the player can influence direction while airborne, 1.0 is full control
+const MAX_MOVE_SPEED = 200.0 ## The fastest the move speed can be in either direction
+const JUMP_VELOCITY = -215.0 ## jump height, should be negative, lower means jump higher
+const KNOCKBACK_DIST = 180.0 ## How far back the player is knocked when colliding with an obstacle
 
 # all of these can be updated for whatever input action strings are for these buttons
 const INPUT_JUMP: StringName = "ui_up"
@@ -35,6 +35,7 @@ func _physics_process(delta: float) -> void:
 	# first set the variables that need to be checked each frame
 	_direction = Input.get_axis(INPUT_LEFT, INPUT_RIGHT)
 	_is_on_floor = is_on_floor()
+	_spike_check = _check_for_spikes()
 	
 	# code here is when player is in control
 	if !stunned:
@@ -45,6 +46,8 @@ func _physics_process(delta: float) -> void:
 		else:
 			_x_mod *= AIR_CONTROL
 		_x = clamp(_x + _x_mod, MAX_MOVE_SPEED * -1, MAX_MOVE_SPEED)
+		if is_on_wall() and _is_on_floor and _spike_check == 0.0 and _direction == 0.0:
+			_x = 0.0
 	
 	# have to fall no matter what
 	if !_is_on_floor:
@@ -54,7 +57,6 @@ func _physics_process(delta: float) -> void:
 	if !stunned:
 		# set velocity to knockback if player runs into spikes, otherwise just apply _x
 		# that was modified in the player control code block
-		_spike_check = _check_for_spikes()
 		if _spike_check != 0.0:
 			velocity = _knockback(_spike_check)
 		else:
@@ -101,6 +103,7 @@ func _on_stun_timer_timeout() -> void:
 	invincible = true
 	%InvincibleTimer.start() # adjust this timer to change invincible time
 	modulate = Color.DIM_GRAY
+	_x = get_real_velocity().x
 
 
 # no longer stunned, back to normal
