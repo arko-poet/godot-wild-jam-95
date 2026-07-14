@@ -2,14 +2,28 @@
 
 [ext_resource type="Script" uid="uid://bsxfkt70612yq" path="res://game/scripts/pc_screen/pc_screen.gd" id="1_ib41a"]
 [ext_resource type="Shader" uid="uid://uw7b7qo618vi" path="res://game/shaders/crt.gdshader" id="2_7np4j"]
+[ext_resource type="Texture2D" uid="uid://da1tl6w8xc6s7" path="res://game/art/placeholders/arko.png" id="2_hw7br"]
 
 [sub_resource type="Gradient" id="Gradient_88wer"]
-colors = PackedColorArray(1, 1, 1, 1, 0.08627451, 1, 1, 1)
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.21950102, 0.21950102, 0.21950102, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_vgun3"]
 gradient = SubResource("Gradient_88wer")
 width = 660
 height = 490
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7np4j"]
+bg_color = Color(0.7121294, 0.7121294, 0.71212935, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qgpu0"]
 shader = ExtResource("2_7np4j")
@@ -63,20 +77,57 @@ scale = Vector2(0.99999994, 1.0020832)
 texture = SubResource("GradientTexture2D_vgun3")
 centered = false
 
-[node name="WinCountLabel" type="Label" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame" unique_id=1139896168]
-unique_name_in_owner = true
+[node name="HBoxContainer" type="HBoxContainer" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame" unique_id=1108223770]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -307.5
-offset_right = 307.5
-offset_bottom = 182.0
+anchors_preset = -1
+anchor_right = 1.0
+offset_top = 64.0
 grow_horizontal = 2
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="Devil" type="TextureRect" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame/HBoxContainer" unique_id=2078176918]
+custom_minimum_size = Vector2(64, 64)
+custom_maximum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_hw7br")
+
+[node name="Panel" type="Panel" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame/HBoxContainer" unique_id=340782439]
+custom_minimum_size = Vector2(300, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_7np4j")
+
+[node name="Label" type="Label" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame/HBoxContainer/Panel" unique_id=969797207]
+custom_minimum_size = Vector2(284, 64)
+custom_maximum_size = Vector2(284, 64)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_right = -8.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 64
-text = "Games Won: 0"
+text = "Roll the Dice.sssssssssssssssssssssss"
 horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="GameTitleLabel" type="Label" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame" unique_id=1136782896]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 45.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 48
+text = "DEVIL'S GREAT CASINO"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="PlayGameButton" type="Button" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame" unique_id=2079948144]
 layout_mode = 1
@@ -95,32 +146,43 @@ text = "PLAY GAME"
 
 [node name="ProgressBars" type="HBoxContainer" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame" unique_id=1910302855]
 layout_mode = 1
-anchors_preset = 12
+anchors_preset = -1
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -27.0
+offset_bottom = -16.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_constants/separation = 16
 alignment = 1
 
 [node name="ProgressBar" type="ProgressBar" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame/ProgressBars" unique_id=1455111567]
 unique_name_in_owner = true
+modulate = Color(0.20392157, 0.59607846, 0.85882354, 1)
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 fill_mode = 1
 
 [node name="ProgressBarPreview" type="ProgressBar" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame/ProgressBars/ProgressBar" unique_id=1078128539]
 unique_name_in_owner = true
+visible = false
 layout_mode = 0
 fill_mode = 1
+show_percentage = false
 
 [node name="DoomBar" type="ProgressBar" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame/ProgressBars" unique_id=1258160088]
 unique_name_in_owner = true
+modulate = Color(0.7529412, 0.22352941, 0.16862746, 1)
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.9490196, 0.9490196, 0.9490196, 1)
 
 [node name="DoomBarPreview" type="ProgressBar" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame/ProgressBars/DoomBar" unique_id=1290855872]
 unique_name_in_owner = true
+visible = false
 layout_mode = 0
+show_percentage = false
 
 [node name="CRTShaderTexture" type="ColorRect" parent="SubViewportContainer/SubViewport" unique_id=1133477946]
 material = SubResource("ShaderMaterial_qgpu0")
