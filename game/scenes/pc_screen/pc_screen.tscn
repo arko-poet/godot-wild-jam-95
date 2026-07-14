@@ -112,7 +112,8 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_7np4j")
 
-[node name="Label" type="Label" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame/DevilContainer/TextBox" unique_id=969797207]
+[node name="DevilLine" type="Label" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame/DevilContainer/TextBox" unique_id=969797207]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(284, 64)
 custom_maximum_size = Vector2(284, 64)
 layout_mode = 1
