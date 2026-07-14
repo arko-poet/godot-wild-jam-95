@@ -19,6 +19,8 @@ const MONSTER_SCALES := [
 
 var monster_stage := -1
 
+@onready var win_lose_manager: Node = $WinLoseManager
+
 @onready var pc_screen: Node2D = %PCScreen
 @onready var monster: Sprite2D = %Monster
 
@@ -59,6 +61,8 @@ func _on_pc_screen_doom_changed(percentage: float) -> void:
 	monster.scale = MONSTER_SCALES[monster_stage]
 	monster.show()
 
+	if percentage == 1.0:
+		win_lose_manager.game_lost()
 
 func _on_claim_prize_button_pressed() -> void:
 	SceneLoader.load_scene("res://template/scenes/end_credits/end_credits.tscn")
