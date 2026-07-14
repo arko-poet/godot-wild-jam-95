@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c4nnus1gtftwt"]
 
-[ext_resource type="Script" uid="uid://ddl4w0dvy85xd" path="res://game/scenes/pc_screen/minigames/falling_game/platform.gd" id="1_1kva0"]
-[ext_resource type="PackedScene" uid="uid://bgq5rem8j0e3x" path="res://game/scenes/pc_screen/minigames/falling_game/spike.tscn" id="2_rase0"]
+[ext_resource type="Script" uid="uid://ddl4w0dvy85xd" path="res://game/scenes/pc_screen/minigames/falling_game/scripts/platform.gd" id="1_1kva0"]
+[ext_resource type="PackedScene" uid="uid://bgq5rem8j0e3x" path="res://game/scenes/pc_screen/minigames/falling_game/scenes/spike.tscn" id="2_rase0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3owqy"]
 size = Vector2(1693.5, 40)

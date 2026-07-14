@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bljisgtrsof3a"
-path="res://.godot/imported/PLACEHOLDER_spike.png-52d091e47dc38f46c82a9801265741d9.ctex"
+uid="uid://nwfpyr5l7p0t"
+path="res://.godot/imported/PLACEHOLDER_pokerchip.png-2057bdf5b5178a47ce8293d206452877.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://game/scenes/pc_screen/minigames/falling_game/prototype/PLACEHOLDER_spike.png"
-dest_files=["res://.godot/imported/PLACEHOLDER_spike.png-52d091e47dc38f46c82a9801265741d9.ctex"]
+source_file="res://game/scenes/pc_screen/minigames/falling_game/prototype_only/PLACEHOLDER_pokerchip.png"
+dest_files=["res://.godot/imported/PLACEHOLDER_pokerchip.png-2057bdf5b5178a47ce8293d206452877.ctex"]
 
 [params]
 

@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://bgq5rem8j0e3x"]
 
-[ext_resource type="Script" uid="uid://cph0t5nedew1k" path="res://game/scenes/pc_screen/minigames/falling_game/spike.gd" id="1_ngoso"]
-[ext_resource type="Texture2D" uid="uid://bljisgtrsof3a" path="res://game/scenes/pc_screen/minigames/falling_game/prototype/PLACEHOLDER_spike.png" id="2_t8yv6"]
+[ext_resource type="Script" uid="uid://cph0t5nedew1k" path="res://game/scenes/pc_screen/minigames/falling_game/scripts/spike.gd" id="1_5uwnr"]
+[ext_resource type="Texture2D" uid="uid://bljisgtrsof3a" path="res://game/scenes/pc_screen/minigames/falling_game/prototype_only/PLACEHOLDER_spike.png" id="2_5uwnr"]
 
 [node name="Spike" type="StaticBody2D" unique_id=125552598]
-script = ExtResource("1_ngoso")
+script = ExtResource("1_5uwnr")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=715051253]
 position = Vector2(-10.75, -29.809029)
@@ -15,4 +15,4 @@ polygon = PackedVector2Array(17.200003, 19.41579, 28.400005, 45.18421, 6.000001,
 position = Vector2(-0.03279829, -8.665128)
 rotation = 3.1415927
 scale = Vector2(0.012555162, 0.017646102)
-texture = ExtResource("2_t8yv6")
+texture = ExtResource("2_5uwnr")

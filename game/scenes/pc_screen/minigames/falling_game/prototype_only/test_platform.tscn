@@ -1,9 +1,7 @@
-[gd_scene format=3 uid="uid://b4x4himcnrhxo"]
+[gd_scene format=3 uid="uid://bo2ay7xpbrp0t"]
 
-[ext_resource type="PackedScene" uid="uid://deolci8vffafc" path="res://game/scenes/pc_screen/minigames/falling_game/rolling_player.tscn" id="1_suhij"]
-[ext_resource type="PackedScene" uid="uid://bgq5rem8j0e3x" path="res://game/scenes/pc_screen/minigames/falling_game/spike.tscn" id="2_uf6b7"]
-[ext_resource type="Script" path="res://game/minigames/falling_game/basic_camera.gd" id="3_2cn35"]
-
+[ext_resource type="PackedScene" uid="uid://deolci8vffafc" path="res://game/scenes/pc_screen/minigames/falling_game/scenes/rolling_player.tscn" id="1_suhij"]
+[ext_resource type="PackedScene" uid="uid://bgq5rem8j0e3x" path="res://game/scenes/pc_screen/minigames/falling_game/scenes/spike.tscn" id="2_uf6b7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_toviy"]
 size = Vector2(1837, 39)
@@ -137,7 +135,5 @@ position = Vector2(628.50006, 437.00003)
 scale = Vector2(7.1757817, 40.750015)
 texture = SubResource("GradientTexture1D_m58al")
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1183744291 node_paths=PackedStringArray("follow_player")]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1183744291]
 position = Vector2(512, 384)
-script = ExtResource("3_2cn35")
-follow_player = NodePath("../RollingPlayer")
