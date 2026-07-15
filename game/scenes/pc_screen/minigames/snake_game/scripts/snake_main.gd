@@ -14,12 +14,12 @@ const APPLE_TARGETS := {
 }
 
 const MOVE_INTERVALS := {
-	1: 0.12,
-	2: 0.14,
-	3: 0.16,
-	4: 0.18,
-	5: 0.20,
-	6: 0.22
+	1: 0.17, #0.12,
+	2: 0.17, #0.14,
+	3: 0.17, #0.16,
+	4: 0.17, #0.18,
+	5: 0.17, #0.20,
+	6: 0.17  #0.22
 }
 
 const TIME_LIMITS := { # in seconds
@@ -37,6 +37,7 @@ const Square = preload("uid://c2r4u5hrhc6qf") # square.tcsn
 @export var initial_length: int = 3
 @onready var move_timer: Timer = %MoveTimer
 @onready var timer_component: TimerComponent = %TimerComponent
+@onready var apple_label: Label = %AppleLabel
 
 var grid_width: int
 var grid_height: int
@@ -74,6 +75,13 @@ func _ready() -> void:
 	
 	timer_component.position = Vector2.DOWN * grid_height * CELL_SIZE + grid_offset
 	timer_component.start_timer(get_time_limit())
+	
+	apple_label.position = Vector2(grid_width, grid_height) * CELL_SIZE + grid_offset + Vector2.LEFT * apple_label.size.x
+	update_apple_label()
+
+
+func update_apple_label() -> void:
+	apple_label.text = "%s / %s Collected" % [num_apples_collected, apple_goal_num]
 
 
 func spawn_border_walls() -> Array[Vector2]:
@@ -170,7 +178,9 @@ func _on_move_timer_timeout() -> void:
 	var grew := next_square == apple_pos
 	snake_squares.push_front(next_square)
 	
-	if grew: num_apples_collected += 1
+	if grew:
+		num_apples_collected += 1
+		update_apple_label()
 	else:
 		var snake_end = snake_squares.pop_back()
 		get_square(snake_end).set_type("empty")

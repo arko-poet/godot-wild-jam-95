@@ -12,5 +12,11 @@ unique_name_in_owner = true
 [node name="TimerComponent" parent="." unique_id=1166255049 instance=ExtResource("2_hlljp")]
 unique_name_in_owner = true
 
+[node name="AppleLabel" type="Label" parent="." unique_id=659636049]
+unique_name_in_owner = true
+offset_right = 40.0
+offset_bottom = 23.0
+text = "X / X Collected"
+
 [connection signal="timeout" from="MoveTimer" to="." method="_on_move_timer_timeout"]
 [connection signal="out_of_time" from="TimerComponent" to="." method="_on_timer_component_out_of_time"]
