@@ -1,4 +1,4 @@
-extends Minigame
+class_name FallingGame extends Minigame
 
 const TIME_LIMITS = [40, 50, 60, 70, 80, 90] ## time limits given for each dice_value (0-5)
 const SPIKE_SURVIVAL_RATES = [0.25, 0.5, 0.75] ## chances that each spike remains active for each difficulty
