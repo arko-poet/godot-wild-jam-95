@@ -4,9 +4,9 @@ signal doom_changed(percentage: float)
 signal progress_bar_filled
 
 const _MiniGameScenes := [
-	#preload("res://game/scenes/pc_screen/minigames/example_minigame/example_minigame.tscn"),
-	#preload("res://game/scenes/pc_screen/minigames/falling_game/prototype_only/falling_game_static.tscn"),
-	#preload("res://game/scenes/pc_screen/minigames/maze_game/scenes/maze_main.tscn"),
+	preload("res://game/scenes/pc_screen/minigames/example_minigame/example_minigame.tscn"),
+	preload("res://game/scenes/pc_screen/minigames/falling_game/prototype_only/falling_game_static.tscn"),
+	preload("res://game/scenes/pc_screen/minigames/maze_game/scenes/maze_main.tscn"),
 	preload("res://game/scenes/pc_screen/minigames/stratagem/stratagem.tscn")
 ]
 
@@ -23,6 +23,7 @@ const _TEXT_CHOOSE_DIFFICULTY := "Choose difficulty."
 const _MAZE_GAME_NAME := "searching"
 const _EXAMPLE_GAME_NAME := "stupid"
 const _FALLING_GAME_NAME := "falling"
+const _STRATAGEM_GAME_NAME := "quick"
 
 const BAR_FILL_TIME := 0.5
 
@@ -99,6 +100,8 @@ func _prepare_next_minigame() -> void:
 		_devil_line.text = _TEXT_ROLL_DICE % _EXAMPLE_GAME_NAME
 	elif _current_minigame is FallingGame:
 		_devil_line.text = _TEXT_ROLL_DICE % _FALLING_GAME_NAME
+	elif _current_minigame is Stratagem:
+		_devil_line.text = _TEXT_ROLL_DICE % _STRATAGEM_GAME_NAME
 	else:
 		_devil_line.text = _TEXT_ROLL_DICE % _MAZE_GAME_NAME
 	

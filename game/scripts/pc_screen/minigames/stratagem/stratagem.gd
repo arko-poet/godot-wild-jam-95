@@ -8,7 +8,14 @@ enum _Direction {
 }
 
 const SPRITE_PATH := "res://game/art/placeholders/stratagem/triangle%s.png"
-
+const _TIME_LIMITS := {
+	1: 10.0,
+	2: 12.5,
+	3: 15.0,
+	4: 17.5,
+	5: 20.0,
+	6: 25
+}
 const _SEQUENCE_LENGTHS := {
 	Difficulty.EASY: 6,
 	Difficulty.MEDIUM: 7,
@@ -65,7 +72,7 @@ func _input(event: InputEvent) -> void:
 
 
 func get_time_limit() -> float:
-	return 100.0
+	return _TIME_LIMITS.get(dice_roll, _TIME_LIMITS[4])
 
 
 func _player_action(direction: _Direction) -> void:
