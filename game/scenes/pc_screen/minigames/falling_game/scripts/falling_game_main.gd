@@ -1,4 +1,4 @@
-extends Minigame
+class_name FallingGame extends Minigame
 
 const DIST_BETWEEN_FLOORS = 200.0
 const MIN_PLATFORM_OFFSET = 50.0

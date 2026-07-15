@@ -51,7 +51,7 @@ folder_colors={
 
 [gui]
 
-theme/custom="res://template/resources/themes/expedition.tres"
+theme/custom="res://template/resources/themes/gravity.tres"
 
 [internationalization]
 

@@ -1,4 +1,4 @@
-extends Minigame
+class_name ExampleMinigame extends Minigame
 
 const _REQUIRED_SCORES := {
 	Difficulty.EASY: 10,
