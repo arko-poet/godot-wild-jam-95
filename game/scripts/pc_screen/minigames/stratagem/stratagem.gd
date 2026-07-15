@@ -1,47 +1,60 @@
-extends Minigame
+class_name Stratagem extends Minigame
 
-enum Direction {
+enum _Direction {
 	RIGHT,
 	DOWN,
 	LEFT,
 	UP
 }
 
-var current_sequence: Array[Direction] = [
-	Direction.RIGHT,
-	Direction.DOWN,
-	Direction.LEFT,
-	Direction.UP
+var _current_sequence: Array[_Direction] = [
+	_Direction.RIGHT,
+	_Direction.DOWN,
+	_Direction.LEFT,
+	_Direction.UP
 ]
 
+var _progress := 0.0:
+	set(value):
+		_progress = value
+		if _progress == 1.0:
+			game_won.emit()
 
-@onready var timer_component: TimerComponent = %TimerComponent
+@onready var _timer_component: TimerComponent = %TimerComponent
 
 
 func _ready() -> void:
-	timer_component.start_timer(get_time_limit())
+	_timer_component.start_timer(get_time_limit())
 
 
 func _input(event: InputEvent) -> void:
 	if not event.is_pressed() or event.is_echo():
 		return
+		
+	var direction: _Direction
 	if event.is_action(&"ui_right"):
-		_player_action(Direction.RIGHT)
+		direction = _Direction.RIGHT
 	elif event.is_action(&"ui_down"):
-		_player_action(Direction.DOWN)
+		direction = _Direction.DOWN
 	elif event.is_action(&"ui_left"):
-		_player_action(Direction.LEFT)
+		direction = _Direction.LEFT
 	elif event.is_action(&"ui_up"):
-		_player_action(Direction.UP)
+		direction = _Direction.UP
 	else:
 		return
 	
 	get_viewport().set_input_as_handled()
+	
+	_player_action(direction)
 
 
 func get_time_limit() -> float:
 	return 100.0
 
 
-func _player_action(direction: Direction) -> void:
+func _player_action(direction: _Direction) -> void:
 	print(direction)
+
+
+func _on_timer_component_out_of_time() -> void:
+	game_lost.emit()
