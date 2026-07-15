@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://biilotf21gjdp"]
+
+[ext_resource type="Script" uid="uid://dawchbda7r7ku" path="res://game/scripts/pc_screen/minigames/stratagem/stratagem.gd" id="1_wwame"]
+[ext_resource type="PackedScene" uid="uid://bb5isa4txkp3f" path="res://game/scenes/pc_screen/minigames/timer_component.tscn" id="2_gwb6g"]
+
+[node name="Stratagem" type="Node" unique_id=341402236]
+script = ExtResource("1_wwame")
+
+[node name="Control" type="Control" parent="." unique_id=112372057]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 660.0
+offset_bottom = 490.0
+
+[node name="TimerComponent" parent="Control" unique_id=1166255049 instance=ExtResource("2_gwb6g")]
+unique_name_in_owner = true
+layout_mode = 1
+offset_right = 122.0
+offset_bottom = 23.0
+text = "Time Left %.1f.s"
