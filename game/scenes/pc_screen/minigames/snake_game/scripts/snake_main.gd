@@ -2,15 +2,15 @@ class_name SnakeGame
 extends Minigame
 
 const GRID_DIMENSIONS := {
-	Difficulty.EASY: {width = 17, height = 13},
-	Difficulty.MEDIUM: {width = 17, height = 15},
-	Difficulty.HARD: {width = 19, height = 15},
+	Difficulty.EASY: {width = 16, height = 12},
+	Difficulty.MEDIUM: {width = 16, height = 14},
+	Difficulty.HARD: {width = 18, height = 14},
 }
 
 const APPLE_TARGETS := {
 	Difficulty.EASY: 5,
-	Difficulty.MEDIUM: 9,
-	Difficulty.HARD: 12
+	Difficulty.MEDIUM: 8,
+	Difficulty.HARD: 11
 }
 
 const MOVE_INTERVALS := {
@@ -23,12 +23,12 @@ const MOVE_INTERVALS := {
 }
 
 const TIME_LIMITS := { # in seconds
-	1: 13,
-	2: 15,
-	3: 17,
-	4: 19,
-	5: 21,
-	6: 23,
+	1: 17,
+	2: 22,
+	3: 25,
+	4: 28,
+	5: 31,
+	6: 34,
 }
 
 const Square = preload("uid://c2r4u5hrhc6qf") # square.tcsn
@@ -72,7 +72,6 @@ func _ready() -> void:
 	move_timer.wait_time = get_move_interval()
 	move_timer.start()
 	
-	print(timer_component)
 	timer_component.position = Vector2.DOWN * grid_height * CELL_SIZE + grid_offset
 	timer_component.start_timer(get_time_limit())
 
@@ -114,10 +113,11 @@ func spawn_snake() -> void:
 
 func spawn_apple() -> void:
 	if apple_active:
-		# randomize apple position, dont spawn in wall
-		apple_pos = Vector2(randi_range(1, grid_width - 1), randi_range(1, grid_height - 1))
+		# randomize apple position, dont spawn in wall or snake
+		apple_pos = Vector2(randi_range(1, grid_width - 2), randi_range(1, grid_height - 2))
+		while snake_squares.has(apple_pos):
+			apple_pos = Vector2(randi_range(1, grid_width - 2), randi_range(1, grid_height - 2))
 		get_square(apple_pos).set_type("apple")
-		print(apple_pos)
 	
 	var free_squares: Array[Vector2] = []
 	for row in grid_height:
@@ -176,6 +176,7 @@ func _on_move_timer_timeout() -> void:
 		get_square(snake_end).set_type("empty")
 	
 	draw_snake()
+	get_square(apple_pos).set_type("apple") # draw apple in case was overwritten
 	
 	if grew:
 		if num_apples_collected >= apple_goal_num:

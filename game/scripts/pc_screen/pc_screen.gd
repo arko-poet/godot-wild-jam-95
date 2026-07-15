@@ -4,9 +4,9 @@ signal doom_changed(percentage: float)
 signal progress_bar_filled
 
 const _MiniGameScenes := [
-	preload("res://game/scenes/pc_screen/minigames/example_minigame/example_minigame.tscn"),
-	preload("res://game/scenes/pc_screen/minigames/falling_game/prototype_only/falling_game_static.tscn"),
-	preload("res://game/scenes/pc_screen/minigames/maze_game/scenes/maze_main.tscn"),
+	#preload("res://game/scenes/pc_screen/minigames/example_minigame/example_minigame.tscn"),
+	#preload("res://game/scenes/pc_screen/minigames/falling_game/prototype_only/falling_game_static.tscn"),
+	#preload("res://game/scenes/pc_screen/minigames/maze_game/scenes/maze_main.tscn"),
 	preload("res://game/scenes/pc_screen/minigames/snake_game/scenes/snake_main.tscn"),
 ]
 
