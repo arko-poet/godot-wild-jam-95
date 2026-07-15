@@ -6,20 +6,20 @@
 [node name="Stratagem" type="Node" unique_id=341402236]
 script = ExtResource("1_wwame")
 
-[node name="Control" type="Control" parent="." unique_id=112372057]
+[node name="UI" type="Control" parent="." unique_id=112372057]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 660.0
 offset_bottom = 490.0
 
-[node name="TimerComponent" parent="Control" unique_id=1166255049 instance=ExtResource("2_gwb6g")]
+[node name="TimerComponent" parent="UI" unique_id=1166255049 instance=ExtResource("2_gwb6g")]
 unique_name_in_owner = true
 layout_mode = 1
 offset_right = 122.0
 offset_bottom = 23.0
 text = "Time Left %.1f.s"
 
-[node name="ProgressBar" type="ProgressBar" parent="Control" unique_id=1787062570]
+[node name="ProgressBar" type="ProgressBar" parent="UI" unique_id=1787062570]
 modulate = Color(0, 1, 0, 1)
 layout_mode = 1
 anchors_preset = 12
@@ -30,4 +30,4 @@ offset_top = -27.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[connection signal="out_of_time" from="Control/TimerComponent" to="." method="_on_timer_component_out_of_time"]
+[connection signal="out_of_time" from="UI/TimerComponent" to="." method="_on_timer_component_out_of_time"]

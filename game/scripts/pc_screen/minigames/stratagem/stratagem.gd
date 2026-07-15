@@ -7,16 +7,24 @@ enum _Direction {
 	UP
 }
 
-var _current_sequence: Array[_Direction] = [
-	_Direction.RIGHT,
-	_Direction.DOWN,
-	_Direction.LEFT,
-	_Direction.UP
-]
+const _SEQUENCE_LENGTHS := {
+	Difficulty.EASY: 5,
+	Difficulty.MEDIUM: 6,
+	Difficulty.HARD: 7
+}
+
+const _PROGRESS_STEPS := {
+	Difficulty.EASY: 0.25,
+	Difficulty.MEDIUM: 0.2,
+	Difficulty.HARD: 0.15
+}
+
+var _current_sequence: Array[_Direction]
+var _sequence_pointer: int
 
 var _progress := 0.0:
 	set(value):
-		_progress = value
+		_progress = max(1.0, value)
 		if _progress == 1.0:
 			game_won.emit()
 
@@ -24,6 +32,7 @@ var _progress := 0.0:
 
 
 func _ready() -> void:
+	_set_current_sequence()
 	_timer_component.start_timer(get_time_limit())
 
 
@@ -53,8 +62,32 @@ func get_time_limit() -> float:
 
 
 func _player_action(direction: _Direction) -> void:
-	print(direction)
+	if direction != _current_sequence[_sequence_pointer]:
+		print("MATCH")
+		if _sequence_pointer == _current_sequence.size() - 1:
+			_sequence_completed()
+		else:
+			_sequence_pointer += 1
+	else:
+		print("MISMATCH")
+		_sequence_pointer = 0
+
+
+func _sequence_completed() -> void:
+	_progress += _PROGRESS_STEPS[difficulty]
+	
+	_set_current_sequence()
 
 
 func _on_timer_component_out_of_time() -> void:
 	game_lost.emit()
+
+
+func _set_current_sequence() -> void:
+	_current_sequence.clear()
+	
+	var sequence_length = _SEQUENCE_LENGTHS[difficulty] + (randi() % 3 - 1)
+	for i in sequence_length:
+		_current_sequence.append(_Direction.values().pick_random())
+		
+	_sequence_pointer = 0
