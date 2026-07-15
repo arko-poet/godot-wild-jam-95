@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://kaffb8mh04gh"]
 
-[ext_resource type="Script" uid="uid://c1qhfbm6dk6ah" path="res://game/scenes/pc_screen/minigames/falling_game/prototype_only/platform_static.gd" id="1_auemh"]
+[ext_resource type="Script" uid="uid://ddl4w0dvy85xd" path="res://game/scenes/pc_screen/minigames/falling_game/scripts/platform.gd" id="1_c2bb5"]
 [ext_resource type="PackedScene" uid="uid://bgq5rem8j0e3x" path="res://game/scenes/pc_screen/minigames/falling_game/scenes/spike.tscn" id="2_auemh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3owqy"]
@@ -10,7 +10,7 @@ size = Vector2(1693.5, 13)
 size = Vector2(3369, 51)
 
 [node name="PlatformStatic" type="Node2D" unique_id=472695447]
-script = ExtResource("1_auemh")
+script = ExtResource("1_c2bb5")
 
 [node name="Right" type="StaticBody2D" parent="." unique_id=1492098594]
 unique_name_in_owner = true
