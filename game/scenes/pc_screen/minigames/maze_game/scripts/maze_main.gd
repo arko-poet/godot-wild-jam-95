@@ -1,9 +1,9 @@
 extends Minigame
 
 const GRID_DIMENSIONS := {
-	Difficulty.EASY: {width = 17, height = 13},
-	Difficulty.MEDIUM: {width = 17, height = 15},
-	Difficulty.HARD: {width = 19, height = 15}
+	Difficulty.EASY: {width = 17, height = 11},
+	Difficulty.MEDIUM: {width = 17, height = 13},
+	Difficulty.HARD: {width = 19, height = 13}
 }
 
 const TIME_LIMITS := { # in seconds
