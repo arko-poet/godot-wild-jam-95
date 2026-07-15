@@ -68,15 +68,15 @@ func get_time_limit() -> float:
 
 
 func _player_action(direction: _Direction) -> void:
-	if direction != _current_sequence[_sequence_pointer]:
-		print("MATCH")
-		#_arrow_container.get_children()[_sequence_pointer]
+	if direction == _current_sequence[_sequence_pointer]:
+		_arrow_container.get_children()[_sequence_pointer].modulate = Color.GREEN
 		if _sequence_pointer == _current_sequence.size() - 1:
 			_sequence_completed()
 		else:
 			_sequence_pointer += 1
 	else:
-		print("MISMATCH")
+		for arrow in _arrow_container.get_children():
+			arrow.modulate = Color.WHITE
 		_sequence_pointer = 0
 
 
@@ -98,6 +98,7 @@ func _set_current_sequence() -> void:
 	var sequence_length = _SEQUENCE_LENGTHS[difficulty] + (randi() % 3 - 1)
 	for i in sequence_length:
 		_current_sequence.append(_Direction.values().pick_random())
+	print(_current_sequence)
 		
 
 	_sequence_pointer = 0
