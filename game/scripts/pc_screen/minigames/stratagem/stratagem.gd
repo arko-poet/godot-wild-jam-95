@@ -10,9 +10,9 @@ enum _Direction {
 const SPRITE_PATH := "res://game/art/placeholders/stratagem/triangle%s.png"
 
 const _SEQUENCE_LENGTHS := {
-	Difficulty.EASY: 5,
-	Difficulty.MEDIUM: 6,
-	Difficulty.HARD: 7
+	Difficulty.EASY: 6,
+	Difficulty.MEDIUM: 7,
+	Difficulty.HARD: 8
 }
 
 const _PROGRESS_STEPS := {
@@ -20,6 +20,7 @@ const _PROGRESS_STEPS := {
 	Difficulty.MEDIUM: 0.2,
 	Difficulty.HARD: 0.15
 }
+const _PROGRESS_STEP_BACK := 0.1
 
 var _current_sequence: Array[_Direction]
 var _sequence_pointer: int
@@ -28,7 +29,7 @@ var _progress := 0.0:
 	set(value):
 		var tween = create_tween()
 		tween.tween_property(_progress_bar, ^"value", min(1.0, value), 0.5)
-		_progress = max(1.0, value)
+		_progress = min(1.0, value)
 		if _progress == 1.0:
 			game_won.emit()
 
@@ -75,6 +76,7 @@ func _player_action(direction: _Direction) -> void:
 		else:
 			_sequence_pointer += 1
 	else:
+		_progress -= _PROGRESS_STEP_BACK
 		for arrow in _arrow_container.get_children():
 			arrow.modulate = Color.WHITE
 		_sequence_pointer = 0
