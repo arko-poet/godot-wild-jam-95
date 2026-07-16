@@ -20,6 +20,24 @@ const _TEXT_ROLL_DICE := "Lets play a `%s`game. Roll the dice."
 const _TEXT_REROLL_DICE := "I'll give you %ss to complete the game for that roll."
 const _TEXT_CHOOSE_DIFFICULTY := "Choose difficulty."
 
+const  _TEXT_WON := [
+	"Not bad... for now.",
+	"Hmm. Beginner's luck, that's all.",
+	"Fine. You earned a second of relief.",
+	"You won't be so lucky next time.",
+	"Next time, I'll make sure you struggle.",
+]
+
+const _TEXT_LOSE := [
+	"As expected of a mere mortal.",
+	"Oh, was that too difficult for you? Too bad.",
+	"Struggling already? Keep it up!",
+	"Don't worry, you won't win next time too.",
+	"Bruh",
+]
+
+const _REACTION_TIME := 1.5
+
 # for TEXT_ROLL_DICE
 const _MAZE_GAME_NAME := "searching"
 const _EXAMPLE_GAME_NAME := "stupid"
@@ -64,6 +82,7 @@ var _progress := 0.0:
 @onready var _start_button: Button = %StartButton
 @onready var _or_label: Label = %ORLabel
 @onready var _accept_roll_button: Button = %AcceptRollButton
+@onready var _continue_button: Button = %ContinueButton
 @onready var _buttons_container: HBoxContainer = %ButtonsContainer
 
 @onready var _difficulty_boxes: GridContainer = %DifficultyBoxes
@@ -98,19 +117,49 @@ func _play_power_on_animation() -> void:
 func _on_minigame_won() -> void:
 	_progress += _PROGRESS_STEP * (_get_difficulty() + 1)
 	
-	_prepare_next_minigame()
+	#await _show_reaction(true)
+	_devil_line.text = _TEXT_WON[randi() % len(_TEXT_WON)]
+	_continue_button.show()
+	if _current_minigame:
+		_current_minigame.queue_free()
+	_meta_game.show()
+	
+	#_prepare_next_minigame()
 
 
 func _on_minigame_lost() -> void:
 	_doom += _DOOM_STEP * (_get_difficulty() + 1)
 	
-	_prepare_next_minigame()
+	#await _show_reaction(false)
+	_devil_line.text = _TEXT_LOSE[randi() % len(_TEXT_LOSE)]
+	_continue_button.show()
+	if _current_minigame:
+		_current_minigame.queue_free()
+	_meta_game.show()
+	
+	#_prepare_next_minigame()
+
+
+#func _show_reaction(won: bool) -> void:
+	#if won:
+		#_devil_line.text = _TEXT_WON[randi() % len(_TEXT_WON)]
+	#else:
+		#_devil_line.text = _TEXT_LOSE[randi() % len(_TEXT_LOSE)]
+	#
+	#_roll_dice_button.hide()
+	#_reroll_dice_button.hide()
+	#_or_label.hide()
+	#_accept_roll_button.hide()
+	#_dice_roll_label.hide()
+	#_start_button.hide()
+	#_difficulty_boxes.hide()
+	#
+	#_meta_game.show()
+	#
+	#await get_tree().create_timer(_REACTION_TIME).timeout
 
 
 func _prepare_next_minigame() -> void:
-	if _current_minigame:
-		_current_minigame.queue_free()
-	
 	_current_minigame = _MiniGameScenes.pick_random().instantiate()
 	
 	if _current_minigame is FallingGame:
@@ -124,6 +173,7 @@ func _prepare_next_minigame() -> void:
 	else: # example minigame
 		_devil_line.text = _TEXT_ROLL_DICE % _EXAMPLE_GAME_NAME
 	
+	_roll_dice_button.show()
 	_meta_game.show()
 
 
@@ -186,8 +236,6 @@ func _on_start_button_pressed() -> void:
 	_difficulty_boxes.hide()
 	_doom_bar_preview.hide()
 	_progress_bar_preview.hide()
-	
-	_roll_dice_button.show()
 
 
 func _on_easy_check_box_pressed() -> void:
@@ -230,6 +278,10 @@ func _show_bar_previews() -> void:
 	_doom_bar_preview.value = _doom + _DOOM_STEP * (_get_difficulty() + 1)
 
 
+func _on_continue_button_pressed() -> void:
+	_continue_button.hide()
+	_prepare_next_minigame()
+  
 func _on_die_roll_finished(_value: int) -> void:
 	_buttons_container.show()
 	_dice_roll_label.show()

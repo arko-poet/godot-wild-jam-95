@@ -11,6 +11,7 @@ var buffered_dir := Vector2.ZERO
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	visible = true
 	grid_pos = maze.start_pos
 	position = grid_pos * maze.CELL_SIZE + maze.grid_offset
 
@@ -42,6 +43,7 @@ func try_move(dir: Vector2) -> void:
 
 func _on_move_finished() -> void:
 	if grid_pos == maze.goal_pos:
+		visible = false
 		#print("YOU WIN!!!!!!!!!")
 		game_won.emit()
 	
