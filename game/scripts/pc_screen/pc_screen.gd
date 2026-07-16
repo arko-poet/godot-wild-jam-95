@@ -63,6 +63,7 @@ var _progress := 0.0:
 @onready var _start_button: Button = %StartButton
 @onready var _or_label: Label = %ORLabel
 @onready var _accept_roll_button: Button = %AcceptRollButton
+@onready var buttons_container: HBoxContainer = %ButtonsContainer
 
 @onready var _difficulty_boxes: GridContainer = %DifficultyBoxes
 @onready var _easy_check_box: CheckBox = %EasyCheckBox
@@ -116,7 +117,9 @@ func _prepare_next_minigame() -> void:
 
 func _roll_dice() -> void:
 	_current_dice_roll = 1 + randi() % 6
-	_die.roll(_current_dice_roll)
+	buttons_container.hide()
+	await _die.roll(_current_dice_roll)
+	buttons_container.show()
 	_doom += _DOOM_STEP / 2.0
 
 

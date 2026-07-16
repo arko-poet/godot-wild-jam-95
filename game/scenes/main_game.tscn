@@ -11,13 +11,6 @@
 [ext_resource type="AudioStream" uid="uid://dhp073fo2hbwy" path="res://game/audio/music/placeholders/oceanking-alone-not-lost-219740.mp3" id="5_ldb66"]
 [ext_resource type="PackedScene" uid="uid://v5d6u7rtp522" path="res://game/scenes/pc_screen/pc_screen.tscn" id="5_wemlv"]
 [ext_resource type="Texture2D" uid="uid://da1tl6w8xc6s7" path="res://game/art/placeholders/arko.png" id="7_ldb66"]
-[ext_resource type="Script" uid="uid://baylt4lsmmrfk" path="res://game/scripts/die.gd" id="9_gd0p7"]
-[ext_resource type="Texture2D" uid="uid://bh1hk7mnp5u5j" path="res://game/scenes/pc_screen/minigames/snake_game/assets/spikes.png" id="12_c0dgw"]
-[ext_resource type="Texture2D" uid="uid://crwmxws8q14e" path="res://game/scenes/pc_screen/minigames/maze_game/assets/goal.png" id="13_hvebq"]
-[ext_resource type="Texture2D" uid="uid://d4h4gi0nlp25c" path="res://game/scenes/pc_screen/minigames/maze_game/assets/PrototypeGridSquare2.png" id="14_bo62v"]
-[ext_resource type="Texture2D" uid="uid://lloyhyepsu0x" path="res://game/scenes/pc_screen/minigames/maze_game/assets/PrototypeCharacter.png" id="14_v4h7p"]
-[ext_resource type="Texture2D" uid="uid://4xotooeatb40" path="res://game/scenes/pc_screen/minigames/snake_game/assets/Square.png" id="16_gtikr"]
-[ext_resource type="Texture2D" uid="uid://buoe86bqyfknb" path="res://icon.svg" id="17_v4h7p"]
 
 [node name="MainGame" type="Node" unique_id=807738320]
 script = ExtResource("1_1ig1l")
@@ -48,12 +41,6 @@ texture = ExtResource("7_ldb66")
 [node name="PCScreen" parent="Room" unique_id=1576839333 instance=ExtResource("5_wemlv")]
 unique_name_in_owner = true
 position = Vector2(79, 88)
-
-[node name="Die" type="Sprite2D" parent="Room/PCScreen" unique_id=564660072]
-unique_name_in_owner = true
-position = Vector2(325, 250)
-script = ExtResource("9_gd0p7")
-face_textures = Array[Texture2D]([ExtResource("12_c0dgw"), ExtResource("13_hvebq"), ExtResource("14_bo62v"), ExtResource("14_v4h7p"), ExtResource("16_gtikr"), ExtResource("17_v4h7p")])
 
 [node name="UILayer" type="CanvasLayer" parent="." unique_id=1011913819]
 
