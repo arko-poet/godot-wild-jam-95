@@ -57,11 +57,13 @@ var _progress := 0.0:
 
 @onready var _dice_roll_label: Label = %DiceRollLabel
 
+@onready var _die: Sprite2D = %Die
 @onready var _roll_dice_button: Button = %RollDiceButton
 @onready var _reroll_dice_button: Button = %RerollDiceButton
 @onready var _start_button: Button = %StartButton
 @onready var _or_label: Label = %ORLabel
 @onready var _accept_roll_button: Button = %AcceptRollButton
+@onready var _buttons_container: HBoxContainer = %ButtonsContainer
 
 @onready var _difficulty_boxes: GridContainer = %DifficultyBoxes
 @onready var _easy_check_box: CheckBox = %EasyCheckBox
@@ -69,6 +71,7 @@ var _progress := 0.0:
 @onready var _hard_check_box: CheckBox = %HardCheckBox
 
 @onready var _devil_line: Label = %DevilLine
+
 
 
 func _ready() -> void:
@@ -113,7 +116,12 @@ func _prepare_next_minigame() -> void:
 
 
 func _roll_dice() -> void:
+	_die.show()
+	_buttons_container.hide()
+	_dice_roll_label.hide()
+	
 	_current_dice_roll = 1 + randi() % 6
+	_die.roll(_current_dice_roll)
 	_doom += _DOOM_STEP / 2.0
 
 
@@ -126,7 +134,6 @@ func _on_roll_dice_button_pressed() -> void:
 	
 	_roll_dice_button.hide()
 	
-	_dice_roll_label.show()
 	_reroll_dice_button.show()
 	_or_label.show()
 	_accept_roll_button.show()
@@ -144,6 +151,7 @@ func _on_accept_roll_button_pressed() -> void:
 	_or_label.hide()
 	_accept_roll_button.hide()
 	_dice_roll_label.hide()
+	_die.hide()
 	
 	_devil_line.text = _TEXT_CHOOSE_DIFFICULTY
 	
@@ -208,3 +216,8 @@ func _show_bar_previews() -> void:
 	_progress_bar_preview.value = _progress + _PROGRESS_STEP * (_get_difficulty() + 1)
 	_doom_bar_preview.show()
 	_doom_bar_preview.value = _doom + _DOOM_STEP * (_get_difficulty() + 1)
+
+
+func _on_die_roll_finished(_value: int) -> void:
+	_buttons_container.show()
+	_dice_roll_label.show()
