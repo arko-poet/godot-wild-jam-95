@@ -125,6 +125,8 @@ func _on_minigame_won() -> void:
 		_current_minigame.queue_free()
 	_meta_game.show()
 	
+	GameplayAudioController.minigame_won.emit()
+	
 	#_prepare_next_minigame()
 
 
@@ -137,6 +139,8 @@ func _on_minigame_lost() -> void:
 	if _current_minigame:
 		_current_minigame.queue_free()
 	_meta_game.show()
+	
+	GameplayAudioController.minigame_bad_event.emit()
 	
 	#_prepare_next_minigame()
 

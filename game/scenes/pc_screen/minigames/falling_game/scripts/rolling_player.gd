@@ -101,6 +101,9 @@ func _knockback(_knockback_direction: float) -> Vector2:
 	_x = 0.0
 	%StunTimer.start() # adjust this timer to change stun time
 	modulate = Color.CRIMSON
+	
+	GameplayAudioController.minigame_bad_event.emit()
+	
 	return Vector2(_knockback_direction, -1.0) * KNOCKBACK_DIST
 
 
