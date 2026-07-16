@@ -1,7 +1,7 @@
 extends Node
 
 # Anywhere, put GameplayAudioController.[signal].emit()
-# ex: GameplayAudioController.mingame_won.emit()
+# ex: GameplayAudioController.minigame_won.emit()
 
 signal minigame_won
 signal minigame_lost
