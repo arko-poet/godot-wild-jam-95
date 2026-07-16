@@ -49,6 +49,7 @@ var _progress := 0.0:
 
 @onready var _meta_game: Control = %MetaGame
 @onready var _screen_content: Control = %ScreenContent
+@onready var _screen_container: SubViewportContainer = %SubViewportContainer
 
 @onready var _progress_bar: ProgressBar = %ProgressBar
 @onready var _progress_bar_preview: ProgressBar = %ProgressBarPreview
@@ -81,6 +82,17 @@ func _ready() -> void:
 	_doom_bar_preview.max_value = _MAX_DOOM
 	
 	_prepare_next_minigame()
+	_play_power_on_animation()
+
+func _play_power_on_animation() -> void:
+	_screen_container.scale = Vector2(1.0, 0.02)
+	_screen_container.modulate = Color.DIM_GRAY
+	
+	var tween := create_tween().set_parallel(true)
+	tween.tween_property(_screen_container, "scale:y", 1.0, 0.35)\
+		.set_delay(0.15).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	tween.tween_property(_screen_container, "modulate", Color.WHITE, 0.35)\
+		.set_delay(0.15)
 
 
 func _on_minigame_won() -> void:

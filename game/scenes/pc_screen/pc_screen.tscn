@@ -53,8 +53,10 @@ shader_parameter/pixel_strength = -2.0
 script = ExtResource("1_ib41a")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=433300572]
+unique_name_in_owner = true
 offset_right = 640.0
 offset_bottom = 480.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=594804747]
 handle_input_locally = false
