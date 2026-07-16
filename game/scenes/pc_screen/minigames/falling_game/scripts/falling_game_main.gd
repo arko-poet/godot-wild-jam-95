@@ -1,6 +1,6 @@
 class_name FallingGame extends Minigame
 
-const TIME_LIMITS = [40, 50, 60, 70, 80, 90, 99] ## time limits given for each dice_value (0-5)
+const TIME_LIMITS = [40, 40, 50, 60, 70, 80, 90] ## time limits given for each dice_value (1-6), index 0 is dummy data
 const SPIKE_SURVIVAL_RATES = [0.25, 0.5, 0.75] ## chances that each spike remains active for each difficulty
 
 const DIST_BETWEEN_FLOORS = 150.0 ## pixels to move down after placing a layer
@@ -15,8 +15,6 @@ var offset_direction := 1.0
 
 
 func _ready() -> void:
-	difficulty = 1
-	dice_roll = 2
 	%TimerComponent.start_timer(TIME_LIMITS[dice_roll])
 	
 	if !OS.is_debug_build():
@@ -48,27 +46,32 @@ func _process(delta: float) -> void:
 func _input(event: InputEvent) -> void:
 	if Input.is_key_pressed(KEY_L):
 		print("game_lost signal emitted")
+		GameplayAudioController.mingame_lost.emit()
 		game_lost.emit()
 	if Input.is_key_pressed(KEY_K):
 		print("game_won signal emitted")
+		GameplayAudioController.mingame_won.emit()
 		game_won.emit()
 
 func _on_kill_plane_body_entered(body: Node2D) -> void:
 	print("game_lost signal emitted")
+	GameplayAudioController.mingame_lost.emit()
 	game_lost.emit()
 
 func _on_timer_component_timeout() -> void:
 	print("game_lost signal emitted")
+	GameplayAudioController.mingame_lost.emit()
 	game_lost.emit()
 
 func _on_goal_body_entered(body: Node2D) -> void:
 	if body is RollingPlayer:
 		print("game_won signal emitted")
+		GameplayAudioController.mingame_won.emit()
 		game_won.emit()
 
 func get_time_limit() -> float:
 	# is now correctly indexed, as dice roll goes from 1 - 6, but index is 0 - 5
-	return TIME_LIMITS[dice_roll - 1]
+	return TIME_LIMITS[dice_roll]
 
 func _add_platform(side:int, y_pos:float, kill_all_spikes := false) -> void:
 	var _x_pos: float
