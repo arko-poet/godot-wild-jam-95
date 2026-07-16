@@ -4,11 +4,11 @@ signal doom_changed(percentage: float)
 signal progress_bar_filled
 
 const _MiniGameScenes := [
-	preload("res://game/scenes/pc_screen/minigames/example_minigame/example_minigame.tscn"),
+	#preload("res://game/scenes/pc_screen/minigames/example_minigame/example_minigame.tscn"),
 	preload("res://game/scenes/pc_screen/minigames/falling_game/scenes/falling_game_main.tscn"),
 	preload("res://game/scenes/pc_screen/minigames/maze_game/scenes/maze_main.tscn"),
 	preload("res://game/scenes/pc_screen/minigames/stratagem/stratagem.tscn"),
-	preload("res://game/scenes/pc_screen/minigames/snake_game/scenes/snake_main.tscn"),
+	preload("res://game/scenes/pc_screen/minigames/snake_game/scenes/snake_main.tscn")
 ]
 
 const _MAX_DOOM := 1.0
@@ -102,6 +102,7 @@ func _ready() -> void:
 	
 	_prepare_next_minigame()
 	_play_power_on_animation()
+
 
 func _play_power_on_animation() -> void:
 	_screen_container.scale = Vector2(1.0, 0.02)

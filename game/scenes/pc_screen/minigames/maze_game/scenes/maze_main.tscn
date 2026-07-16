@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bb5isa4txkp3f" path="res://game/scenes/pc_screen/minigames/timer_component.tscn" id="4_g7mqd"]
 [ext_resource type="Shader" uid="uid://m3h0rwjkhehn" path="res://game/scenes/pc_screen/minigames/maze_game/assets/fog.gdshader" id="5_yrper"]
 [ext_resource type="Script" uid="uid://c4e4i4cel5gk" path="res://game/scenes/pc_screen/minigames/maze_game/scripts/fog_overlay.gd" id="6_ofyh6"]
+[ext_resource type="PackedScene" uid="uid://bxcrjj54yj4ok" path="res://game/shaders/CRTShader.tscn" id="7_xwuei"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_li6ia"]
 shader = ExtResource("5_yrper")
@@ -36,5 +37,7 @@ centered = false
 script = ExtResource("6_ofyh6")
 player = NodePath("../Player")
 maze = NodePath("..")
+
+[node name="CRTShader" parent="." unique_id=1925341764 instance=ExtResource("7_xwuei")]
 
 [connection signal="out_of_time" from="TimerComponent" to="." method="_on_timer_component_out_of_time"]
