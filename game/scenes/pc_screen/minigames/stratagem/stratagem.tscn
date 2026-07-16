@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://biilotf21gjdp"]
+
+[ext_resource type="Script" uid="uid://dawchbda7r7ku" path="res://game/scripts/pc_screen/minigames/stratagem/stratagem.gd" id="1_wwame"]
+[ext_resource type="PackedScene" uid="uid://bb5isa4txkp3f" path="res://game/scenes/pc_screen/minigames/timer_component.tscn" id="2_gwb6g"]
+
+[sub_resource type="Gradient" id="Gradient_88wer"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.21950102, 0.21950102, 0.21950102, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_pfiww"]
+gradient = SubResource("Gradient_88wer")
+width = 660
+height = 490
+
+[node name="Stratagem" type="Node" unique_id=341402236]
+script = ExtResource("1_wwame")
+
+[node name="Background" type="Sprite2D" parent="." unique_id=1327827280]
+scale = Vector2(0.99999994, 1.0020832)
+texture = SubResource("GradientTexture2D_pfiww")
+centered = false
+
+[node name="UI" type="Control" parent="." unique_id=112372057]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 660.0
+offset_bottom = 490.0
+
+[node name="TimerComponent" parent="UI" unique_id=1166255049 instance=ExtResource("2_gwb6g")]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -61.0
+offset_top = 16.0
+offset_right = 61.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 32
+text = "Time Left %.1f.s"
+
+[node name="ProgressBar" type="ProgressBar" parent="UI" unique_id=1787062570]
+unique_name_in_owner = true
+modulate = Color(0, 1, 0, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 0
+max_value = 1.0
+
+[node name="ArrowContainer" type="HBoxContainer" parent="UI" unique_id=1184763764]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -189.0
+offset_bottom = 189.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.15, 0.15)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+theme_override_constants/separation = 64
+alignment = 1
+
+[connection signal="out_of_time" from="UI/TimerComponent" to="." method="_on_timer_component_out_of_time"]

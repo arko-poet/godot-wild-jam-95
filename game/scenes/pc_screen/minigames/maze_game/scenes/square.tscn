@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bykoixtjlnm5j"]
 
 [ext_resource type="Script" uid="uid://0gd0m60yimpr" path="res://game/scenes/pc_screen/minigames/maze_game/scripts/square.gd" id="1_0i1jh"]
-[ext_resource type="Texture2D" uid="uid://dbh0lg6phh4fj" path="res://game/scenes/pc_screen/minigames/maze_game/assets/PrototypeGridSquare.png" id="2_0i1jh"]
+[ext_resource type="Texture2D" uid="uid://dbh0lg6phh4fj" path="res://game/scenes/pc_screen/minigames/snake_game/assets/PrototypeGridSquare (2).png" id="2_0i1jh"]
 
 [node name="Square" type="Node2D" unique_id=330002088]
 script = ExtResource("1_0i1jh")

@@ -1,3 +1,4 @@
+class_name MazeGame
 extends Minigame
 
 const GRID_DIMENSIONS := {
@@ -6,6 +7,7 @@ const GRID_DIMENSIONS := {
 	Difficulty.HARD: {width = 19, height = 13}
 }
 
+# game is much harder because of fog of war effect, time limit may have to be increased
 const TIME_LIMITS := { # in seconds
 	1: 13,
 	2: 15,
@@ -20,6 +22,7 @@ const Square = preload("uid://bykoixtjlnm5j")
 @export var maze_generator: MazeGenerator
 @export var player: Node2D
 @export var CELL_SIZE: int = 32
+@export var fog_overlay: FogOfWar
 
 @onready var timer_component = %TimerComponent
 
@@ -43,10 +46,13 @@ func _ready() -> void:
 	spawn_grid()
 	
 	player.move_to_start(start_pos)
+	
 	player.game_won.connect(func(): game_won.emit())
 	
 	timer_component.position = Vector2.DOWN* grid_height * CELL_SIZE + grid_offset
 	timer_component.start_timer(get_time_limit())
+	
+	fog_overlay.setup()
 
 
 ## instantiates all the squares and positons all the squares
@@ -58,7 +64,7 @@ func spawn_grid() -> void:
 			var square_pos = Vector2(col, row)
 			s.position = square_pos * CELL_SIZE + grid_offset
 			add_child(s)
-			if square_pos == goal_pos: s.set_type("goal")
+			if square_pos == goal_pos: s.set_type("goal"); s.z_index = 2
 			elif wall_positions.has(square_pos): s.set_type("wall")
 			grid_nodes[row].append(s)
 

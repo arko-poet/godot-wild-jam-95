@@ -4,12 +4,18 @@
 [ext_resource type="PackedScene" uid="uid://c58j3q1h3y52m" path="res://game/scenes/pc_screen/minigames/maze_game/scenes/player.tscn" id="2_g7mqd"]
 [ext_resource type="PackedScene" uid="uid://belsar24opcfp" path="res://game/scenes/pc_screen/minigames/maze_game/scenes/MazeGenerator.tscn" id="3_50uot"]
 [ext_resource type="PackedScene" uid="uid://bb5isa4txkp3f" path="res://game/scenes/pc_screen/minigames/timer_component.tscn" id="4_g7mqd"]
+[ext_resource type="Shader" uid="uid://m3h0rwjkhehn" path="res://game/scenes/pc_screen/minigames/maze_game/assets/fog.gdshader" id="5_yrper"]
+[ext_resource type="Script" uid="uid://c4e4i4cel5gk" path="res://game/scenes/pc_screen/minigames/maze_game/scripts/fog_overlay.gd" id="6_ofyh6"]
 
-[node name="MazeMain" type="Node2D" unique_id=926297470 node_paths=PackedStringArray("maze_generator", "player")]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_li6ia"]
+shader = ExtResource("5_yrper")
+
+[node name="MazeMain" type="Node2D" unique_id=926297470 node_paths=PackedStringArray("maze_generator", "player", "fog_overlay")]
 z_index = -1
 script = ExtResource("1_5rwaj")
 maze_generator = NodePath("MazeGenerator")
 player = NodePath("Player")
+fog_overlay = NodePath("FogOverlay")
 
 [node name="Player" parent="." unique_id=242852718 node_paths=PackedStringArray("maze") instance=ExtResource("2_g7mqd")]
 z_index = 1
@@ -21,5 +27,14 @@ maze = NodePath("..")
 unique_name_in_owner = true
 offset_right = 1.0
 offset_bottom = 23.0
+
+[node name="FogOverlay" type="Sprite2D" parent="." unique_id=1049580428 node_paths=PackedStringArray("player", "maze")]
+z_index = 1
+texture_filter = 2
+material = SubResource("ShaderMaterial_li6ia")
+centered = false
+script = ExtResource("6_ofyh6")
+player = NodePath("../Player")
+maze = NodePath("..")
 
 [connection signal="out_of_time" from="TimerComponent" to="." method="_on_timer_component_out_of_time"]

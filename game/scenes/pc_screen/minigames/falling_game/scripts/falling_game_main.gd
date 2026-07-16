@@ -67,7 +67,8 @@ func _on_goal_body_entered(body: Node2D) -> void:
 		game_won.emit()
 
 func get_time_limit() -> float:
-	return TIME_LIMITS[dice_roll]
+	# is now correctly indexed, as dice roll goes from 1 - 6, but index is 0 - 5
+	return TIME_LIMITS[dice_roll - 1]
 
 func _add_platform(side:int, y_pos:float, kill_all_spikes := false) -> void:
 	var _x_pos: float
