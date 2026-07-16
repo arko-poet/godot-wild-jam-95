@@ -46,27 +46,27 @@ func _process(delta: float) -> void:
 func _input(event: InputEvent) -> void:
 	if Input.is_key_pressed(KEY_L):
 		print("game_lost signal emitted")
-		GameplayAudioController.mingame_lost.emit()
+		GameplayAudioController.minigame_lost.emit()
 		game_lost.emit()
 	if Input.is_key_pressed(KEY_K):
 		print("game_won signal emitted")
-		GameplayAudioController.mingame_won.emit()
+		GameplayAudioController.minigame_won.emit()
 		game_won.emit()
 
 func _on_kill_plane_body_entered(body: Node2D) -> void:
 	print("game_lost signal emitted")
-	GameplayAudioController.mingame_lost.emit()
+	GameplayAudioController.minigame_lost.emit()
 	game_lost.emit()
 
 func _on_timer_component_timeout() -> void:
 	print("game_lost signal emitted")
-	GameplayAudioController.mingame_lost.emit()
+	GameplayAudioController.minigame_lost.emit()
 	game_lost.emit()
 
 func _on_goal_body_entered(body: Node2D) -> void:
 	if body is RollingPlayer:
 		print("game_won signal emitted")
-		GameplayAudioController.mingame_won.emit()
+		GameplayAudioController.minigame_won.emit()
 		game_won.emit()
 
 func get_time_limit() -> float:
