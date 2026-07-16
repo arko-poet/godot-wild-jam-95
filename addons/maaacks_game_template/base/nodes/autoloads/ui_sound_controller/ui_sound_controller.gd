@@ -49,6 +49,13 @@ const MAX_DEPTH = 16
 @export var tree_item_activated : AudioStream
 @export var tree_button_clicked : AudioStream
 
+@export_group("Minigame Sounds")
+@export var minigame_won: AudioStream
+@export var minigame_lost: AudioStream
+@export var minigame_good_event: AudioStream
+@export var minigame_bad_event: AudioStream
+@export var minigame_progress: AudioStream
+
 @onready var root_node : Node = get_node(root_path)
 
 var button_hovered_player : AudioStreamPlayer
@@ -76,6 +83,12 @@ var item_list_selected_player : AudioStreamPlayer
 var tree_item_activated_player : AudioStreamPlayer
 var tree_item_selected_player : AudioStreamPlayer
 var tree_button_clicked_player : AudioStreamPlayer
+
+var minigame_won_player: AudioStreamPlayer
+var minigame_lost_player: AudioStreamPlayer
+var minigame_good_event_player: AudioStreamPlayer
+var minigame_bad_event_player: AudioStreamPlayer
+var minigame_progress_player: AudioStreamPlayer
 
 func _update_persistent_signals() -> void:
 	if not is_inside_tree():
@@ -130,6 +143,14 @@ func _build_tree_stream_players() -> void:
 	tree_item_selected_player = _build_stream_player(tree_item_selected, "TreeItemSelected")
 	tree_button_clicked_player = _build_stream_player(tree_button_clicked, "TreeButtonClicked")
 
+func _build_minigame_stream_players() -> void:
+	minigame_won_player = _build_stream_player(minigame_won, "MinigameWon")
+	minigame_lost_player = _build_stream_player(minigame_lost, "MinigameLost")
+	minigame_good_event_player = _build_stream_player(minigame_good_event, "MinigameGoodEvent")
+	minigame_bad_event_player = _build_stream_player(minigame_bad_event, "MinigameBadEvent")
+	minigame_progress_player = _build_stream_player(minigame_progress, "MinigameProgress")
+
+
 func _build_all_stream_players() -> void:
 	_build_button_stream_players()
 	_build_tab_stream_players()
@@ -137,6 +158,7 @@ func _build_all_stream_players() -> void:
 	_build_line_stream_players()
 	_build_item_list_stream_players()
 	_build_tree_stream_players()
+	_build_minigame_stream_players()
 
 func _play_stream(stream_player : AudioStreamPlayer) -> void:
 	if not stream_player.is_inside_tree():
@@ -201,12 +223,54 @@ func _recursive_connect_ui_sounds(current_node: Node, current_depth : int = 0) -
 		connect_ui_sounds(node)
 		_recursive_connect_ui_sounds(node, current_depth + 1)
 
+func play_minigame_won() -> void:
+	_play_stream(minigame_won_player)
+
+func play_minigame_lost() -> void:
+	_play_stream(minigame_lost_player)
+
+func play_minigame_good_event() -> void:
+	_play_stream(minigame_good_event_player)
+
+func play_minigame_bad_event() -> void:
+	_play_stream(minigame_bad_event_player)
+
+func play_minigame_progress() -> void:
+	_play_stream(minigame_progress_player)
+
+func _minigame_bus_connections() -> Dictionary:
+	return {
+		GameplayAudioController.minigame_won : minigame_won_player,
+		GameplayAudioController.minigame_lost : minigame_lost_player,
+		GameplayAudioController.minigame_good_event : minigame_good_event_player,
+		GameplayAudioController.minigame_bad_event : minigame_bad_event_player,
+		GameplayAudioController.minigame_progress : minigame_progress_player,
+	}
+
+func _connect_minigame_bus() -> void:
+	var connections := _minigame_bus_connections()
+	for key in connections:
+		if connections[key] == null: continue
+		var function_to_call := _play_stream.bind(connections[key])
+		if not key.is_connected(function_to_call):
+			key.connect(function_to_call)
+
+func _disconnect_minigame_bus() -> void:
+	var connections := _minigame_bus_connections()
+	for key in connections:
+		if connections[key] == null: continue
+		var function_to_call := _play_stream.bind(connections[key])
+		if key.is_connected(function_to_call):
+			key.disconnect(function_to_call)
+
 func _ready() -> void:
 	_build_all_stream_players()
 	_recursive_connect_ui_sounds(root_node)
+	_connect_minigame_bus()
 	persistent = persistent
 
 func _exit_tree() -> void:
 	var tree_node = get_tree()
 	if tree_node.node_added.is_connected(connect_ui_sounds):
 		tree_node.node_added.disconnect(connect_ui_sounds)
+	_disconnect_minigame_bus()
