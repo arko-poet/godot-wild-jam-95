@@ -9,9 +9,8 @@ var pause_menu : Node
 
 func pause() -> void:
 	if pause_menu.visible: return
-	if not focused_viewport:
-		focused_viewport = get_viewport()
-	var _initial_focus_control = focused_viewport.gui_get_focus_owner()
+	var _initial_focus_control := _find_control_focus(get_tree().root)
+	
 	pause_menu.show()
 	if pause_menu is CanvasLayer:
 		await pause_menu.visibility_changed
@@ -19,6 +18,15 @@ func pause() -> void:
 		await pause_menu.hidden
 	if is_inside_tree() and _initial_focus_control:
 		_initial_focus_control.grab_focus()
+
+func _find_control_focus(node: Node) -> Control:
+	if node is Viewport:
+		var focus = node.gui_get_focus_owner()
+		if focus: return focus
+	for child in node.get_children():
+		var child_focus := _find_control_focus(child)
+		if child_focus: return child_focus
+	return null
 
 # If pause menu should take precedence, override _input() instead.
 func _unhandled_input(event : InputEvent) -> void:

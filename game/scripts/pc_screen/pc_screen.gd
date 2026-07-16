@@ -126,7 +126,7 @@ func _on_minigame_won() -> void:
 	_meta_game.show()
 	
 	GameplayAudioController.minigame_won.emit()
-	
+	_continue_button.grab_focus()
 	#_prepare_next_minigame()
 
 
@@ -141,7 +141,7 @@ func _on_minigame_lost() -> void:
 	_meta_game.show()
 	
 	GameplayAudioController.minigame_bad_event.emit()
-	
+	_continue_button.grab_focus()
 	#_prepare_next_minigame()
 
 
@@ -179,6 +179,7 @@ func _prepare_next_minigame() -> void:
 		_devil_line.text = _TEXT_ROLL_DICE % _EXAMPLE_GAME_NAME
 	
 	_roll_dice_button.show()
+	_roll_dice_button.grab_focus()
 	_meta_game.show()
 
 
@@ -204,6 +205,7 @@ func _on_roll_dice_button_pressed() -> void:
 	_reroll_dice_button.show()
 	_or_label.show()
 	_accept_roll_button.show()
+	_accept_roll_button.grab_focus()
 
 
 func _on_reroll_dice_button_pressed() -> void:
@@ -211,6 +213,7 @@ func _on_reroll_dice_button_pressed() -> void:
 	_dice_roll_label.text = "%s" % _current_dice_roll
 	_current_minigame.dice_roll = _current_dice_roll
 	_devil_line.text = _TEXT_REROLL_DICE % _current_minigame.get_time_limit()
+	_reroll_dice_button.grab_focus()
 
 
 func _on_accept_roll_button_pressed() -> void:
@@ -225,6 +228,7 @@ func _on_accept_roll_button_pressed() -> void:
 	_start_button.show()
 	_difficulty_boxes.show()
 	_show_bar_previews()
+	_easy_check_box.grab_focus()
 
 
 func _on_start_button_pressed() -> void:
