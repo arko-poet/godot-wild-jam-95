@@ -57,6 +57,7 @@ var _progress := 0.0:
 
 @onready var _dice_roll_label: Label = %DiceRollLabel
 
+@onready var _die: Sprite2D = %Die
 @onready var _roll_dice_button: Button = %RollDiceButton
 @onready var _reroll_dice_button: Button = %RerollDiceButton
 @onready var _start_button: Button = %StartButton
@@ -69,6 +70,7 @@ var _progress := 0.0:
 @onready var _hard_check_box: CheckBox = %HardCheckBox
 
 @onready var _devil_line: Label = %DevilLine
+
 
 
 func _ready() -> void:
@@ -114,6 +116,7 @@ func _prepare_next_minigame() -> void:
 
 func _roll_dice() -> void:
 	_current_dice_roll = 1 + randi() % 6
+	_die.roll(_current_dice_roll)
 	_doom += _DOOM_STEP / 2.0
 
 
