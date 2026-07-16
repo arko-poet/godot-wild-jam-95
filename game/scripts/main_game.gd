@@ -73,6 +73,11 @@ func _on_pc_screen_doom_changed(percentage: float) -> void:
 	monster.show()
 
 	if percentage == 1.0:
+		# prevent game over showing immediatly before palyer sees final monster stage
+		var timer = Timer.new()
+		add_child(timer)
+		timer.start(4.0)
+		await timer.timeout
 		win_lose_manager.game_lost()
 
 func play_monster_transition() -> void:
