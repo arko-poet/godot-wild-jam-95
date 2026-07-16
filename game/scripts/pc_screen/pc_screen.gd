@@ -80,6 +80,7 @@ var _progress := 0.0:
 @onready var _start_button: Button = %StartButton
 @onready var _or_label: Label = %ORLabel
 @onready var _accept_roll_button: Button = %AcceptRollButton
+@onready var _continue_button: Button = %ContinueButton
 
 @onready var _difficulty_boxes: GridContainer = %DifficultyBoxes
 @onready var _easy_check_box: CheckBox = %EasyCheckBox
@@ -100,39 +101,50 @@ func _ready() -> void:
 
 func _on_minigame_won() -> void:
 	_progress += _PROGRESS_STEP * (_get_difficulty() + 1)
-	await _show_reaction(true)
-	_prepare_next_minigame()
+	
+	#await _show_reaction(true)
+	_devil_line.text = _TEXT_WON[randi() % len(_TEXT_WON)]
+	_continue_button.show()
+	if _current_minigame:
+		_current_minigame.queue_free()
+	_meta_game.show()
+	
+	#_prepare_next_minigame()
 
 
 func _on_minigame_lost() -> void:
 	_doom += _DOOM_STEP * (_get_difficulty() + 1)
-	await _show_reaction(false)
-	_prepare_next_minigame()
-
-
-func _show_reaction(won: bool) -> void:
-	if won:
-		_devil_line.text = _TEXT_WON[randi() % len(_TEXT_WON)]
-	else:
-		_devil_line.text = _TEXT_LOSE[randi() % len(_TEXT_LOSE)]
 	
-	_roll_dice_button.hide()
-	_reroll_dice_button.hide()
-	_or_label.hide()
-	_accept_roll_button.hide()
-	_dice_roll_label.hide()
-	_start_button.hide()
-	_difficulty_boxes.hide()
-	
+	#await _show_reaction(false)
+	_devil_line.text = _TEXT_LOSE[randi() % len(_TEXT_LOSE)]
+	_continue_button.show()
+	if _current_minigame:
+		_current_minigame.queue_free()
 	_meta_game.show()
 	
-	await get_tree().create_timer(_REACTION_TIME).timeout
+	#_prepare_next_minigame()
+
+
+#func _show_reaction(won: bool) -> void:
+	#if won:
+		#_devil_line.text = _TEXT_WON[randi() % len(_TEXT_WON)]
+	#else:
+		#_devil_line.text = _TEXT_LOSE[randi() % len(_TEXT_LOSE)]
+	#
+	#_roll_dice_button.hide()
+	#_reroll_dice_button.hide()
+	#_or_label.hide()
+	#_accept_roll_button.hide()
+	#_dice_roll_label.hide()
+	#_start_button.hide()
+	#_difficulty_boxes.hide()
+	#
+	#_meta_game.show()
+	#
+	#await get_tree().create_timer(_REACTION_TIME).timeout
 
 
 func _prepare_next_minigame() -> void:
-	if _current_minigame:
-		_current_minigame.queue_free()
-	
 	_current_minigame = _MiniGameScenes.pick_random().instantiate()
 	
 	if _current_minigame is FallingGame:
@@ -204,8 +216,6 @@ func _on_start_button_pressed() -> void:
 	_difficulty_boxes.hide()
 	_doom_bar_preview.hide()
 	_progress_bar_preview.hide()
-	
-	_roll_dice_button.show()
 
 
 func _on_easy_check_box_pressed() -> void:
@@ -246,3 +256,8 @@ func _show_bar_previews() -> void:
 	_progress_bar_preview.value = _progress + _PROGRESS_STEP * (_get_difficulty() + 1)
 	_doom_bar_preview.show()
 	_doom_bar_preview.value = _doom + _DOOM_STEP * (_get_difficulty() + 1)
+
+
+func _on_continue_button_pressed() -> void:
+	_continue_button.hide()
+	_prepare_next_minigame()

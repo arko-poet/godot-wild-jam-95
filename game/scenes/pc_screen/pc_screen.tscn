@@ -163,6 +163,12 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "ROLL DICE"
 
+[node name="ContinueButton" type="Button" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame/ButtonsContainer" unique_id=1784809307]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+text = "CONTINUE"
+
 [node name="RerollDiceButton" type="Button" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame/ButtonsContainer" unique_id=463036163]
 unique_name_in_owner = true
 visible = false
@@ -292,6 +298,7 @@ scale = Vector2(11.890625, 8.53125)
 mouse_filter = 2
 
 [connection signal="pressed" from="SubViewportContainer/SubViewport/ScreenContent/MetaGame/ButtonsContainer/RollDiceButton" to="." method="_on_roll_dice_button_pressed"]
+[connection signal="pressed" from="SubViewportContainer/SubViewport/ScreenContent/MetaGame/ButtonsContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
 [connection signal="pressed" from="SubViewportContainer/SubViewport/ScreenContent/MetaGame/ButtonsContainer/RerollDiceButton" to="." method="_on_reroll_dice_button_pressed"]
 [connection signal="pressed" from="SubViewportContainer/SubViewport/ScreenContent/MetaGame/ButtonsContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="SubViewportContainer/SubViewport/ScreenContent/MetaGame/ButtonsContainer/AcceptRollButton" to="." method="_on_accept_roll_button_pressed"]
