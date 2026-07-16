@@ -148,6 +148,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 	if input_dir != Vector2.ZERO and input_dir != -direction:
 		buffered_direction = input_dir
+		GameplayAudioController.minigame_progress.emit()
 
 
 func is_walkable(square: Vector2) -> bool:
@@ -181,6 +182,7 @@ func _on_move_timer_timeout() -> void:
 	if grew:
 		num_apples_collected += 1
 		update_apple_label()
+		GameplayAudioController.minigame_good_event.emit()
 	else:
 		var snake_end = snake_squares.pop_back()
 		get_square(snake_end).set_type("empty")

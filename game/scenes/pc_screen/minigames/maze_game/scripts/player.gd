@@ -35,6 +35,7 @@ func try_move(dir: Vector2) -> void:
 	grid_pos = target
 	is_moving = true
 	
+	GameplayAudioController.minigame_progress.emit()
 	var tween := create_tween()
 	tween.set_trans(Tween.TRANS_BACK)
 	tween.set_ease(Tween.EASE_OUT)
