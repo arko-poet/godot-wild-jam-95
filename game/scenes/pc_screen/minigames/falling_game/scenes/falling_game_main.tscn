@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://rhuct7l135mm" path="res://game/scenes/pc_screen/minigames/falling_game/scripts/falling_game_main.gd" id="1_tei26"]
 [ext_resource type="Script" uid="uid://ctuyqbnvia1rb" path="res://game/scenes/pc_screen/minigames/falling_game/scripts/falling_camera.gd" id="2_4oggc"]
 [ext_resource type="PackedScene" uid="uid://deolci8vffafc" path="res://game/scenes/pc_screen/minigames/falling_game/scenes/rolling_player.tscn" id="2_xp6nb"]
+[ext_resource type="PackedScene" uid="uid://bxcrjj54yj4ok" path="res://game/shaders/CRTShader.tscn" id="4_1kjc7"]
 [ext_resource type="Texture2D" uid="uid://buoe86bqyfknb" path="res://icon.svg" id="5_5lc5m"]
 [ext_resource type="PackedScene" uid="uid://bb5isa4txkp3f" path="res://game/scenes/pc_screen/minigames/timer_component.tscn" id="5_cmei7"]
 
@@ -63,6 +64,7 @@ scale = Vector2(0.8630612, 14.254814)
 texture = SubResource("GradientTexture1D_3tvq1")
 
 [node name="TempSideWall3" type="TextureRect" parent="Prototype" unique_id=762882069]
+visible = false
 z_index = 1
 offset_left = -1751.0
 offset_top = -1414.0
@@ -93,9 +95,24 @@ shape = SubResource("RectangleShape2D_dpga7")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1493938841]
 unique_name_in_owner = true
-position = Vector2(448, 540)
-offset = Vector2(512, 0)
+anchor_mode = 0
 script = ExtResource("2_4oggc")
+
+[node name="TimerComponent" parent="Camera2D" unique_id=1166255049 instance=ExtResource("5_cmei7")]
+unique_name_in_owner = true
+anchors_preset = -1
+anchor_left = 0.42708334
+anchor_top = 0.022222223
+anchor_right = 0.5239583
+anchor_bottom = 0.08796296
+offset_left = 906.0
+offset_top = 29.0
+offset_right = 907.0
+offset_bottom = 52.0
+grow_horizontal = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="CRTShader" parent="Camera2D" unique_id=1925341764 instance=ExtResource("4_1kjc7")]
 
 [node name="RollingPlayer" parent="." unique_id=260473328 instance=ExtResource("2_xp6nb")]
 unique_name_in_owner = true
@@ -114,13 +131,6 @@ shape = SubResource("RectangleShape2D_8nwgy")
 
 [node name="Platforms" type="Node" parent="." unique_id=352527631]
 unique_name_in_owner = true
-
-[node name="TimerComponent" parent="." unique_id=1166255049 instance=ExtResource("5_cmei7")]
-unique_name_in_owner = true
-offset_left = 11.0
-offset_top = 6.0
-offset_right = 12.0
-offset_bottom = 29.0
 
 [node name="SpikeKiller" type="Area2D" parent="." unique_id=2095928293]
 collision_layer = 4
@@ -144,5 +154,5 @@ position = Vector2(587, -90)
 shape = SubResource("RectangleShape2D_drsw1")
 
 [connection signal="body_entered" from="KillPlane" to="." method="_on_kill_plane_body_entered"]
+[connection signal="out_of_time" from="Camera2D/TimerComponent" to="." method="_on_timer_component_timeout"]
 [connection signal="body_entered" from="Goal" to="." method="_on_goal_body_entered"]
-[connection signal="out_of_time" from="TimerComponent" to="." method="_on_timer_component_timeout"]

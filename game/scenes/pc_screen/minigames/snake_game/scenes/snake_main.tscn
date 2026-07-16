@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://brnu6t1f10k4o" path="res://game/scenes/pc_screen/minigames/snake_game/scripts/snake_main.gd" id="1_fg80f"]
 [ext_resource type="PackedScene" uid="uid://bb5isa4txkp3f" path="res://game/scenes/pc_screen/minigames/timer_component.tscn" id="2_hlljp"]
+[ext_resource type="PackedScene" uid="uid://bxcrjj54yj4ok" path="res://game/shaders/CRTShader.tscn" id="3_ywtt5"]
 
 [node name="SnakeMain" type="Node2D" unique_id=1972287876]
 script = ExtResource("1_fg80f")
@@ -17,6 +18,8 @@ unique_name_in_owner = true
 offset_right = 40.0
 offset_bottom = 23.0
 text = "X / X Collected"
+
+[node name="CRTShader" parent="." unique_id=1925341764 instance=ExtResource("3_ywtt5")]
 
 [connection signal="timeout" from="MoveTimer" to="." method="_on_move_timer_timeout"]
 [connection signal="out_of_time" from="TimerComponent" to="." method="_on_timer_component_out_of_time"]

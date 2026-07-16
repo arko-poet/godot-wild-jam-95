@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://v5d6u7rtp522"]
 
 [ext_resource type="Script" uid="uid://bsxfkt70612yq" path="res://game/scripts/pc_screen/pc_screen.gd" id="1_ib41a"]
-[ext_resource type="Shader" uid="uid://uw7b7qo618vi" path="res://game/shaders/crt.gdshader" id="2_7np4j"]
 [ext_resource type="Script" uid="uid://baylt4lsmmrfk" path="res://game/scripts/die.gd" id="2_8vsnj"]
 [ext_resource type="Texture2D" uid="uid://da1tl6w8xc6s7" path="res://game/art/placeholders/arko.png" id="2_hw7br"]
 [ext_resource type="Texture2D" uid="uid://bh1hk7mnp5u5j" path="res://game/scenes/pc_screen/minigames/snake_game/assets/spikes.png" id="3_qcrff"]
@@ -10,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://lloyhyepsu0x" path="res://game/scenes/pc_screen/minigames/maze_game/assets/PrototypeCharacter.png" id="6_5e5m8"]
 [ext_resource type="Texture2D" uid="uid://4xotooeatb40" path="res://game/scenes/pc_screen/minigames/snake_game/assets/Square.png" id="7_dnf0m"]
 [ext_resource type="Texture2D" uid="uid://buoe86bqyfknb" path="res://icon.svg" id="8_6nmus"]
+[ext_resource type="PackedScene" uid="uid://bxcrjj54yj4ok" path="res://game/shaders/CRTShader.tscn" id="10_8vsnj"]
 
 [sub_resource type="Gradient" id="Gradient_88wer"]
 offsets = PackedFloat32Array(0)
@@ -17,8 +17,8 @@ colors = PackedColorArray(0.21950102, 0.21950102, 0.21950102, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_vgun3"]
 gradient = SubResource("Gradient_88wer")
-width = 660
-height = 490
+width = 1024
+height = 768
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7np4j"]
 bg_color = Color(0.7121294, 0.7121294, 0.71212935, 1)
@@ -32,35 +32,19 @@ corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qgpu0"]
-shader = ExtResource("2_7np4j")
-shader_parameter/resolution = Vector2(660, 490)
-shader_parameter/scan_line_amount = 0.10000000475
-shader_parameter/warp_amount = 0.2000000095
-shader_parameter/noise_amount = 0.03
-shader_parameter/interference_amount = 0.2
-shader_parameter/grille_amount = 0.1
-shader_parameter/grille_size = 1.0
-shader_parameter/vignette_amount = 0.6
-shader_parameter/vignette_intensity = 0.400000019
-shader_parameter/aberation_amount = 0.2000000095
-shader_parameter/roll_line_amount = 0.0
-shader_parameter/roll_speed = 1.0000004274999998
-shader_parameter/scan_line_strength = -7.99999981
-shader_parameter/pixel_strength = -2.0
-
 [node name="PCScreen" type="Node2D" unique_id=1576839333]
 script = ExtResource("1_ib41a")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=433300572]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(1024, 768)
 offset_right = 640.0
 offset_bottom = 480.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=594804747]
 handle_input_locally = false
-size = Vector2i(660, 490)
+size = Vector2i(1024, 768)
 render_target_update_mode = 4
 
 [node name="ScreenContent" type="Control" parent="SubViewportContainer/SubViewport" unique_id=625437244]
@@ -303,15 +287,8 @@ text = "Hard"
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="CRTShaderTexture" type="ColorRect" parent="SubViewportContainer/SubViewport" unique_id=1133477946]
-material = SubResource("ShaderMaterial_qgpu0")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(11.890625, 8.53125)
-mouse_filter = 2
+[node name="CRTShader" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame" unique_id=1925341764 instance=ExtResource("10_8vsnj")]
+layout_mode = 0
 
 [connection signal="roll_finished" from="SubViewportContainer/SubViewport/ScreenContent/MetaGame/Die" to="." method="_on_die_roll_finished"]
 [connection signal="pressed" from="SubViewportContainer/SubViewport/ScreenContent/MetaGame/ButtonsContainer/RollDiceButton" to="." method="_on_roll_dice_button_pressed"]

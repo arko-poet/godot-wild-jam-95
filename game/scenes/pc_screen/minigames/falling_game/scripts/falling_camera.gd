@@ -1,7 +1,7 @@
 extends Camera2D
 
 const MOVE_SPEED = 600.0 ## How fast the camera moves to the next platform
-const OFFSET_Y = 100.0 ## how far below the target platform the camera aims for
+const OFFSET_Y = -200.0 ## how far below the target platform the camera aims for
 
 @onready var target_pos := position
 

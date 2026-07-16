@@ -30,6 +30,7 @@ stream = ExtResource("5_ldb66")
 [node name="Room" type="Node2D" parent="." unique_id=1070448921]
 
 [node name="Background" type="Sprite2D" parent="Room" unique_id=1873225203]
+scale = Vector2(1.4999999, 1.4999999)
 texture = ExtResource("2_yv8p0")
 centered = false
 
@@ -40,7 +41,8 @@ texture = ExtResource("7_ldb66")
 
 [node name="PCScreen" parent="Room" unique_id=1576839333 instance=ExtResource("5_wemlv")]
 unique_name_in_owner = true
-position = Vector2(79, 88)
+position = Vector2(117.99999, 128.99998)
+scale = Vector2(0.97, 0.97)
 
 [node name="UILayer" type="CanvasLayer" parent="." unique_id=1011913819]
 
