@@ -1,3 +1,4 @@
+class_name MazeGame
 extends Minigame
 
 const GRID_DIMENSIONS := {

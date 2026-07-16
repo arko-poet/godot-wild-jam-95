@@ -7,6 +7,7 @@ const _MiniGameScenes := [
 	preload("res://game/scenes/pc_screen/minigames/example_minigame/example_minigame.tscn"),
 	preload("res://game/scenes/pc_screen/minigames/falling_game/scenes/falling_game_main.tscn"),
 	preload("res://game/scenes/pc_screen/minigames/maze_game/scenes/maze_main.tscn"),
+	preload("res://game/scenes/pc_screen/minigames/snake_game/scenes/snake_main.tscn"),
 ]
 
 const _MAX_DOOM := 1.0
@@ -22,6 +23,7 @@ const _TEXT_CHOOSE_DIFFICULTY := "Choose difficulty."
 const _MAZE_GAME_NAME := "searching"
 const _EXAMPLE_GAME_NAME := "stupid"
 const _FALLING_GAME_NAME := "falling"
+const _SNAKE_GAME_NAME := "eating" # or slithering??
 
 const BAR_FILL_TIME := 0.5
 
@@ -94,12 +96,14 @@ func _prepare_next_minigame() -> void:
 	
 	_current_minigame = _MiniGameScenes.pick_random().instantiate()
 	
-	if _current_minigame is ExampleMinigame:
-		_devil_line.text = _TEXT_ROLL_DICE % _EXAMPLE_GAME_NAME
-	elif _current_minigame is FallingGame:
+	if _current_minigame is FallingGame:
 		_devil_line.text = _TEXT_ROLL_DICE % _FALLING_GAME_NAME
-	else:
+	elif _current_minigame is SnakeGame:
+		_devil_line.text = _TEXT_ROLL_DICE % _SNAKE_GAME_NAME
+	elif _current_minigame is MazeGame:
 		_devil_line.text = _TEXT_ROLL_DICE % _MAZE_GAME_NAME
+	else: # example minigame
+		_devil_line.text = _TEXT_ROLL_DICE % _EXAMPLE_GAME_NAME
 	
 	_meta_game.show()
 
