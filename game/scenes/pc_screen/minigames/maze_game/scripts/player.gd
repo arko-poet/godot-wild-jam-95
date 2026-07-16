@@ -3,7 +3,7 @@ extends Node2D
 signal game_won
 
 @export var maze: Node2D
-@export var move_time: float = 0.2
+@export var move_time: float = 0.15
 
 var grid_pos: Vector2
 var is_moving: bool = false
