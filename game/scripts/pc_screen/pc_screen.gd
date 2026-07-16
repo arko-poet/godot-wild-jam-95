@@ -67,6 +67,7 @@ var _progress := 0.0:
 
 @onready var _meta_game: Control = %MetaGame
 @onready var _screen_content: Control = %ScreenContent
+@onready var _screen_container: SubViewportContainer = %SubViewportContainer
 
 @onready var _progress_bar: ProgressBar = %ProgressBar
 @onready var _progress_bar_preview: ProgressBar = %ProgressBarPreview
@@ -75,12 +76,14 @@ var _progress := 0.0:
 
 @onready var _dice_roll_label: Label = %DiceRollLabel
 
+@onready var _die: Sprite2D = %Die
 @onready var _roll_dice_button: Button = %RollDiceButton
 @onready var _reroll_dice_button: Button = %RerollDiceButton
 @onready var _start_button: Button = %StartButton
 @onready var _or_label: Label = %ORLabel
 @onready var _accept_roll_button: Button = %AcceptRollButton
 @onready var _continue_button: Button = %ContinueButton
+@onready var _buttons_container: HBoxContainer = %ButtonsContainer
 
 @onready var _difficulty_boxes: GridContainer = %DifficultyBoxes
 @onready var _easy_check_box: CheckBox = %EasyCheckBox
@@ -90,6 +93,7 @@ var _progress := 0.0:
 @onready var _devil_line: Label = %DevilLine
 
 
+
 func _ready() -> void:
 	_progress_bar.max_value = _MAX_PROGRESS
 	_progress_bar_preview.max_value = _MAX_PROGRESS
@@ -97,6 +101,17 @@ func _ready() -> void:
 	_doom_bar_preview.max_value = _MAX_DOOM
 	
 	_prepare_next_minigame()
+	_play_power_on_animation()
+
+func _play_power_on_animation() -> void:
+	_screen_container.scale = Vector2(1.0, 0.02)
+	_screen_container.modulate = Color.DIM_GRAY
+	
+	var tween := create_tween().set_parallel(true)
+	tween.tween_property(_screen_container, "scale:y", 1.0, 0.35)\
+		.set_delay(0.15).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	tween.tween_property(_screen_container, "modulate", Color.WHITE, 0.35)\
+		.set_delay(0.15)
 
 
 func _on_minigame_won() -> void:
@@ -163,7 +178,12 @@ func _prepare_next_minigame() -> void:
 
 
 func _roll_dice() -> void:
+	_die.show()
+	_buttons_container.hide()
+	_dice_roll_label.hide()
+	
 	_current_dice_roll = 1 + randi() % 6
+	_die.roll(_current_dice_roll)
 	_doom += _DOOM_STEP / 2.0
 
 
@@ -176,7 +196,6 @@ func _on_roll_dice_button_pressed() -> void:
 	
 	_roll_dice_button.hide()
 	
-	_dice_roll_label.show()
 	_reroll_dice_button.show()
 	_or_label.show()
 	_accept_roll_button.show()
@@ -194,6 +213,7 @@ func _on_accept_roll_button_pressed() -> void:
 	_or_label.hide()
 	_accept_roll_button.hide()
 	_dice_roll_label.hide()
+	_die.hide()
 	
 	_devil_line.text = _TEXT_CHOOSE_DIFFICULTY
 	
@@ -261,3 +281,7 @@ func _show_bar_previews() -> void:
 func _on_continue_button_pressed() -> void:
 	_continue_button.hide()
 	_prepare_next_minigame()
+  
+func _on_die_roll_finished(_value: int) -> void:
+	_buttons_container.show()
+	_dice_roll_label.show()
