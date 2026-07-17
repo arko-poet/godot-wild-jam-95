@@ -5,7 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://ws3qu4alfdk0" path="res://template/scenes/windows/main_menu_options_window.tscn" id="3_tsej0"]
 [ext_resource type="PackedScene" uid="uid://bub13x1ejxp3j" path="res://template/scenes/windows/main_menu_credits_window.tscn" id="4_b321b"]
 [ext_resource type="PackedScene" uid="uid://cwt4p3bufkke5" path="res://addons/maaacks_game_template/base/nodes/windows/confirmation_overlaid_window.tscn" id="5_dm2ih"]
-[ext_resource type="AudioStream" uid="uid://cfiud3be6kdth" path="res://game/audio/music/placeholders/oceanking-september-219737.mp3" id="5_p7afn"]
+[ext_resource type="AudioStream" uid="uid://mc5f4grm875w" path="res://game/audio/music/subtle_background/BGM_Subtle_MAIN.mp3" id="5_tsej0"]
+[ext_resource type="AudioStream" uid="uid://dofhy0m0sibl4" path="res://game/audio/music/subtle_background/BGM_Subtle_LOOP.mp3" id="6_b321b"]
 
 [sub_resource type="Animation" id="1"]
 resource_name = "Intro"
@@ -315,6 +316,17 @@ states/Start/position = Vector2(82, 123)
 transitions = ["Intro", "OpenMainMenu", SubResource("11"), "OpenMainMenu", "OpenSubMenu", SubResource("14"), "Start", "Intro", SubResource("AnimationNodeStateMachineTransition_j0orr"), "OpenSubMenu", "OpenMainMenu", SubResource("AnimationNodeStateMachineTransition_63dxc")]
 graph_offset = Vector2(-180.277, 49)
 
+[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_883tm"]
+clip_count = 2
+clip_0/name = &"Bgm Subtle Main"
+clip_0/stream = ExtResource("5_tsej0")
+clip_0/auto_advance = 1
+clip_0/next_clip = 1
+clip_1/name = &"Bgm Subtle Loop"
+clip_1/stream = ExtResource("6_b321b")
+clip_1/auto_advance = 1
+clip_1/next_clip = 1
+
 [node name="MainMenu" unique_id=589811630 instance=ExtResource("1_mcwxw")]
 script = ExtResource("2_p7afn")
 level_select_packed_scene = null
@@ -332,7 +344,7 @@ anim_player = NodePath("../MenuAnimationPlayer")
 parameters/conditions/intro_done = false
 
 [node name="BackgroundMusicPlayer" parent="." index="3" unique_id=1141822549]
-stream = ExtResource("5_p7afn")
+stream = SubResource("AudioStreamInteractive_883tm")
 
 [node name="TitleContainer" parent="MenuContainer/TitleMargin" parent_id_path=PackedInt32Array(2112060331) index="0" unique_id=556427956]
 modulate = Color(1, 1, 1, 0)
