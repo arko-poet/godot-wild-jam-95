@@ -125,6 +125,10 @@ func play_power_on_animation() -> void:
 
 
 func _on_minigame_won() -> void:
+	if MinigameTimeTrials.trials_active:
+		MinigameTimeTrials.print_minigame_time()
+		MinigameTimeTrials.stop_timer()
+	
 	_progress += _DOOM_AND_PROGRESS[_get_difficulty()]
 	
 	#await _show_reaction(true)
@@ -174,7 +178,10 @@ func _on_minigame_lost() -> void:
 
 
 func _prepare_next_minigame() -> void:
-	_current_minigame = _MiniGameScenes.pick_random().instantiate()
+	if MinigameTimeTrials.trials_active:
+		_current_minigame = _MiniGameScenes[MinigameTimeTrials.force_minigame_index].instantiate()
+	else:
+		_current_minigame = _MiniGameScenes.pick_random().instantiate()
 	
 	if _current_minigame is FallingGame:
 		_devil_line.text = _TEXT_ROLL_DICE % _FALLING_GAME_NAME
@@ -266,6 +273,9 @@ func _on_start_button_pressed() -> void:
 	_difficulty_boxes.hide()
 	_doom_bar_preview.hide()
 	_progress_bar_preview.hide()
+	
+	if MinigameTimeTrials.trials_active:
+		MinigameTimeTrials.start_timer()
 
 
 func _on_easy_check_box_pressed() -> void:
