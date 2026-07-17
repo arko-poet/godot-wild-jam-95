@@ -37,3 +37,7 @@ func _ready() -> void:
 	pause_menu = pause_menu_packed.instantiate()
 	pause_menu.hide()
 	get_tree().current_scene.call_deferred("add_child", pause_menu)
+
+
+func _on_pause_button_pressed() -> void:
+	pause()
