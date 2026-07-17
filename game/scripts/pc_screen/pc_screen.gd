@@ -249,7 +249,10 @@ func _on_accept_roll_button_pressed() -> void:
 	_start_button.show()
 	_difficulty_boxes.show()
 	_show_bar_previews()
-	_easy_check_box.grab_focus()
+	
+	if _easy_check_box.button_pressed: _easy_check_box.grab_focus()
+	elif _hard_check_box.button_pressed: _hard_check_box.grab_focus()
+	else: _medium_check_box.grab_focus()
 
 
 func _on_start_button_pressed() -> void:
