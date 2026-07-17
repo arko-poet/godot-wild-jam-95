@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://dbeucs8xunuju"]
+
+[ext_resource type="Script" uid="uid://of6awyi2w05h" path="res://game/scenes/pc_screen/3d_die_window/scripts/die.gd" id="1_otasc"]
+[ext_resource type="PackedScene" uid="uid://16aot3ndext7" path="res://game/scenes/pc_screen/3d_die_window/assets/die.glb" id="2_wccv6"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fl3nv"]
+bounce = 0.5
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ho3k1"]
+size = Vector3(0.5, 0.5, 0.5)
+
+[node name="Die" type="RigidBody3D" unique_id=195669116]
+physics_material_override = SubResource("PhysicsMaterial_fl3nv")
+script = ExtResource("1_otasc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=688344916]
+shape = SubResource("BoxShape3D_ho3k1")
+
+[node name="Six" type="RayCast3D" parent="." unique_id=1217615702]
+unique_name_in_owner = true
+target_position = Vector3(0, 0.3, 0)
+collision_mask = 2
+
+[node name="Five" type="RayCast3D" parent="." unique_id=1653733409]
+unique_name_in_owner = true
+target_position = Vector3(-0.3, 0, 0)
+collision_mask = 2
+
+[node name="Four" type="RayCast3D" parent="." unique_id=317701436]
+unique_name_in_owner = true
+target_position = Vector3(0, 0, 0.3)
+collision_mask = 2
+
+[node name="Three" type="RayCast3D" parent="." unique_id=687354575]
+unique_name_in_owner = true
+target_position = Vector3(0, 0, -0.3)
+collision_mask = 2
+
+[node name="Two" type="RayCast3D" parent="." unique_id=1951143280]
+unique_name_in_owner = true
+target_position = Vector3(0.3, 0, 0)
+collision_mask = 2
+
+[node name="One" type="RayCast3D" parent="." unique_id=585057298]
+unique_name_in_owner = true
+target_position = Vector3(0, -0.3, 0)
+collision_mask = 2
+
+[node name="die" parent="." unique_id=1260927999 instance=ExtResource("2_wccv6")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)

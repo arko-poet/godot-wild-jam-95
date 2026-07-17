@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://df8tqt36xltlc"]
+
+[ext_resource type="Script" uid="uid://cgltoanco4v8q" path="res://game/scenes/pc_screen/3d_die_window/scripts/test_2d_scene.gd" id="1_1m5lx"]
+[ext_resource type="Texture2D" uid="uid://buoe86bqyfknb" path="res://icon.svg" id="2_8s3ti"]
+[ext_resource type="PackedScene" uid="uid://c2wqd768yhudi" path="res://game/scenes/pc_screen/3d_die_window/scenes/die_window_3d.tscn" id="3_8s3ti"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ho3k1"]
+font_size = 75
+
+[node name="Test2dScene" type="Node2D" unique_id=2138385267]
+script = ExtResource("1_1m5lx")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1035602362]
+modulate = Color(1, 1, 1, 0.38039216)
+position = Vector2(599, 306)
+scale = Vector2(10.359375, 5.78125)
+texture = ExtResource("2_8s3ti")
+
+[node name="Label" type="Label" parent="." unique_id=403622798]
+offset_left = 699.0
+offset_top = 58.0
+offset_right = 1017.0
+offset_bottom = 179.0
+text = "Result: "
+label_settings = SubResource("LabelSettings_ho3k1")
+
+[node name="DieWindow3D" parent="." unique_id=1377872851 instance=ExtResource("3_8s3ti")]
+offset_left = 258.0
+offset_top = 292.0
+offset_right = 858.0
+offset_bottom = 892.0
+
+[node name="RollButton" type="Button" parent="." unique_id=635015177]
+offset_left = 1224.0
+offset_top = 684.0
+offset_right = 1464.0
+offset_bottom = 781.0
+text = "Roll Die"
+
+[node name="RollTimer" type="Timer" parent="." unique_id=462912062]
+wait_time = 4.0
+one_shot = true
+
+[connection signal="die_result" from="DieWindow3D" to="." method="_on_d_die_window_die_result"]
+[connection signal="pressed" from="RollButton" to="." method="_on_roll_button_pressed"]
