@@ -9,12 +9,12 @@ const GRID_DIMENSIONS := {
 
 # game is much harder because of fog of war effect, time limit may have to be increased
 const TIME_LIMITS := { # in seconds
-	1: 13,
-	2: 15,
-	3: 17,
-	4: 19,
-	5: 21,
-	6: 23,
+	1: 10,
+	2: 12,
+	3: 14,
+	4: 16,
+	5: 18,
+	6: 24,
 }
 
 const Square = preload("uid://bykoixtjlnm5j")
