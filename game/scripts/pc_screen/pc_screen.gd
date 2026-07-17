@@ -54,6 +54,7 @@ var _doom := 0.0:
 	set(value):
 		var tween = create_tween()
 		tween.tween_property(_doom_bar, ^"value", min(value, _MAX_DOOM), BAR_FILL_TIME)
+		await tween.finished
 		_doom = min(value, _MAX_DOOM)
 		doom_changed.emit(_doom)
 		
@@ -61,6 +62,7 @@ var _progress := 0.0:
 	set(value):
 		var tween = create_tween()
 		tween.tween_property(_progress_bar, ^"value", min(value, _MAX_PROGRESS), BAR_FILL_TIME)
+		await tween.finished
 		_progress = min(value, _MAX_PROGRESS)
 		if _progress == _MAX_PROGRESS:
 			progress_bar_filled.emit()
@@ -187,18 +189,28 @@ func _prepare_next_minigame() -> void:
 
 func _roll_dice() -> void:
 	_die.show()
+	
 	_buttons_container.hide()
 	_dice_roll_label.hide()
 	
-	_current_dice_roll = 1 + randi() % 6
-	_die.roll(_current_dice_roll)
+	_die.roll(1 + randi() % 6)
+	await _die.roll_finished
+	
+	_dice_roll_label.show()
+	_buttons_container.show()
+		
 	_doom += _DOOM_STEP / 2.0
 
 
+func _on_die_roll_finished(value: int) -> void:
+	print(value)
+	_current_dice_roll = value
+
+
 func _on_roll_dice_button_pressed() -> void:
-	_roll_dice()
-	_dice_roll_label.text = "%s" % _current_dice_roll
+	await _roll_dice()
 	_current_minigame.dice_roll = _current_dice_roll
+	_dice_roll_label.text = "%s" % _current_dice_roll
 	
 	_devil_line.text = _TEXT_REROLL_DICE % _current_minigame.get_time_limit()
 	
@@ -211,7 +223,7 @@ func _on_roll_dice_button_pressed() -> void:
 
 
 func _on_reroll_dice_button_pressed() -> void:
-	_roll_dice()
+	await _roll_dice()
 	_dice_roll_label.text = "%s" % _current_dice_roll
 	_current_minigame.dice_roll = _current_dice_roll
 	_devil_line.text = _TEXT_REROLL_DICE % _current_minigame.get_time_limit()
@@ -295,7 +307,3 @@ func _show_bar_previews() -> void:
 func _on_continue_button_pressed() -> void:
 	_continue_button.hide()
 	_prepare_next_minigame()
-  
-func _on_die_roll_finished(_value: int) -> void:
-	_buttons_container.show()
-	_dice_roll_label.show()
