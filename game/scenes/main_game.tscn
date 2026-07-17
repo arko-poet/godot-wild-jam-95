@@ -91,10 +91,11 @@ unique_name_in_owner = true
 visible = false
 custom_minimum_size = Vector2(200, 100)
 layout_mode = 0
-offset_left = 911.0
-offset_top = 570.0
-offset_right = 1111.0
-offset_bottom = 670.0
+offset_left = 1431.0
+offset_top = 907.0
+offset_right = 1634.0
+offset_bottom = 1007.0
+theme_override_font_sizes/font_size = 32
 text = "Claim Prize"
 
 [node name="MarginContainer" type="MarginContainer" parent="UILayer/UI" unique_id=2127236174]
