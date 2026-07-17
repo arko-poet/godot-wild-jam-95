@@ -250,6 +250,7 @@ func _on_start_button_pressed() -> void:
 
 
 func _on_easy_check_box_pressed() -> void:
+	_easy_check_box.button_pressed = true
 	_medium_check_box.button_pressed = false
 	_hard_check_box.button_pressed = false
 	
@@ -258,6 +259,7 @@ func _on_easy_check_box_pressed() -> void:
 
 func _on_medium_check_box_pressed() -> void:
 	_easy_check_box.button_pressed = false
+	_medium_check_box.button_pressed = true
 	_hard_check_box.button_pressed = false
 	
 	_show_bar_previews()
@@ -266,6 +268,7 @@ func _on_medium_check_box_pressed() -> void:
 func _on_hard_check_box_pressed() -> void:
 	_easy_check_box.button_pressed = false
 	_medium_check_box.button_pressed = false
+	_hard_check_box.button_pressed = true
 	
 	_show_bar_previews()
 

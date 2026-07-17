@@ -291,11 +291,16 @@ grow_horizontal = 2
 grow_vertical = 2
 columns = 2
 
+[node name="EasyCheckBox" type="CheckBox" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame/DifficultyBoxes" unique_id=402845765]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxFlat_ax7l3")
+
 [node name="EasyLabel" type="Label" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame/DifficultyBoxes" unique_id=1330503194]
 layout_mode = 2
 text = "Easy"
 
-[node name="EasyCheckBox" type="CheckBox" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame/DifficultyBoxes" unique_id=402845765]
+[node name="MediumCheckBox" type="CheckBox" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame/DifficultyBoxes" unique_id=766912638]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_styles/focus = SubResource("StyleBoxFlat_ax7l3")
@@ -305,7 +310,7 @@ button_pressed = true
 layout_mode = 2
 text = "Medium"
 
-[node name="MediumCheckBox" type="CheckBox" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame/DifficultyBoxes" unique_id=766912638]
+[node name="HardCheckBox" type="CheckBox" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame/DifficultyBoxes" unique_id=1294543838]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_styles/focus = SubResource("StyleBoxFlat_ax7l3")
@@ -313,11 +318,6 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_ax7l3")
 [node name="EasyLabel3" type="Label" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame/DifficultyBoxes" unique_id=634213352]
 layout_mode = 2
 text = "Hard"
-
-[node name="HardCheckBox" type="CheckBox" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame/DifficultyBoxes" unique_id=1294543838]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_styles/focus = SubResource("StyleBoxFlat_ax7l3")
 
 [node name="CRTShader" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame" unique_id=1925341764 groups=["crt_shader"] instance=ExtResource("10_8vsnj")]
 layout_mode = 0
