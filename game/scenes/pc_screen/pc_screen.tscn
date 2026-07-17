@@ -32,6 +32,30 @@ corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8vsnj"]
+bg_color = Color(0.42358288, 0.42358288, 0.42358288, 0.8)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qcrff"]
+bg_color = Color(0.42358288, 0.42358288, 0.42358288, 0.8)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ax7l3"]
+bg_color = Color(0.42358288, 0.42358288, 0.42358288, 0.8)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+corner_detail = 1
+
 [node name="PCScreen" type="Node2D" unique_id=1576839333]
 script = ExtResource("1_ib41a")
 
@@ -161,24 +185,28 @@ alignment = 1
 [node name="RollDiceButton" type="Button" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame/ButtonsContainer" unique_id=1728304166]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxFlat_8vsnj")
 text = "ROLL DICE"
 
 [node name="ContinueButton" type="Button" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame/ButtonsContainer" unique_id=1784809307]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxFlat_qcrff")
 text = "CONTINUE"
 
 [node name="RerollDiceButton" type="Button" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame/ButtonsContainer" unique_id=463036163]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxFlat_qcrff")
 text = "REROLL DICE"
 
 [node name="StartButton" type="Button" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame/ButtonsContainer" unique_id=2079948144]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxFlat_qcrff")
 text = "PLAY GAME"
 
 [node name="ORLabel" type="Label" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame/ButtonsContainer" unique_id=90933838]
@@ -191,6 +219,7 @@ text = "OR"
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxFlat_qcrff")
 text = "ACCEPT"
 
 [node name="ProgressBars" type="HBoxContainer" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame" unique_id=1910302855]
@@ -269,6 +298,7 @@ text = "Easy"
 [node name="EasyCheckBox" type="CheckBox" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame/DifficultyBoxes" unique_id=402845765]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxFlat_ax7l3")
 button_pressed = true
 
 [node name="EasyLabel2" type="Label" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame/DifficultyBoxes" unique_id=1168566491]
@@ -278,6 +308,7 @@ text = "Medium"
 [node name="MediumCheckBox" type="CheckBox" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame/DifficultyBoxes" unique_id=766912638]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxFlat_ax7l3")
 
 [node name="EasyLabel3" type="Label" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame/DifficultyBoxes" unique_id=634213352]
 layout_mode = 2
@@ -286,6 +317,7 @@ text = "Hard"
 [node name="HardCheckBox" type="CheckBox" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame/DifficultyBoxes" unique_id=1294543838]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxFlat_ax7l3")
 
 [node name="CRTShader" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame" unique_id=1925341764 instance=ExtResource("10_8vsnj")]
 layout_mode = 0
