@@ -1,11 +1,11 @@
 class_name RollingPlayer extends CharacterBody2D
 
-const MOVE_SPEED_RAMP = 1.8 ## How quickly the player's momentum increases or decreases
-const AIR_CONTROL = 0.25 ## How much the player can influence direction while airborne, 1.0 is full control
-const MAX_MOVE_SPEED = 400.0 ## The fastest the move speed can be in either direction
+const MOVE_SPEED_RAMP = 2.0 ## How quickly the player's momentum increases or decreases
+const AIR_CONTROL = 0.5 ## How much the player can influence direction while airborne, 1.0 is full control
+const MAX_MOVE_SPEED = 500.0 ## The fastest the move speed can be in either direction
 const JUMP_VELOCITY = -250.0 ## jump height, should be negative, lower means jump higher
 const KNOCKBACK_DIST = 200.0 ## How far back the player is knocked when colliding with an obstacle
-const ROLLING_FRICTION = 75.0 ## How much reduction in speed the player gets while on the ground and not accelerating
+const ROLLING_FRICTION = 150.0 ## How much reduction in speed the player gets while on the ground and not accelerating
 
 # all of these can be updated for whatever input action strings are for these buttons
 const INPUT_JUMP: StringName = "ui_up"
