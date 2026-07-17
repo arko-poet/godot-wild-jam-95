@@ -30,7 +30,6 @@ func _ready() -> void:
 	_required_score = _REQUIRED_SCORES.get(difficulty, _REQUIRED_SCORES[Difficulty.MEDIUM])
 	_update_score_label()
 	
-	
 	timer_component.start_timer(get_time_limit())
 
 

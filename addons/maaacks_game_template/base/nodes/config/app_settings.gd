@@ -1,3 +1,4 @@
+class_name AppSettings
 extends Node
 ## Interface to read/write general application settings through [PlayerConfig].
 
@@ -15,12 +16,9 @@ const MUTE_SETTING = &'Mute'
 const MASTER_BUS_INDEX = 0
 const SYSTEM_BUS_NAME_PREFIX = "_"
 
-signal crt_toggled(value: bool)
-
 # Input
 static var default_action_events : Dictionary
 static var initial_bus_volumes : Array
-static var crt_enabled := true
 
 static func get_config_input_events(action_name : String, default = null) -> Array:
 	return PlayerConfig.get_config(INPUT_SECTION, action_name, default)
@@ -170,7 +168,6 @@ static func _set_v_sync_from_config(window: Window) -> DisplayServer.VSyncMode:
 	set_vsync(vsync)
 	return vsync
 
-
 static func set_video_from_config(window : Window) -> void:
 	window.size_changed.connect(_on_window_size_changed.bind(window))
 	var fullscreen_enabled := _set_fullscreen_from_config(window)
@@ -179,9 +176,6 @@ static func set_video_from_config(window : Window) -> void:
 		set_resolution(current_resolution, window)
 	_set_v_sync_from_config(window)
 
-func set_crt_monitor_control(value: bool) -> void:
-	crt_enabled = value
-	crt_toggled.emit(value)
 # All
 
 static func set_from_config() -> void:

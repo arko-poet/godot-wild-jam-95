@@ -39,6 +39,5 @@ player = NodePath("../Player")
 maze = NodePath("..")
 
 [node name="CRTShader" parent="." unique_id=1925341764 instance=ExtResource("7_xwuei")]
-unique_name_in_owner = true
 
 [connection signal="out_of_time" from="TimerComponent" to="." method="_on_timer_component_out_of_time"]

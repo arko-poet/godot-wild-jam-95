@@ -92,8 +92,6 @@ var _progress := 0.0:
 
 @onready var _devil_line: Label = %DevilLine
 
-@onready var _crt_shader: ColorRect = %CRTShader
-
 
 
 func _ready() -> void:
@@ -104,12 +102,6 @@ func _ready() -> void:
 	
 	_prepare_next_minigame()
 	_play_power_on_animation()
-	
-	_crt_shader.visible = AppSettings.crt_enabled
-	AppSettings.crt_toggled.connect(_on_crt_toggled)
-
-func _on_crt_toggled(value: bool) -> void:
-	_crt_shader.visible = value
 
 
 func _play_power_on_animation() -> void:
