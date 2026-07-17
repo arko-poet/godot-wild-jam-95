@@ -93,6 +93,9 @@ shape = SubResource("RectangleShape2D_drsw1")
 position = Vector2(666.5, 7583)
 shape = SubResource("RectangleShape2D_dpga7")
 
+[node name="Platforms" type="Node" parent="." unique_id=352527631]
+unique_name_in_owner = true
+
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1493938841]
 unique_name_in_owner = true
 anchor_mode = 0
@@ -128,9 +131,6 @@ texture = ExtResource("5_5lc5m")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Goal" unique_id=1126860301]
 shape = SubResource("RectangleShape2D_8nwgy")
-
-[node name="Platforms" type="Node" parent="." unique_id=352527631]
-unique_name_in_owner = true
 
 [node name="SpikeKiller" type="Area2D" parent="." unique_id=2095928293]
 collision_layer = 4

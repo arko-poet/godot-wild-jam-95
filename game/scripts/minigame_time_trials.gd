@@ -7,7 +7,7 @@ var trials_active := false
 
 ## If the trials are active, this will be the minigame you always get. Currently:
 ## 0 = Falling      1 = Maze      2 = Strategem      3 = Snake
-var force_minigame_index := 2
+var force_minigame_index := 3
 
 var count_up_timer: Timer
 

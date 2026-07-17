@@ -70,8 +70,7 @@ func _ready() -> void:
 	spawn_snake()
 	spawn_apple()
 	
-	move_timer.wait_time = get_move_interval()
-	move_timer.start()
+	# the move_timer does not start here because WaitTimer timing out will trigger that
 	
 	timer_component.position = Vector2.DOWN * grid_height * CELL_SIZE + grid_offset
 	timer_component.start_timer(get_time_limit())
@@ -204,3 +203,8 @@ func get_time_limit() -> float:
 
 func _on_timer_component_out_of_time() -> void:
 	game_lost.emit()
+
+
+func _on_wait_timer_timeout() -> void:
+	move_timer.wait_time = get_move_interval()
+	move_timer.start()
