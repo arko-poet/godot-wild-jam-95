@@ -30,6 +30,11 @@ Author: Andrea Calabró
 Source: [godotengine.org : press](https://godotengine.org/press/)  
 License: [CC BY 4.0 International](https://github.com/godotengine/godot/blob/master/LOGO_LICENSE.txt) 
 
+#### CRT Shader
+Author: c64cosmin
+Source: [https://godotshaders.com/shader/realistic-crt-shader/](https://godotshaders.com/shader/realistic-crt-shader/)
+License: [CC0 1.0 Universal](https://creativecommons.org/publicdomain/zero/1.0/)
+
 ## Tools
 #### Godot
 ![Godot Engine Logo](/template/assets/godot_engine_logo/logo_vertical_color_dark.png)  
