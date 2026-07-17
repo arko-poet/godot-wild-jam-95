@@ -9,12 +9,12 @@ enum _Direction {
 
 const SPRITE_PATH := "res://game/art/placeholders/stratagem/triangle%s.png"
 const _TIME_LIMITS := {
-	1: 10.0,
-	2: 12.5,
-	3: 15.0,
-	4: 17.5,
-	5: 20.0,
-	6: 25
+	1: 15.0,
+	2: 17.5,
+	3: 18.0,
+	4: 20.5,
+	5: 24.0,
+	6: 30
 }
 const _SEQUENCE_LENGTHS := {
 	Difficulty.EASY: 6,
