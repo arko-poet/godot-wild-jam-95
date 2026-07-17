@@ -7,7 +7,7 @@ const DIST_BETWEEN_FLOORS = 150.0 ## pixels to move down after placing a layer
 const RIGHT_X_RANGE = [800, 923] ## the lowest and highest values the X position can be on right-side platforms
 const MIDDLE_X_RANGE = [441, 623] ## same for middle platforms
 const LEFT_X_RANGE = [93, 233] ## same for left-side platforms
-const LAYERS = 12 ## number of layers not counting the first and last
+const LAYERS = 10 ## number of layers not counting the first and last
 
 var platform_scene = preload("uid://beu0qxq5fklv7")
 @onready var curr_y: float = DIST_BETWEEN_FLOORS
@@ -15,8 +15,6 @@ var offset_direction := 1.0
 
 
 func _ready() -> void:
-	difficulty = 1
-	dice_roll = 3
 	%TimerComponent.start_timer(TIME_LIMITS[dice_roll])
 	
 	if !OS.is_debug_build():
