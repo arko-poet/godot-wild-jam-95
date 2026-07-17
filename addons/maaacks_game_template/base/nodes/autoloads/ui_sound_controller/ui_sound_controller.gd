@@ -55,6 +55,8 @@ const MAX_DEPTH = 16
 @export var minigame_good_event: AudioStream
 @export var minigame_bad_event: AudioStream
 @export var minigame_progress: AudioStream
+@export var dice_roll: AudioStream
+@export var entity_step: AudioStream
 
 @onready var root_node : Node = get_node(root_path)
 
@@ -89,6 +91,8 @@ var minigame_lost_player: AudioStreamPlayer
 var minigame_good_event_player: AudioStreamPlayer
 var minigame_bad_event_player: AudioStreamPlayer
 var minigame_progress_player: AudioStreamPlayer
+var dice_roll_player: AudioStreamPlayer
+var entity_step_player: AudioStreamPlayer
 
 func _update_persistent_signals() -> void:
 	if not is_inside_tree():
@@ -149,6 +153,8 @@ func _build_minigame_stream_players() -> void:
 	minigame_good_event_player = _build_stream_player(minigame_good_event, "MinigameGoodEvent")
 	minigame_bad_event_player = _build_stream_player(minigame_bad_event, "MinigameBadEvent")
 	minigame_progress_player = _build_stream_player(minigame_progress, "MinigameProgress")
+	dice_roll_player = _build_stream_player(dice_roll, "DiceRoll")
+	entity_step_player = _build_stream_player(entity_step, "EntityStep")
 
 
 func _build_all_stream_players() -> void:
@@ -238,6 +244,12 @@ func play_minigame_bad_event() -> void:
 func play_minigame_progress() -> void:
 	_play_stream(minigame_progress_player)
 
+func play_dice_roll() -> void:
+	_play_stream(dice_roll_player)
+	
+func play_entity_step() -> void:
+	_play_stream(entity_step_player)
+
 func _minigame_bus_connections() -> Dictionary:
 	return {
 		GameplayAudioController.minigame_won : minigame_won_player,
@@ -245,6 +257,8 @@ func _minigame_bus_connections() -> Dictionary:
 		GameplayAudioController.minigame_good_event : minigame_good_event_player,
 		GameplayAudioController.minigame_bad_event : minigame_bad_event_player,
 		GameplayAudioController.minigame_progress : minigame_progress_player,
+		GameplayAudioController.dice_roll : dice_roll_player,
+		GameplayAudioController.entity_step : entity_step_player,
 	}
 
 func _connect_minigame_bus() -> void:
