@@ -35,3 +35,9 @@ func _on_resolution_control_setting_changed(value) -> void:
 
 func _on_v_sync_control_setting_changed(value) -> void:
 	AppSettings.set_vsync(value, get_window())
+
+func _on_crt_monitor_control_setting_changed(value) -> void:
+	match value:
+		1: AppSettings.set_crt_monitor_control(true)
+		0: AppSettings.set_crt_monitor_control(false)
+		_: AppSettings.set_crt_monitor_control(false) 
