@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://bxcrjj54yj4ok"]
 
 [ext_resource type="Shader" uid="uid://uw7b7qo618vi" path="res://game/shaders/crt.gdshader" id="1_8kps8"]
-[ext_resource type="Script" uid="uid://d0rx1vbb820e6" path="res://game/scripts/crt_shader.gd" id="2_bo5y1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8kps8"]
 shader = ExtResource("1_8kps8")
@@ -27,4 +26,3 @@ custom_minimum_size = Vector2(1024, 768)
 offset_right = 1024.0
 offset_bottom = 768.0
 mouse_filter = 2
-script = ExtResource("2_bo5y1")

@@ -35,8 +35,3 @@ func _on_resolution_control_setting_changed(value) -> void:
 
 func _on_v_sync_control_setting_changed(value) -> void:
 	AppSettings.set_vsync(value, get_window())
-
-func _on_crt_filter_control_setting_changed(value: Variant) -> void:
-	PlayerConfig.set_config(AppSettings.VIDEO_SECTION, "CrtFilter", value)
-	CrtShaderController.apply_setting()
-	#print(PlayerConfig.get_config(AppSettings.VIDEO_SECTION, "CrtFilter", value))

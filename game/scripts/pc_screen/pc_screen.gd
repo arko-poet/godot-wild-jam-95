@@ -102,8 +102,6 @@ func _ready() -> void:
 	
 	_prepare_next_minigame()
 	_play_power_on_animation()
-	
-	
 
 
 func _play_power_on_animation() -> void:
