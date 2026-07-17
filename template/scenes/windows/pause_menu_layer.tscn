@@ -27,6 +27,7 @@ update_content = true
 title = "Paused"
 
 [node name="TitleLabel" parent="PauseMenu/ContentContainer/BoxContainer/TitleMargin/BoxContainer" parent_id_path=PackedInt32Array(6629802, 1788474031) index="0" unique_id=1049966061]
+theme_override_font_sizes/font_size = 32
 text = "Paused"
 
 [node name="BodyMargin" parent="PauseMenu/ContentContainer/BoxContainer" parent_id_path=PackedInt32Array(6629802, 394030069) index="1" unique_id=590613964]
@@ -35,38 +36,46 @@ visible = false
 [node name="MenuButtonsMargin" parent="PauseMenu/ContentContainer/BoxContainer" parent_id_path=PackedInt32Array(6629802, 394030069) index="2" unique_id=1413292752]
 size_flags_vertical = 3
 
-[node name="CloseButton" parent="PauseMenu/ContentContainer/BoxContainer/MenuButtonsMargin/MenuButtons" parent_id_path=PackedInt32Array(6629802, 1371114575) index="0" unique_id=314526102]
+[node name="MenuButtons" parent="PauseMenu/ContentContainer/BoxContainer/MenuButtonsMargin" index="0" unique_id=1371114575]
+theme_override_constants/separation = 32
+
+[node name="CloseButton" parent="PauseMenu/ContentContainer/BoxContainer/MenuButtonsMargin/MenuButtons" index="0" unique_id=314526102]
+theme_override_font_sizes/font_size = 32
 text = "Resume"
 
-[node name="RestartButton" type="Button" parent="PauseMenu/ContentContainer/BoxContainer/MenuButtonsMargin/MenuButtons" parent_id_path=PackedInt32Array(6629802, 1371114575) index="1" unique_id=261040990]
+[node name="RestartButton" type="Button" parent="PauseMenu/ContentContainer/BoxContainer/MenuButtonsMargin/MenuButtons" index="1" unique_id=261040990]
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
 text = "Restart"
 
-[node name="SaveGameButton" type="Button" parent="PauseMenu/ContentContainer/BoxContainer/MenuButtonsMargin/MenuButtons" parent_id_path=PackedInt32Array(6629802, 1371114575) index="2" unique_id=1952904817]
+[node name="SaveGameButton" type="Button" parent="PauseMenu/ContentContainer/BoxContainer/MenuButtonsMargin/MenuButtons" index="2" unique_id=1952904817]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
 text = "Save Game"
 
-[node name="LoadGameButton" type="Button" parent="PauseMenu/ContentContainer/BoxContainer/MenuButtonsMargin/MenuButtons" parent_id_path=PackedInt32Array(6629802, 1371114575) index="3" unique_id=31108573]
+[node name="LoadGameButton" type="Button" parent="PauseMenu/ContentContainer/BoxContainer/MenuButtonsMargin/MenuButtons" index="3" unique_id=31108573]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
 text = "Load Game"
 
-[node name="OptionsButton" type="Button" parent="PauseMenu/ContentContainer/BoxContainer/MenuButtonsMargin/MenuButtons" parent_id_path=PackedInt32Array(6629802, 1371114575) index="4" unique_id=487135325]
+[node name="OptionsButton" type="Button" parent="PauseMenu/ContentContainer/BoxContainer/MenuButtonsMargin/MenuButtons" index="4" unique_id=487135325]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
 text = "Options"
 
-[node name="MainMenuButton" type="Button" parent="PauseMenu/ContentContainer/BoxContainer/MenuButtonsMargin/MenuButtons" parent_id_path=PackedInt32Array(6629802, 1371114575) index="5" unique_id=920922356]
+[node name="MainMenuButton" type="Button" parent="PauseMenu/ContentContainer/BoxContainer/MenuButtonsMargin/MenuButtons" index="5" unique_id=920922356]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
 text = "Main Menu"
 
-[node name="ExitButton" type="Button" parent="PauseMenu/ContentContainer/BoxContainer/MenuButtonsMargin/MenuButtons" parent_id_path=PackedInt32Array(6629802, 1371114575) index="6" unique_id=2037900804]
+[node name="ExitButton" type="Button" parent="PauseMenu/ContentContainer/BoxContainer/MenuButtonsMargin/MenuButtons" index="6" unique_id=2037900804]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
 text = "Exit Game"
 
 [node name="RestartConfirmation" parent="." unique_id=1453441706 instance=ExtResource("5_27c0p")]
