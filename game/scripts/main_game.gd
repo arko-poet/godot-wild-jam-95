@@ -38,10 +38,11 @@ func game_over() -> void:
 func game_won() -> void:
 	pass
 
+func _ready() -> void:
+	turn_on_pc_button.grab_focus()
 
 func _on_menu_button_pressed() -> void:
 	pass # Replace with function body.
-
 
 func _on_pc_screen_progress_bar_filled() -> void:
 	monster.hide()
