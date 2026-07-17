@@ -85,7 +85,7 @@ func _player_action(direction: _Direction) -> void:
 			_sequence_pointer += 1
 	else:
 		GameplayAudioController.minigame_bad_event.emit()
-		_progress -= _PROGRESS_STEP_BACK
+		#_progress -= _PROGRESS_STEP_BACK
 		for arrow in _arrow_container.get_children():
 			arrow.modulate = Color.WHITE
 		_sequence_pointer = 0
