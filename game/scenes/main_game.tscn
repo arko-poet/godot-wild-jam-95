@@ -64,6 +64,7 @@ texture = ExtResource("7_ldb66")
 
 [node name="PCScreen" parent="Room" unique_id=1576839333 instance=ExtResource("5_wemlv")]
 unique_name_in_owner = true
+visible = false
 position = Vector2(101.99999, 100.99999)
 scale = Vector2(0.97, 0.97)
 
@@ -117,6 +118,15 @@ icon = ExtResource("12_gd0p7")
 icon_alignment = 2
 expand_icon = true
 
+[node name="TurnOnPCButton" type="Button" parent="UILayer/UI" unique_id=2057799578]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 1039.0
+offset_top = 943.0
+offset_right = 1095.0
+offset_bottom = 985.0
+text = "P"
+
 [node name="MonsterTransition" type="ColorRect" parent="." unique_id=244727151]
 unique_name_in_owner = true
 visible = false
@@ -131,3 +141,4 @@ color = Color(0, 0, 0, 1)
 [connection signal="progress_bar_filled" from="Room/PCScreen" to="." method="_on_pc_screen_progress_bar_filled"]
 [connection signal="pressed" from="UILayer/UI/ClaimPrizeButton" to="." method="_on_claim_prize_button_pressed"]
 [connection signal="pressed" from="UILayer/UI/MarginContainer/PauseButton" to="PauseMenuController" method="_on_pause_button_pressed"]
+[connection signal="pressed" from="UILayer/UI/TurnOnPCButton" to="." method="_on_turn_on_pc_button_pressed"]

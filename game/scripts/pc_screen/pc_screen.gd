@@ -103,12 +103,12 @@ func _ready() -> void:
 	_doom_bar_preview.max_value = _MAX_DOOM
 	
 	_prepare_next_minigame()
-	_play_power_on_animation()
-	
 	
 
 
-func _play_power_on_animation() -> void:
+func play_power_on_animation() -> void:
+	show()
+	
 	_screen_container.scale = Vector2(1.0, 0.02)
 	_screen_container.modulate = Color.DIM_GRAY
 	

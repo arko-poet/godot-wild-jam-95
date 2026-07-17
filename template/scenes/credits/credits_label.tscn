@@ -67,7 +67,6 @@ scroll_active = false
 horizontal_alignment = 1
 script = ExtResource("1_hbpko")
 attribution_file_path = "res://template/ATTRIBUTION.md"
-auto_update = false
 h1_font_size = 128
 h2_font_size = 96
 h3_font_size = 64
