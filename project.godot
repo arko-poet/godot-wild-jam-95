@@ -27,6 +27,7 @@ SceneLoader="*uid://cbwmrnp0af35y"
 ProjectMusicController="*uid://r5t485lr3p7t"
 ProjectUISoundController="*uid://cc37235kj4384"
 GameplayAudioController="*uid://bd4cpgphcph3u"
+CrtShaderController="*uid://r325j7pv6p41"
 
 [display]
 
@@ -49,6 +50,10 @@ folder_colors={
 "res://game/scripts/": "red",
 "res://game/shaders/": "yellow"
 }
+
+[global_group]
+
+crt_shader=""
 
 [gui]
 
