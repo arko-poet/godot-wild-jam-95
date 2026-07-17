@@ -204,6 +204,7 @@ func _prepare_next_minigame() -> void:
 
 
 func _roll_dice() -> void:
+	GameplayAudioController.dice_roll.emit()
 	_die.show()
 	
 	_buttons_container.hide()

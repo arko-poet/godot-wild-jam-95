@@ -3,14 +3,44 @@
 [ext_resource type="Script" uid="uid://b5oej1q4h7jvh" path="res://addons/maaacks_game_template/base/nodes/autoloads/ui_sound_controller/ui_sound_controller.gd" id="1_dmagn"]
 [ext_resource type="AudioStream" uid="uid://bem1cl2trv3ev" path="res://game/audio/sound effects/placeholders/buttoinhover.wav" id="2_7ejmi"]
 [ext_resource type="AudioStream" uid="uid://8teg00hvqb1b" path="res://game/audio/sound effects/placeholders/litupsubway-key-collect-sfx-522219.mp3" id="3_r5ody"]
+[ext_resource type="AudioStream" uid="uid://db01b7div80tv" path="res://game/audio/sound effects/Coin1_1.wav" id="4_qffex"]
+[ext_resource type="AudioStream" uid="uid://b065k2a5wga6j" path="res://game/audio/sound effects/Coin2_1.wav" id="5_saweg"]
+[ext_resource type="AudioStream" uid="uid://d30hi7lux3s7b" path="res://game/audio/sound effects/Coin3_1.wav" id="6_wvaau"]
+[ext_resource type="AudioStream" uid="uid://c1lt7w50ep803" path="res://game/audio/sound effects/Footstep2_1.wav" id="7_x4ljq"]
+[ext_resource type="AudioStream" uid="uid://eofandiah4ra" path="res://game/audio/sound effects/Dice1_1.wav" id="8_ncoqh"]
+[ext_resource type="AudioStream" uid="uid://32tmkum5iac0" path="res://game/audio/sound effects/Dice2_1.wav" id="9_jbral"]
+[ext_resource type="AudioStream" uid="uid://bah6t8lsihmmq" path="res://game/audio/sound effects/Dice3_1.wav" id="10_rchii"]
+[ext_resource type="AudioStream" uid="uid://0w6bpnxlfltb" path="res://game/audio/sound effects/Dice4_1.wav" id="11_ypev8"]
+[ext_resource type="AudioStream" uid="uid://dg5yrywbleefr" path="res://game/audio/sound effects/Dice_1.wav" id="12_cvkpv"]
+[ext_resource type="AudioStream" uid="uid://b8665wjk5ul0q" path="res://game/audio/sound effects/Double_Dice.wav" id="13_338nd"]
+[ext_resource type="AudioStream" uid="uid://bhooon0ff2mvn" path="res://game/audio/sound effects/Entity_Step1_1.wav" id="14_g232p"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_7ejmi"]
+streams_count = 3
+stream_0/stream = ExtResource("4_qffex")
+stream_1/stream = ExtResource("5_saweg")
+stream_2/stream = ExtResource("6_wvaau")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_qffex"]
+streams_count = 6
+stream_0/stream = ExtResource("8_ncoqh")
+stream_1/stream = ExtResource("9_jbral")
+stream_2/stream = ExtResource("10_rchii")
+stream_3/stream = ExtResource("11_ypev8")
+stream_4/stream = ExtResource("12_cvkpv")
+stream_5/stream = ExtResource("13_338nd")
 
 [node name="ProjectUISoundController" type="Node" unique_id=1525696179]
 script = ExtResource("1_dmagn")
 button_hovered = ExtResource("2_7ejmi")
 button_focused = ExtResource("2_7ejmi")
 button_pressed = ExtResource("3_r5ody")
+tab_hovered = ExtResource("2_7ejmi")
+slider_hovered = ExtResource("2_7ejmi")
 minigame_won = ExtResource("2_7ejmi")
 minigame_lost = ExtResource("2_7ejmi")
-minigame_good_event = ExtResource("2_7ejmi")
+minigame_good_event = SubResource("AudioStreamRandomizer_7ejmi")
 minigame_bad_event = ExtResource("2_7ejmi")
-minigame_progress = ExtResource("2_7ejmi")
+minigame_progress = ExtResource("7_x4ljq")
+dice_roll = SubResource("AudioStreamRandomizer_qffex")
+entity_step = ExtResource("14_g232p")
