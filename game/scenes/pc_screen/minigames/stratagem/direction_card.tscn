@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://cebspflk4d6pw"]
+
+[ext_resource type="Texture2D" uid="uid://2p16bck0bm6p" path="res://game/art/directioncard_2.png" id="1_cxff5"]
+[ext_resource type="Texture2D" uid="uid://dc8ei7r04gcd3" path="res://game/art/directioncard_3.png" id="1_ycy2i"]
+
+[node name="DirectionCard" type="Control" unique_id=979229147]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 100.0
+offset_bottom = 100.0
+
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=389141016]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 100.0
+texture = ExtResource("1_ycy2i")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect3" type="TextureRect" parent="." unique_id=1353224034]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 100.0
+texture = ExtResource("1_cxff5")
+expand_mode = 1
+stretch_mode = 5

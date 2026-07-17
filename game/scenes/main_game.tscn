@@ -115,6 +115,15 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
+[node name="Label" type="Label" parent="." unique_id=634852895]
+offset_left = 1173.0
+offset_top = 62.0
+offset_right = 1821.0
+offset_bottom = 179.0
+theme_override_font_sizes/font_size = 41
+text = "THIS BUILD IS MODIFIED
+YOU WILL ONLY GET STRATEGEM"
+
 [connection signal="doom_changed" from="Room/PCScreen" to="." method="_on_pc_screen_doom_changed"]
 [connection signal="progress_bar_filled" from="Room/PCScreen" to="." method="_on_pc_screen_progress_bar_filled"]
 [connection signal="pressed" from="UILayer/UI/ClaimPrizeButton" to="." method="_on_claim_prize_button_pressed"]

@@ -7,7 +7,8 @@ enum _Direction {
 	UP
 }
 
-const SPRITE_PATH := "res://game/art/placeholders/stratagem/triangle%s.png"
+const CARD_SIZE = 700.0 ## This will be the height and width of the direction cards
+const SPRITE_PATH := "res://game/art/directioncard_%s.png"
 const _TIME_LIMITS := {
 	1: 10.0,
 	2: 12.5,
@@ -121,5 +122,8 @@ func _set_current_sequence() -> void:
 func _draw_directions() -> void:
 	for direction in _current_sequence:
 		var arrow := TextureRect.new()
+		arrow.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+		arrow.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+		arrow.custom_minimum_size = Vector2(CARD_SIZE, CARD_SIZE)
 		arrow.texture = load(SPRITE_PATH % direction)
 		_arrow_container.add_child(arrow)

@@ -3,29 +3,21 @@
 [ext_resource type="Script" uid="uid://dawchbda7r7ku" path="res://game/scripts/pc_screen/minigames/stratagem/stratagem.gd" id="1_wwame"]
 [ext_resource type="PackedScene" uid="uid://bb5isa4txkp3f" path="res://game/scenes/pc_screen/minigames/timer_component.tscn" id="2_gwb6g"]
 [ext_resource type="PackedScene" uid="uid://bxcrjj54yj4ok" path="res://game/shaders/CRTShader.tscn" id="3_pfiww"]
-
-[sub_resource type="Gradient" id="Gradient_88wer"]
-offsets = PackedFloat32Array(0)
-colors = PackedColorArray(0.21950102, 0.21950102, 0.21950102, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_pfiww"]
-gradient = SubResource("Gradient_88wer")
-width = 660
-height = 490
+[ext_resource type="Texture2D" uid="uid://btwysuoljny15" path="res://game/art/felt_texture.png" id="4_81fxt"]
 
 [node name="Stratagem" type="Node" unique_id=341402236]
 script = ExtResource("1_wwame")
 
 [node name="Background" type="Sprite2D" parent="." unique_id=1327827280]
-scale = Vector2(0.99999994, 1.0020832)
-texture = SubResource("GradientTexture2D_pfiww")
+scale = Vector2(1.4375, 1.017259)
+texture = ExtResource("4_81fxt")
 centered = false
 
 [node name="UI" type="Control" parent="." unique_id=112372057]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 660.0
-offset_bottom = 490.0
+offset_right = 1024.0
+offset_bottom = 768.0
 
 [node name="TimerComponent" parent="UI" unique_id=1166255049 instance=ExtResource("2_gwb6g")]
 unique_name_in_owner = true

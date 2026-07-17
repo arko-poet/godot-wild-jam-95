@@ -167,7 +167,8 @@ func _on_minigame_lost() -> void:
 
 
 func _prepare_next_minigame() -> void:
-	_current_minigame = _MiniGameScenes.pick_random().instantiate()
+	#_current_minigame = _MiniGameScenes.pick_random().instantiate()
+	_current_minigame = _MiniGameScenes[2].instantiate()
 	
 	if _current_minigame is FallingGame:
 		_devil_line.text = _TEXT_ROLL_DICE % _FALLING_GAME_NAME
