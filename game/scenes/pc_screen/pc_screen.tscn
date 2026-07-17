@@ -107,8 +107,8 @@ anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 67.0
 grow_horizontal = 2
-theme_override_font_sizes/font_size = 48
-text = "DEVIL'S GREAT CASINO"
+theme_override_font_sizes/font_size = 96
+text = "The Devil's Casino"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -116,21 +116,22 @@ vertical_alignment = 1
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
-offset_top = 64.0
+offset_top = 132.0
+offset_bottom = 317.0
 grow_horizontal = 2
-theme_override_constants/separation = 0
+theme_override_constants/separation = 16
 alignment = 1
 
 [node name="DevilImage" type="TextureRect" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame/DevilContainer" unique_id=2078176918]
-custom_minimum_size = Vector2(64, 64)
-custom_maximum_size = Vector2(128, 128)
+custom_minimum_size = Vector2(128, 128)
+custom_maximum_size = Vector2(256, 256)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("2_hw7br")
 
 [node name="TextBox" type="Panel" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame/DevilContainer" unique_id=340782439]
-custom_minimum_size = Vector2(300, 64)
+custom_minimum_size = Vector2(480, 126)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -138,18 +139,16 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_7np4j")
 
 [node name="DevilLine" type="Label" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame/DevilContainer/TextBox" unique_id=969797207]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(284, 64)
-custom_maximum_size = Vector2(284, 64)
+custom_minimum_size = Vector2(284, 128)
+custom_maximum_size = Vector2(450, 128)
 layout_mode = 1
-anchors_preset = -1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 8.0
-offset_right = -8.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 32
 text = "Roll the Dice."
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -170,7 +169,7 @@ offset_right = 20.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 64
+theme_override_font_sizes/font_size = 128
 text = "6"
 
 [node name="ButtonsContainer" type="HBoxContainer" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame" unique_id=1594494237]
@@ -182,11 +181,13 @@ anchor_right = 1.0
 anchor_bottom = 0.75
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 8
 alignment = 1
 
 [node name="RollDiceButton" type="Button" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame/ButtonsContainer" unique_id=1728304166]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
 theme_override_styles/focus = SubResource("StyleBoxFlat_8vsnj")
 text = "ROLL DICE"
 
@@ -194,6 +195,7 @@ text = "ROLL DICE"
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
 theme_override_styles/focus = SubResource("StyleBoxFlat_qcrff")
 text = "CONTINUE"
 
@@ -201,6 +203,7 @@ text = "CONTINUE"
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
 theme_override_styles/focus = SubResource("StyleBoxFlat_qcrff")
 text = "REROLL DICE"
 
@@ -208,6 +211,7 @@ text = "REROLL DICE"
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
 theme_override_styles/focus = SubResource("StyleBoxFlat_qcrff")
 text = "PLAY GAME"
 
@@ -215,12 +219,14 @@ text = "PLAY GAME"
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
 text = "OR"
 
 [node name="AcceptRollButton" type="Button" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame/ButtonsContainer" unique_id=1270984310]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
 theme_override_styles/focus = SubResource("StyleBoxFlat_qcrff")
 text = "ACCEPT"
 
@@ -230,7 +236,7 @@ anchors_preset = -1
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_bottom = -16.0
+offset_bottom = -32.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/separation = 16
@@ -239,7 +245,7 @@ alignment = 1
 [node name="ProgressBar" type="ProgressBar" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame/ProgressBars" unique_id=1455111567]
 unique_name_in_owner = true
 modulate = Color(0.20392157, 0.59607846, 0.85882354, 1)
-custom_minimum_size = Vector2(300, 0)
+custom_minimum_size = Vector2(450, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 fill_mode = 1
@@ -261,7 +267,7 @@ script = ExtResource("10_qcrff")
 [node name="DoomBar" type="ProgressBar" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame/ProgressBars" unique_id=1258160088]
 unique_name_in_owner = true
 modulate = Color(0.7529412, 0.22352941, 0.16862746, 1)
-custom_minimum_size = Vector2(300, 0)
+custom_minimum_size = Vector2(450, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.9490196, 0.9490196, 0.9490196, 1)
 
@@ -293,6 +299,8 @@ offset_right = 58.0
 offset_bottom = 40.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 8
 columns = 2
 
 [node name="EasyCheckBox" type="CheckBox" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame/DifficultyBoxes" unique_id=402845765]
