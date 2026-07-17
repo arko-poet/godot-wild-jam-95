@@ -37,6 +37,7 @@ visible = false
 size_flags_vertical = 3
 
 [node name="MenuButtons" parent="PauseMenu/ContentContainer/BoxContainer/MenuButtonsMargin" index="0" unique_id=1371114575]
+custom_minimum_size = Vector2(256, 0)
 theme_override_constants/separation = 32
 
 [node name="CloseButton" parent="PauseMenu/ContentContainer/BoxContainer/MenuButtonsMargin/MenuButtons" index="0" unique_id=314526102]
