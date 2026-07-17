@@ -100,6 +100,7 @@ script = ExtResource("2_4oggc")
 
 [node name="TimerComponent" parent="Camera2D" unique_id=1166255049 instance=ExtResource("5_cmei7")]
 unique_name_in_owner = true
+z_index = 1
 anchors_preset = -1
 anchor_left = 0.42708334
 anchor_top = 0.022222223
@@ -113,6 +114,7 @@ grow_horizontal = 0
 metadata/_edit_use_anchors_ = true
 
 [node name="CRTShader" parent="Camera2D" unique_id=1925341764 instance=ExtResource("4_1kjc7")]
+script = null
 
 [node name="RollingPlayer" parent="." unique_id=260473328 instance=ExtResource("2_xp6nb")]
 unique_name_in_owner = true
