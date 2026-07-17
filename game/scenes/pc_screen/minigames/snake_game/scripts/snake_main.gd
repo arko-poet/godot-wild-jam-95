@@ -23,12 +23,12 @@ const MOVE_INTERVALS := {
 }
 
 const TIME_LIMITS := { # in seconds
-	1: 17,
-	2: 22,
-	3: 25,
-	4: 28,
-	5: 31,
-	6: 34,
+	1: 12,
+	2: 16,
+	3: 22,
+	4: 26,
+	5: 34,
+	6: 48,
 }
 
 const Square = preload("uid://c2r4u5hrhc6qf") # square.tcsn
