@@ -287,7 +287,7 @@ text = "Hard"
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="CRTShader" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame" unique_id=1925341764 instance=ExtResource("10_8vsnj")]
+[node name="CRTShader" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame" unique_id=1925341764 groups=["crt_shader"] instance=ExtResource("10_8vsnj")]
 layout_mode = 0
 
 [connection signal="roll_finished" from="SubViewportContainer/SubViewport/ScreenContent/MetaGame/Die" to="." method="_on_die_roll_finished"]
