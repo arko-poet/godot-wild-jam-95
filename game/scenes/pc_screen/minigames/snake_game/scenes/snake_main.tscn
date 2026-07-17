@@ -6,6 +6,7 @@
 
 [node name="SnakeMain" type="Node2D" unique_id=1972287876]
 script = ExtResource("1_fg80f")
+CELL_SIZE = 48
 
 [node name="MoveTimer" type="Timer" parent="." unique_id=785732939]
 unique_name_in_owner = true
@@ -20,6 +21,7 @@ offset_bottom = 23.0
 text = "X / X Collected"
 
 [node name="CRTShader" parent="." unique_id=1925341764 instance=ExtResource("3_ywtt5")]
+script = null
 
 [connection signal="timeout" from="MoveTimer" to="." method="_on_move_timer_timeout"]
 [connection signal="out_of_time" from="TimerComponent" to="." method="_on_timer_component_out_of_time"]
