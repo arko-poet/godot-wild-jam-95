@@ -122,6 +122,8 @@ func play_power_on_animation() -> void:
 		.set_delay(0.15).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 	tween.tween_property(_screen_container, "modulate", Color.WHITE, 0.35)\
 		.set_delay(0.15)
+	
+	_roll_dice_button.grab_focus()
 
 
 func _on_minigame_won() -> void:
@@ -187,6 +189,8 @@ func _prepare_next_minigame() -> void:
 	else: # example minigame
 		_devil_line.text = _TEXT_ROLL_DICE % _EXAMPLE_GAME_NAME
 	
+	
+	show_roll_die_bar_preview()
 	_roll_dice_button.show()
 	_roll_dice_button.grab_focus()
 	_meta_game.show()
@@ -310,7 +314,24 @@ func _show_bar_previews() -> void:
 	_doom_bar_preview.show()
 	_doom_bar_preview.value = _doom + _DOOM_AND_PROGRESS[_get_difficulty()]
 
+func show_roll_die_bar_preview() -> void:
+	_doom_bar_preview.show()
+	_doom_bar_preview.value = _doom + _DOOM_ROLL_PRICE
+
+func show_reroll_die_bar_preview() -> void:
+	_doom_bar_preview.show()
+	_doom_bar_preview.value = _doom + _DOOM_REROLL_PRICE
+
+func hide_reroll_die_bar_preview() -> void:
+	_doom_bar_preview.hide()
 
 func _on_continue_button_pressed() -> void:
 	_continue_button.hide()
 	_prepare_next_minigame()
+
+
+func _on_reroll_dice_button_focus_entered() -> void:
+	show_reroll_die_bar_preview()
+
+func _on_reroll_dice_button_focus_exited() -> void:
+	hide_reroll_die_bar_preview()
