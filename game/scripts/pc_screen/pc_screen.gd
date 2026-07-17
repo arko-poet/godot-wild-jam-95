@@ -12,9 +12,14 @@ const _MiniGameScenes := [
 ]
 
 const _MAX_DOOM := 1.0
-const _DOOM_STEP := 0.1
 const _MAX_PROGRESS := 1.0
-const _PROGRESS_STEP := 0.1
+const _DOOM_AND_PROGRESS := {
+	Minigame.Difficulty.EASY: 0.04,
+	Minigame.Difficulty.MEDIUM: 0.06,
+	Minigame.Difficulty.HARD: 0.08,
+}
+const _DOOM_ROLL_PRICE := 0.05
+const _DOOM_REROLL_PRICE := 0.01
 
 const _TEXT_ROLL_DICE := "Lets play a [b][u]%s[/u][/b] game. Roll the dice."
 const _TEXT_REROLL_DICE := "I'll give you [b][u]%ss[/u][/b] to complete the game for that roll."
@@ -120,7 +125,7 @@ func play_power_on_animation() -> void:
 
 
 func _on_minigame_won() -> void:
-	_progress += _PROGRESS_STEP * (_get_difficulty() + 1)
+	_progress += _DOOM_AND_PROGRESS[_get_difficulty()]
 	
 	#await _show_reaction(true)
 	_devil_line.text = _TEXT_WON[randi() % len(_TEXT_WON)]
@@ -135,7 +140,7 @@ func _on_minigame_won() -> void:
 
 
 func _on_minigame_lost() -> void:
-	_doom += _DOOM_STEP * (_get_difficulty() + 1)
+	_doom += _DOOM_AND_PROGRESS[_get_difficulty()]
 	
 	#await _show_reaction(false)
 	_devil_line.text = _TEXT_LOSE[randi() % len(_TEXT_LOSE)]
@@ -198,8 +203,6 @@ func _roll_dice() -> void:
 	
 	_dice_roll_label.show()
 	_buttons_container.show()
-		
-	_doom += _DOOM_STEP / 2.0
 
 
 func _on_die_roll_finished(value: int) -> void:
@@ -220,6 +223,8 @@ func _on_roll_dice_button_pressed() -> void:
 	_or_label.show()
 	_accept_roll_button.show()
 	_accept_roll_button.grab_focus()
+	
+	_doom += _DOOM_ROLL_PRICE
 
 
 func _on_reroll_dice_button_pressed() -> void:
@@ -228,6 +233,8 @@ func _on_reroll_dice_button_pressed() -> void:
 	_current_minigame.dice_roll = _current_dice_roll
 	_devil_line.text = _TEXT_REROLL_DICE % _current_minigame.get_time_limit()
 	_reroll_dice_button.grab_focus()
+	
+	_doom += _DOOM_REROLL_PRICE
 
 
 func _on_accept_roll_button_pressed() -> void:
@@ -299,9 +306,9 @@ func _get_difficulty() -> Minigame.Difficulty:
 
 func _show_bar_previews() -> void:
 	_progress_bar_preview.show()
-	_progress_bar_preview.value = _progress + _PROGRESS_STEP * (_get_difficulty() + 1)
+	_progress_bar_preview.value = _progress + _DOOM_AND_PROGRESS[_get_difficulty()]
 	_doom_bar_preview.show()
-	_doom_bar_preview.value = _doom + _DOOM_STEP * (_get_difficulty() + 1)
+	_doom_bar_preview.value = _doom + _DOOM_AND_PROGRESS[_get_difficulty()]
 
 
 func _on_continue_button_pressed() -> void:
