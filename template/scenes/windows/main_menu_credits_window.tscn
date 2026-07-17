@@ -16,7 +16,6 @@ offset_right = 0.0
 offset_bottom = 0.0
 script = ExtResource("2_a05uo")
 packed_scene = ExtResource("3_ocssn")
-ignore_siblings = false
 
 [node name="TitleMargin" parent="ContentContainer/BoxContainer" parent_id_path=PackedInt32Array(394030069) index="0" unique_id=1262022916]
 visible = false

@@ -38,6 +38,7 @@ text = "Resume"
 
 [node name="RestartButton" type="Button" parent="ContentContainer/BoxContainer/MenuButtonsMargin/MenuButtons" parent_id_path=PackedInt32Array(1371114575) index="1" unique_id=1371657172]
 layout_mode = 2
+theme_override_font_sizes/font_size = 16
 text = "Restart"
 
 [node name="OptionsButton" type="Button" parent="ContentContainer/BoxContainer/MenuButtonsMargin/MenuButtons" parent_id_path=PackedInt32Array(1371114575) index="2" unique_id=1126383675]

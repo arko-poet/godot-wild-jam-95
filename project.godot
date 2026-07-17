@@ -10,7 +10,8 @@ config_version=5
 
 [application]
 
-config/name="godot-wild-jam-95"
+config/name="GTA VI"
+config/version="0.1.0"
 config/tags=PackedStringArray("jam")
 run/main_scene="res://template/scenes/opening/opening.tscn"
 config/features=PackedStringArray("4.7", "GL Compatibility")

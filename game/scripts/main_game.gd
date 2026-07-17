@@ -28,6 +28,7 @@ var base_transition_length: float = 0.75
 @onready var monster_transition: ColorRect = %MonsterTransition
 
 @onready var claim_prize_button: Button = %ClaimPrizeButton
+@onready var turn_on_pc_button: Button = %TurnOnPCButton
 
 
 func game_over() -> void:
@@ -90,3 +91,8 @@ func play_monster_transition() -> void:
 
 func _on_claim_prize_button_pressed() -> void:
 	SceneLoader.load_scene("res://template/scenes/end_credits/end_credits.tscn")
+
+
+func _on_turn_on_pc_button_pressed() -> void:
+	pc_screen.play_power_on_animation()
+	turn_on_pc_button.hide()
