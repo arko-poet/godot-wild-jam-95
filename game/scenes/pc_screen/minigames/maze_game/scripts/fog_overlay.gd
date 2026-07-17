@@ -8,7 +8,7 @@ extends Sprite2D
 @export var player: Node2D
 @export var maze: Node2D
 
-@export var light_radius: float = 60.0
+@export var light_radius: float = 120.0
 @export var fade_length: float = 24.0 # width of how much the light source fades to black
 @export var explored_visibility: float = 0.5 # either 0 to 1, 1 is most visible
 
