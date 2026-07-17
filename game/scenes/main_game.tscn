@@ -11,7 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://be7qgtcwexwwh" path="res://game/audio/music/dark_background/BGM_Dark_MAIN.mp3" id="7_883tm"]
 [ext_resource type="Texture2D" uid="uid://da1tl6w8xc6s7" path="res://game/art/placeholders/arko.png" id="7_ldb66"]
 [ext_resource type="AudioStream" uid="uid://d1dvov0dgh11b" path="res://game/audio/music/dark_background/BGM_Dark_LOOP.mp3" id="8_a4u41"]
-[ext_resource type="Texture2D" uid="uid://b3qvp2eg0sg6t" path="res://game/art/room/Room_Ver_2.png" id="8_gd0p7"]
+[ext_resource type="Texture2D" uid="uid://b3qvp2eg0sg6t" path="res://game/art/background/Room_Ver_2.png" id="8_gd0p7"]
 [ext_resource type="Texture2D" uid="uid://bu8h5h3lxn5nr" path="res://game/art/pause_button.png" id="12_gd0p7"]
 
 [sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_gd0p7"]
