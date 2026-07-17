@@ -131,28 +131,32 @@ size_flags_vertical = 4
 texture = ExtResource("2_hw7br")
 
 [node name="TextBox" type="Panel" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame/DevilContainer" unique_id=340782439]
-custom_minimum_size = Vector2(480, 126)
+custom_minimum_size = Vector2(500, 140)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_7np4j")
 
-[node name="DevilLine" type="Label" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame/DevilContainer/TextBox" unique_id=969797207]
+[node name="DevilLine" type="RichTextLabel" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame/DevilContainer/TextBox" unique_id=1518998282]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(284, 128)
-custom_maximum_size = Vector2(450, 128)
+custom_minimum_size = Vector2(500, 140)
+custom_maximum_size = Vector2(500, 140)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 15.0
+offset_top = -1.0
+offset_right = -15.0
+offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 32
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
+bbcode_enabled = true
 text = "Roll the Dice."
 horizontal_alignment = 1
 vertical_alignment = 1
-autowrap_mode = 3
 
 [node name="DiceRollLabel" type="Label" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame" unique_id=907658553]
 unique_name_in_owner = true

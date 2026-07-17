@@ -16,8 +16,8 @@ const _DOOM_STEP := 0.1
 const _MAX_PROGRESS := 1.0
 const _PROGRESS_STEP := 0.1
 
-const _TEXT_ROLL_DICE := "Lets play a `%s`game. Roll the dice."
-const _TEXT_REROLL_DICE := "I'll give you %ss to complete the game for that roll."
+const _TEXT_ROLL_DICE := "Lets play a [b][u]%s[/u][/b] game. Roll the dice."
+const _TEXT_REROLL_DICE := "I'll give you [b][u]%ss[/u][/b] to complete the game for that roll."
 const _TEXT_CHOOSE_DIFFICULTY := "Choose difficulty."
 
 const  _TEXT_WON := [
@@ -92,7 +92,7 @@ var _progress := 0.0:
 @onready var _medium_check_box: CheckBox = %MediumCheckBox
 @onready var _hard_check_box: CheckBox = %HardCheckBox
 
-@onready var _devil_line: Label = %DevilLine
+@onready var _devil_line: RichTextLabel = %DevilLine
 
 
 
