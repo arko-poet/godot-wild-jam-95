@@ -50,7 +50,7 @@ func change_texture() -> void:
 	if square_type == SQUARE_TYPE.SNAKE: return
 	match square_type:
 		SQUARE_TYPE.EMPTY: tile_sprite.texture = load("uid://d1at6kl2ydnbd")
-		SQUARE_TYPE.WALL: tile_sprite.texture = load("uid://b3r566l2fkiig")
+		SQUARE_TYPE.WALL: tile_sprite.texture = load("uid://fb5wee0clvxj")
 		SQUARE_TYPE.SNAKE: tile_sprite.texture = load("uid://da8cmy2fv7dvu")
 		SQUARE_TYPE.APPLE: tile_sprite.texture = load("uid://lgfu3ocavbai")
 		_: tile_sprite.texture = load("uid://d1at6kl2ydnbd") # default empty texture
