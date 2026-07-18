@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bljisgtrsof3a"
-path="res://.godot/imported/PLACEHOLDER_spike.png-5b7ccfab474983122adccb7011afa092.ctex"
+uid="uid://qeefrk8jq5a8"
+path="res://.godot/imported/spike.png-0d3ee4929ee3ae7a43db7fdb3eb0f3c5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://game/scenes/pc_screen/minigames/falling_game/prototype_only/PLACEHOLDER_spike.png"
-dest_files=["res://.godot/imported/PLACEHOLDER_spike.png-5b7ccfab474983122adccb7011afa092.ctex"]
+source_file="res://game/scenes/pc_screen/minigames/falling_game/assets/spike.png"
+dest_files=["res://.godot/imported/spike.png-0d3ee4929ee3ae7a43db7fdb3eb0f3c5.ctex"]
 
 [params]
 

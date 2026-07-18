@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bqxcxerxe812l"
-path="res://.godot/imported/roll_player_sprite.png-bf04e06ed2a7a10643c7cf0ef8de9dc8.ctex"
+uid="uid://cvmqbqjk4q1d2"
+path="res://.godot/imported/platform_bricks.png-1b33af10ef4fb3b1978d9ad08701c683.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://game/scenes/pc_screen/minigames/falling_game/roll_player_sprite.png"
-dest_files=["res://.godot/imported/roll_player_sprite.png-bf04e06ed2a7a10643c7cf0ef8de9dc8.ctex"]
+source_file="res://game/scenes/pc_screen/minigames/falling_game/assets/platform_bricks.png"
+dest_files=["res://.godot/imported/platform_bricks.png-1b33af10ef4fb3b1978d9ad08701c683.ctex"]
 
 [params]
 

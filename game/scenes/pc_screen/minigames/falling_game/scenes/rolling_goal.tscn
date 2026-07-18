@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dbqhfoehi0cnu"]
 
-[ext_resource type="Texture2D" uid="uid://bufiywqkk0xd4" path="res://game/scenes/pc_screen/minigames/falling_game/flag-spritesheet.png" id="1_ya2ac"]
+[ext_resource type="Texture2D" uid="uid://bufiywqkk0xd4" path="res://game/scenes/pc_screen/minigames/falling_game/assets/flag-spritesheet.png" id="1_ya2ac"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_utnh4"]
 atlas = ExtResource("1_ya2ac")

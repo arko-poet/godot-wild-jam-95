@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ddl4w0dvy85xd" path="res://game/scenes/pc_screen/minigames/falling_game/scripts/platform.gd" id="1_1kva0"]
 [ext_resource type="PackedScene" uid="uid://bgq5rem8j0e3x" path="res://game/scenes/pc_screen/minigames/falling_game/scenes/spike.tscn" id="2_3td3f"]
-[ext_resource type="Texture2D" uid="uid://cvmqbqjk4q1d2" path="res://game/scenes/pc_screen/minigames/falling_game/platform_bricks.png" id="2_20bmh"]
+[ext_resource type="Texture2D" uid="uid://cvmqbqjk4q1d2" path="res://game/scenes/pc_screen/minigames/falling_game/assets/platform_bricks.png" id="2_20bmh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3owqy"]
 size = Vector2(1500, 16)
