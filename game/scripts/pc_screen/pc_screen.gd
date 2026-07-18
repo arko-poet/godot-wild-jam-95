@@ -212,17 +212,23 @@ func _roll_dice() -> void:
 	_buttons_container.hide()
 	_dice_roll_label.hide()
 	
+	_devil_line.text = ""
+	
+	
 	_die_window_3D.size = _die_window_3D.get_viewport().get_visible_rect().size
 	_die_window_3D.roll()
 	_current_dice_roll = await _die_window_3D.die_result
+	_dice_roll_label.text = "%s" % _current_dice_roll
+	await get_tree().create_timer(0.75).timeout # this is so the devil doesn't immediately say what time he gives
 	#_current_dice_roll = 1 + randi() % 6
 	#_die.roll(_current_dice_roll)
-	_doom += _DOOM_STEP / 2.0
+	#_doom += _DOOM_STEP / 2.0
+	_dice_roll_label.show()
+	_buttons_container.show()
 
 
 func _on_roll_dice_button_pressed() -> void:
-	_roll_dice()
-	await get_tree().create_timer(4).timeout # this is so the devil doesn't immediately say what time he gives
+	await _roll_dice()
 	_dice_roll_label.text = "%s" % _current_dice_roll
 	_current_minigame.dice_roll = _current_dice_roll
 	_dice_roll_label.text = "%s" % _current_dice_roll

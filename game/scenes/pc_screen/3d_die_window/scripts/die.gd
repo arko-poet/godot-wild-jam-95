@@ -37,6 +37,7 @@ func get_die_result() -> int:
 		_output.append(5)
 	if %Six.is_colliding():
 		_output.append(6)
+	if _output.size() != 1: return -1
 	assert(_output.size() == 1, "_output.size in get_die_result() is: %s" % _output.size())
 	if _output.size() == 0:
 		return 0

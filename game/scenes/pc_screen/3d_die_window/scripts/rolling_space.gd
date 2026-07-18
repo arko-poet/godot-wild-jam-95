@@ -30,7 +30,12 @@ func _process(delta: float) -> void:
 
 
 func _on_result_ready() -> void:
-	die_result = %Die.get_die_result()
+	var result = %Die.get_die_result()
+	if result == -1:
+		await get_tree().physics_frame
+		_on_result_ready()
+		return
+	die_result = result
 	_camera_zoom = true
 	%CameraZoomPos.position = %Die.position
 	%CameraZoomPos.position.y = 1.25
