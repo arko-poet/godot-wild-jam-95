@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://d1dvov0dgh11b" path="res://game/audio/music/dark_background/BGM_Dark_LOOP.mp3" id="8_a4u41"]
 [ext_resource type="Texture2D" uid="uid://b3qvp2eg0sg6t" path="res://game/art/background/Room_Ver_2.png" id="8_gd0p7"]
 [ext_resource type="PackedScene" uid="uid://dpaqnoawx8dwl" path="res://game/scenes/parallax_background.tscn" id="9_883tm"]
+[ext_resource type="Texture2D" uid="uid://cxgjbqbo7cwxp" path="res://game/art/background/Room_Assets_1/Crow_Creature_1.png" id="12_a4u41"]
 [ext_resource type="Texture2D" uid="uid://bu8h5h3lxn5nr" path="res://game/art/pause_button.png" id="12_gd0p7"]
 
 [sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_gd0p7"]
@@ -53,9 +54,6 @@ stream = SubResource("AudioStreamInteractive_gd0p7")
 
 [node name="Room" type="Node2D" parent="." unique_id=1070448921]
 
-[node name="ParallaxBackground" parent="Room" unique_id=2068726315 node_paths=PackedStringArray("main_game") instance=ExtResource("9_883tm")]
-main_game = NodePath("../..")
-
 [node name="Background" type="Sprite2D" parent="Room" unique_id=1873225203]
 visible = false
 texture = ExtResource("8_gd0p7")
@@ -66,6 +64,15 @@ unique_name_in_owner = true
 visible = false
 position = Vector2(101.99999, 100.99999)
 scale = Vector2(0.97, 0.97)
+
+[node name="ParallaxBackground" parent="Room" unique_id=2068726315 node_paths=PackedStringArray("main_game") instance=ExtResource("9_883tm")]
+main_game = NodePath("../..")
+
+[node name="MonsterFinal" type="Sprite2D" parent="Room" unique_id=173169473]
+unique_name_in_owner = true
+position = Vector2(807, 893)
+scale = Vector2(1.1, 1.1)
+texture = ExtResource("12_a4u41")
 
 [node name="UILayer" type="CanvasLayer" parent="." unique_id=1011913819]
 
