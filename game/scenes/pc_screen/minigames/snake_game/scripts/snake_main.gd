@@ -23,12 +23,12 @@ const MOVE_INTERVALS := {
 }
 
 const TIME_LIMITS := { # in seconds
-	1: 12,
-	2: 16,
-	3: 22,
-	4: 26,
-	5: 34,
-	6: 48,
+	1: 10,
+	2: 14,
+	3: 20,
+	4: 24,
+	5: 32,
+	6: 46,
 }
 
 const DIR_NAME := {Vector2.UP: "U", Vector2.DOWN: "D", Vector2.LEFT: "L", Vector2.RIGHT: "R"}
