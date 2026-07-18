@@ -1,11 +1,11 @@
 extends Node2D
 
-const SPRITE_SHEET := preload("uid://sedkplbhgv5a")
+const SPRITE_SHEET := preload("uid://c7imviryubf45")
 const REGIONS := {
-	"head": Rect2(128, 0, 128, 128),
-	"tail": Rect2(384, 128, 128, 128),
+	"head": Rect2(0, 0, 128, 128),
+	"straight": Rect2(0, 128, 128, 128),
 	"corner": Rect2(0, 256, 128, 128),
-	"straight": Rect2(128, 384, 128, 128),
+	"tail": Rect2(0, 384, 128, 128),
 }
 
 enum SQUARE_TYPE {
@@ -49,11 +49,11 @@ func _ready() -> void:
 func change_texture() -> void:
 	if square_type == SQUARE_TYPE.SNAKE: return
 	match square_type:
-		SQUARE_TYPE.EMPTY: tile_sprite.texture = load("uid://c7grpfhb7um2l")
+		SQUARE_TYPE.EMPTY: tile_sprite.texture = load("uid://d1at6kl2ydnbd")
 		SQUARE_TYPE.WALL: tile_sprite.texture = load("uid://b3r566l2fkiig")
 		SQUARE_TYPE.SNAKE: tile_sprite.texture = load("uid://da8cmy2fv7dvu")
-		SQUARE_TYPE.APPLE: tile_sprite.texture = load("uid://dyj4his05s4fu")
-		_: tile_sprite.texture = load("uid://c7grpfhb7um2l") # default empty texture
+		SQUARE_TYPE.APPLE: tile_sprite.texture = load("uid://lgfu3ocavbai")
+		_: tile_sprite.texture = load("uid://d1at6kl2ydnbd") # default empty texture
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
