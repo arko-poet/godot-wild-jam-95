@@ -3,15 +3,13 @@
 
 ### Game Design
 [arko](https://arko-poet.itch.io/)
+[awfullycrispy](https://awfullycrispy.itch.io/)
+
+### Music Composition & SFX
+[Grunt.](https://gruntofficial.itch.io/)
 
 ### Art
-[Awapaima](https://itch.io/profile/awapaima)
-
-### Music Composition
-[Grunt.](https://gruntofficial.itch.io/)
-
-### Sound Effects
-[Grunt.](https://gruntofficial.itch.io/)
+[Fonsy](https://llfonsy.itch.io/)
 
 ### Programming
 [OrangePainting](https://orangepainting.itch.io/)
