@@ -11,16 +11,8 @@
 [ext_resource type="AudioStream" uid="uid://be7qgtcwexwwh" path="res://game/audio/music/dark_background/BGM_Dark_MAIN.mp3" id="7_883tm"]
 [ext_resource type="AudioStream" uid="uid://d1dvov0dgh11b" path="res://game/audio/music/dark_background/BGM_Dark_LOOP.mp3" id="8_a4u41"]
 [ext_resource type="Texture2D" uid="uid://b3qvp2eg0sg6t" path="res://game/art/background/Room_Ver_2.png" id="8_gd0p7"]
-[ext_resource type="Texture2D" uid="uid://bxggqq3jpv285" path="res://game/art/background/Room_Assets_1/Room-1_Ground.png" id="9_gtikr"]
-[ext_resource type="Texture2D" uid="uid://dhi580o6ou5a" path="res://game/art/background/Room_Assets_1/Room-2_Forest.png" id="10_v4h7p"]
-[ext_resource type="Texture2D" uid="uid://cmq6ntw88f45r" path="res://game/art/background/Room_Assets_1/Room-3_Fence.png" id="11_lxcdn"]
+[ext_resource type="PackedScene" uid="uid://dpaqnoawx8dwl" path="res://game/scenes/parallax_background.tscn" id="9_883tm"]
 [ext_resource type="Texture2D" uid="uid://bu8h5h3lxn5nr" path="res://game/art/pause_button.png" id="12_gd0p7"]
-[ext_resource type="Texture2D" uid="uid://dsc30dvsut0a0" path="res://game/art/background/Room_Assets_1/Room-4_Shadow.png" id="12_o3m6i"]
-[ext_resource type="Texture2D" uid="uid://c023m12edq0c" path="res://game/art/background/Room_Assets_1/Room-5_Tree.png" id="13_mlfbd"]
-[ext_resource type="Texture2D" uid="uid://bt1dhpmgjq20k" path="res://game/art/background/Room_Assets_1/Room-6_Window.png" id="14_28sf8"]
-[ext_resource type="Texture2D" uid="uid://b00cnixncs5oq" path="res://game/art/background/Room_Assets_1/Room-7_Wall.png" id="15_66xtn"]
-[ext_resource type="Texture2D" uid="uid://bl3fseb3wovkf" path="res://game/art/background/Room_Assets_1/Room-8_Table.png" id="16_5b4ef"]
-[ext_resource type="Texture2D" uid="uid://ojfroky85at4" path="res://game/art/background/Room_Assets_1/Room-9_Monitor.png" id="17_4op3n"]
 
 [sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_gd0p7"]
 clip_count = 2
@@ -61,52 +53,13 @@ stream = SubResource("AudioStreamInteractive_gd0p7")
 
 [node name="Room" type="Node2D" parent="." unique_id=1070448921]
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="Room" unique_id=2088660722]
-
-[node name="Background_1" type="Sprite2D" parent="Room/ParallaxBackground" unique_id=1293827474]
-texture = ExtResource("9_gtikr")
-centered = false
-
-[node name="Background_2" type="Sprite2D" parent="Room/ParallaxBackground" unique_id=77921908]
-texture = ExtResource("10_v4h7p")
-centered = false
-
-[node name="Background_3" type="Sprite2D" parent="Room/ParallaxBackground" unique_id=563942724]
-texture = ExtResource("11_lxcdn")
-centered = false
-
-[node name="Background_4" type="Sprite2D" parent="Room/ParallaxBackground" unique_id=204575574]
-texture = ExtResource("12_o3m6i")
-centered = false
-
-[node name="Background_5" type="Sprite2D" parent="Room/ParallaxBackground" unique_id=1826832076]
-texture = ExtResource("13_mlfbd")
-centered = false
-
-[node name="Background_6" type="Sprite2D" parent="Room/ParallaxBackground" unique_id=856971280]
-texture = ExtResource("14_28sf8")
-centered = false
-
-[node name="Background_7" type="Sprite2D" parent="Room/ParallaxBackground" unique_id=151288580]
-texture = ExtResource("15_66xtn")
-centered = false
-
-[node name="Background_8" type="Sprite2D" parent="Room/ParallaxBackground" unique_id=1729940574]
-texture = ExtResource("16_5b4ef")
-centered = false
-
-[node name="Background_9" type="Sprite2D" parent="Room/ParallaxBackground" unique_id=146130608]
-texture = ExtResource("17_4op3n")
-centered = false
+[node name="ParallaxBackground" parent="Room" unique_id=2068726315 node_paths=PackedStringArray("main_game") instance=ExtResource("9_883tm")]
+main_game = NodePath("../..")
 
 [node name="Background" type="Sprite2D" parent="Room" unique_id=1873225203]
 visible = false
 texture = ExtResource("8_gd0p7")
 centered = false
-
-[node name="Monster" type="Sprite2D" parent="Room" unique_id=1314040944]
-unique_name_in_owner = true
-visible = false
 
 [node name="PCScreen" parent="Room" unique_id=1576839333 instance=ExtResource("5_wemlv")]
 unique_name_in_owner = true

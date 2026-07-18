@@ -55,7 +55,7 @@ const BAR_FILL_TIME := 0.5
 var _current_minigame: Minigame
 var _current_dice_roll: int
 
-var _doom := 0.0:
+var _doom := 90.0:
 	set(value):
 		var tween = create_tween()
 		tween.tween_property(_doom_bar, ^"value", min(value, _MAX_DOOM), BAR_FILL_TIME)
