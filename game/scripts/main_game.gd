@@ -24,7 +24,7 @@ var base_transition_length: float = 0.75
 @onready var win_lose_manager: Node = $WinLoseManager
 
 @onready var pc_screen: Node2D = %PCScreen
-@onready var monster: Sprite2D = %Monster
+@onready var monster: Sprite2D = %MonsterFinal
 @onready var monster_transition: ColorRect = %MonsterTransition
 
 @onready var claim_prize_button: Button = %ClaimPrizeButton
@@ -40,6 +40,7 @@ func game_won() -> void:
 
 func _ready() -> void:
 	turn_on_pc_button.grab_focus()
+	monster.hide()
 
 func _on_menu_button_pressed() -> void:
 	pass # Replace with function body.
@@ -55,6 +56,7 @@ func _on_pc_screen_doom_changed(percentage: float) -> void:
 	
 	if percentage == 1.0:
 		monster_stage = 5
+		monster.show()
 	elif percentage >= 0.8:
 		monster_stage = 4
 	elif percentage >= 0.6:
