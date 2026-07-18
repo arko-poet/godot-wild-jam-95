@@ -218,7 +218,7 @@ func _roll_dice() -> void:
 
 
 func _on_die_roll_finished(value: int) -> void:
-	print(value)
+	#print(value)
 	_current_dice_roll = value
 
 
