@@ -1,5 +1,13 @@
 extends Node2D
 
+const SPRITE_SHEET := preload("uid://sedkplbhgv5a")
+const REGIONS := {
+	"head": Rect2(128, 0, 128, 128),
+	"tail": Rect2(384, 128, 128, 128),
+	"corner": Rect2(0, 256, 128, 128),
+	"straight": Rect2(128, 384, 128, 128),
+}
+
 enum SQUARE_TYPE {
 	EMPTY,
 	WALL,
@@ -15,12 +23,22 @@ var square_type : SQUARE_TYPE = SQUARE_TYPE.EMPTY
 
 ## Sets the type of the square to be either empty, wall, or goal
 ## There should be only one goal square
-func set_type(new_type : String) -> void:
+func set_type(new_type : String, rotation_degrees: float = 0.0) -> void:
+	if REGIONS.has(new_type):
+		square_type = SQUARE_TYPE.SNAKE
+		%TileSprite.texture = SPRITE_SHEET
+		%TileSprite.region_enabled = true
+		%TileSprite.region_rect = REGIONS[new_type]
+		%TileSprite.rotation_degrees = rotation_degrees
+		return
 	match new_type:
 		"empty": square_type = SQUARE_TYPE.EMPTY
 		"wall": square_type = SQUARE_TYPE.WALL
-		"snake": square_type = SQUARE_TYPE.SNAKE
+		#"snake": square_type = SQUARE_TYPE.SNAKE
 		"apple": square_type = SQUARE_TYPE.APPLE
+	
+	%TileSprite.region_enabled = false
+	%TileSprite.rotation_degrees = 0.0
 	change_texture()
 
 # Called when the node enters the scene tree for the first time.
@@ -29,12 +47,13 @@ func _ready() -> void:
 
 # changes the texture based on the square type
 func change_texture() -> void:
+	if square_type == SQUARE_TYPE.SNAKE: return
 	match square_type:
-		SQUARE_TYPE.EMPTY: tile_sprite.texture = load("uid://dbh0lg6phh4fj")
-		SQUARE_TYPE.WALL: tile_sprite.texture = load("uid://bh1hk7mnp5u5j")
+		SQUARE_TYPE.EMPTY: tile_sprite.texture = load("uid://c7grpfhb7um2l")
+		SQUARE_TYPE.WALL: tile_sprite.texture = load("uid://b3r566l2fkiig")
 		SQUARE_TYPE.SNAKE: tile_sprite.texture = load("uid://da8cmy2fv7dvu")
-		SQUARE_TYPE.APPLE: tile_sprite.texture = load("uid://b7x3x07sv2i7d")
-		_: tile_sprite.texture = load("uid://dbh0lg6phh4fj") # default empty texture
+		SQUARE_TYPE.APPLE: tile_sprite.texture = load("uid://dyj4his05s4fu")
+		_: tile_sprite.texture = load("uid://c7grpfhb7um2l") # default empty texture
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
