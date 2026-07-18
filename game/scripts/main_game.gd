@@ -70,9 +70,9 @@ func _on_pc_screen_doom_changed(percentage: float) -> void:
 		previous_monster_stage = monster_stage
 		play_monster_transition()
 	
-	monster.position = MONSTER_POSITIONS[monster_stage]
-	monster.scale = MONSTER_SCALES[monster_stage]
-	monster.show()
+	#monster.position = MONSTER_POSITIONS[monster_stage]
+	#monster.scale = MONSTER_SCALES[monster_stage]
+	#monster.show()
 
 	if percentage == 1.0:
 		# prevent game over showing immediatly before palyer sees final monster stage
