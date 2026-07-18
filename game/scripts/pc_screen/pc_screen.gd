@@ -84,6 +84,8 @@ var _progress := 0.0:
 @onready var _dice_roll_label: Label = %DiceRollLabel
 
 @onready var _die: Sprite2D = %Die
+@onready var _die_window_3D = %DieWindow3D
+
 @onready var _roll_dice_button: Button = %RollDiceButton
 @onready var _reroll_dice_button: Button = %RerollDiceButton
 @onready var _start_button: Button = %StartButton
@@ -210,20 +212,18 @@ func _roll_dice() -> void:
 	_buttons_container.hide()
 	_dice_roll_label.hide()
 	
-	_die.roll(1 + randi() % 6)
-	await _die.roll_finished
-	
-	_dice_roll_label.show()
-	_buttons_container.show()
-
-
-func _on_die_roll_finished(value: int) -> void:
-	print(value)
-	_current_dice_roll = value
+	_die_window_3D.size = _die_window_3D.get_viewport().get_visible_rect().size
+	_die_window_3D.roll()
+	_current_dice_roll = await _die_window_3D.die_result
+	#_current_dice_roll = 1 + randi() % 6
+	#_die.roll(_current_dice_roll)
+	_doom += _DOOM_STEP / 2.0
 
 
 func _on_roll_dice_button_pressed() -> void:
-	await _roll_dice()
+	_roll_dice()
+	await get_tree().create_timer(4).timeout # this is so the devil doesn't immediately say what time he gives
+	_dice_roll_label.text = "%s" % _current_dice_roll
 	_current_minigame.dice_roll = _current_dice_roll
 	_dice_roll_label.text = "%s" % _current_dice_roll
 	
