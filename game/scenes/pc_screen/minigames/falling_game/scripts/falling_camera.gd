@@ -1,7 +1,7 @@
 extends Camera2D
 
 const MOVE_SPEED = 600.0 ## How fast the camera moves to the next platform
-const OFFSET_Y = 100.0 ## how far below the target platform the camera aims for
+const OFFSET_Y = -200.0 ## how far below the target platform the camera aims for
 
 @onready var target_pos := position
 
@@ -12,3 +12,5 @@ func _process(delta: float) -> void:
 func _on_platform_player_landed(pos: Vector2) -> void:
 	if pos.y + OFFSET_Y > position.y:
 		target_pos.y = pos.y + OFFSET_Y
+		# might be a weird place to put it, but idrk where else to
+		GameplayAudioController.minigame_good_event.emit()

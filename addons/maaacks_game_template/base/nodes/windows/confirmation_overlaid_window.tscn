@@ -6,22 +6,32 @@
 [node name="ConfirmationOverlaidWindow" unique_id=1482267070 instance=ExtResource("1_vfkm2")]
 script = ExtResource("2_sw7p1")
 confirm_button_text = "Confirm"
+ignore_siblings = false
 update_content = true
 title = "Confirm?"
 close_button_text = "Cancel"
 
+[node name="BoxContainer" parent="ContentContainer" parent_id_path=PackedInt32Array(1755486830) index="0" unique_id=394030069]
+custom_minimum_size = Vector2(614, 224)
+
 [node name="TitleLabel" parent="ContentContainer/BoxContainer/TitleMargin/BoxContainer" parent_id_path=PackedInt32Array(1788474031) index="0" unique_id=1049966061]
+theme_override_font_sizes/font_size = 32
 text = "Confirm?"
+
+[node name="DescriptionLabel" parent="ContentContainer/BoxContainer/BodyMargin" parent_id_path=PackedInt32Array(590613964) index="0" unique_id=617407155]
+theme_override_font_sizes/normal_font_size = 32
 
 [node name="MenuButtons" parent="ContentContainer/BoxContainer/MenuButtonsMargin" parent_id_path=PackedInt32Array(1413292752) index="0" unique_id=1371114575]
 vertical = false
 
 [node name="CloseButton" parent="ContentContainer/BoxContainer/MenuButtonsMargin/MenuButtons" index="0" unique_id=314526102]
+theme_override_font_sizes/font_size = 32
 text = "Cancel"
 
 [node name="ConfirmButton" type="Button" parent="ContentContainer/BoxContainer/MenuButtonsMargin/MenuButtons" index="1" unique_id=1052970550]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
 text = "Confirm"
 
 [connection signal="pressed" from="ContentContainer/BoxContainer/MenuButtonsMargin/MenuButtons/ConfirmButton" to="." method="_on_confirm_button_pressed"]

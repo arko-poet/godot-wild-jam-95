@@ -10,7 +10,8 @@ config_version=5
 
 [application]
 
-config/name="godot-wild-jam-95"
+config/name="GTA VI"
+config/version="0.1.0"
 config/tags=PackedStringArray("jam")
 run/main_scene="res://template/scenes/opening/opening.tscn"
 config/features=PackedStringArray("4.7", "GL Compatibility")
@@ -26,11 +27,14 @@ AppConfig="*uid://cjke6crjg14a0"
 SceneLoader="*uid://cbwmrnp0af35y"
 ProjectMusicController="*uid://r5t485lr3p7t"
 ProjectUISoundController="*uid://cc37235kj4384"
+GameplayAudioController="*uid://bd4cpgphcph3u"
+CrtShaderController="*uid://r325j7pv6p41"
+MinigameTimeTrials="*uid://ckbglkisfp63b"
 
 [display]
 
-window/size/viewport_width=1280
-window/size/viewport_height=720
+window/size/viewport_width=1920
+window/size/viewport_height=1080
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
@@ -49,9 +53,13 @@ folder_colors={
 "res://game/shaders/": "yellow"
 }
 
+[global_group]
+
+crt_shader=""
+
 [gui]
 
-theme/custom="res://template/resources/themes/expedition.tres"
+theme/custom="res://template/resources/themes/gravity.tres"
 
 [internationalization]
 

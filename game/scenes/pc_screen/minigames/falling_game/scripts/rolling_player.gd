@@ -1,10 +1,11 @@
 class_name RollingPlayer extends CharacterBody2D
 
 const MOVE_SPEED_RAMP = 2.0 ## How quickly the player's momentum increases or decreases
-const AIR_CONTROL = 0.25 ## How much the player can influence direction while airborne, 1.0 is full control
-const MAX_MOVE_SPEED = 200.0 ## The fastest the move speed can be in either direction
-const JUMP_VELOCITY = -215.0 ## jump height, should be negative, lower means jump higher
-const KNOCKBACK_DIST = 180.0 ## How far back the player is knocked when colliding with an obstacle
+const AIR_CONTROL = 0.5 ## How much the player can influence direction while airborne, 1.0 is full control
+const MAX_MOVE_SPEED = 500.0 ## The fastest the move speed can be in either direction
+const JUMP_VELOCITY = -250.0 ## jump height, should be negative, lower means jump higher
+const KNOCKBACK_DIST = 200.0 ## How far back the player is knocked when colliding with an obstacle
+const ROLLING_FRICTION = 150.0 ## How much reduction in speed the player gets while on the ground and not accelerating
 
 # all of these can be updated for whatever input action strings are for these buttons
 const INPUT_JUMP: StringName = "ui_up"
@@ -69,6 +70,12 @@ func _physics_process(delta: float) -> void:
 			velocity.x *= _knockback_speed_mult
 	
 	move_and_slide()
+	
+	if _is_on_floor and _direction == 0.0:
+		if _x > 0:
+			_x = clamp(_x - (ROLLING_FRICTION * delta), 0, INF)
+		else:
+			_x = clamp(_x + (ROLLING_FRICTION * delta), -INF, 0)
 
 ## If the player is colliding with a spike it returns 1.0 if it is to the left of the player or
 ## -1.0 if it is to the right. If there is no collision, or player is invincible, returns 0.0
@@ -94,6 +101,9 @@ func _knockback(_knockback_direction: float) -> Vector2:
 	_x = 0.0
 	%StunTimer.start() # adjust this timer to change stun time
 	modulate = Color.CRIMSON
+	
+	GameplayAudioController.minigame_bad_event.emit()
+	
 	return Vector2(_knockback_direction, -1.0) * KNOCKBACK_DIST
 
 

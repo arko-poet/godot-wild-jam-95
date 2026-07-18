@@ -2,33 +2,70 @@
 
 [ext_resource type="Script" uid="uid://dho8u0yajgm23" path="res://game/scripts/main_game.gd" id="1_1ig1l"]
 [ext_resource type="Script" uid="uid://cyh0d64pfygbl" path="res://addons/maaacks_game_template/base/nodes/utilities/pause_menu_controller.gd" id="2_xmhwu"]
-[ext_resource type="Texture2D" uid="uid://dm5lxhie5gnr7" path="res://game/art/placeholders/background.png" id="2_yv8p0"]
 [ext_resource type="PackedScene" uid="uid://c1kwgddxp18j1" path="res://template/scenes/windows/pause_menu_layer.tscn" id="3_cnnha"]
 [ext_resource type="Script" uid="uid://cv0f28axyfkd0" path="res://game/scripts/debug_controls.gd" id="4_cnnha"]
+[ext_resource type="Script" uid="uid://bmlwpkrav3q56" path="res://addons/maaacks_game_template/extras/scripts/win_lose_manager.gd" id="4_rsj1e"]
 [ext_resource type="PackedScene" uid="uid://bkcsjsk2ciff" path="res://addons/maaacks_game_template/base/nodes/music_players/background_music_player.tscn" id="4_wemlv"]
-[ext_resource type="AudioStream" uid="uid://dhp073fo2hbwy" path="res://game/audio/music/placeholders/oceanking-alone-not-lost-219740.mp3" id="5_ldb66"]
+[ext_resource type="PackedScene" uid="uid://c106nq3bl1a6g" path="res://template/scenes/windows/level_lost_window.tscn" id="5_gd0p7"]
 [ext_resource type="PackedScene" uid="uid://v5d6u7rtp522" path="res://game/scenes/pc_screen/pc_screen.tscn" id="5_wemlv"]
+[ext_resource type="AudioStream" uid="uid://be7qgtcwexwwh" path="res://game/audio/music/dark_background/BGM_Dark_MAIN.mp3" id="7_883tm"]
+[ext_resource type="AudioStream" uid="uid://d1dvov0dgh11b" path="res://game/audio/music/dark_background/BGM_Dark_LOOP.mp3" id="8_a4u41"]
+[ext_resource type="Texture2D" uid="uid://b3qvp2eg0sg6t" path="res://game/art/background/Room_Ver_2.png" id="8_gd0p7"]
+[ext_resource type="PackedScene" uid="uid://dpaqnoawx8dwl" path="res://game/scenes/parallax_background.tscn" id="9_883tm"]
+[ext_resource type="Texture2D" uid="uid://bu8h5h3lxn5nr" path="res://game/art/pause_button.png" id="12_gd0p7"]
+
+[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_gd0p7"]
+clip_count = 2
+clip_0/name = &"Bgm Dark Main"
+clip_0/stream = ExtResource("7_883tm")
+clip_0/auto_advance = 1
+clip_0/next_clip = 1
+clip_1/name = &"Bgm Dark Loop"
+clip_1/stream = ExtResource("8_a4u41")
+clip_1/auto_advance = 1
+clip_1/next_clip = 1
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3owqy"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8upip"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_drsw1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dpga7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hrfpl"]
 
 [node name="MainGame" type="Node" unique_id=807738320]
 script = ExtResource("1_1ig1l")
-metadata/_edit_vertical_guides_ = [82.0, 739.0]
+metadata/_edit_vertical_guides_ = [88.0, 1107.0]
+metadata/_edit_horizontal_guides_ = [93.0, 853.0]
 
 [node name="PauseMenuController" type="Node" parent="." unique_id=1619908077]
 script = ExtResource("2_xmhwu")
 pause_menu_packed = ExtResource("3_cnnha")
 
+[node name="WinLoseManager" type="Node" parent="." unique_id=1376188431]
+script = ExtResource("4_rsj1e")
+game_lost_scene = ExtResource("5_gd0p7")
+
 [node name="BackgroundMusicPlayer" parent="." unique_id=1446051342 instance=ExtResource("4_wemlv")]
-stream = ExtResource("5_ldb66")
+stream = SubResource("AudioStreamInteractive_gd0p7")
 
 [node name="Room" type="Node2D" parent="." unique_id=1070448921]
 
+[node name="ParallaxBackground" parent="Room" unique_id=2068726315 node_paths=PackedStringArray("main_game") instance=ExtResource("9_883tm")]
+main_game = NodePath("../..")
+
 [node name="Background" type="Sprite2D" parent="Room" unique_id=1873225203]
-texture = ExtResource("2_yv8p0")
+visible = false
+texture = ExtResource("8_gd0p7")
 centered = false
 
 [node name="PCScreen" parent="Room" unique_id=1576839333 instance=ExtResource("5_wemlv")]
 unique_name_in_owner = true
-position = Vector2(79, 88)
+visible = false
+position = Vector2(101.99999, 100.99999)
+scale = Vector2(0.97, 0.97)
 
 [node name="UILayer" type="CanvasLayer" parent="." unique_id=1011913819]
 
@@ -48,22 +85,60 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("4_cnnha")
 
-[node name="CreatureLabel" type="Label" parent="UILayer/UI/DebugControls" unique_id=1332702779]
+[node name="ClaimPrizeButton" type="Button" parent="UILayer/UI" unique_id=1875734220]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(200, 100)
 layout_mode = 0
-offset_left = 868.0
-offset_top = 223.0
-offset_right = 1146.0
-offset_bottom = 268.0
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+offset_left = 1431.0
+offset_top = 907.0
+offset_right = 1634.0
+offset_bottom = 1007.0
 theme_override_font_sizes/font_size = 32
-text = "1"
+text = "Claim Prize"
 
-[node name="MenuButton" type="Label" parent="UILayer/UI" unique_id=1266817094]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
+[node name="MarginContainer" type="MarginContainer" parent="UILayer/UI" unique_id=2127236174]
+layout_mode = 0
+offset_left = 1766.0
+offset_right = 1917.5
+offset_bottom = 79.0
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+
+[node name="PauseButton" type="Button" parent="UILayer/UI/MarginContainer" unique_id=2045346948]
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxEmpty_3owqy")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_8upip")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_drsw1")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_dpga7")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_hrfpl")
+text = "[ESC]"
+icon = ExtResource("12_gd0p7")
+icon_alignment = 2
+expand_icon = true
+
+[node name="TurnOnPCButton" type="Button" parent="UILayer/UI" unique_id=2057799578]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 1039.0
+offset_top = 943.0
+offset_right = 1095.0
+offset_bottom = 985.0
+text = "P"
+
+[node name="MonsterTransition" type="ColorRect" parent="." unique_id=244727151]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 15
 anchor_right = 1.0
-offset_left = -57.0
-offset_bottom = 31.0
-grow_horizontal = 0
-text = "Press `Escape` to Pause"
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[connection signal="doom_changed" from="Room/PCScreen" to="." method="_on_pc_screen_doom_changed"]
+[connection signal="progress_bar_filled" from="Room/PCScreen" to="." method="_on_pc_screen_progress_bar_filled"]
+[connection signal="pressed" from="UILayer/UI/ClaimPrizeButton" to="." method="_on_claim_prize_button_pressed"]
+[connection signal="pressed" from="UILayer/UI/MarginContainer/PauseButton" to="PauseMenuController" method="_on_pause_button_pressed"]
+[connection signal="pressed" from="UILayer/UI/TurnOnPCButton" to="." method="_on_turn_on_pc_button_pressed"]

@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://7ld8ybro56lx"]
+
+[ext_resource type="Script" uid="uid://dira8f6ml4pk6" path="res://game/scenes/pc_screen/minigames/maze_game/scripts/maze_main.gd" id="1_5rwaj"]
+[ext_resource type="PackedScene" uid="uid://c58j3q1h3y52m" path="res://game/scenes/pc_screen/minigames/maze_game/scenes/player.tscn" id="2_g7mqd"]
+[ext_resource type="PackedScene" uid="uid://belsar24opcfp" path="res://game/scenes/pc_screen/minigames/maze_game/scenes/MazeGenerator.tscn" id="3_50uot"]
+[ext_resource type="PackedScene" uid="uid://bb5isa4txkp3f" path="res://game/scenes/pc_screen/minigames/timer_component.tscn" id="4_g7mqd"]
+[ext_resource type="Shader" uid="uid://m3h0rwjkhehn" path="res://game/scenes/pc_screen/minigames/maze_game/assets/fog.gdshader" id="5_yrper"]
+[ext_resource type="Script" uid="uid://c4e4i4cel5gk" path="res://game/scenes/pc_screen/minigames/maze_game/scripts/fog_overlay.gd" id="6_ofyh6"]
+[ext_resource type="PackedScene" uid="uid://bxcrjj54yj4ok" path="res://game/shaders/CRTShader.tscn" id="7_xwuei"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_li6ia"]
+shader = ExtResource("5_yrper")
+
+[node name="MazeMain" type="Node2D" unique_id=926297470 node_paths=PackedStringArray("maze_generator", "player", "fog_overlay")]
+z_index = -1
+script = ExtResource("1_5rwaj")
+maze_generator = NodePath("MazeGenerator")
+player = NodePath("Player")
+CELL_SIZE = 48
+fog_overlay = NodePath("FogOverlay")
+
+[node name="Player" parent="." unique_id=242852718 node_paths=PackedStringArray("maze") instance=ExtResource("2_g7mqd")]
+z_index = 1
+maze = NodePath("..")
+
+[node name="MazeGenerator" parent="." unique_id=1024885874 instance=ExtResource("3_50uot")]
+
+[node name="TimerComponent" parent="." unique_id=1166255049 instance=ExtResource("4_g7mqd")]
+unique_name_in_owner = true
+offset_right = 1.0
+offset_bottom = 23.0
+
+[node name="FogOverlay" type="Sprite2D" parent="." unique_id=1049580428 node_paths=PackedStringArray("player", "maze")]
+z_index = 1
+texture_filter = 2
+material = SubResource("ShaderMaterial_li6ia")
+centered = false
+script = ExtResource("6_ofyh6")
+player = NodePath("../Player")
+maze = NodePath("..")
+
+[node name="CRTShader" parent="." unique_id=1925341764 instance=ExtResource("7_xwuei")]
+
+[connection signal="out_of_time" from="TimerComponent" to="." method="_on_timer_component_out_of_time"]

@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://belsar24opcfp"]
+
+[ext_resource type="Script" uid="uid://obplro6yfb3h" path="res://game/scenes/pc_screen/minigames/maze_game/scripts/maze_generator.gd" id="1_cjen5"]
+
+[node name="MazeGenerator" type="Node2D" unique_id=1024885874]
+script = ExtResource("1_cjen5")

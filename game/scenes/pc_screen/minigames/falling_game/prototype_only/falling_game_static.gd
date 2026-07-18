@@ -4,7 +4,6 @@ const DIST_BETWEEN_FLOORS = 200.0
 const MIN_PLATFORM_OFFSET = 50.0
 const MAX_PLATFORM_OFFSET = 200.0
 
-var platform_scene = preload("uid://c4nnus1gtftwt")
 var curr_y := 400.0
 var layers := 20
 var offset_direction := 1.0

@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://c2r4u5hrhc6qf"]
+
+[ext_resource type="Script" uid="uid://385l70lm86wq" path="res://game/scenes/pc_screen/minigames/snake_game/scripts/square.gd" id="1_qri0c"]
+[ext_resource type="Texture2D" uid="uid://dbh0lg6phh4fj" path="res://game/scenes/pc_screen/minigames/snake_game/assets/PrototypeGridSquare (2).png" id="2_v0eie"]
+
+[node name="Square" type="Node2D" unique_id=330002088]
+script = ExtResource("1_qri0c")
+
+[node name="TileSprite" type="Sprite2D" parent="." unique_id=1447241743]
+unique_name_in_owner = true
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("2_v0eie")
+centered = false

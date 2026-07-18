@@ -6,8 +6,15 @@
 [node name="OverlaidWindowSceneContainer" unique_id=232665413 instance=ExtResource("1_07348")]
 script = ExtResource("2_p673y")
 packed_scene = null
+ignore_siblings = false
+
+[node name="TitleLabel" parent="ContentContainer/BoxContainer/TitleMargin/BoxContainer" parent_id_path=PackedInt32Array(1788474031) index="0" unique_id=1049966061]
+theme_override_font_sizes/font_size = 32
 
 [node name="SceneContainer" type="MarginContainer" parent="ContentContainer/BoxContainer/BodyMargin" parent_id_path=PackedInt32Array(590613964) index="1" unique_id=1464754606]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
+
+[node name="CloseButton" parent="ContentContainer/BoxContainer/MenuButtonsMargin/MenuButtons" parent_id_path=PackedInt32Array(1371114575) index="0" unique_id=314526102]
+theme_override_font_sizes/font_size = 32
