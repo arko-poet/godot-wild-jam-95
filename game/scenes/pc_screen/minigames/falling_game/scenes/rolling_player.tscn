@@ -1,18 +1,19 @@
 [gd_scene format=3 uid="uid://deolci8vffafc"]
 
 [ext_resource type="Script" uid="uid://bqbr0gwtfhej4" path="res://game/scenes/pc_screen/minigames/falling_game/scripts/rolling_player.gd" id="1_l1or5"]
-[ext_resource type="Texture2D" uid="uid://nwfpyr5l7p0t" path="res://game/scenes/pc_screen/minigames/falling_game/prototype_only/PLACEHOLDER_pokerchip.png" id="2_l1or5"]
+[ext_resource type="Texture2D" uid="uid://bqxcxerxe812l" path="res://game/scenes/pc_screen/minigames/falling_game/assets/roll_player_sprite.png" id="2_l1or5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_d8xlp"]
-radius = 29.0
+radius = 30.0
 
 [node name="RollingPlayer" type="CharacterBody2D" unique_id=260473328]
 collision_layer = 3
 script = ExtResource("1_l1or5")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2021905604]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1246580934]
 unique_name_in_owner = true
-scale = Vector2(0.11241658, 0.11241658)
+self_modulate = Color(0.65, 0.65, 0.65, 1)
+texture_filter = 1
 texture = ExtResource("2_l1or5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=925753793]

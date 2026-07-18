@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://dbqhfoehi0cnu"]
+
+[ext_resource type="Texture2D" uid="uid://bufiywqkk0xd4" path="res://game/scenes/pc_screen/minigames/falling_game/assets/flag-spritesheet.png" id="1_ya2ac"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_utnh4"]
+atlas = ExtResource("1_ya2ac")
+region = Rect2(0, 0, 60, 83)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_viyj6"]
+atlas = ExtResource("1_ya2ac")
+region = Rect2(60, 0, 60, 83)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1i78w"]
+atlas = ExtResource("1_ya2ac")
+region = Rect2(120, 0, 60, 83)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_15oih"]
+atlas = ExtResource("1_ya2ac")
+region = Rect2(180, 0, 60, 83)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3owqy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_utnh4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_viyj6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1i78w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_15oih")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 3.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_63ujo"]
+size = Vector2(27, 46.5)
+
+[node name="RollingGoal" type="Area2D" unique_id=1973734546]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=889444235]
+position = Vector2(12, -24.000002)
+scale = Vector2(0.5833333, 0.5833334)
+sprite_frames = SubResource("SpriteFrames_3owqy")
+autoplay = "default"
+frame_progress = 0.7992801
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=279115897]
+position = Vector2(11.5, -23.25)
+shape = SubResource("RectangleShape2D_63ujo")

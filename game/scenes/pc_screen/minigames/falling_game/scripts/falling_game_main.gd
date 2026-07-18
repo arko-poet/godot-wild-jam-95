@@ -1,8 +1,8 @@
 class_name FallingGame extends Minigame
 
 const TIME_LIMITS = [9223372036854775806, 18, 21, 24, 26, 34, 42] ## time limits given for each dice_value (1-6), index 0 is dummy data
-const SPIKE_SURVIVAL_RATES = [0.25, 0.5, 0.75] ## chances that each spike remains active for each difficulty
-const LAYERS_PER_DIFF = [8, 11, 15] ## number of layers not counting the first and last, for each difficulty
+const SPIKE_SURVIVAL_RATES = [0.4, 0.7, 0.9] ## chances that each spike remains active for each difficulty
+const LAYERS_PER_DIFF = [8, 11, 14] ## number of layers not counting the first and last, for each difficulty
 
 const DIST_BETWEEN_FLOORS = 150.0 ## pixels to move down after placing a layer
 const RIGHT_X_RANGE = [800, 923] ## the lowest and highest values the X position can be on right-side platforms
@@ -38,10 +38,10 @@ func _ready() -> void:
 	
 	curr_y += DIST_BETWEEN_FLOORS
 	_add_platform(3, curr_y, true)
-	%Goal.position = Vector2(547, curr_y - 26.0)
+	%Goal.position = Vector2(547, curr_y)
 
-func _process(delta: float) -> void:
-	%Goal.rotate(PI * delta)
+#func _process(delta: float) -> void:
+	#%Goal.rotate(PI * delta)
 
 
 func _input(event: InputEvent) -> void:
