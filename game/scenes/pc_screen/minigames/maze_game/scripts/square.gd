@@ -28,10 +28,10 @@ func _ready() -> void:
 # changes the texture based on the square type
 func change_texture() -> void:
 	match square_type:
-		SQUARE_TYPE.EMPTY: tile_sprite.texture = load("uid://cpgkoty6k05o1")
-		SQUARE_TYPE.WALL: tile_sprite.texture = load("uid://dkxw34hqycolo")
-		SQUARE_TYPE.GOAL: tile_sprite.texture = load("uid://y48jj7lcpeoj")
-		_: tile_sprite.texture = load("uid://dbh0lg6phh4fj") # default empty texture
+		SQUARE_TYPE.EMPTY: tile_sprite.texture = load("uid://cesgmsitqohdt")
+		SQUARE_TYPE.WALL: tile_sprite.texture = load("uid://bru1sj8a4ais1")
+		SQUARE_TYPE.GOAL: tile_sprite.texture = load("uid://b1x7k11awwuhd")
+		_: tile_sprite.texture = load("uid://cesgmsitqohdt") # default empty texture
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
