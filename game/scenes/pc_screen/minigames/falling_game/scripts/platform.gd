@@ -1,6 +1,6 @@
 extends Node2D
 
-signal player_landed(pos: Vector2)
+signal player_landed(pos: Vector2, me: Node)
 
 func _ready() -> void:
 	pass
@@ -17,4 +17,4 @@ func reduce_spikes(survival_rate: float) -> void:
 
 func _on_player_detector_body_entered(body: Node2D) -> void:
 	if body is RollingPlayer:
-		player_landed.emit(position)
+		player_landed.emit(position, self)
