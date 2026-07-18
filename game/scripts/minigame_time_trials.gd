@@ -3,11 +3,11 @@ extends Node
 ## If this is set to true, it modifies a few components to not lose games
 ## and instead print out the time it took when the player wins. To see anything
 ## that checks for this just run Search > Find in Files > MinigameTimeTrials.trials_active
-var trials_active := false
+var trials_active := true
 
 ## If the trials are active, this will be the minigame you always get. Currently:
 ## 0 = Falling      1 = Maze      2 = Strategem      3 = Snake
-var force_minigame_index := 0
+var force_minigame_index := 1
 
 var count_up_timer: Timer
 

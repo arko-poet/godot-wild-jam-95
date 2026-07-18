@@ -28,8 +28,8 @@ func _ready() -> void:
 # changes the texture based on the square type
 func change_texture() -> void:
 	match square_type:
-		SQUARE_TYPE.EMPTY: tile_sprite.texture = load("uid://dbh0lg6phh4fj")
-		SQUARE_TYPE.WALL: tile_sprite.texture = load("uid://cny0htqqv2p4")
+		SQUARE_TYPE.EMPTY: tile_sprite.texture = load("uid://cpgkoty6k05o1")
+		SQUARE_TYPE.WALL: tile_sprite.texture = load("uid://dkxw34hqycolo")
 		SQUARE_TYPE.GOAL: tile_sprite.texture = load("uid://crwmxws8q14e")
 		_: tile_sprite.texture = load("uid://dbh0lg6phh4fj") # default empty texture
 

@@ -1,12 +1,148 @@
 [gd_scene format=3 uid="uid://c58j3q1h3y52m"]
 
 [ext_resource type="Script" uid="uid://ben2627almgnb" path="res://game/scenes/pc_screen/minigames/maze_game/scripts/player.gd" id="1_mwpwl"]
-[ext_resource type="Texture2D" uid="uid://lloyhyepsu0x" path="res://game/scenes/pc_screen/minigames/maze_game/assets/PrototypeCharacter.png" id="2_aq0g4"]
+[ext_resource type="Texture2D" uid="uid://b8kggf81mhs1x" path="res://game/scenes/pc_screen/minigames/maze_game/assets/character_base_512x512.png" id="2_mwpwl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aq0g4"]
+atlas = ExtResource("2_mwpwl")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uueia"]
+atlas = ExtResource("2_mwpwl")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pphqa"]
+atlas = ExtResource("2_mwpwl")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cl5e0"]
+atlas = ExtResource("2_mwpwl")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0hgd7"]
+atlas = ExtResource("2_mwpwl")
+region = Rect2(0, 384, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5g10h"]
+atlas = ExtResource("2_mwpwl")
+region = Rect2(128, 384, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3y5ob"]
+atlas = ExtResource("2_mwpwl")
+region = Rect2(256, 384, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b2lhd"]
+atlas = ExtResource("2_mwpwl")
+region = Rect2(384, 384, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_51iqa"]
+atlas = ExtResource("2_mwpwl")
+region = Rect2(0, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ocsu2"]
+atlas = ExtResource("2_mwpwl")
+region = Rect2(128, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dto0g"]
+atlas = ExtResource("2_mwpwl")
+region = Rect2(256, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dccwh"]
+atlas = ExtResource("2_mwpwl")
+region = Rect2(384, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1134a"]
+atlas = ExtResource("2_mwpwl")
+region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5tq6c"]
+atlas = ExtResource("2_mwpwl")
+region = Rect2(128, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a1m7j"]
+atlas = ExtResource("2_mwpwl")
+region = Rect2(256, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pvoud"]
+atlas = ExtResource("2_mwpwl")
+region = Rect2(384, 128, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_li6ia"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aq0g4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uueia")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pphqa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cl5e0")
+}],
+"loop": 1,
+"name": &"walk_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0hgd7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5g10h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3y5ob")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b2lhd")
+}],
+"loop": 1,
+"name": &"walk_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_51iqa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ocsu2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dto0g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dccwh")
+}],
+"loop": 1,
+"name": &"walk_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1134a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5tq6c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a1m7j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pvoud")
+}],
+"loop": 1,
+"name": &"walk_up",
+"speed": 5.0
+}]
 
 [node name="Player" type="Node2D" unique_id=242852718]
 script = ExtResource("1_mwpwl")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=698249919]
-scale = Vector2(0.75, 0.75)
-texture = ExtResource("2_aq0g4")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1197325642]
+scale = Vector2(0.375, 0.375)
+sprite_frames = SubResource("SpriteFrames_li6ia")
+animation = &"walk_left"
 centered = false
