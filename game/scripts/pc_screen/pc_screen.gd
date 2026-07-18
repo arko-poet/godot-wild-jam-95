@@ -52,6 +52,7 @@ const _SNAKE_GAME_NAME := "eating" # or slithering??
 
 const BAR_FILL_TIME := 0.5
 
+var _minigame_queue: Array
 var _current_minigame: Minigame
 var _current_dice_roll: int
 
@@ -102,10 +103,15 @@ var _progress := 0.0:
 
 
 func _ready() -> void:
+	randomize()
 	_progress_bar.max_value = _MAX_PROGRESS
 	_progress_bar_preview.max_value = _MAX_PROGRESS
 	_doom_bar.max_value = _MAX_DOOM
 	_doom_bar_preview.max_value = _MAX_DOOM
+	
+	# Add first set of 4 games in random order
+	_minigame_queue.append_array(_MiniGameScenes)
+	_minigame_queue.shuffle()
 	
 	_prepare_next_minigame()
 	
@@ -183,7 +189,13 @@ func _prepare_next_minigame() -> void:
 	if MinigameTimeTrials.trials_active:
 		_current_minigame = _MiniGameScenes[MinigameTimeTrials.force_minigame_index].instantiate()
 	else:
-		_current_minigame = _MiniGameScenes.pick_random().instantiate()
+		if len(_minigame_queue) == 0:
+			_minigame_queue.append_array(_MiniGameScenes)
+			_minigame_queue.append_array(_MiniGameScenes) # append it twice so we don't get the usual pattern of sets of 4 minigames
+			_minigame_queue.shuffle()
+		
+		_current_minigame = _minigame_queue.front().instantiate()
+		_minigame_queue.pop_front()
 	
 	if _current_minigame is FallingGame:
 		_devil_line.text = _TEXT_ROLL_DICE % _FALLING_GAME_NAME

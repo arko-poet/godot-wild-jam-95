@@ -110,7 +110,7 @@ func _set_current_sequence() -> void:
 	var sequence_length = _SEQUENCE_LENGTHS[difficulty] + (randi() % 3 - 1)
 	for i in sequence_length:
 		_current_sequence.append(_Direction.values().pick_random())
-	print(_current_sequence)
+	#print(_current_sequence)
 		
 
 	_sequence_pointer = 0
