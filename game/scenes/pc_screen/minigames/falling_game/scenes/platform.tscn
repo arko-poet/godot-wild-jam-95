@@ -2,9 +2,10 @@
 
 [ext_resource type="Script" uid="uid://ddl4w0dvy85xd" path="res://game/scenes/pc_screen/minigames/falling_game/scripts/platform.gd" id="1_1kva0"]
 [ext_resource type="PackedScene" uid="uid://bgq5rem8j0e3x" path="res://game/scenes/pc_screen/minigames/falling_game/scenes/spike.tscn" id="2_3td3f"]
+[ext_resource type="Texture2D" uid="uid://cvmqbqjk4q1d2" path="res://game/scenes/pc_screen/minigames/falling_game/platform_bricks.png" id="2_20bmh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3owqy"]
-size = Vector2(1693.5, 13)
+size = Vector2(1500, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8upip"]
 size = Vector2(3369, 51)
@@ -20,28 +21,33 @@ unique_name_in_owner = true
 position = Vector2(-20, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Right" unique_id=48011338]
-position = Vector2(906.75, 6.5)
+position = Vector2(810, 8)
 shape = SubResource("RectangleShape2D_3owqy")
 
-[node name="Polygon2D" type="Polygon2D" parent="Right" unique_id=1872701211]
-position = Vector2(0.062128816, 6.0037217)
-scale = Vector2(0.99896467, 0.30418608)
-color = Color(0, 0, 0, 1)
-polygon = PackedVector2Array(60, -20, 1755, -20, 1755, 22.999996, 59.999996, 22.999996)
+[node name="Polygon2D" type="Polygon2D" parent="Right" unique_id=560368372]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(60, 0)
+texture = ExtResource("2_20bmh")
+polygon = PackedVector2Array(0, 0, 0, 16, 1500, 16, 1500, 0)
+uv = PackedVector2Array(0, 0, 0, 16, 1500, 16, 1500, 0)
 
 [node name="Left" type="StaticBody2D" parent="." unique_id=1062462184]
 unique_name_in_owner = true
 position = Vector2(-1793, 0)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Left" unique_id=168036868]
-position = Vector2(906.75, 6.5)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Left" unique_id=1633109309]
+position = Vector2(1003, 8)
 shape = SubResource("RectangleShape2D_3owqy")
 
-[node name="Polygon2D" type="Polygon2D" parent="Left" unique_id=1011547000]
-position = Vector2(0.062128816, 6.0037217)
-scale = Vector2(0.99896467, 0.30418608)
-color = Color(0, 0, 0, 1)
-polygon = PackedVector2Array(60, -20, 1755, -20, 1755, 22.999996, 59.999996, 22.999996)
+[node name="Polygon2D" type="Polygon2D" parent="Left" unique_id=974102228]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(1753, 16)
+rotation = 3.1415927
+texture = ExtResource("2_20bmh")
+polygon = PackedVector2Array(0, 0, 0, 16, 1500, 16, 1500, 0)
+uv = PackedVector2Array(0, 0, 0, 16, 1500, 16, 1500, 0)
 
 [node name="PlayerDetector" type="Area2D" parent="." unique_id=2069910948]
 visible = false
@@ -60,52 +66,34 @@ position = Vector2(0, 22)
 position = Vector2(117, -20)
 
 [node name="Spike3" parent="Spikes" unique_id=1770152107 groups=["spikes"] instance=ExtResource("2_3td3f")]
-position = Vector2(296, -20)
-
-[node name="Spike5" parent="Spikes" unique_id=2016025764 groups=["spikes"] instance=ExtResource("2_3td3f")]
-position = Vector2(422, -20)
+position = Vector2(327, -20)
 
 [node name="Spike6" parent="Spikes" unique_id=388803432 groups=["spikes"] instance=ExtResource("2_3td3f")]
 position = Vector2(551, -20)
 
 [node name="Spike8" parent="Spikes" unique_id=244890866 groups=["spikes"] instance=ExtResource("2_3td3f")]
-position = Vector2(693, -20)
-
-[node name="Spike9" parent="Spikes" unique_id=699315268 groups=["spikes"] instance=ExtResource("2_3td3f")]
-position = Vector2(799, -20)
+position = Vector2(754, -20)
 
 [node name="Spike11" parent="Spikes" unique_id=529126787 groups=["spikes"] instance=ExtResource("2_3td3f")]
-position = Vector2(969, -20)
+position = Vector2(936, -20)
 
 [node name="Spike12" parent="Spikes" unique_id=1966679381 groups=["spikes"] instance=ExtResource("2_3td3f")]
 position = Vector2(1119, -20)
 
-[node name="Spike13" parent="Spikes" unique_id=2078236057 groups=["spikes"] instance=ExtResource("2_3td3f")]
-position = Vector2(1271, -20)
-
-[node name="Spike14" parent="Spikes" unique_id=842083040 groups=["spikes"] instance=ExtResource("2_3td3f")]
-position = Vector2(-1412, -20)
-
 [node name="Spike15" parent="Spikes" unique_id=1490258601 groups=["spikes"] instance=ExtResource("2_3td3f")]
-position = Vector2(-1289, -20)
+position = Vector2(-1349, -20)
 
 [node name="Spike16" parent="Spikes" unique_id=790942453 groups=["spikes"] instance=ExtResource("2_3td3f")]
-position = Vector2(-1117, -20)
-
-[node name="Spike18" parent="Spikes" unique_id=1874492309 groups=["spikes"] instance=ExtResource("2_3td3f")]
-position = Vector2(-962, -20)
+position = Vector2(-1162, -20)
 
 [node name="Spike19" parent="Spikes" unique_id=659931389 groups=["spikes"] instance=ExtResource("2_3td3f")]
-position = Vector2(-790, -20)
+position = Vector2(-909, -20)
 
 [node name="Spike21" parent="Spikes" unique_id=1875508625 groups=["spikes"] instance=ExtResource("2_3td3f")]
-position = Vector2(-617, -20)
-
-[node name="Spike22" parent="Spikes" unique_id=1645290401 groups=["spikes"] instance=ExtResource("2_3td3f")]
-position = Vector2(-472, -20)
+position = Vector2(-661, -20)
 
 [node name="Spike24" parent="Spikes" unique_id=1432360867 groups=["spikes"] instance=ExtResource("2_3td3f")]
-position = Vector2(-324, -20)
+position = Vector2(-382, -20)
 
 [node name="Spike26" parent="Spikes" unique_id=1754609804 groups=["spikes"] instance=ExtResource("2_3td3f")]
 position = Vector2(-140, -20)

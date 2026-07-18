@@ -183,7 +183,8 @@ func _prepare_next_minigame() -> void:
 	if MinigameTimeTrials.trials_active:
 		_current_minigame = _MiniGameScenes[MinigameTimeTrials.force_minigame_index].instantiate()
 	else:
-		_current_minigame = _MiniGameScenes.pick_random().instantiate()
+		#_current_minigame = _MiniGameScenes.pick_random().instantiate()
+		_current_minigame = _MiniGameScenes[0].instantiate()
 	
 	if _current_minigame is FallingGame:
 		_devil_line.text = _TEXT_ROLL_DICE % _FALLING_GAME_NAME

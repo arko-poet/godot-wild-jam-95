@@ -1,31 +1,31 @@
 [gd_scene format=3 uid="uid://bgq5rem8j0e3x"]
 
 [ext_resource type="Script" uid="uid://cph0t5nedew1k" path="res://game/scenes/pc_screen/minigames/falling_game/scripts/spike.gd" id="1_5uwnr"]
-[ext_resource type="Texture2D" uid="uid://bljisgtrsof3a" path="res://game/scenes/pc_screen/minigames/falling_game/prototype_only/PLACEHOLDER_spike.png" id="2_5uwnr"]
+[ext_resource type="Texture2D" uid="uid://qeefrk8jq5a8" path="res://game/scenes/pc_screen/minigames/falling_game/spike.png" id="2_5uwnr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ho3k1"]
-size = Vector2(23, 23)
+size = Vector2(14, 29)
 
 [node name="Spike" type="AnimatableBody2D" unique_id=2049267689]
 sync_to_physics = false
 script = ExtResource("1_5uwnr")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=715051253]
+[node name="PlayerHitbox" type="CollisionPolygon2D" parent="." unique_id=715051253]
 position = Vector2(-10.75, -29.809029)
 scale = Vector2(0.6249999, 0.6597222)
-polygon = PackedVector2Array(17.200003, 10.321053, 34.800003, 45.18421, -0.39999962, 45.18421)
+polygon = PackedVector2Array(17.200003, 1.2263145, 26.800003, 45.18421, 7.6000013, 45.18421)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=298298826]
-position = Vector2(0.04043773, -11.74495)
-rotation = -3.1415925
-scale = Vector2(0.019882804, 0.023900375)
+texture_filter = 1
+position = Vector2(0, -14.5)
+scale = Vector2(1, 1.45)
 texture = ExtResource("2_5uwnr")
 
-[node name="Area2D" type="Area2D" parent="." unique_id=1497109697]
+[node name="SpikeKillerHitbox" type="Area2D" parent="." unique_id=1497109697]
 collision_layer = 0
 collision_mask = 4
 monitorable = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2120613313]
-position = Vector2(-0.5, -11.5)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeKillerHitbox" unique_id=2120613313]
+position = Vector2(0, -14.5)
 shape = SubResource("RectangleShape2D_ho3k1")
