@@ -3,12 +3,12 @@
 [ext_resource type="Script" uid="uid://bsxfkt70612yq" path="res://game/scripts/pc_screen/pc_screen.gd" id="1_ib41a"]
 [ext_resource type="Script" uid="uid://baylt4lsmmrfk" path="res://game/scripts/die.gd" id="2_8vsnj"]
 [ext_resource type="Texture2D" uid="uid://da1tl6w8xc6s7" path="res://game/art/placeholders/arko.png" id="2_hw7br"]
-[ext_resource type="Texture2D" uid="uid://bh1hk7mnp5u5j" path="res://game/scenes/pc_screen/minigames/snake_game/assets/spikes.png" id="3_qcrff"]
-[ext_resource type="Texture2D" uid="uid://crwmxws8q14e" path="res://game/scenes/pc_screen/minigames/maze_game/assets/goal.png" id="4_ax7l3"]
-[ext_resource type="Texture2D" uid="uid://d4h4gi0nlp25c" path="res://game/scenes/pc_screen/minigames/maze_game/assets/PrototypeGridSquare2.png" id="5_leom6"]
-[ext_resource type="Texture2D" uid="uid://lloyhyepsu0x" path="res://game/scenes/pc_screen/minigames/maze_game/assets/PrototypeCharacter.png" id="6_5e5m8"]
-[ext_resource type="Texture2D" uid="uid://4xotooeatb40" path="res://game/scenes/pc_screen/minigames/snake_game/assets/Square.png" id="7_dnf0m"]
-[ext_resource type="Texture2D" uid="uid://buoe86bqyfknb" path="res://icon.svg" id="8_6nmus"]
+[ext_resource type="Texture2D" uid="uid://db1vuwsopducl" path="res://game/art/dice/die_1.png" id="3_qcrff"]
+[ext_resource type="Texture2D" uid="uid://d4b8q11i5gc5w" path="res://game/art/dice/die_2.png" id="4_ax7l3"]
+[ext_resource type="Texture2D" uid="uid://cnmaedy0wsts6" path="res://game/art/dice/die_3.png" id="5_leom6"]
+[ext_resource type="Texture2D" uid="uid://dud08xd212kv5" path="res://game/art/dice/die_4.png" id="6_5e5m8"]
+[ext_resource type="Texture2D" uid="uid://cl5i63tcci287" path="res://game/art/dice/die_5.png" id="7_dnf0m"]
+[ext_resource type="Texture2D" uid="uid://c735wvdvvwkbq" path="res://game/art/dice/die_6.png" id="8_6nmus"]
 [ext_resource type="PackedScene" uid="uid://bxcrjj54yj4ok" path="res://game/shaders/CRTShader.tscn" id="10_8vsnj"]
 [ext_resource type="Script" uid="uid://c0j7kjrbqnb8r" path="res://game/scripts/progress_bar_preview.gd" id="10_qcrff"]
 
@@ -157,24 +157,6 @@ bbcode_enabled = true
 text = "Roll the Dice."
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="DiceRollLabel" type="Label" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame" unique_id=907658553]
-unique_name_in_owner = true
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -11.5
-offset_right = 20.0
-offset_bottom = 11.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 128
-text = "6"
 
 [node name="ButtonsContainer" type="HBoxContainer" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame" unique_id=1594494237]
 unique_name_in_owner = true
