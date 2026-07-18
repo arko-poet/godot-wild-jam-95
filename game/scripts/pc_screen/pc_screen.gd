@@ -82,8 +82,6 @@ var _progress := 0.0:
 @onready var _doom_bar: ProgressBar = %DoomBar
 @onready var _doom_bar_preview: ProgressBar = %DoomBarPreview
 
-@onready var _dice_roll_label: Label = %DiceRollLabel
-
 @onready var _die: Sprite2D = %Die
 @onready var _roll_dice_button: Button = %RollDiceButton
 @onready var _reroll_dice_button: Button = %RerollDiceButton
@@ -220,12 +218,10 @@ func _roll_dice() -> void:
 	_die.show()
 	
 	_buttons_container.hide()
-	_dice_roll_label.hide()
 	
 	_die.roll(1 + randi() % 6)
 	await _die.roll_finished
 	
-	_dice_roll_label.show()
 	_buttons_container.show()
 
 
@@ -237,7 +233,6 @@ func _on_die_roll_finished(value: int) -> void:
 func _on_roll_dice_button_pressed() -> void:
 	await _roll_dice()
 	_current_minigame.dice_roll = _current_dice_roll
-	_dice_roll_label.text = "%s" % _current_dice_roll
 	
 	_devil_line.text = _TEXT_REROLL_DICE % _current_minigame.get_time_limit()
 	
@@ -253,7 +248,6 @@ func _on_roll_dice_button_pressed() -> void:
 
 func _on_reroll_dice_button_pressed() -> void:
 	await _roll_dice()
-	_dice_roll_label.text = "%s" % _current_dice_roll
 	_current_minigame.dice_roll = _current_dice_roll
 	_devil_line.text = _TEXT_REROLL_DICE % _current_minigame.get_time_limit()
 	_reroll_dice_button.grab_focus()
@@ -265,7 +259,6 @@ func _on_accept_roll_button_pressed() -> void:
 	_reroll_dice_button.hide()
 	_or_label.hide()
 	_accept_roll_button.hide()
-	_dice_roll_label.hide()
 	_die.hide()
 	
 	_devil_line.text = _TEXT_CHOOSE_DIFFICULTY
