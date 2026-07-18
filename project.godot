@@ -47,6 +47,7 @@ enabled=PackedStringArray("res://addons/maaacks_game_template/plugin.cfg")
 folder_colors={
 "res://game/art/": "teal",
 "res://game/audio/": "purple",
+"res://game/fonts/": "gray",
 "res://game/resources/": "orange",
 "res://game/scenes/": "blue",
 "res://game/scripts/": "red",
@@ -60,6 +61,7 @@ crt_shader=""
 [gui]
 
 theme/custom="res://template/resources/themes/gravity.tres"
+theme/custom_font="uid://yyxdhvrcg7hm"
 
 [input]
 
