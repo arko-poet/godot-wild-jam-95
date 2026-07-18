@@ -9,7 +9,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	print(main_game.monster_stage)
+	#print(main_game.monster_stage)
 	match main_game.monster_stage:
 		-1:
 			%Monster.visible = true
