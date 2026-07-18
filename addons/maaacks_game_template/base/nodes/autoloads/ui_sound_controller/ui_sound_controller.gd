@@ -153,8 +153,11 @@ func _build_minigame_stream_players() -> void:
 	minigame_good_event_player = _build_stream_player(minigame_good_event, "MinigameGoodEvent")
 	minigame_bad_event_player = _build_stream_player(minigame_bad_event, "MinigameBadEvent")
 	minigame_progress_player = _build_stream_player(minigame_progress, "MinigameProgress")
+	
 	dice_roll_player = _build_stream_player(dice_roll, "DiceRoll")
 	entity_step_player = _build_stream_player(entity_step, "EntityStep")
+	if entity_step_player:
+		entity_step_player.volume_db += 10.0
 
 
 func _build_all_stream_players() -> void:
