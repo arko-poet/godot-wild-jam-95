@@ -3,12 +3,13 @@
 
 ### Game Design
 [arko](https://arko-poet.itch.io/)
+[awfullycrispy](https://awfullycrispy.itch.io/)
 
 ### Music Composition & SFX
 [Grunt.](https://gruntofficial.itch.io/)
 
 ### Art
-[Fonsy](https://itch.io/profile/fonsy)
+[Fonsy](https://llfonsy.itch.io/)
 
 ### Programming
 [OrangePainting](https://orangepainting.itch.io/)
