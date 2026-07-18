@@ -30,7 +30,7 @@ func change_texture() -> void:
 	match square_type:
 		SQUARE_TYPE.EMPTY: tile_sprite.texture = load("uid://cpgkoty6k05o1")
 		SQUARE_TYPE.WALL: tile_sprite.texture = load("uid://dkxw34hqycolo")
-		SQUARE_TYPE.GOAL: tile_sprite.texture = load("uid://crwmxws8q14e")
+		SQUARE_TYPE.GOAL: tile_sprite.texture = load("uid://y48jj7lcpeoj")
 		_: tile_sprite.texture = load("uid://dbh0lg6phh4fj") # default empty texture
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
