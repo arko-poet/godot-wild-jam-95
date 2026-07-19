@@ -133,6 +133,7 @@ offset_top = 943.0
 offset_right = 1095.0
 offset_bottom = 985.0
 text = "P"
+metadata/sfx_index = 1
 
 [node name="MonsterTransition" type="ColorRect" parent="." unique_id=244727151]
 unique_name_in_owner = true
