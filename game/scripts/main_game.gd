@@ -60,7 +60,6 @@ func _on_pc_screen_doom_changed(percentage: float) -> void:
 	
 	if percentage == 1.0:
 		new_monster_stage = 5
-		monster.show()
 	elif percentage >= 0.8:
 		new_monster_stage = 4
 	elif percentage >= 0.6:
@@ -84,7 +83,7 @@ func _on_pc_screen_doom_changed(percentage: float) -> void:
 		# prevent game over showing immediatly before palyer sees final monster stage
 		var timer = Timer.new()
 		add_child(timer)
-		timer.start(4.0)
+		timer.start(6.0)
 		await timer.timeout
 		win_lose_manager.game_lost()
 
@@ -109,3 +108,5 @@ func _on_turn_on_pc_button_pressed() -> void:
 
 func _on_entity_step_finished() -> void:
 	monster_stage = new_monster_stage
+	if monster_stage == 5:
+		monster.show()
