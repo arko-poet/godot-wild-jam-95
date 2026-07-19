@@ -33,6 +33,13 @@ size = Vector2(1554, 180)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dpga7"]
 size = Vector2(6877, 724)
 
+[sub_resource type="LabelSettings" id="LabelSettings_1kjc7"]
+font_size = 22
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3owqy"]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cmei7"]
 size = Vector2(544, 178)
 
@@ -41,11 +48,12 @@ script = ExtResource("1_tei26")
 
 [node name="Background" type="Sprite2D" parent="." unique_id=897286112]
 z_index = -1
-position = Vector2(885.00006, 1017)
-scale = Vector2(8.519531, 2363.5)
+position = Vector2(885.00006, 4278.625)
+scale = Vector2(8.519531, 8886.75)
 texture = SubResource("GradientTexture1D_3owqy")
 
 [node name="Prototype" type="Node2D" parent="." unique_id=77207910]
+visible = false
 
 [node name="ResolutionChecker" type="TextureRect" parent="Prototype" unique_id=1128284496]
 visible = false
@@ -110,18 +118,28 @@ unique_name_in_owner = true
 anchor_mode = 0
 script = ExtResource("2_4oggc")
 
-[node name="TimerComponent" parent="Camera2D" unique_id=1166255049 instance=ExtResource("5_cmei7")]
+[node name="HBoxContainer" type="HBoxContainer" parent="Camera2D" unique_id=521715829]
+offset_left = 386.0
+offset_top = 21.0
+offset_right = 664.0
+offset_bottom = 61.0
+alignment = 2
+
+[node name="PlatformCounter" type="Label" parent="Camera2D/HBoxContainer" unique_id=2082655608]
 unique_name_in_owner = true
-anchors_preset = -1
-anchor_left = 0.42708334
-anchor_top = 0.022222223
-anchor_right = 0.5239583
-anchor_bottom = 0.08796296
-offset_left = 906.0
-offset_top = 29.0
-offset_right = 907.0
-offset_bottom = 52.0
-grow_horizontal = 0
+layout_mode = 2
+label_settings = SubResource("LabelSettings_1kjc7")
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="Panel" parent="Camera2D/HBoxContainer" unique_id=1271621190]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_3owqy")
+
+[node name="TimerComponent" parent="Camera2D/HBoxContainer" unique_id=1166255049 instance=ExtResource("5_cmei7")]
+unique_name_in_owner = true
+layout_mode = 2
+label_settings = SubResource("LabelSettings_1kjc7")
 metadata/_edit_use_anchors_ = true
 
 [node name="CRTShader" parent="Camera2D" unique_id=1925341764 instance=ExtResource("4_1kjc7")]
@@ -156,5 +174,5 @@ position = Vector2(587, -90)
 shape = SubResource("RectangleShape2D_drsw1")
 
 [connection signal="body_entered" from="KillPlane" to="." method="_on_kill_plane_body_entered"]
-[connection signal="out_of_time" from="Camera2D/TimerComponent" to="." method="_on_timer_component_timeout"]
+[connection signal="out_of_time" from="Camera2D/HBoxContainer/TimerComponent" to="." method="_on_timer_component_timeout"]
 [connection signal="body_entered" from="Goal" to="." method="_on_goal_body_entered"]

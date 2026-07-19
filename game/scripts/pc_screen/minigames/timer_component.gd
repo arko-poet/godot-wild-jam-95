@@ -7,7 +7,7 @@ signal out_of_time
 
 func _process(_delta: float) -> void:
 	if not timer.is_stopped():
-		text = "Time Left %.1f.s" % timer.time_left
+		text = "Time Left %.1f.s" % snappedf(timer.time_left, 0.1)
 
 
 func start_timer(time: float) -> void:
@@ -16,5 +16,5 @@ func start_timer(time: float) -> void:
 
 
 func _on_timer_timeout() -> void:
-	text = "%s" % timer.time_left
+	text = "%s" % snappedf(timer.time_left, 0.1)
 	out_of_time.emit()
