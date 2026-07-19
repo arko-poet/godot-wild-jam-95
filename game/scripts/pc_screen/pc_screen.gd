@@ -139,6 +139,10 @@ func play_power_on_animation() -> void:
 	_roll_dice_button.grab_focus()
 	_reroll_dice_button.release_focus()
 	hide_reroll_die_bar_preview()
+	if contract.visible:
+		accept_contract_button.grab_focus()
+	else:
+		_roll_dice_button.grab_focus()
 
 
 func _on_minigame_won() -> void:
@@ -397,6 +401,7 @@ func _on_accept_contract_button_pressed() -> void:
 	_roll_dice_button.grab_focus()
 	show_roll_die_bar_preview()
 	
+	_roll_dice_button.grab_focus()
 
 func _progress_bar_filled() -> void:
 	_devil_line.text = _CONGRATULATIONS_TEXT
