@@ -21,8 +21,9 @@ const _DOOM_AND_PROGRESS := {
 const _DOOM_ROLL_PRICE := 0.05
 const _DOOM_REROLL_PRICE := 0.01
 
+const _CONGRATULATIONS_TEXT := "Congratulations, you win. Claim your prize."
 const _TEXT_ROLL_DICE := "Lets play a [b][u]%s[/u][/b] game. Roll the dice."
-const _TEXT_REROLL_DICE := "I'll give you [b][u]%ss[/u][/b] to complete the game for that roll."
+const _TEXT_REROLL_DICE := "We'll give you [b][u]%ss[/u][/b] to complete the game for that roll."
 const _TEXT_CHOOSE_DIFFICULTY := "Choose difficulty."
 
 const  _TEXT_WON := [
@@ -30,7 +31,7 @@ const  _TEXT_WON := [
 	"Hmm. Beginner's luck, that's all.",
 	"Fine. You earned a second of relief.",
 	"You won't be so lucky next time.",
-	"Next time, I'll make sure you struggle.",
+	"Next time, We'll make sure you struggle.",
 ]
 
 const _TEXT_LOSE := [
@@ -71,7 +72,7 @@ var _progress := 0.0:
 		await tween.finished
 		_progress = min(value, _MAX_PROGRESS)
 		if _progress == _MAX_PROGRESS:
-			progress_bar_filled.emit()
+			_progress_bar_filled()
 
 var _show_keyboard_controls := true
 
@@ -93,6 +94,8 @@ var _show_keyboard_controls := true
 @onready var _continue_button: Button = %ContinueButton
 @onready var _buttons_container: HBoxContainer = %ButtonsContainer
 @onready var _keys_container: VBoxContainer = %KeysContainer
+@onready var accept_contract_button: Button = %AcceptContractButton
+@onready var claim_prize_button: Button = %ClaimPrizeButton
 
 @onready var _difficulty_boxes: GridContainer = %DifficultyBoxes
 @onready var _easy_check_box: CheckBox = %EasyCheckBox
@@ -100,7 +103,9 @@ var _show_keyboard_controls := true
 @onready var _hard_check_box: CheckBox = %HardCheckBox
 
 @onready var _devil_line: RichTextLabel = %DevilLine
+@onready var devil_container: HBoxContainer = %DevilContainer
 
+@onready var contract: Panel = %Contract
 
 
 func _ready() -> void:
@@ -116,7 +121,6 @@ func _ready() -> void:
 	
 	_prepare_next_minigame()
 	
-
 
 func play_power_on_animation() -> void:
 	show()
@@ -211,7 +215,6 @@ func _prepare_next_minigame() -> void:
 	
 	
 	show_roll_die_bar_preview()
-	_roll_dice_button.show()
 	_roll_dice_button.grab_focus()
 	_meta_game.show()
 
@@ -353,6 +356,7 @@ func hide_reroll_die_bar_preview() -> void:
 func _on_continue_button_pressed() -> void:
 	_continue_button.hide()
 	_prepare_next_minigame()
+	_roll_dice_button.show()
 
 
 func _on_reroll_dice_button_focus_entered() -> void:
@@ -360,3 +364,22 @@ func _on_reroll_dice_button_focus_entered() -> void:
 
 func _on_reroll_dice_button_focus_exited() -> void:
 	hide_reroll_die_bar_preview()
+
+
+func _on_accept_contract_button_pressed() -> void:
+	accept_contract_button.hide()
+	contract.hide()
+	_roll_dice_button.show()
+	devil_container.show()
+
+func _progress_bar_filled() -> void:
+	_devil_line.text = _CONGRATULATIONS_TEXT
+	for child in _buttons_container.get_children():
+		child.hide()
+	claim_prize_button.show()
+	
+	#progress_bar_filled.emit()
+
+
+func _on_claim_prize_button_pressed() -> void:
+	progress_bar_filled.emit()

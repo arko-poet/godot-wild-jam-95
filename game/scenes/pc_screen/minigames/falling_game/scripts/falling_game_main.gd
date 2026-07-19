@@ -12,6 +12,8 @@ const LEFT_X_RANGE = [93, 233] ## same for left-side platforms
 var platform_scene = preload("uid://beu0qxq5fklv7")
 @onready var curr_y: float = DIST_BETWEEN_FLOORS
 var offset_direction := 1.0
+var _all_platforms: Array[Node]
+var _first_platform_sound := true
 
 
 func _ready() -> void:
@@ -40,20 +42,6 @@ func _ready() -> void:
 	_add_platform(3, curr_y, true)
 	%Goal.position = Vector2(547, curr_y)
 
-#func _process(delta: float) -> void:
-	#%Goal.rotate(PI * delta)
-
-
-func _input(event: InputEvent) -> void:
-	if OS.is_debug_build():
-		if Input.is_key_pressed(KEY_L):
-			#print("game_lost signal emitted")
-			GameplayAudioController.minigame_lost.emit()
-			game_lost.emit()
-		if Input.is_key_pressed(KEY_K):
-			#print("game_won signal emitted")
-			GameplayAudioController.minigame_won.emit()
-			game_won.emit()
 
 func _on_kill_plane_body_entered(body: Node2D) -> void:
 	#print("game_lost signal emitted")
@@ -89,7 +77,19 @@ func _add_platform(side:int, y_pos:float, kill_all_spikes := false) -> void:
 	var _platform = platform_scene.instantiate()
 	_platform.position = Vector2(_x_pos, y_pos)
 	_platform.player_landed.connect(%Camera2D._on_platform_player_landed)
+	_platform.player_landed.connect(_on_platform_player_landed)
+	_all_platforms.append(_platform)
 	%Platforms.add_child(_platform)
 	
 	if kill_all_spikes:
 		_platform.reduce_spikes(0.0)
+
+func _on_platform_player_landed(pos: Vector2, me: Node) -> void:
+	if _all_platforms.has(me):
+		if _first_platform_sound:
+			_first_platform_sound = false
+		else:
+			GameplayAudioController.minigame_good_event.emit()
+	_all_platforms.erase(me)
+	%PlatformCounter.text = "%s Layers Remaining" % _all_platforms.size()
+	
