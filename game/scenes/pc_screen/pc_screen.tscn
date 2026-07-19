@@ -101,18 +101,9 @@ position = Vector2(512, 384)
 script = ExtResource("2_8vsnj")
 face_textures = Array[Texture2D]([ExtResource("3_qcrff"), ExtResource("4_ax7l3"), ExtResource("5_leom6"), ExtResource("6_5e5m8"), ExtResource("7_dnf0m"), ExtResource("8_6nmus")])
 
-[node name="GameTitleLabel" type="Label" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame" unique_id=1136782896]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_bottom = 67.0
-grow_horizontal = 2
-theme_override_font_sizes/font_size = 96
-text = "The Devil's Casino"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="DevilContainer" type="HBoxContainer" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame" unique_id=1108223770]
+unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -158,6 +149,57 @@ text = "Roll the Dice."
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Contract" type="Panel" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame" unique_id=871457805]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(500, 140)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 200.0
+offset_top = 152.0
+offset_right = -200.0
+offset_bottom = -248.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_7np4j")
+
+[node name="Text" type="RichTextLabel" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame/Contract" unique_id=1023600327]
+custom_minimum_size = Vector2(500, 140)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "[font_size=48]CONTRACT[/font_size]
+
+1. You get [color=#3498db]points[/color] for winning games
+2. I gain [color=#c0392b]points[/color] whenever you loose
+3. Reach 100 poitns before me and you become rich
+4. Otherwise, you die
+
+Do you agree to the terms?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GameTitleLabel" type="Label" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame" unique_id=1136782896]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 132.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 96
+text = "The Devil's Casino"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="ButtonsContainer" type="HBoxContainer" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame" unique_id=1594494237]
 unique_name_in_owner = true
 layout_mode = 1
@@ -170,8 +212,15 @@ grow_vertical = 2
 theme_override_constants/separation = 8
 alignment = 1
 
+[node name="AcceptContractButton" type="Button" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame/ButtonsContainer" unique_id=1931592526]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "ACCEPT"
+
 [node name="RollDiceButton" type="Button" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame/ButtonsContainer" unique_id=1728304166]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 theme_override_styles/focus = SubResource("StyleBoxFlat_8vsnj")
@@ -321,6 +370,7 @@ text = "Hard"
 layout_mode = 0
 
 [connection signal="roll_finished" from="SubViewportContainer/SubViewport/ScreenContent/MetaGame/Die" to="." method="_on_die_roll_finished"]
+[connection signal="pressed" from="SubViewportContainer/SubViewport/ScreenContent/MetaGame/ButtonsContainer/AcceptContractButton" to="." method="_on_accept_contract_button_pressed"]
 [connection signal="pressed" from="SubViewportContainer/SubViewport/ScreenContent/MetaGame/ButtonsContainer/RollDiceButton" to="." method="_on_roll_dice_button_pressed"]
 [connection signal="pressed" from="SubViewportContainer/SubViewport/ScreenContent/MetaGame/ButtonsContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
 [connection signal="focus_entered" from="SubViewportContainer/SubViewport/ScreenContent/MetaGame/ButtonsContainer/RerollDiceButton" to="." method="_on_reroll_dice_button_focus_entered"]

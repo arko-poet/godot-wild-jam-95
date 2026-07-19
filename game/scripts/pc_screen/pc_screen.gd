@@ -90,6 +90,7 @@ var _progress := 0.0:
 @onready var _accept_roll_button: Button = %AcceptRollButton
 @onready var _continue_button: Button = %ContinueButton
 @onready var _buttons_container: HBoxContainer = %ButtonsContainer
+@onready var accept_contract_button: Button = %AcceptContractButton
 
 @onready var _difficulty_boxes: GridContainer = %DifficultyBoxes
 @onready var _easy_check_box: CheckBox = %EasyCheckBox
@@ -97,7 +98,9 @@ var _progress := 0.0:
 @onready var _hard_check_box: CheckBox = %HardCheckBox
 
 @onready var _devil_line: RichTextLabel = %DevilLine
+@onready var devil_container: HBoxContainer = %DevilContainer
 
+@onready var contract: Panel = %Contract
 
 
 func _ready() -> void:
@@ -208,7 +211,6 @@ func _prepare_next_minigame() -> void:
 	
 	
 	show_roll_die_bar_preview()
-	_roll_dice_button.show()
 	_roll_dice_button.grab_focus()
 	_meta_game.show()
 
@@ -347,6 +349,7 @@ func hide_reroll_die_bar_preview() -> void:
 func _on_continue_button_pressed() -> void:
 	_continue_button.hide()
 	_prepare_next_minigame()
+	_roll_dice_button.show()
 
 
 func _on_reroll_dice_button_focus_entered() -> void:
@@ -354,3 +357,10 @@ func _on_reroll_dice_button_focus_entered() -> void:
 
 func _on_reroll_dice_button_focus_exited() -> void:
 	hide_reroll_die_bar_preview()
+
+
+func _on_accept_contract_button_pressed() -> void:
+	accept_contract_button.hide()
+	contract.hide()
+	_roll_dice_button.show()
+	devil_container.show()
