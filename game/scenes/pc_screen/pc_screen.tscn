@@ -10,10 +10,10 @@
 [ext_resource type="Texture2D" uid="uid://c735wvdvvwkbq" path="res://game/art/dice/die_6.png" id="8_6nmus"]
 [ext_resource type="Texture2D" uid="uid://bd5pxjt8gh7ur" path="res://game/art/mascot/Mascots-1_2.png" id="9_ax7l3"]
 [ext_resource type="PackedScene" uid="uid://bxcrjj54yj4ok" path="res://game/shaders/CRTShader.tscn" id="10_8vsnj"]
-[ext_resource type="Script" uid="uid://q2g51equkurx" path="res://game/scenes/pc_screen/keys_container.gd" id="10_leom6"]
 [ext_resource type="Texture2D" uid="uid://i6dl4cnh5gk8" path="res://game/art/mascot/Mascots-2_2.png" id="10_leom6"]
 [ext_resource type="Script" uid="uid://c0j7kjrbqnb8r" path="res://game/scripts/progress_bar_preview.gd" id="10_qcrff"]
 [ext_resource type="PackedScene" uid="uid://bnht3atq3ov0a" path="res://game/scenes/pc_screen/keyboard_key.tscn" id="11_5e5m8"]
+[ext_resource type="Script" uid="uid://bwgtkqr83k5h4" path="res://game/scripts/pc_screen/keys_container.gd" id="13_5e5m8"]
 
 [sub_resource type="Gradient" id="Gradient_88wer"]
 offsets = PackedFloat32Array(0)
@@ -325,6 +325,7 @@ script = ExtResource("10_qcrff")
 
 [node name="ProgressBarPreviewLabel" type="Label" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame/ProgressBars/ProgressBar" unique_id=555504606]
 unique_name_in_owner = true
+visible = false
 layout_mode = 0
 offset_top = -50.0
 offset_right = 40.0
@@ -353,6 +354,7 @@ script = ExtResource("10_qcrff")
 
 [node name="DoomBarPreviewLabel" type="Label" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame/ProgressBars/DoomBar" unique_id=442215768]
 unique_name_in_owner = true
+visible = false
 layout_mode = 0
 offset_top = -50.0
 offset_right = 40.0
@@ -418,7 +420,7 @@ offset_top = 500.0
 offset_right = 950.0
 offset_bottom = 564.0
 theme_override_constants/separation = 64
-script = ExtResource("10_leom6")
+script = ExtResource("13_5e5m8")
 key_groups = [[NodePath("TopHalfContainer/UpKey"), NodePath("BottomHalfContainer/LeftKey"), NodePath("BottomHalfContainer/DownKey"), NodePath("BottomHalfContainer/RightKey")], [NodePath("TopHalfContainer/WKey"), NodePath("BottomHalfContainer/AKey"), NodePath("BottomHalfContainer/SKey"), NodePath("BottomHalfContainer/DKey")]]
 
 [node name="TopHalfContainer" type="HBoxContainer" parent="KeysContainer" unique_id=857075450]
@@ -472,6 +474,8 @@ key_name = ">"
 [connection signal="pressed" from="SubViewportContainer/SubViewport/ScreenContent/MetaGame/ButtonsContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
 [connection signal="focus_entered" from="SubViewportContainer/SubViewport/ScreenContent/MetaGame/ButtonsContainer/RerollDiceButton" to="." method="_on_reroll_dice_button_focus_entered"]
 [connection signal="focus_exited" from="SubViewportContainer/SubViewport/ScreenContent/MetaGame/ButtonsContainer/RerollDiceButton" to="." method="_on_reroll_dice_button_focus_exited"]
+[connection signal="mouse_entered" from="SubViewportContainer/SubViewport/ScreenContent/MetaGame/ButtonsContainer/RerollDiceButton" to="." method="_on_reroll_dice_button_mouse_entered"]
+[connection signal="mouse_exited" from="SubViewportContainer/SubViewport/ScreenContent/MetaGame/ButtonsContainer/RerollDiceButton" to="." method="_on_reroll_dice_button_mouse_exited"]
 [connection signal="pressed" from="SubViewportContainer/SubViewport/ScreenContent/MetaGame/ButtonsContainer/RerollDiceButton" to="." method="_on_reroll_dice_button_pressed"]
 [connection signal="pressed" from="SubViewportContainer/SubViewport/ScreenContent/MetaGame/ButtonsContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="SubViewportContainer/SubViewport/ScreenContent/MetaGame/ButtonsContainer/AcceptRollButton" to="." method="_on_accept_roll_button_pressed"]
