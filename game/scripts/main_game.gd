@@ -60,6 +60,7 @@ func _on_pc_screen_doom_changed(percentage: float) -> void:
 	
 	if percentage == 1.0:
 		new_monster_stage = 5
+		turn_on_pc_button.hide()
 	elif percentage >= 0.8:
 		new_monster_stage = 4
 	elif percentage >= 0.6:
@@ -104,7 +105,7 @@ func _on_claim_prize_button_pressed() -> void:
 func _on_turn_on_pc_button_pressed() -> void:
 	if pc_screen.visible == false:
 		pc_screen.play_power_on_animation()
-	#turn_on_pc_button.hide()
+	
 
 
 func _on_entity_step_finished() -> void:
