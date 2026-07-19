@@ -256,7 +256,7 @@ visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 theme_override_styles/focus = SubResource("StyleBoxFlat_qcrff")
-text = "REROLL DICE"
+text = "REROLL"
 
 [node name="StartButton" type="Button" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame/ButtonsContainer" unique_id=2079948144]
 unique_name_in_owner = true
