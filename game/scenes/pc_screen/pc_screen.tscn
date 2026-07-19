@@ -218,62 +218,6 @@ theme_override_font_sizes/font_size = 32
 theme_override_styles/focus = SubResource("StyleBoxFlat_qcrff")
 text = "ACCEPT"
 
-[node name="KeysContainer" type="VBoxContainer" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame" unique_id=1577316603]
-unique_name_in_owner = true
-layout_mode = 0
-offset_left = 650.0
-offset_top = 500.0
-offset_right = 850.0
-offset_bottom = 564.0
-theme_override_constants/separation = 64
-script = ExtResource("10_leom6")
-key_groups = [[NodePath("TopHalfContainer/UpKey"), NodePath("BottomHalfContainer/LeftKey"), NodePath("BottomHalfContainer/DownKey"), NodePath("BottomHalfContainer/RightKey")], [NodePath("TopHalfContainer/WKey"), NodePath("BottomHalfContainer/AKey"), NodePath("BottomHalfContainer/SKey"), NodePath("BottomHalfContainer/DKey")]]
-
-[node name="TopHalfContainer" type="HBoxContainer" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame/KeysContainer" unique_id=638019926]
-layout_mode = 2
-theme_override_constants/separation = 64
-alignment = 1
-
-[node name="WKey" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame/KeysContainer/TopHalfContainer" unique_id=1626954917 instance=ExtResource("11_5e5m8")]
-visible = false
-layout_mode = 2
-
-[node name="UpKey" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame/KeysContainer/TopHalfContainer" unique_id=894852644 instance=ExtResource("11_5e5m8")]
-layout_mode = 2
-key_name = "^"
-
-[node name="BottomHalfContainer" type="HBoxContainer" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame/KeysContainer" unique_id=405974512]
-layout_mode = 2
-theme_override_constants/separation = 64
-alignment = 1
-
-[node name="AKey" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame/KeysContainer/BottomHalfContainer" unique_id=1002474850 instance=ExtResource("11_5e5m8")]
-visible = false
-layout_mode = 2
-key_name = "A"
-
-[node name="SKey" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame/KeysContainer/BottomHalfContainer" unique_id=2067279956 instance=ExtResource("11_5e5m8")]
-visible = false
-layout_mode = 2
-key_name = "S"
-
-[node name="DKey" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame/KeysContainer/BottomHalfContainer" unique_id=103545817 instance=ExtResource("11_5e5m8")]
-visible = false
-layout_mode = 2
-key_name = "D"
-
-[node name="LeftKey" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame/KeysContainer/BottomHalfContainer" unique_id=703424550 instance=ExtResource("11_5e5m8")]
-layout_mode = 2
-key_name = "<"
-
-[node name="DownKey" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame/KeysContainer/BottomHalfContainer" unique_id=152476910 instance=ExtResource("11_5e5m8")]
-layout_mode = 2
-key_name = "v"
-
-[node name="RightKey" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame/KeysContainer/BottomHalfContainer" unique_id=1844916614 instance=ExtResource("11_5e5m8")]
-layout_mode = 2
-key_name = ">"
-
 [node name="ProgressBars" type="HBoxContainer" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame" unique_id=1910302855]
 layout_mode = 1
 anchors_preset = -1
@@ -377,6 +321,63 @@ text = "Hard"
 
 [node name="CRTShader" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame" unique_id=1925341764 groups=["crt_shader"] instance=ExtResource("10_8vsnj")]
 layout_mode = 0
+
+[node name="KeysContainer" type="VBoxContainer" parent="." unique_id=1436473920]
+unique_name_in_owner = true
+visible = false
+z_index = 20
+offset_left = 750.0
+offset_top = 500.0
+offset_right = 950.0
+offset_bottom = 564.0
+theme_override_constants/separation = 64
+script = ExtResource("10_leom6")
+key_groups = [[NodePath("TopHalfContainer/UpKey"), NodePath("BottomHalfContainer/LeftKey"), NodePath("BottomHalfContainer/DownKey"), NodePath("BottomHalfContainer/RightKey")], [NodePath("TopHalfContainer/WKey"), NodePath("BottomHalfContainer/AKey"), NodePath("BottomHalfContainer/SKey"), NodePath("BottomHalfContainer/DKey")]]
+
+[node name="TopHalfContainer" type="HBoxContainer" parent="KeysContainer" unique_id=857075450]
+layout_mode = 2
+theme_override_constants/separation = 64
+alignment = 1
+
+[node name="WKey" parent="KeysContainer/TopHalfContainer" unique_id=1626954917 instance=ExtResource("11_5e5m8")]
+visible = false
+layout_mode = 2
+
+[node name="UpKey" parent="KeysContainer/TopHalfContainer" unique_id=731449868 instance=ExtResource("11_5e5m8")]
+layout_mode = 2
+key_name = "^"
+
+[node name="BottomHalfContainer" type="HBoxContainer" parent="KeysContainer" unique_id=434882697]
+layout_mode = 2
+theme_override_constants/separation = 64
+alignment = 1
+
+[node name="AKey" parent="KeysContainer/BottomHalfContainer" unique_id=53961074 instance=ExtResource("11_5e5m8")]
+visible = false
+layout_mode = 2
+key_name = "A"
+
+[node name="SKey" parent="KeysContainer/BottomHalfContainer" unique_id=385935552 instance=ExtResource("11_5e5m8")]
+visible = false
+layout_mode = 2
+key_name = "S"
+
+[node name="DKey" parent="KeysContainer/BottomHalfContainer" unique_id=908613273 instance=ExtResource("11_5e5m8")]
+visible = false
+layout_mode = 2
+key_name = "D"
+
+[node name="LeftKey" parent="KeysContainer/BottomHalfContainer" unique_id=1178048843 instance=ExtResource("11_5e5m8")]
+layout_mode = 2
+key_name = "<"
+
+[node name="DownKey" parent="KeysContainer/BottomHalfContainer" unique_id=1441296925 instance=ExtResource("11_5e5m8")]
+layout_mode = 2
+key_name = "v"
+
+[node name="RightKey" parent="KeysContainer/BottomHalfContainer" unique_id=277030047 instance=ExtResource("11_5e5m8")]
+layout_mode = 2
+key_name = ">"
 
 [connection signal="roll_finished" from="SubViewportContainer/SubViewport/ScreenContent/MetaGame/Die" to="." method="_on_die_roll_finished"]
 [connection signal="pressed" from="SubViewportContainer/SubViewport/ScreenContent/MetaGame/ButtonsContainer/RollDiceButton" to="." method="_on_roll_dice_button_pressed"]
