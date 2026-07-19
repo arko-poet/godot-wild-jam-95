@@ -195,10 +195,10 @@ theme_override_font_sizes/normal_font_size = 24
 bbcode_enabled = true
 text = "[font_size=48]CONTRACT[/font_size]
 
-1. You get [color=#3498db]points[/color] for winning games.
+1. You gain [color=#3498db]points[/color] for winning games.
 2. We gain [color=#c0392b]points[/color] whenever you loose.
-3. Reach 100 [color=#3498db]poitns[/color] and you become rich.
-4. If we reach 100 [color=#c0392b]points[/color] , you die.
+3. Reach 100 [color=#3498db]points[/color] and you become rich.
+4. If we reach 100 [color=#c0392b]points[/color], you die.
 
 Do you agree to the terms?"
 horizontal_alignment = 1
