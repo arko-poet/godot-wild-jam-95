@@ -136,7 +136,10 @@ func play_power_on_animation() -> void:
 	tween.tween_property(_screen_container, "modulate", Color.WHITE, 0.35)\
 		.set_delay(0.15)
 	
-	_roll_dice_button.grab_focus()
+	if contract.visible:
+		accept_contract_button.grab_focus()
+	else:
+		_roll_dice_button.grab_focus()
 
 
 func _on_minigame_won() -> void:
@@ -384,6 +387,7 @@ func _on_accept_contract_button_pressed() -> void:
 	contract.hide()
 	_roll_dice_button.show()
 	devil_container.show()
+	_roll_dice_button.grab_focus()
 
 func _progress_bar_filled() -> void:
 	_devil_line.text = _CONGRATULATIONS_TEXT
