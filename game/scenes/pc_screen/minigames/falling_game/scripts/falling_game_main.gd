@@ -13,6 +13,7 @@ var platform_scene = preload("uid://beu0qxq5fklv7")
 @onready var curr_y: float = DIST_BETWEEN_FLOORS
 var offset_direction := 1.0
 var _all_platforms: Array[Node]
+var _first_platform_sound := true
 
 
 func _ready() -> void:
@@ -99,7 +100,10 @@ func _add_platform(side:int, y_pos:float, kill_all_spikes := false) -> void:
 
 func _on_platform_player_landed(pos: Vector2, me: Node) -> void:
 	if _all_platforms.has(me):
-		GameplayAudioController.minigame_good_event.emit()
+		if _first_platform_sound:
+			_first_platform_sound = false
+		else:
+			GameplayAudioController.minigame_good_event.emit()
 	_all_platforms.erase(me)
 	%PlatformCounter.text = "%s Layers Remaining" % _all_platforms.size()
 	
