@@ -74,6 +74,8 @@ var _progress := 0.0:
 		if _progress == _MAX_PROGRESS:
 			_progress_bar_filled()
 
+var _show_keyboard_controls := true
+
 @onready var _meta_game: Control = %MetaGame
 @onready var _screen_content: Control = %ScreenContent
 @onready var _screen_container: SubViewportContainer = %SubViewportContainer
@@ -93,6 +95,7 @@ var _progress := 0.0:
 @onready var _accept_roll_button: Button = %AcceptRollButton
 @onready var _continue_button: Button = %ContinueButton
 @onready var _buttons_container: HBoxContainer = %ButtonsContainer
+@onready var _keys_container: VBoxContainer = %KeysContainer
 @onready var accept_contract_button: Button = %AcceptContractButton
 @onready var claim_prize_button: Button = %ClaimPrizeButton
 
@@ -294,6 +297,9 @@ func _on_start_button_pressed() -> void:
 	_progress_bar_preview.hide()
 	_progress_bar_preview_label.hide()
 	
+	
+	if len(_minigame_queue) > 4: _show_keyboard_controls = false # no need cuz it's shown for every game alr
+	if _show_keyboard_controls: _keys_container.show_controls()
 	
 	if MinigameTimeTrials.trials_active:
 		MinigameTimeTrials.start_timer()

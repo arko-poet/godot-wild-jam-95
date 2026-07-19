@@ -10,8 +10,10 @@
 [ext_resource type="Texture2D" uid="uid://c735wvdvvwkbq" path="res://game/art/dice/die_6.png" id="8_6nmus"]
 [ext_resource type="Texture2D" uid="uid://bd5pxjt8gh7ur" path="res://game/art/mascot/Mascots-1_2.png" id="9_ax7l3"]
 [ext_resource type="PackedScene" uid="uid://bxcrjj54yj4ok" path="res://game/shaders/CRTShader.tscn" id="10_8vsnj"]
+[ext_resource type="Script" uid="uid://q2g51equkurx" path="res://game/scenes/pc_screen/keys_container.gd" id="10_leom6"]
 [ext_resource type="Texture2D" uid="uid://i6dl4cnh5gk8" path="res://game/art/mascot/Mascots-2_2.png" id="10_leom6"]
 [ext_resource type="Script" uid="uid://c0j7kjrbqnb8r" path="res://game/scripts/progress_bar_preview.gd" id="10_qcrff"]
+[ext_resource type="PackedScene" uid="uid://bnht3atq3ov0a" path="res://game/scenes/pc_screen/keyboard_key.tscn" id="11_5e5m8"]
 
 [sub_resource type="Gradient" id="Gradient_88wer"]
 offsets = PackedFloat32Array(0)
@@ -406,6 +408,63 @@ text = "Hard"
 
 [node name="CRTShader" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame" unique_id=1925341764 groups=["crt_shader"] instance=ExtResource("10_8vsnj")]
 layout_mode = 0
+
+[node name="KeysContainer" type="VBoxContainer" parent="." unique_id=1436473920]
+unique_name_in_owner = true
+visible = false
+z_index = 20
+offset_left = 750.0
+offset_top = 500.0
+offset_right = 950.0
+offset_bottom = 564.0
+theme_override_constants/separation = 64
+script = ExtResource("10_leom6")
+key_groups = [[NodePath("TopHalfContainer/UpKey"), NodePath("BottomHalfContainer/LeftKey"), NodePath("BottomHalfContainer/DownKey"), NodePath("BottomHalfContainer/RightKey")], [NodePath("TopHalfContainer/WKey"), NodePath("BottomHalfContainer/AKey"), NodePath("BottomHalfContainer/SKey"), NodePath("BottomHalfContainer/DKey")]]
+
+[node name="TopHalfContainer" type="HBoxContainer" parent="KeysContainer" unique_id=857075450]
+layout_mode = 2
+theme_override_constants/separation = 64
+alignment = 1
+
+[node name="WKey" parent="KeysContainer/TopHalfContainer" unique_id=1626954917 instance=ExtResource("11_5e5m8")]
+visible = false
+layout_mode = 2
+
+[node name="UpKey" parent="KeysContainer/TopHalfContainer" unique_id=731449868 instance=ExtResource("11_5e5m8")]
+layout_mode = 2
+key_name = "^"
+
+[node name="BottomHalfContainer" type="HBoxContainer" parent="KeysContainer" unique_id=434882697]
+layout_mode = 2
+theme_override_constants/separation = 64
+alignment = 1
+
+[node name="AKey" parent="KeysContainer/BottomHalfContainer" unique_id=53961074 instance=ExtResource("11_5e5m8")]
+visible = false
+layout_mode = 2
+key_name = "A"
+
+[node name="SKey" parent="KeysContainer/BottomHalfContainer" unique_id=385935552 instance=ExtResource("11_5e5m8")]
+visible = false
+layout_mode = 2
+key_name = "S"
+
+[node name="DKey" parent="KeysContainer/BottomHalfContainer" unique_id=908613273 instance=ExtResource("11_5e5m8")]
+visible = false
+layout_mode = 2
+key_name = "D"
+
+[node name="LeftKey" parent="KeysContainer/BottomHalfContainer" unique_id=1178048843 instance=ExtResource("11_5e5m8")]
+layout_mode = 2
+key_name = "<"
+
+[node name="DownKey" parent="KeysContainer/BottomHalfContainer" unique_id=1441296925 instance=ExtResource("11_5e5m8")]
+layout_mode = 2
+key_name = "v"
+
+[node name="RightKey" parent="KeysContainer/BottomHalfContainer" unique_id=277030047 instance=ExtResource("11_5e5m8")]
+layout_mode = 2
+key_name = ">"
 
 [connection signal="roll_finished" from="SubViewportContainer/SubViewport/ScreenContent/MetaGame/Die" to="." method="_on_die_roll_finished"]
 [connection signal="pressed" from="SubViewportContainer/SubViewport/ScreenContent/MetaGame/ButtonsContainer/AcceptContractButton" to="." method="_on_accept_contract_button_pressed"]
