@@ -98,7 +98,8 @@ func _add_platform(side:int, y_pos:float, kill_all_spikes := false) -> void:
 		_platform.reduce_spikes(0.0)
 
 func _on_platform_player_landed(pos: Vector2, me: Node) -> void:
+	if _all_platforms.has(me):
+		GameplayAudioController.minigame_good_event.emit()
 	_all_platforms.erase(me)
 	%PlatformCounter.text = "%s Layers Remaining" % _all_platforms.size()
-	GameplayAudioController.minigame_good_event.emit()
 	
