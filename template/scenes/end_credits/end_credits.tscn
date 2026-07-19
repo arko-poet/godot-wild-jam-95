@@ -46,80 +46,13 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="ScrollContainer" parent="." index="3" unique_id=1039720129]
-scroll_vertical = 3212
+scroll_vertical = 491
 
 [node name="HeaderSpace" parent="ScrollContainer/VBoxContainer" parent_id_path=PackedInt32Array(2067921385) index="0" unique_id=1552560353]
 custom_minimum_size = Vector2(0, 1080)
 
 [node name="CreditsLabel" parent="ScrollContainer/VBoxContainer" parent_id_path=PackedInt32Array(2067921385) index="1" unique_id=1486745388]
 custom_minimum_size = Vector2(1920, 0)
-text = "[font_size=96]Collaborators
-[/font_size]
-
-[font_size=64]Game Design
-[/font_size]
-[url=https://arko-poet.itch.io/]arko[/url]
-[url=https://awfullycrispy.itch.io/]awfullycrispy[/url]
-
-[font_size=64]Music Composition & SFX
-[/font_size]
-[url=https://gruntofficial.itch.io/]Grunt.[/url]
-
-[font_size=64]Art
-[/font_size]
-[url=https://llfonsy.itch.io/]Fonsy[/url]
-
-[font_size=64]Programming
-[/font_size]
-[url=https://orangepainting.itch.io/]OrangePainting[/url]
-[url=https://awfullycrispy.itch.io/]awfullycrispy[/url]
-[url=https://arko-poet.itch.io/]arko[/url]
-
-[font_size=96]Sourced
-[/font_size]
-[font_size=64]Asset Type
-[/font_size]
-[font_size=48]Use Case
-[/font_size]
-Author: [url=]Name[/url]  
-Source: [url=]Domain : webpage.html[/url]  
-License: [url=]License[/url]
-
-[font_size=48]Godot Engine Logo
-[/font_size]
-Author: Andrea Calabró  
-Source: [url=https://godotengine.org/press/]godotengine.org : press[/url]  
-License: [url=https://github.com/godotengine/godot/blob/master/LOGO_LICENSE.txt]CC BY 4.0 International[/url] 
-
-[font_size=48]CRT Shader
-[/font_size]
-Author: c64cosmin
-Source: [url=https://godotshaders.com/shader/realistic-crt-shader/]https://godotshaders.com/shader/realistic-crt-shader/[/url]
-License: [url=https://creativecommons.org/publicdomain/zero/1.0/]CC0 1.0 Universal[/url]
-
-[font_size=96]Tools
-[/font_size]
-[font_size=48]Godot
-[/font_size]
-[img=160]res:///template/assets/godot_engine_logo/logo_vertical_color_dark.png[/img]  
-Author: [url=https://godotengine.org/contact]Juan Linietsky, Ariel Manzur, and contributors[/url]  
-Source: [url=https://godotengine.org/]godotengine.org[/url]  
-License: [url=https://github.com/godotengine/godot/blob/master/LICENSE.txt]MIT License[/url] 
-
-[font_size=48]Godot Game Template
-[/font_size]
-[img=160]res:///template/assets/plugin_logo/logo.png[/img]  
-Author: [url=https://github.com/Maaack/Godot-Game-Template/graphs/contributors]Marek Belski and contributors[/url]  
-Source: [url=https://github.com/Maaack/Godot-Game-Template]github: Godot-Game-Template[/url]  
-License: [url=LICENSE.txt]MIT License[/url]  
-
-[font_size=48]Git
-[/font_size]
-[img=160]res:///template/assets/git_logo/Git-Logo-2Color.png[/img]  
-Author: [url=https://github.com/torvalds]Linus Torvalds[/url]  
-Source: [url=https://git-scm.com/downloads]git-scm.com[/url]  
-License: [url=https://opensource.org/licenses/GPL-2.0]GNU General Public License version 2[/url]
-"
 
 [node name="FooterSpace" parent="ScrollContainer/VBoxContainer" parent_id_path=PackedInt32Array(2067921385) index="2" unique_id=1703782196]
 custom_minimum_size = Vector2(0, 1080)
