@@ -28,4 +28,3 @@ func _process(delta: float) -> void:
 	else:
 		for key in key_groups[0]: get_node(key).hide()
 		for key in key_groups[1]: get_node(key).show()
-	print(global_position, position)
