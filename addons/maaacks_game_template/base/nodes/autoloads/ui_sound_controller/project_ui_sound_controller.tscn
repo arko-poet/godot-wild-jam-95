@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://cc37235kj4384"]
 
 [ext_resource type="Script" uid="uid://b5oej1q4h7jvh" path="res://addons/maaacks_game_template/base/nodes/autoloads/ui_sound_controller/ui_sound_controller.gd" id="1_dmagn"]
-[ext_resource type="AudioStream" uid="uid://bem1cl2trv3ev" path="res://game/audio/sound effects/placeholders/buttoinhover.wav" id="2_7ejmi"]
 [ext_resource type="AudioStream" uid="uid://b7mqeyja5gye" path="res://game/audio/sound effects/Button1_1.wav" id="3_g232p"]
 [ext_resource type="AudioStream" uid="uid://ccwuleiycsjnm" path="res://game/audio/sound effects/Button2_1.wav" id="4_43lll"]
 [ext_resource type="AudioStream" uid="uid://db01b7div80tv" path="res://game/audio/sound effects/Coin1_1.wav" id="4_qffex"]
@@ -37,15 +36,22 @@ stream_3/stream = ExtResource("11_ypev8")
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_saweg"]
 streams_count = 3
 stream_0/stream = ExtResource("14_g232p")
+stream_0/weight = 0.0
 stream_1/stream = ExtResource("25_ycirn")
+stream_1/weight = 0.0
 stream_2/stream = ExtResource("26_5f3bw")
 
 [node name="ProjectUISoundController" type="Node" unique_id=1525696179]
 script = ExtResource("1_dmagn")
 button_hovered = ExtResource("7_67wfu")
 button_pressed = Array[AudioStream]([ExtResource("6_ojugw"), ExtResource("5_n4uck"), ExtResource("4_43lll"), ExtResource("3_g232p")])
-tab_hovered = ExtResource("2_7ejmi")
-slider_hovered = ExtResource("2_7ejmi")
+texture_button_hovered = ExtResource("7_67wfu")
+texture_button_focused = ExtResource("7_67wfu")
+texture_button_pressed = Array[AudioStream]([ExtResource("5_n4uck")])
+tab_hovered = ExtResource("7_67wfu")
+tab_changed = ExtResource("3_g232p")
+slider_hovered = ExtResource("7_67wfu")
+slider_focused = ExtResource("7_67wfu")
 minigame_won = Array[AudioStream]([ExtResource("8_twkjo")])
 minigame_lost = Array[AudioStream]([ExtResource("9_81xko")])
 minigame_good_event = Array[AudioStream]([ExtResource("4_qffex"), ExtResource("5_saweg"), ExtResource("6_wvaau")])

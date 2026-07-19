@@ -6,6 +6,8 @@ extends Node
 ## When attached just below the root node of a scene tree, it will manage
 ## all of the UI sounds in that scene.
 
+signal entity_steps_finished
+
 const MAX_DEPTH = 16
 
 @export var root_path : NodePath = ^".."
@@ -21,6 +23,11 @@ const MAX_DEPTH = 16
 @export var button_hovered : AudioStream
 @export var button_focused : AudioStream
 @export var button_pressed : Array[AudioStream] = []
+
+@export_group("Texture Button Sounds")
+@export var texture_button_hovered : AudioStream
+@export var texture_button_focused : AudioStream
+@export var texture_button_pressed : Array[AudioStream] = []
 
 @export_group("TabBar Sounds")
 @export var tab_hovered : AudioStream
@@ -63,6 +70,10 @@ const MAX_DEPTH = 16
 var button_hovered_player : AudioStreamPlayer
 var button_focused_player : AudioStreamPlayer
 var button_pressed_player : AudioStreamPlayer
+
+var texture_button_hovered_player : AudioStreamPlayer
+var texture_button_focused_player : AudioStreamPlayer
+var texture_button_pressed_player : AudioStreamPlayer
 
 var tab_hovered_player : AudioStreamPlayer
 var tab_changed_player : AudioStreamPlayer
@@ -124,6 +135,12 @@ func _build_button_stream_players() -> void:
 	button_focused_player = _build_stream_player(button_focused, "ButtonFocused")
 	button_pressed_player = _build_stream_player(_first_stream(button_pressed), "ButtonClicked")
 
+func _build_texture_button_stream_players() -> void:
+	texture_button_hovered_player = _build_stream_player(texture_button_hovered, "ButtonHovered")
+	texture_button_focused_player = _build_stream_player(texture_button_focused, "ButtonFocused")
+	texture_button_pressed_player = _build_stream_player(_first_stream(texture_button_pressed), "ButtonClicked")
+
+
 func _build_tab_stream_players() -> void:
 	tab_hovered_player = _build_stream_player(tab_hovered, "TabHovered")
 	tab_changed_player = _build_stream_player(tab_changed, "TabChanged")
@@ -162,10 +179,12 @@ func _build_minigame_stream_players() -> void:
 	entity_step_player = _build_stream_player(_first_stream(entity_step), "EntityStep")
 	if entity_step_player:
 		entity_step_player.volume_db += 10.0
+		entity_step_player.finished.connect(_on_entity_step_finished)
 
 
 func _build_all_stream_players() -> void:
 	_build_button_stream_players()
+	_build_texture_button_stream_players()
 	_build_tab_stream_players()
 	_build_slider_stream_players()
 	_build_line_stream_players()
@@ -214,7 +233,14 @@ func _connect_stream_player(node : Node, stream_player : AudioStreamPlayer, sign
 		node.connect(signal_name, callable.bind(stream_player))
 
 func connect_ui_sounds(node: Node) -> void:
-	if node is Button:
+	if node is TextureButton:
+		_connect_stream_player(node, texture_button_hovered_player, &"mouse_entered", _play_stream)
+		_connect_stream_player(node, texture_button_focused_player, &"focus_entered", _play_stream)
+		if button_pressed_player != null and not node.pressed.is_connected(_button_pressed_play_stream):
+			node.pressed.connect(_button_pressed_play_stream.bind(node, button_pressed_player))
+		#_connect_stream_player(node, button_pressed_player, &"pressed", _play_stream)
+		node.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
+	elif node is Button:
 		_connect_stream_player(node, button_hovered_player, &"mouse_entered", _play_stream)
 		_connect_stream_player(node, button_focused_player, &"focus_entered", _play_stream)
 		if button_pressed_player != null and not node.pressed.is_connected(_button_pressed_play_stream):
@@ -273,7 +299,8 @@ func play_dice_roll(sfx_index: int = 0) -> void:
 	_play_indexed_stream(sfx_index, dice_roll, dice_roll_player)
 	
 func play_entity_step(sfx_index: int = 0) -> void:
-	_play_indexed_stream(sfx_index, entity_step, entity_step_player)
+	if entity_step_player.playing == false:
+		_play_indexed_stream(sfx_index, entity_step, entity_step_player)
 
 func _minigame_bus_connections() -> Dictionary:
 	return {
@@ -311,3 +338,7 @@ func _exit_tree() -> void:
 	if tree_node.node_added.is_connected(connect_ui_sounds):
 		tree_node.node_added.disconnect(connect_ui_sounds)
 	_disconnect_minigame_bus()
+
+
+func _on_entity_step_finished() -> void:
+	entity_steps_finished.emit()
