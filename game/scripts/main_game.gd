@@ -86,14 +86,14 @@ func _on_pc_screen_doom_changed(percentage: float) -> void:
 		win_lose_manager.game_lost()
 
 func play_monster_transition() -> void:
-	monster_transition.visible = true
+	#monster_transition.visible = true
 	
 	var tween := create_tween()
 	GameplayAudioController.entity_step.emit()
 	# add maybe a light flickering out sfx here, and a loud heartbeat as well to signify a bad decision
 	# dark screen time increases as monster stage increase
-	tween.tween_interval(clampf(base_transition_length + monster_stage / 4.0, base_transition_length, base_transition_length + 2))
-	tween.tween_callback(func(): monster_transition.visible = false)
+	#tween.tween_interval(clampf(base_transition_length + monster_stage / 4.0, base_transition_length, base_transition_length + 2))
+	#tween.tween_callback(func(): monster_transition.visible = false)
 
 func _on_claim_prize_button_pressed() -> void:
 	SceneLoader.load_scene("res://template/scenes/end_credits/end_credits.tscn")
