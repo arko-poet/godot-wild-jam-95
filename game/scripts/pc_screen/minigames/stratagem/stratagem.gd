@@ -10,12 +10,12 @@ enum _Direction {
 const CARD_SIZE = 700.0 ## This will be the height and width of the direction cards
 const SPRITE_PATH := "res://game/art/directioncard_%s.png"
 const _TIME_LIMITS := {
-	1: 10.0,
-	2: 12.5,
-	3: 15.0,
-	4: 17.5,
-	5: 20.0,
-	6: 25
+	1: 15.0,
+	2: 17.5,
+	3: 18.0,
+	4: 20.5,
+	5: 24.0,
+	6: 30
 }
 const _SEQUENCE_LENGTHS := {
 	Difficulty.EASY: 6,
@@ -86,7 +86,7 @@ func _player_action(direction: _Direction) -> void:
 			_sequence_pointer += 1
 	else:
 		GameplayAudioController.minigame_bad_event.emit()
-		_progress -= _PROGRESS_STEP_BACK
+		#_progress -= _PROGRESS_STEP_BACK
 		for arrow in _arrow_container.get_children():
 			arrow.modulate = Color.WHITE
 		_sequence_pointer = 0
@@ -111,7 +111,7 @@ func _set_current_sequence() -> void:
 	var sequence_length = _SEQUENCE_LENGTHS[difficulty] + (randi() % 3 - 1)
 	for i in sequence_length:
 		_current_sequence.append(_Direction.values().pick_random())
-	print(_current_sequence)
+	#print(_current_sequence)
 		
 
 	_sequence_pointer = 0

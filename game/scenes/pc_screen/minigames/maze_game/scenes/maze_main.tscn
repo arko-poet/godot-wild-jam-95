@@ -16,6 +16,7 @@ z_index = -1
 script = ExtResource("1_5rwaj")
 maze_generator = NodePath("MazeGenerator")
 player = NodePath("Player")
+CELL_SIZE = 48
 fog_overlay = NodePath("FogOverlay")
 
 [node name="Player" parent="." unique_id=242852718 node_paths=PackedStringArray("maze") instance=ExtResource("2_g7mqd")]

@@ -11,6 +11,7 @@ func _process(_delta: float) -> void:
 
 
 func start_timer(time: float) -> void:
+	if MinigameTimeTrials.trials_active: return
 	timer.start(time)
 
 

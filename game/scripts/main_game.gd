@@ -24,10 +24,11 @@ var base_transition_length: float = 0.75
 @onready var win_lose_manager: Node = $WinLoseManager
 
 @onready var pc_screen: Node2D = %PCScreen
-@onready var monster: Sprite2D = %Monster
+@onready var monster: Sprite2D = %MonsterFinal
 @onready var monster_transition: ColorRect = %MonsterTransition
 
 @onready var claim_prize_button: Button = %ClaimPrizeButton
+@onready var turn_on_pc_button: Button = %TurnOnPCButton
 
 
 func game_over() -> void:
@@ -37,10 +38,12 @@ func game_over() -> void:
 func game_won() -> void:
 	pass
 
+func _ready() -> void:
+	turn_on_pc_button.grab_focus()
+	monster.hide()
 
 func _on_menu_button_pressed() -> void:
 	pass # Replace with function body.
-
 
 func _on_pc_screen_progress_bar_filled() -> void:
 	monster.hide()
@@ -53,6 +56,7 @@ func _on_pc_screen_doom_changed(percentage: float) -> void:
 	
 	if percentage == 1.0:
 		monster_stage = 5
+		monster.show()
 	elif percentage >= 0.8:
 		monster_stage = 4
 	elif percentage >= 0.6:
@@ -68,9 +72,9 @@ func _on_pc_screen_doom_changed(percentage: float) -> void:
 		previous_monster_stage = monster_stage
 		play_monster_transition()
 	
-	monster.position = MONSTER_POSITIONS[monster_stage]
-	monster.scale = MONSTER_SCALES[monster_stage]
-	monster.show()
+	#monster.position = MONSTER_POSITIONS[monster_stage]
+	#monster.scale = MONSTER_SCALES[monster_stage]
+	#monster.show()
 
 	if percentage == 1.0:
 		# prevent game over showing immediatly before palyer sees final monster stage
@@ -82,7 +86,9 @@ func _on_pc_screen_doom_changed(percentage: float) -> void:
 
 func play_monster_transition() -> void:
 	monster_transition.visible = true
+	
 	var tween := create_tween()
+	GameplayAudioController.entity_step.emit()
 	# add maybe a light flickering out sfx here, and a loud heartbeat as well to signify a bad decision
 	# dark screen time increases as monster stage increase
 	tween.tween_interval(clampf(base_transition_length + monster_stage / 4.0, base_transition_length, base_transition_length + 2))
@@ -90,3 +96,8 @@ func play_monster_transition() -> void:
 
 func _on_claim_prize_button_pressed() -> void:
 	SceneLoader.load_scene("res://template/scenes/end_credits/end_credits.tscn")
+
+
+func _on_turn_on_pc_button_pressed() -> void:
+	pc_screen.play_power_on_animation()
+	turn_on_pc_button.hide()

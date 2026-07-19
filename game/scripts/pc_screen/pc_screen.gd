@@ -12,12 +12,17 @@ const _MiniGameScenes := [
 ]
 
 const _MAX_DOOM := 1.0
-const _DOOM_STEP := 0.1
 const _MAX_PROGRESS := 1.0
-const _PROGRESS_STEP := 0.1
+const _DOOM_AND_PROGRESS := {
+	Minigame.Difficulty.EASY: 0.04,
+	Minigame.Difficulty.MEDIUM: 0.06,
+	Minigame.Difficulty.HARD: 0.08,
+}
+const _DOOM_ROLL_PRICE := 0.05
+const _DOOM_REROLL_PRICE := 0.01
 
-const _TEXT_ROLL_DICE := "Lets play a `%s`game. Roll the dice."
-const _TEXT_REROLL_DICE := "I'll give you %ss to complete the game for that roll."
+const _TEXT_ROLL_DICE := "Lets play a [b][u]%s[/u][/b] game. Roll the dice."
+const _TEXT_REROLL_DICE := "I'll give you [b][u]%ss[/u][/b] to complete the game for that roll."
 const _TEXT_CHOOSE_DIFFICULTY := "Choose difficulty."
 
 const  _TEXT_WON := [
@@ -47,6 +52,7 @@ const _SNAKE_GAME_NAME := "eating" # or slithering??
 
 const BAR_FILL_TIME := 0.5
 
+var _minigame_queue: Array
 var _current_minigame: Minigame
 var _current_dice_roll: int
 
@@ -54,6 +60,7 @@ var _doom := 0.0:
 	set(value):
 		var tween = create_tween()
 		tween.tween_property(_doom_bar, ^"value", min(value, _MAX_DOOM), BAR_FILL_TIME)
+		await tween.finished
 		_doom = min(value, _MAX_DOOM)
 		doom_changed.emit(_doom)
 		
@@ -61,6 +68,7 @@ var _progress := 0.0:
 	set(value):
 		var tween = create_tween()
 		tween.tween_property(_progress_bar, ^"value", min(value, _MAX_PROGRESS), BAR_FILL_TIME)
+		await tween.finished
 		_progress = min(value, _MAX_PROGRESS)
 		if _progress == _MAX_PROGRESS:
 			progress_bar_filled.emit()
@@ -73,8 +81,6 @@ var _progress := 0.0:
 @onready var _progress_bar_preview: ProgressBar = %ProgressBarPreview
 @onready var _doom_bar: ProgressBar = %DoomBar
 @onready var _doom_bar_preview: ProgressBar = %DoomBarPreview
-
-@onready var _dice_roll_label: Label = %DiceRollLabel
 
 @onready var _die: Sprite2D = %Die
 @onready var _roll_dice_button: Button = %RollDiceButton
@@ -90,23 +96,28 @@ var _progress := 0.0:
 @onready var _medium_check_box: CheckBox = %MediumCheckBox
 @onready var _hard_check_box: CheckBox = %HardCheckBox
 
-@onready var _devil_line: Label = %DevilLine
+@onready var _devil_line: RichTextLabel = %DevilLine
 
 
 
 func _ready() -> void:
+	randomize()
 	_progress_bar.max_value = _MAX_PROGRESS
 	_progress_bar_preview.max_value = _MAX_PROGRESS
 	_doom_bar.max_value = _MAX_DOOM
 	_doom_bar_preview.max_value = _MAX_DOOM
 	
+	# Add first set of 4 games in random order
+	_minigame_queue.append_array(_MiniGameScenes)
+	_minigame_queue.shuffle()
+	
 	_prepare_next_minigame()
-	_play_power_on_animation()
-	
 	
 
 
-func _play_power_on_animation() -> void:
+func play_power_on_animation() -> void:
+	show()
+	
 	_screen_container.scale = Vector2(1.0, 0.02)
 	_screen_container.modulate = Color.DIM_GRAY
 	
@@ -115,10 +126,16 @@ func _play_power_on_animation() -> void:
 		.set_delay(0.15).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 	tween.tween_property(_screen_container, "modulate", Color.WHITE, 0.35)\
 		.set_delay(0.15)
+	
+	_roll_dice_button.grab_focus()
 
 
 func _on_minigame_won() -> void:
-	_progress += _PROGRESS_STEP * (_get_difficulty() + 1)
+	if MinigameTimeTrials.trials_active:
+		MinigameTimeTrials.print_minigame_time()
+		MinigameTimeTrials.stop_timer()
+	
+	_progress += _DOOM_AND_PROGRESS[_get_difficulty()]
 	
 	#await _show_reaction(true)
 	_devil_line.text = _TEXT_WON[randi() % len(_TEXT_WON)]
@@ -133,7 +150,7 @@ func _on_minigame_won() -> void:
 
 
 func _on_minigame_lost() -> void:
-	_doom += _DOOM_STEP * (_get_difficulty() + 1)
+	_doom += _DOOM_AND_PROGRESS[_get_difficulty()]
 	
 	#await _show_reaction(false)
 	_devil_line.text = _TEXT_LOSE[randi() % len(_TEXT_LOSE)]
@@ -167,8 +184,16 @@ func _on_minigame_lost() -> void:
 
 
 func _prepare_next_minigame() -> void:
-	#_current_minigame = _MiniGameScenes.pick_random().instantiate()
-	_current_minigame = _MiniGameScenes[2].instantiate()
+	if MinigameTimeTrials.trials_active:
+		_current_minigame = _MiniGameScenes[MinigameTimeTrials.force_minigame_index].instantiate()
+	else:
+		if len(_minigame_queue) == 0:
+			_minigame_queue.append_array(_MiniGameScenes)
+			_minigame_queue.append_array(_MiniGameScenes) # append it twice so we don't get the usual pattern of sets of 4 minigames
+			_minigame_queue.shuffle()
+		
+		_current_minigame = _minigame_queue.front().instantiate()
+		_minigame_queue.pop_front()
 	
 	if _current_minigame is FallingGame:
 		_devil_line.text = _TEXT_ROLL_DICE % _FALLING_GAME_NAME
@@ -181,24 +206,32 @@ func _prepare_next_minigame() -> void:
 	else: # example minigame
 		_devil_line.text = _TEXT_ROLL_DICE % _EXAMPLE_GAME_NAME
 	
+	
+	show_roll_die_bar_preview()
 	_roll_dice_button.show()
 	_roll_dice_button.grab_focus()
 	_meta_game.show()
 
 
 func _roll_dice() -> void:
+	GameplayAudioController.dice_roll.emit()
 	_die.show()
-	_buttons_container.hide()
-	_dice_roll_label.hide()
 	
-	_current_dice_roll = 1 + randi() % 6
-	_die.roll(_current_dice_roll)
-	_doom += _DOOM_STEP / 2.0
+	_buttons_container.hide()
+	
+	_die.roll(1 + randi() % 6)
+	await _die.roll_finished
+	
+	_buttons_container.show()
+
+
+func _on_die_roll_finished(value: int) -> void:
+	#print(value)
+	_current_dice_roll = value
 
 
 func _on_roll_dice_button_pressed() -> void:
-	_roll_dice()
-	_dice_roll_label.text = "%s" % _current_dice_roll
+	await _roll_dice()
 	_current_minigame.dice_roll = _current_dice_roll
 	
 	_devil_line.text = _TEXT_REROLL_DICE % _current_minigame.get_time_limit()
@@ -209,21 +242,23 @@ func _on_roll_dice_button_pressed() -> void:
 	_or_label.show()
 	_accept_roll_button.show()
 	_accept_roll_button.grab_focus()
+	
+	_doom += _DOOM_ROLL_PRICE
 
 
 func _on_reroll_dice_button_pressed() -> void:
-	_roll_dice()
-	_dice_roll_label.text = "%s" % _current_dice_roll
+	await _roll_dice()
 	_current_minigame.dice_roll = _current_dice_roll
 	_devil_line.text = _TEXT_REROLL_DICE % _current_minigame.get_time_limit()
 	_reroll_dice_button.grab_focus()
+	
+	_doom += _DOOM_REROLL_PRICE
 
 
 func _on_accept_roll_button_pressed() -> void:
 	_reroll_dice_button.hide()
 	_or_label.hide()
 	_accept_roll_button.hide()
-	_dice_roll_label.hide()
 	_die.hide()
 	
 	_devil_line.text = _TEXT_CHOOSE_DIFFICULTY
@@ -231,7 +266,10 @@ func _on_accept_roll_button_pressed() -> void:
 	_start_button.show()
 	_difficulty_boxes.show()
 	_show_bar_previews()
-	_easy_check_box.grab_focus()
+	
+	if _easy_check_box.button_pressed: _easy_check_box.grab_focus()
+	elif _hard_check_box.button_pressed: _hard_check_box.grab_focus()
+	else: _medium_check_box.grab_focus()
 
 
 func _on_start_button_pressed() -> void:
@@ -248,9 +286,13 @@ func _on_start_button_pressed() -> void:
 	_difficulty_boxes.hide()
 	_doom_bar_preview.hide()
 	_progress_bar_preview.hide()
+	
+	if MinigameTimeTrials.trials_active:
+		MinigameTimeTrials.start_timer()
 
 
 func _on_easy_check_box_pressed() -> void:
+	_easy_check_box.button_pressed = true
 	_medium_check_box.button_pressed = false
 	_hard_check_box.button_pressed = false
 	
@@ -259,6 +301,7 @@ func _on_easy_check_box_pressed() -> void:
 
 func _on_medium_check_box_pressed() -> void:
 	_easy_check_box.button_pressed = false
+	_medium_check_box.button_pressed = true
 	_hard_check_box.button_pressed = false
 	
 	_show_bar_previews()
@@ -267,6 +310,7 @@ func _on_medium_check_box_pressed() -> void:
 func _on_hard_check_box_pressed() -> void:
 	_easy_check_box.button_pressed = false
 	_medium_check_box.button_pressed = false
+	_hard_check_box.button_pressed = true
 	
 	_show_bar_previews()
 
@@ -285,15 +329,28 @@ func _get_difficulty() -> Minigame.Difficulty:
 
 func _show_bar_previews() -> void:
 	_progress_bar_preview.show()
-	_progress_bar_preview.value = _progress + _PROGRESS_STEP * (_get_difficulty() + 1)
+	_progress_bar_preview.value = _progress + _DOOM_AND_PROGRESS[_get_difficulty()]
 	_doom_bar_preview.show()
-	_doom_bar_preview.value = _doom + _DOOM_STEP * (_get_difficulty() + 1)
+	_doom_bar_preview.value = _doom + _DOOM_AND_PROGRESS[_get_difficulty()]
 
+func show_roll_die_bar_preview() -> void:
+	_doom_bar_preview.show()
+	_doom_bar_preview.value = _doom + _DOOM_ROLL_PRICE
+
+func show_reroll_die_bar_preview() -> void:
+	_doom_bar_preview.show()
+	_doom_bar_preview.value = _doom + _DOOM_REROLL_PRICE
+
+func hide_reroll_die_bar_preview() -> void:
+	_doom_bar_preview.hide()
 
 func _on_continue_button_pressed() -> void:
 	_continue_button.hide()
 	_prepare_next_minigame()
-  
-func _on_die_roll_finished(_value: int) -> void:
-	_buttons_container.show()
-	_dice_roll_label.show()
+
+
+func _on_reroll_dice_button_focus_entered() -> void:
+	show_reroll_die_bar_preview()
+
+func _on_reroll_dice_button_focus_exited() -> void:
+	hide_reroll_die_bar_preview()

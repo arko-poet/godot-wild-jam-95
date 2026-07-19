@@ -1,13 +1,13 @@
 class_name FallingGame extends Minigame
 
-const TIME_LIMITS = [40, 40, 50, 60, 70, 80, 90] ## time limits given for each dice_value (1-6), index 0 is dummy data
-const SPIKE_SURVIVAL_RATES = [0.25, 0.5, 0.75] ## chances that each spike remains active for each difficulty
+const TIME_LIMITS = [9223372036854775806, 18, 21, 24, 26, 34, 42] ## time limits given for each dice_value (1-6), index 0 is dummy data
+const SPIKE_SURVIVAL_RATES = [0.4, 0.7, 0.9] ## chances that each spike remains active for each difficulty
+const LAYERS_PER_DIFF = [8, 11, 14] ## number of layers not counting the first and last, for each difficulty
 
 const DIST_BETWEEN_FLOORS = 150.0 ## pixels to move down after placing a layer
 const RIGHT_X_RANGE = [800, 923] ## the lowest and highest values the X position can be on right-side platforms
 const MIDDLE_X_RANGE = [441, 623] ## same for middle platforms
 const LEFT_X_RANGE = [93, 233] ## same for left-side platforms
-const LAYERS = 12 ## number of layers not counting the first and last
 
 var platform_scene = preload("uid://beu0qxq5fklv7")
 @onready var curr_y: float = DIST_BETWEEN_FLOORS
@@ -15,16 +15,15 @@ var offset_direction := 1.0
 
 
 func _ready() -> void:
-	difficulty = 1
-	dice_roll = 3
 	%TimerComponent.start_timer(TIME_LIMITS[dice_roll])
 	
 	if !OS.is_debug_build():
 		$Prototype.hide()
+
 	
 	_add_platform(2, curr_y)
 	var _last_side := 2
-	for i in LAYERS:
+	for i in LAYERS_PER_DIFF[difficulty]:
 		curr_y += DIST_BETWEEN_FLOORS
 		var _new_side
 		match _last_side:
@@ -39,36 +38,36 @@ func _ready() -> void:
 	
 	curr_y += DIST_BETWEEN_FLOORS
 	_add_platform(3, curr_y, true)
-	%Goal.position = Vector2(547, curr_y - 26.0)
+	%Goal.position = Vector2(547, curr_y)
 
-func _process(delta: float) -> void:
-	%Goal.rotate(PI * delta)
+#func _process(delta: float) -> void:
+	#%Goal.rotate(PI * delta)
 
 
 func _input(event: InputEvent) -> void:
 	if OS.is_debug_build():
 		if Input.is_key_pressed(KEY_L):
-			print("game_lost signal emitted")
+			#print("game_lost signal emitted")
 			GameplayAudioController.minigame_lost.emit()
 			game_lost.emit()
 		if Input.is_key_pressed(KEY_K):
-			print("game_won signal emitted")
+			#print("game_won signal emitted")
 			GameplayAudioController.minigame_won.emit()
 			game_won.emit()
 
 func _on_kill_plane_body_entered(body: Node2D) -> void:
-	print("game_lost signal emitted")
+	#print("game_lost signal emitted")
 	GameplayAudioController.minigame_lost.emit()
 	game_lost.emit()
 
 func _on_timer_component_timeout() -> void:
-	print("game_lost signal emitted")
+	#print("game_lost signal emitted")
 	GameplayAudioController.minigame_lost.emit()
 	game_lost.emit()
 
 func _on_goal_body_entered(body: Node2D) -> void:
 	if body is RollingPlayer:
-		print("game_won signal emitted")
+		#print("game_won signal emitted")
 		GameplayAudioController.minigame_won.emit()
 		game_won.emit()
 

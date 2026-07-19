@@ -1,14 +1,35 @@
 [gd_scene format=3 uid="uid://dsj6qxk4ywtji"]
 
-[ext_resource type="PackedScene" path="res://addons/maaacks_game_template/base/nodes/menus/options_menu/input/input_options_menu.tscn" id="1_wufmj"]
-[ext_resource type="PackedScene" path="res://template/scenes/menus/options_menu/input/input_icon_mapper.tscn" id="2_mffhs"]
+[ext_resource type="PackedScene" uid="uid://dp3rgqaehb3xu" path="res://addons/maaacks_game_template/base/nodes/menus/options_menu/input/input_options_menu.tscn" id="1_wufmj"]
+[ext_resource type="PackedScene" uid="uid://eksthp5r4p46" path="res://template/scenes/menus/options_menu/input/input_icon_mapper.tscn" id="2_mffhs"]
 
 [node name="Controls" unique_id=294191899 instance=ExtResource("1_wufmj")]
+
+[node name="Label" parent="VBoxContainer/InputMappingContainer" parent_id_path=PackedInt32Array(1004992485) index="0" unique_id=1142261578]
+theme_override_font_sizes/font_size = 32
 
 [node name="InputActionsList" parent="VBoxContainer/InputMappingContainer" parent_id_path=PackedInt32Array(1004992485) index="1" unique_id=2089976301 node_paths=PackedStringArray("input_icon_mapper")]
 input_icon_mapper = NodePath("../../../InputIconMapper")
 
 [node name="InputActionsTree" parent="VBoxContainer/InputMappingContainer" parent_id_path=PackedInt32Array(1004992485) index="2" unique_id=780755880 node_paths=PackedStringArray("input_icon_mapper")]
 input_icon_mapper = NodePath("../../../InputIconMapper")
+
+[node name="ResetButton" parent="VBoxContainer/InputMappingContainer/HBoxContainer" parent_id_path=PackedInt32Array(668442458) index="0" unique_id=14998312]
+theme_override_font_sizes/font_size = 32
+
+[node name="KeyDeletionConfirmation" parent="." index="1" unique_id=1120617858]
+ignore_siblings = false
+
+[node name="ResetConfirmation" parent="." index="2" unique_id=1967398625]
+ignore_siblings = false
+
+[node name="OneInputMinimumMessage" parent="." index="3" unique_id=1110523665]
+ignore_siblings = false
+
+[node name="AlreadyAssignedMessage" parent="." index="4" unique_id=574954440]
+ignore_siblings = false
+
+[node name="KeyAssignmentWindow" parent="." index="5" unique_id=751125317]
+ignore_siblings = false
 
 [node name="InputIconMapper" parent="." index="6" unique_id=1326793573 instance=ExtResource("2_mffhs")]

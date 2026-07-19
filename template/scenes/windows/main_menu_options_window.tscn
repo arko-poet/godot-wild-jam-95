@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://ws3qu4alfdk0"]
 
-[ext_resource type="PackedScene" path="res://addons/maaacks_game_template/base/nodes/windows/overlaid_window_scene_container.tscn" id="1_mk462"]
-[ext_resource type="PackedScene" path="res://template/scenes/menus/options_menu/master_options_menu_with_tabs.tscn" id="2_t5tlw"]
+[ext_resource type="PackedScene" uid="uid://crndfbb22ri4s" path="res://addons/maaacks_game_template/base/nodes/windows/overlaid_window_scene_container.tscn" id="1_mk462"]
+[ext_resource type="PackedScene" uid="uid://dfrdev7b08crh" path="res://template/scenes/menus/options_menu/master_options_menu_with_tabs.tscn" id="2_t5tlw"]
 
 [node name="MainMenuOptionsOverlaidWindow" unique_id=1787637973 instance=ExtResource("1_mk462")]
 anchors_preset = 15
@@ -16,13 +16,14 @@ offset_bottom = 0.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 packed_scene = ExtResource("2_t5tlw")
+ignore_siblings = false
 update_content = true
 close_button_text = "Back"
-title_visible = false
 
 [node name="TitleMargin" parent="ContentContainer/BoxContainer" parent_id_path=PackedInt32Array(394030069) index="0" unique_id=1262022916]
 visible = false
 
 [node name="CloseButton" parent="ContentContainer/BoxContainer/MenuButtonsMargin/MenuButtons" parent_id_path=PackedInt32Array(1371114575) index="0" unique_id=314526102]
 size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 32
 text = "Back"

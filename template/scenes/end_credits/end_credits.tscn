@@ -1,14 +1,15 @@
 [gd_scene format=3 uid="uid://bbqk5kyfnuogk"]
 
-[ext_resource type="PackedScene" path="res://template/scenes/credits/scrolling_credits.tscn" id="1_dqbsw"]
-[ext_resource type="Script" path="res://template/scenes/end_credits/end_credits.gd" id="2_jh5yp"]
-[ext_resource type="PackedScene" path="res://addons/maaacks_game_template/base/nodes/music_players/background_music_player.tscn" id="3_fichv"]
-[ext_resource type="Script" path="res://addons/maaacks_game_template/base/nodes/utilities/capture_focus.gd" id="4_4bbwp"]
+[ext_resource type="PackedScene" uid="uid://bxsxhx8561ane" path="res://template/scenes/credits/scrolling_credits.tscn" id="1_dqbsw"]
+[ext_resource type="Script" uid="uid://cljilx144add4" path="res://template/scenes/end_credits/end_credits.gd" id="2_jh5yp"]
+[ext_resource type="PackedScene" uid="uid://bkcsjsk2ciff" path="res://addons/maaacks_game_template/base/nodes/music_players/background_music_player.tscn" id="3_fichv"]
+[ext_resource type="Script" uid="uid://1nf36h0gms3q" path="res://addons/maaacks_game_template/base/nodes/utilities/capture_focus.gd" id="4_4bbwp"]
 
 [node name="EndCredits" unique_id=613298766 instance=ExtResource("1_dqbsw")]
 script = ExtResource("2_jh5yp")
 main_menu_scene_path = ""
 force_mouse_mode_visible = false
+scroll_paused = true
 
 [node name="BackgroundMusicPlayer" parent="." index="0" unique_id=1411252862 instance=ExtResource("3_fichv")]
 
@@ -31,6 +32,71 @@ grow_vertical = 2
 expand_mode = 1
 stretch_mode = 5
 
+[node name="ScrollContainer" parent="." index="3" unique_id=1039720129]
+scroll_vertical = 4934
+
+[node name="HeaderSpace" parent="ScrollContainer/VBoxContainer" parent_id_path=PackedInt32Array(2067921385) index="0" unique_id=1552560353]
+custom_minimum_size = Vector2(0, 1080)
+
+[node name="CreditsLabel" parent="ScrollContainer/VBoxContainer" parent_id_path=PackedInt32Array(2067921385) index="1" unique_id=1486745388]
+custom_minimum_size = Vector2(1920, 0)
+text = "[font_size=96]Collaborators[/font_size]
+
+[font_size=64]Game Design[/font_size]
+[url=https://arko-poet.itch.io/]arko[/url]
+[url=https://awfullycrispy.itch.io/]awfullycrispy[/url]
+
+[font_size=64]Music Composition & SFX[/font_size]
+[url=https://gruntofficial.itch.io/]Grunt.[/url]
+
+[font_size=64]Art[/font_size]
+[url=https://llfonsy.itch.io/]Fonsy[/url]
+
+[font_size=64]Programming[/font_size]
+[url=https://orangepainting.itch.io/]OrangePainting[/url]
+[url=https://awfullycrispy.itch.io/]awfullycrispy[/url]
+[url=https://arko-poet.itch.io/]arko[/url]
+
+[font_size=96]Sourced[/font_size]
+[font_size=64]Asset Type[/font_size]
+[font_size=48]Use Case[/font_size]
+Author: [url=]Name[/url]  
+Source: [url=]Domain : webpage.html[/url]  
+License: [url=]License[/url]
+
+[font_size=48]Godot Engine Logo[/font_size]
+Author: Andrea Calabró  
+Source: [url=https://godotengine.org/press/]godotengine.org : press[/url]  
+License: [url=https://github.com/godotengine/godot/blob/master/LOGO_LICENSE.txt]CC BY 4.0 International[/url] 
+
+[font_size=48]CRT Shader[/font_size]
+Author: c64cosmin
+Source: [url=https://godotshaders.com/shader/realistic-crt-shader/]https://godotshaders.com/shader/realistic-crt-shader/[/url]
+License: [url=https://creativecommons.org/publicdomain/zero/1.0/]CC0 1.0 Universal[/url]
+
+[font_size=96]Tools[/font_size]
+[font_size=48]Godot[/font_size]
+[img=160]res:///template/assets/godot_engine_logo/logo_vertical_color_dark.png[/img]  
+Author: [url=https://godotengine.org/contact]Juan Linietsky, Ariel Manzur, and contributors[/url]  
+Source: [url=https://godotengine.org/]godotengine.org[/url]  
+License: [url=https://github.com/godotengine/godot/blob/master/LICENSE.txt]MIT License[/url] 
+
+[font_size=48]Godot Game Template[/font_size]
+[img=160]res:///template/assets/plugin_logo/logo.png[/img]  
+Author: [url=https://github.com/Maaack/Godot-Game-Template/graphs/contributors]Marek Belski and contributors[/url]  
+Source: [url=https://github.com/Maaack/Godot-Game-Template]github: Godot-Game-Template[/url]  
+License: [url=LICENSE.txt]MIT License[/url]  
+
+[font_size=48]Git[/font_size]
+[img=160]res:///template/assets/git_logo/Git-Logo-2Color.png[/img]  
+Author: [url=https://github.com/torvalds]Linus Torvalds[/url]  
+Source: [url=https://git-scm.com/downloads]git-scm.com[/url]  
+License: [url=https://opensource.org/licenses/GPL-2.0]GNU General Public License version 2[/url]
+"
+
+[node name="FooterSpace" parent="ScrollContainer/VBoxContainer" parent_id_path=PackedInt32Array(2067921385) index="2" unique_id=1703782196]
+custom_minimum_size = Vector2(0, 1080)
+
 [node name="CenterContainer" type="CenterContainer" parent="." index="4" unique_id=535959837]
 layout_mode = 0
 anchor_right = 1.0
@@ -41,8 +107,7 @@ mouse_filter = 2
 
 [node name="EndMessagePanel" type="Panel" parent="CenterContainer" index="0" unique_id=680051131]
 unique_name_in_owner = true
-visible = false
-custom_minimum_size = Vector2(360, 120)
+custom_minimum_size = Vector2(720, 240)
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/EndMessagePanel" index="0" unique_id=899651798]
@@ -54,6 +119,7 @@ anchor_bottom = 1.0
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_override_font_sizes/font_size = 64
 text = "Thanks for playing!"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -64,10 +130,10 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/EndMessagePanel/VBoxContainer/CenterContainer" index="0" unique_id=1415249609]
-custom_minimum_size = Vector2(256, 0)
+custom_minimum_size = Vector2(512, 0)
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_constants/separation = 16
+theme_override_constants/separation = 128
 script = ExtResource("4_4bbwp")
 
 [node name="ExitButton" type="Button" parent="CenterContainer/EndMessagePanel/VBoxContainer/CenterContainer/HBoxContainer" index="0" unique_id=1382070624]
@@ -75,6 +141,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_override_font_sizes/font_size = 32
 text = "Exit"
 
 [node name="MenuButton" type="Button" parent="CenterContainer/EndMessagePanel/VBoxContainer/CenterContainer/HBoxContainer" index="1" unique_id=1504498101]
@@ -82,6 +149,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_override_font_sizes/font_size = 32
 text = "Menu"
 
 [connection signal="pressed" from="CenterContainer/EndMessagePanel/VBoxContainer/CenterContainer/HBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]

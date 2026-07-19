@@ -23,13 +23,18 @@ const MOVE_INTERVALS := {
 }
 
 const TIME_LIMITS := { # in seconds
-	1: 17,
-	2: 22,
-	3: 25,
-	4: 28,
-	5: 31,
-	6: 34,
+	1: 10,
+	2: 14,
+	3: 20,
+	4: 24,
+	5: 32,
+	6: 46,
 }
+
+const DIR_NAME := {Vector2.UP: "U", Vector2.DOWN: "D", Vector2.LEFT: "L", Vector2.RIGHT: "R"}
+const CAP_ROTATION := {Vector2.RIGHT: 0, Vector2.DOWN: 90, Vector2.LEFT: 180, Vector2.UP: 270}
+const CORNER_ROTATION := {"RU": 0, "DR": 90, "DL": 180, "LU": 270}
+
 
 const Square = preload("uid://c2r4u5hrhc6qf") # square.tcsn
 
@@ -54,6 +59,10 @@ var apple_active := true
 var apple_goal_num: int = 0
 var num_apples_collected: int = 0
 
+func corner_key(a: Vector2, b: Vector2) -> String:
+	var letters = [DIR_NAME[a], DIR_NAME[b]]
+	letters.sort()
+	return letters[0] + letters[1]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -70,8 +79,7 @@ func _ready() -> void:
 	spawn_snake()
 	spawn_apple()
 	
-	move_timer.wait_time = get_move_interval()
-	move_timer.start()
+	# the move_timer does not start here because WaitTimer timing out will trigger that
 	
 	timer_component.position = Vector2.DOWN * grid_height * CELL_SIZE + grid_offset
 	timer_component.start_timer(get_time_limit())
@@ -135,9 +143,20 @@ func spawn_apple() -> void:
 
 
 func draw_snake() -> void:
-	for square in snake_squares: get_square(square).set_type("snake")
-	get_square(snake_squares[0]).set_type("snake")
-
+	var last_square_index = len(snake_squares) - 1
+	for i in len(snake_squares):
+		var square: Vector2 = snake_squares[i]
+		if i == 0: get_square(square).set_type("head", CAP_ROTATION[direction])
+		elif i == last_square_index:
+			var previous_dir: Vector2 = (snake_squares[i - 1] - square).normalized()
+			get_square(square).set_type("tail", CAP_ROTATION[-previous_dir])
+		else:
+			var previous_dir: Vector2 = (snake_squares[i - 1] - square).normalized()
+			var next_dir: Vector2 = (snake_squares[i + 1] - square).normalized()
+			if previous_dir == -next_dir:
+				var rotation = 0 if previous_dir.x != 0 else 90
+				get_square(square).set_type("straight", rotation)
+			else: get_square(square).set_type("corner", CORNER_ROTATION[corner_key(previous_dir, next_dir)])
 
 func _unhandled_input(event: InputEvent) -> void:
 	var input_dir := Vector2.ZERO
@@ -188,7 +207,7 @@ func _on_move_timer_timeout() -> void:
 		get_square(snake_end).set_type("empty")
 	
 	draw_snake()
-	get_square(apple_pos).set_type("apple") # draw apple in case was overwritten
+	#get_square(apple_pos).set_type("apple") # draw apple in case was overwritten
 	
 	if grew:
 		if num_apples_collected >= apple_goal_num:
@@ -204,3 +223,8 @@ func get_time_limit() -> float:
 
 func _on_timer_component_out_of_time() -> void:
 	game_lost.emit()
+
+
+func _on_wait_timer_timeout() -> void:
+	move_timer.wait_time = get_move_interval()
+	move_timer.start()

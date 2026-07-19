@@ -4,13 +4,19 @@
 [ext_resource type="Script" uid="uid://ctuyqbnvia1rb" path="res://game/scenes/pc_screen/minigames/falling_game/scripts/falling_camera.gd" id="2_4oggc"]
 [ext_resource type="PackedScene" uid="uid://deolci8vffafc" path="res://game/scenes/pc_screen/minigames/falling_game/scenes/rolling_player.tscn" id="2_xp6nb"]
 [ext_resource type="PackedScene" uid="uid://bxcrjj54yj4ok" path="res://game/shaders/CRTShader.tscn" id="4_1kjc7"]
-[ext_resource type="Texture2D" uid="uid://buoe86bqyfknb" path="res://icon.svg" id="5_5lc5m"]
 [ext_resource type="PackedScene" uid="uid://bb5isa4txkp3f" path="res://game/scenes/pc_screen/minigames/timer_component.tscn" id="5_cmei7"]
+[ext_resource type="PackedScene" uid="uid://dbqhfoehi0cnu" path="res://game/scenes/pc_screen/minigames/falling_game/scenes/rolling_goal.tscn" id="6_1kjc7"]
+
+[sub_resource type="Gradient" id="Gradient_1kjc7"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_3owqy"]
+gradient = SubResource("Gradient_1kjc7")
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_3owqy"]
 
 [sub_resource type="Gradient" id="Gradient_tei26"]
-colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+colors = PackedColorArray(0.16350216, 0.16350219, 0.16350216, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_3tvq1"]
 gradient = SubResource("Gradient_tei26")
@@ -27,14 +33,17 @@ size = Vector2(1554, 180)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dpga7"]
 size = Vector2(6877, 724)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8nwgy"]
-size = Vector2(30, 27)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cmei7"]
 size = Vector2(544, 178)
 
 [node name="FallingGameMain" type="Node" unique_id=927618654]
 script = ExtResource("1_tei26")
+
+[node name="Background" type="Sprite2D" parent="." unique_id=897286112]
+z_index = -1
+position = Vector2(885.00006, 1017)
+scale = Vector2(8.519531, 2363.5)
+texture = SubResource("GradientTexture1D_3owqy")
 
 [node name="Prototype" type="Node2D" parent="." unique_id=77207910]
 
@@ -93,6 +102,9 @@ shape = SubResource("RectangleShape2D_drsw1")
 position = Vector2(666.5, 7583)
 shape = SubResource("RectangleShape2D_dpga7")
 
+[node name="Platforms" type="Node" parent="." unique_id=352527631]
+unique_name_in_owner = true
+
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1493938841]
 unique_name_in_owner = true
 anchor_mode = 0
@@ -118,19 +130,9 @@ metadata/_edit_use_anchors_ = true
 unique_name_in_owner = true
 position = Vector2(93, 50)
 
-[node name="Goal" type="Area2D" parent="." unique_id=2022441309]
+[node name="Goal" parent="." unique_id=1973734546 instance=ExtResource("6_1kjc7")]
 unique_name_in_owner = true
-position = Vector2(-2063, 323)
-
-[node name="Sprite2D" type="Sprite2D" parent="Goal" unique_id=391011188]
-scale = Vector2(0.23046887, 0.21093774)
-texture = ExtResource("5_5lc5m")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Goal" unique_id=1126860301]
-shape = SubResource("RectangleShape2D_8nwgy")
-
-[node name="Platforms" type="Node" parent="." unique_id=352527631]
-unique_name_in_owner = true
+position = Vector2(-1528, 525)
 
 [node name="SpikeKiller" type="Area2D" parent="." unique_id=2095928293]
 collision_layer = 4
@@ -138,7 +140,7 @@ collision_mask = 0
 monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeKiller" unique_id=180550319]
-position = Vector2(285, 101)
+position = Vector2(285, 100)
 shape = SubResource("RectangleShape2D_cmei7")
 
 [node name="RightWall" type="CollisionShape2D" parent="SpikeKiller" unique_id=221165896]
