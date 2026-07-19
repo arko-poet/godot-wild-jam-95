@@ -18,6 +18,7 @@ const MONSTER_SCALES := [
 ]
 
 var monster_stage := -1
+var new_monster_stage := -1
 var previous_monster_stage = -1
 var base_transition_length: float = 0.75
 
@@ -39,6 +40,8 @@ func game_won() -> void:
 	pass
 
 func _ready() -> void:
+	ProjectUISoundController.entity_steps_finished.connect(_on_entity_step_finished)
+	
 	turn_on_pc_button.grab_focus()
 	monster.hide()
 
@@ -56,21 +59,21 @@ func _on_pc_screen_doom_changed(percentage: float) -> void:
 		return
 	
 	if percentage == 1.0:
-		monster_stage = 5
+		new_monster_stage = 5
 		monster.show()
 	elif percentage >= 0.8:
-		monster_stage = 4
+		new_monster_stage = 4
 	elif percentage >= 0.6:
-		monster_stage = 3
+		new_monster_stage = 3
 	elif percentage >= 0.4:
-		monster_stage = 2
+		new_monster_stage = 2
 	elif percentage >= 0.2:
-		monster_stage = 1
+		new_monster_stage= 1
 	elif percentage >= 0.1:
-		monster_stage = 0
+		new_monster_stage = 0
 	
-	if previous_monster_stage != monster_stage:
-		previous_monster_stage = monster_stage
+	if new_monster_stage != monster_stage:
+		#previous_monster_stage = monster_stage
 		play_monster_transition()
 	
 	#monster.position = MONSTER_POSITIONS[monster_stage]
@@ -88,7 +91,7 @@ func _on_pc_screen_doom_changed(percentage: float) -> void:
 func play_monster_transition() -> void:
 	#monster_transition.visible = true
 	
-	var tween := create_tween()
+	#var tween := create_tween()
 	GameplayAudioController.entity_step.emit()
 	# add maybe a light flickering out sfx here, and a loud heartbeat as well to signify a bad decision
 	# dark screen time increases as monster stage increase
@@ -102,3 +105,7 @@ func _on_claim_prize_button_pressed() -> void:
 func _on_turn_on_pc_button_pressed() -> void:
 	pc_screen.play_power_on_animation()
 	turn_on_pc_button.hide()
+
+
+func _on_entity_step_finished() -> void:
+	monster_stage = new_monster_stage

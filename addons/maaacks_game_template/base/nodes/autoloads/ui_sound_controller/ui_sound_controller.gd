@@ -6,6 +6,8 @@ extends Node
 ## When attached just below the root node of a scene tree, it will manage
 ## all of the UI sounds in that scene.
 
+signal entity_steps_finished
+
 const MAX_DEPTH = 16
 
 @export var root_path : NodePath = ^".."
@@ -162,6 +164,7 @@ func _build_minigame_stream_players() -> void:
 	entity_step_player = _build_stream_player(_first_stream(entity_step), "EntityStep")
 	if entity_step_player:
 		entity_step_player.volume_db += 10.0
+		entity_step_player.finished.connect(_on_entity_step_finished)
 
 
 func _build_all_stream_players() -> void:
@@ -311,3 +314,7 @@ func _exit_tree() -> void:
 	if tree_node.node_added.is_connected(connect_ui_sounds):
 		tree_node.node_added.disconnect(connect_ui_sounds)
 	_disconnect_minigame_bus()
+
+
+func _on_entity_step_finished() -> void:
+	entity_steps_finished.emit()

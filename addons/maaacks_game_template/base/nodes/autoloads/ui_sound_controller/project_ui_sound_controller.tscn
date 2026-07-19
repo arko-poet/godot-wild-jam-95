@@ -36,7 +36,9 @@ stream_3/stream = ExtResource("11_ypev8")
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_saweg"]
 streams_count = 3
 stream_0/stream = ExtResource("14_g232p")
+stream_0/weight = 0.0
 stream_1/stream = ExtResource("25_ycirn")
+stream_1/weight = 0.0
 stream_2/stream = ExtResource("26_5f3bw")
 
 [node name="ProjectUISoundController" type="Node" unique_id=1525696179]
