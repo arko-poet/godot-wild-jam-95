@@ -56,7 +56,7 @@ var _minigame_queue: Array
 var _current_minigame: Minigame
 var _current_dice_roll: int
 
-var _doom := 0.0:
+var _doom := 0.90:
 	set(value):
 		var tween = create_tween()
 		tween.tween_property(_doom_bar, ^"value", min(value, _MAX_DOOM), BAR_FILL_TIME)
@@ -64,7 +64,7 @@ var _doom := 0.0:
 		_doom = min(value, _MAX_DOOM)
 		doom_changed.emit(_doom)
 		
-var _progress := 0.0:
+var _progress := 0.9:
 	set(value):
 		var tween = create_tween()
 		tween.tween_property(_progress_bar, ^"value", min(value, _MAX_PROGRESS), BAR_FILL_TIME)
@@ -338,15 +338,13 @@ func _show_bar_previews() -> void:
 	_progress_bar_preview.value = _progress + _DOOM_AND_PROGRESS[_get_difficulty()]
 	_progress_bar_preview_label.show()
 	_progress_bar_preview_label.text = "+" + str(int(_DOOM_AND_PROGRESS[_get_difficulty()] * 100)) + "%"
-	_progress_bar_preview_label.position.x = _progress_bar_preview.position.x + _progress_bar_preview.size.x * (1 - _progress_bar_preview.value) - _progress_bar_preview_label.size.x
-	print(_progress_bar_preview_label.position)
+	_progress_bar_preview_label.position.x = _progress_bar_preview.position.x + _progress_bar_preview.size.x * clamp(1 - _progress_bar_preview.value, 0.1, 0.9) - _progress_bar_preview_label.size.x
 	
 	_doom_bar_preview.show()
 	_doom_bar_preview.value = _doom + _DOOM_AND_PROGRESS[_get_difficulty()]
 	_doom_bar_preview_label.show()
 	_doom_bar_preview_label.text = "+" + str(int(_DOOM_AND_PROGRESS[_get_difficulty()] * 100)) + "%"
-	_doom_bar_preview_label.position.x = _doom_bar_preview.position.x + _doom_bar_preview.size.x * _doom_bar_preview.value
-	print(_doom_bar_preview_label.position)
+	_doom_bar_preview_label.position.x = _doom_bar_preview.position.x + _doom_bar_preview.size.x * clamp(_doom_bar_preview.value, 0.05, 0.9)
 
 func show_roll_die_bar_preview() -> void:
 	_doom_bar_preview.show()
