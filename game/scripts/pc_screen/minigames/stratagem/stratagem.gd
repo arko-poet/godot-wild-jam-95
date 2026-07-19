@@ -78,8 +78,10 @@ func get_time_limit() -> float:
 
 func _player_action(direction: _Direction) -> void:
 	if direction == _current_sequence[_sequence_pointer]:
-		GameplayAudioController.minigame_progress.emit()
+		
 		_arrow_container.get_children()[_sequence_pointer].modulate = Color.DIM_GRAY
+		GameplayAudioController.minigame_progress.emit(1)
+
 		if _sequence_pointer == _current_sequence.size() - 1:
 			_sequence_completed()
 		else:
@@ -94,7 +96,7 @@ func _player_action(direction: _Direction) -> void:
 
 func _sequence_completed() -> void:
 	_progress += _PROGRESS_STEPS[difficulty]
-	GameplayAudioController.minigame_good_event.emit()
+	GameplayAudioController.minigame_good_event.emit(2)
 	
 	_set_current_sequence()
 

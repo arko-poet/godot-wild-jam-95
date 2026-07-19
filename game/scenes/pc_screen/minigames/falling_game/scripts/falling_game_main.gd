@@ -12,6 +12,7 @@ const LEFT_X_RANGE = [93, 233] ## same for left-side platforms
 var platform_scene = preload("uid://beu0qxq5fklv7")
 @onready var curr_y: float = DIST_BETWEEN_FLOORS
 var offset_direction := 1.0
+var _all_platforms: Array[Node]
 
 
 func _ready() -> void:
@@ -89,7 +90,15 @@ func _add_platform(side:int, y_pos:float, kill_all_spikes := false) -> void:
 	var _platform = platform_scene.instantiate()
 	_platform.position = Vector2(_x_pos, y_pos)
 	_platform.player_landed.connect(%Camera2D._on_platform_player_landed)
+	_platform.player_landed.connect(_on_platform_player_landed)
+	_all_platforms.append(_platform)
 	%Platforms.add_child(_platform)
 	
 	if kill_all_spikes:
 		_platform.reduce_spikes(0.0)
+
+func _on_platform_player_landed(pos: Vector2, me: Node) -> void:
+	_all_platforms.erase(me)
+	%PlatformCounter.text = "%s Layers Remaining" % _all_platforms.size()
+	GameplayAudioController.minigame_good_event.emit()
+	
