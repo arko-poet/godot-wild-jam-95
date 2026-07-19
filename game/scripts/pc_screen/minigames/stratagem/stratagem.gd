@@ -7,7 +7,8 @@ enum _Direction {
 	UP
 }
 
-const SPRITE_PATH := "res://game/art/placeholders/stratagem/triangle%s.png"
+const CARD_SIZE = 700.0 ## This will be the height and width of the direction cards
+const SPRITE_PATH := "res://game/art/stratagem/directioncard_%s.png"
 const _TIME_LIMITS := {
 	1: 15.0,
 	2: 17.5,
@@ -77,8 +78,10 @@ func get_time_limit() -> float:
 
 func _player_action(direction: _Direction) -> void:
 	if direction == _current_sequence[_sequence_pointer]:
+		
+		_arrow_container.get_children()[_sequence_pointer].modulate = Color.DIM_GRAY
 		GameplayAudioController.minigame_progress.emit(1)
-		_arrow_container.get_children()[_sequence_pointer].modulate = Color.GREEN
+
 		if _sequence_pointer == _current_sequence.size() - 1:
 			_sequence_completed()
 		else:
@@ -107,7 +110,7 @@ func _set_current_sequence() -> void:
 	for child in _arrow_container.get_children():
 		child.queue_free()
 	
-	var sequence_length = _SEQUENCE_LENGTHS[difficulty] + (randi() % 3 - 1)
+	var sequence_length = clamp(_SEQUENCE_LENGTHS[difficulty] + (randi() % 3 - 1), 1, 9)
 	for i in sequence_length:
 		_current_sequence.append(_Direction.values().pick_random())
 	#print(_current_sequence)
@@ -121,5 +124,8 @@ func _set_current_sequence() -> void:
 func _draw_directions() -> void:
 	for direction in _current_sequence:
 		var arrow := TextureRect.new()
+		arrow.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+		arrow.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+		arrow.custom_minimum_size = Vector2(CARD_SIZE, CARD_SIZE)
 		arrow.texture = load(SPRITE_PATH % direction)
 		_arrow_container.add_child(arrow)
