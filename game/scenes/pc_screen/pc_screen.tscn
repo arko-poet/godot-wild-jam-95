@@ -2,14 +2,15 @@
 
 [ext_resource type="Script" uid="uid://bsxfkt70612yq" path="res://game/scripts/pc_screen/pc_screen.gd" id="1_ib41a"]
 [ext_resource type="Script" uid="uid://baylt4lsmmrfk" path="res://game/scripts/die.gd" id="2_8vsnj"]
-[ext_resource type="Texture2D" uid="uid://da1tl6w8xc6s7" path="res://game/art/placeholders/arko.png" id="2_hw7br"]
 [ext_resource type="Texture2D" uid="uid://db1vuwsopducl" path="res://game/art/dice/die_1.png" id="3_qcrff"]
 [ext_resource type="Texture2D" uid="uid://d4b8q11i5gc5w" path="res://game/art/dice/die_2.png" id="4_ax7l3"]
 [ext_resource type="Texture2D" uid="uid://cnmaedy0wsts6" path="res://game/art/dice/die_3.png" id="5_leom6"]
 [ext_resource type="Texture2D" uid="uid://dud08xd212kv5" path="res://game/art/dice/die_4.png" id="6_5e5m8"]
 [ext_resource type="Texture2D" uid="uid://cl5i63tcci287" path="res://game/art/dice/die_5.png" id="7_dnf0m"]
 [ext_resource type="Texture2D" uid="uid://c735wvdvvwkbq" path="res://game/art/dice/die_6.png" id="8_6nmus"]
+[ext_resource type="Texture2D" uid="uid://7jf24tck5q4o" path="res://game/art/mascot/Mascots-1.png" id="9_qcrff"]
 [ext_resource type="PackedScene" uid="uid://bxcrjj54yj4ok" path="res://game/shaders/CRTShader.tscn" id="10_8vsnj"]
+[ext_resource type="Texture2D" uid="uid://bkgal0hqrjmg4" path="res://game/art/mascot/Mascots-2.png" id="10_ax7l3"]
 [ext_resource type="Script" uid="uid://c0j7kjrbqnb8r" path="res://game/scripts/progress_bar_preview.gd" id="10_qcrff"]
 
 [sub_resource type="Gradient" id="Gradient_88wer"]
@@ -101,25 +102,40 @@ position = Vector2(512, 384)
 script = ExtResource("2_8vsnj")
 face_textures = Array[Texture2D]([ExtResource("3_qcrff"), ExtResource("4_ax7l3"), ExtResource("5_leom6"), ExtResource("6_5e5m8"), ExtResource("7_dnf0m"), ExtResource("8_6nmus")])
 
+[node name="DevilImage" type="TextureRect" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame" unique_id=2078176918]
+custom_minimum_size = Vector2(128, 128)
+custom_maximum_size = Vector2(256, 256)
+layout_mode = 0
+offset_top = 132.0
+offset_right = 256.0
+offset_bottom = 388.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("9_qcrff")
+
+[node name="DevilImage2" type="TextureRect" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame" unique_id=640161526]
+custom_minimum_size = Vector2(128, 128)
+custom_maximum_size = Vector2(256, 256)
+layout_mode = 0
+offset_left = 768.0
+offset_top = 132.0
+offset_right = 1024.0
+offset_bottom = 388.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("10_ax7l3")
+
 [node name="DevilContainer" type="HBoxContainer" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame" unique_id=1108223770]
 unique_name_in_owner = true
 visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
-offset_top = 132.0
-offset_bottom = 317.0
+offset_top = 126.0
+offset_bottom = 311.0
 grow_horizontal = 2
 theme_override_constants/separation = 16
 alignment = 1
-
-[node name="DevilImage" type="TextureRect" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame/DevilContainer" unique_id=2078176918]
-custom_minimum_size = Vector2(128, 128)
-custom_maximum_size = Vector2(256, 256)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("2_hw7br")
 
 [node name="TextBox" type="Panel" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame/DevilContainer" unique_id=340782439]
 custom_minimum_size = Vector2(500, 140)
@@ -151,15 +167,15 @@ vertical_alignment = 1
 
 [node name="Contract" type="Panel" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame" unique_id=871457805]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(500, 140)
+custom_minimum_size = Vector2(500, 100)
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 200.0
-offset_top = 152.0
-offset_right = -200.0
-offset_bottom = -248.0
+offset_left = 250.0
+offset_top = 148.0
+offset_right = -250.0
+offset_bottom = -252.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4

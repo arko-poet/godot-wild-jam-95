@@ -46,7 +46,7 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="ScrollContainer" parent="." index="3" unique_id=1039720129]
-scroll_vertical = 491
+scroll_vertical = 35
 
 [node name="HeaderSpace" parent="ScrollContainer/VBoxContainer" parent_id_path=PackedInt32Array(2067921385) index="0" unique_id=1552560353]
 custom_minimum_size = Vector2(0, 1080)
