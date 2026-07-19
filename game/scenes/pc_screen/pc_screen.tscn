@@ -10,7 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://c735wvdvvwkbq" path="res://game/art/dice/die_6.png" id="8_6nmus"]
 [ext_resource type="Texture2D" uid="uid://bd5pxjt8gh7ur" path="res://game/art/mascot/Mascots-1_2.png" id="9_ax7l3"]
 [ext_resource type="PackedScene" uid="uid://bxcrjj54yj4ok" path="res://game/shaders/CRTShader.tscn" id="10_8vsnj"]
-[ext_resource type="Script" uid="uid://q2g51equkurx" path="res://game/scenes/pc_screen/keys_container.gd" id="10_leom6"]
 [ext_resource type="Texture2D" uid="uid://i6dl4cnh5gk8" path="res://game/art/mascot/Mascots-2_2.png" id="10_leom6"]
 [ext_resource type="Script" uid="uid://c0j7kjrbqnb8r" path="res://game/scripts/progress_bar_preview.gd" id="10_qcrff"]
 [ext_resource type="PackedScene" uid="uid://bnht3atq3ov0a" path="res://game/scenes/pc_screen/keyboard_key.tscn" id="11_5e5m8"]
@@ -213,7 +212,7 @@ anchor_right = 1.0
 offset_bottom = 132.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 96
-text = "The Devil's Casino"
+text = "Crow's Gambit"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -418,8 +417,6 @@ offset_top = 500.0
 offset_right = 950.0
 offset_bottom = 564.0
 theme_override_constants/separation = 64
-script = ExtResource("10_leom6")
-key_groups = [[NodePath("TopHalfContainer/UpKey"), NodePath("BottomHalfContainer/LeftKey"), NodePath("BottomHalfContainer/DownKey"), NodePath("BottomHalfContainer/RightKey")], [NodePath("TopHalfContainer/WKey"), NodePath("BottomHalfContainer/AKey"), NodePath("BottomHalfContainer/SKey"), NodePath("BottomHalfContainer/DKey")]]
 
 [node name="TopHalfContainer" type="HBoxContainer" parent="KeysContainer" unique_id=857075450]
 layout_mode = 2
