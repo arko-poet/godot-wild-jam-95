@@ -12,7 +12,9 @@
 [ext_resource type="AudioStream" uid="uid://d1dvov0dgh11b" path="res://game/audio/music/dark_background/BGM_Dark_LOOP.mp3" id="8_a4u41"]
 [ext_resource type="Texture2D" uid="uid://b3qvp2eg0sg6t" path="res://game/art/background/Room_Ver_2.png" id="8_gd0p7"]
 [ext_resource type="PackedScene" uid="uid://dpaqnoawx8dwl" path="res://game/scenes/parallax_background.tscn" id="9_883tm"]
+[ext_resource type="Texture2D" uid="uid://cxgjbqbo7cwxp" path="res://game/art/background/Room_Assets_1/Crow_Creature_1.png" id="12_a4u41"]
 [ext_resource type="Texture2D" uid="uid://bu8h5h3lxn5nr" path="res://game/art/pause_button.png" id="12_gd0p7"]
+[ext_resource type="Texture2D" uid="uid://bn4ja51tuknpp" path="res://game/art/tv_buttons/Button_Light.png" id="15_aawoq"]
 
 [sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_gd0p7"]
 clip_count = 2
@@ -35,6 +37,12 @@ clip_1/next_clip = 1
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hrfpl"]
 
+[sub_resource type="Gradient" id="Gradient_a4u41"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_3owqy"]
+gradient = SubResource("Gradient_a4u41")
+
 [node name="MainGame" type="Node" unique_id=807738320]
 script = ExtResource("1_1ig1l")
 metadata/_edit_vertical_guides_ = [88.0, 1107.0]
@@ -53,9 +61,6 @@ stream = SubResource("AudioStreamInteractive_gd0p7")
 
 [node name="Room" type="Node2D" parent="." unique_id=1070448921]
 
-[node name="ParallaxBackground" parent="Room" unique_id=2068726315 node_paths=PackedStringArray("main_game") instance=ExtResource("9_883tm")]
-main_game = NodePath("../..")
-
 [node name="Background" type="Sprite2D" parent="Room" unique_id=1873225203]
 visible = false
 texture = ExtResource("8_gd0p7")
@@ -66,6 +71,16 @@ unique_name_in_owner = true
 visible = false
 position = Vector2(101.99999, 100.99999)
 scale = Vector2(0.97, 0.97)
+
+[node name="ParallaxBackground" parent="Room" unique_id=2068726315 node_paths=PackedStringArray("main_game") instance=ExtResource("9_883tm")]
+main_game = NodePath("../..")
+
+[node name="MonsterFinal" type="Sprite2D" parent="Room" unique_id=173169473]
+unique_name_in_owner = true
+visible = false
+position = Vector2(807, 893)
+scale = Vector2(1.1, 1.1)
+texture = ExtResource("12_a4u41")
 
 [node name="UILayer" type="CanvasLayer" parent="." unique_id=1011913819]
 
@@ -118,14 +133,15 @@ icon = ExtResource("12_gd0p7")
 icon_alignment = 2
 expand_icon = true
 
-[node name="TurnOnPCButton" type="Button" parent="UILayer/UI" unique_id=2057799578]
+[node name="TurnOnPCButton" type="TextureButton" parent="UILayer/UI" unique_id=1073754259]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 1039.0
-offset_top = 943.0
-offset_right = 1095.0
-offset_bottom = 985.0
-text = "P"
+offset_left = 1031.0
+offset_top = 927.0
+offset_right = 1102.0
+offset_bottom = 1002.0
+texture_normal = ExtResource("15_aawoq")
+metadata/sfx_index = 1
 
 [node name="MonsterTransition" type="ColorRect" parent="." unique_id=244727151]
 unique_name_in_owner = true
@@ -136,6 +152,43 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
+
+[node name="HideScreenEdges" type="Control" parent="." unique_id=1360421587]
+z_index = 999
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="HideScreenEdges" unique_id=1856497812]
+layout_mode = 0
+offset_left = -3870.0
+offset_top = -2545.0
+offset_right = 5814.0
+texture = SubResource("GradientTexture1D_3owqy")
+
+[node name="TextureRect4" type="TextureRect" parent="HideScreenEdges" unique_id=609127847]
+layout_mode = 0
+offset_left = -3658.0
+offset_top = 1080.0
+offset_right = 5796.0
+offset_bottom = 3423.0
+texture = SubResource("GradientTexture1D_3owqy")
+
+[node name="TextureRect2" type="TextureRect" parent="HideScreenEdges" unique_id=2081979246]
+layout_mode = 0
+offset_left = 1920.0
+offset_top = -366.0
+offset_right = 5828.0
+offset_bottom = 3186.0
+texture = SubResource("GradientTexture1D_3owqy")
+
+[node name="TextureRect3" type="TextureRect" parent="HideScreenEdges" unique_id=744776770]
+layout_mode = 0
+offset_left = -3870.0
+offset_top = -1161.0
+offset_bottom = 3400.0
+texture = SubResource("GradientTexture1D_3owqy")
 
 [connection signal="doom_changed" from="Room/PCScreen" to="." method="_on_pc_screen_doom_changed"]
 [connection signal="progress_bar_filled" from="Room/PCScreen" to="." method="_on_pc_screen_progress_bar_filled"]

@@ -17,16 +17,24 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	if is_moving: return
-	
+
 	var dir := Vector2.ZERO
 	if Input.is_action_pressed("ui_up"): dir = Vector2.UP
 	if Input.is_action_pressed("ui_left"): dir = Vector2.LEFT
 	if Input.is_action_pressed("ui_down"): dir = Vector2.DOWN
 	if Input.is_action_pressed("ui_right"): dir = Vector2.RIGHT
 	
-	if dir != Vector2.ZERO: try_move(dir)
-
+	if dir != Vector2.ZERO:
+		match dir:
+			Vector2.UP: $AnimatedSprite2D.play("walk_up")
+			Vector2.LEFT: $AnimatedSprite2D.play("walk_left")
+			Vector2.DOWN: $AnimatedSprite2D.play("walk_down")
+			Vector2.RIGHT: $AnimatedSprite2D.play("walk_right")
+	else: $AnimatedSprite2D.stop()
+	
+	if is_moving: return
+	if dir != Vector2.ZERO:
+		try_move(dir)
 
 func try_move(dir: Vector2) -> void:
 	var target = grid_pos + dir
@@ -35,9 +43,9 @@ func try_move(dir: Vector2) -> void:
 	grid_pos = target
 	is_moving = true
 	
-	GameplayAudioController.minigame_progress.emit()
+	GameplayAudioController.minigame_progress.emit(randi() % 3 + 1) # 1, 2, or 3
 	var tween := create_tween()
-	tween.set_trans(Tween.TRANS_BACK)
+	#tween.set_trans(Tween.TRANS_BACK)
 	tween.set_ease(Tween.EASE_OUT)
 	tween.tween_property(self, "position", grid_pos * maze.CELL_SIZE + maze.grid_offset, move_time)
 	tween.finished.connect(_on_move_finished)

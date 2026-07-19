@@ -7,7 +7,7 @@ class_name FallingGameSpike extends StaticBody2D
 # forget to place each and every spike into a local scene group
 
 func _ready() -> void:
-	$Area2D.area_entered.connect(_die)
+	$SpikeKillerHitbox.area_entered.connect(_die)
 
 func _die(_area: Area2D) -> void:
 	queue_free()

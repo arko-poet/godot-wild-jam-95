@@ -23,13 +23,18 @@ const MOVE_INTERVALS := {
 }
 
 const TIME_LIMITS := { # in seconds
-	1: 12,
-	2: 16,
-	3: 22,
-	4: 26,
-	5: 34,
-	6: 48,
+	1: 10,
+	2: 14,
+	3: 20,
+	4: 24,
+	5: 32,
+	6: 46,
 }
+
+const DIR_NAME := {Vector2.UP: "U", Vector2.DOWN: "D", Vector2.LEFT: "L", Vector2.RIGHT: "R"}
+const CAP_ROTATION := {Vector2.RIGHT: 0, Vector2.DOWN: 90, Vector2.LEFT: 180, Vector2.UP: 270}
+const CORNER_ROTATION := {"RU": 0, "DR": 90, "DL": 180, "LU": 270}
+
 
 const Square = preload("uid://c2r4u5hrhc6qf") # square.tcsn
 
@@ -54,6 +59,10 @@ var apple_active := true
 var apple_goal_num: int = 0
 var num_apples_collected: int = 0
 
+func corner_key(a: Vector2, b: Vector2) -> String:
+	var letters = [DIR_NAME[a], DIR_NAME[b]]
+	letters.sort()
+	return letters[0] + letters[1]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -134,9 +143,20 @@ func spawn_apple() -> void:
 
 
 func draw_snake() -> void:
-	for square in snake_squares: get_square(square).set_type("snake")
-	get_square(snake_squares[0]).set_type("snake")
-
+	var last_square_index = len(snake_squares) - 1
+	for i in len(snake_squares):
+		var square: Vector2 = snake_squares[i]
+		if i == 0: get_square(square).set_type("head", CAP_ROTATION[direction])
+		elif i == last_square_index:
+			var previous_dir: Vector2 = (snake_squares[i - 1] - square).normalized()
+			get_square(square).set_type("tail", CAP_ROTATION[-previous_dir])
+		else:
+			var previous_dir: Vector2 = (snake_squares[i - 1] - square).normalized()
+			var next_dir: Vector2 = (snake_squares[i + 1] - square).normalized()
+			if previous_dir == -next_dir:
+				var rotation = 0 if previous_dir.x != 0 else 90
+				get_square(square).set_type("straight", rotation)
+			else: get_square(square).set_type("corner", CORNER_ROTATION[corner_key(previous_dir, next_dir)])
 
 func _unhandled_input(event: InputEvent) -> void:
 	var input_dir := Vector2.ZERO
@@ -147,7 +167,8 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 	if input_dir != Vector2.ZERO and input_dir != -direction:
 		buffered_direction = input_dir
-		GameplayAudioController.minigame_progress.emit()
+		GameplayAudioController.minigame_progress.emit(1)
+		# This sound is kinda iffy, but it's the best one out of all the progress sounds
 
 
 func is_walkable(square: Vector2) -> bool:
@@ -181,13 +202,13 @@ func _on_move_timer_timeout() -> void:
 	if grew:
 		num_apples_collected += 1
 		update_apple_label()
-		GameplayAudioController.minigame_good_event.emit()
+		GameplayAudioController.minigame_good_event.emit(0)
 	else:
 		var snake_end = snake_squares.pop_back()
 		get_square(snake_end).set_type("empty")
 	
 	draw_snake()
-	get_square(apple_pos).set_type("apple") # draw apple in case was overwritten
+	#get_square(apple_pos).set_type("apple") # draw apple in case was overwritten
 	
 	if grew:
 		if num_apples_collected >= apple_goal_num:

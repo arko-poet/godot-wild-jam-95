@@ -12,52 +12,51 @@ size_flags_horizontal = 3
 size_flags_vertical = 5
 theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
-text = "[font_size=48]Collaborators[/font_size]
+text = "[font_size=96]Collaborators[/font_size]
 
-[font_size=32]Game Design[/font_size]
+[font_size=64]Game Design[/font_size]
 [url=https://arko-poet.itch.io/]arko[/url]
+[url=https://awfullycrispy.itch.io/]awfullycrispy[/url]
 
-[font_size=32]Art[/font_size]
-[url=https://itch.io/profile/awapaima]Awapaima[/url]
-
-[font_size=32]Music Composition[/font_size]
+[font_size=64]Music Composition & SFX[/font_size]
 [url=https://gruntofficial.itch.io/]Grunt.[/url]
 
-[font_size=32]Sound Effects[/font_size]
-[url=https://gruntofficial.itch.io/]Grunt.[/url]
+[font_size=64]Art[/font_size]
+[url=https://llfonsy.itch.io/]Fonsy[/url]
 
-[font_size=32]Programming[/font_size]
+[font_size=64]Programming[/font_size]
 [url=https://orangepainting.itch.io/]OrangePainting[/url]
 [url=https://awfullycrispy.itch.io/]awfullycrispy[/url]
 [url=https://arko-poet.itch.io/]arko[/url]
 
-[font_size=48]Sourced[/font_size]
-[font_size=32]Asset Type[/font_size]
-[font_size=24]Use Case[/font_size]
-Author: [url=]Name[/url]  
-Source: [url=]Domain : webpage.html[/url]  
-License: [url=]License[/url]
+[font_size=96]Sourced[/font_size]
+[font_size=64]Shaders[/font_size]
+[font_size=48]CRT Shader[/font_size]
+Author: c64cosmin
+Source: [url=https://godotshaders.com/shader/realistic-crt-shader/]https://godotshaders.com/shader/realistic-crt-shader/[/url]
+License: [url=https://creativecommons.org/publicdomain/zero/1.0/]CC0 1.0 Universal[/url]
 
-[font_size=24]Godot Engine Logo[/font_size]
+
+[font_size=48]Godot Engine Logo[/font_size]
 Author: Andrea Calabró  
 Source: [url=https://godotengine.org/press/]godotengine.org : press[/url]  
 License: [url=https://github.com/godotengine/godot/blob/master/LOGO_LICENSE.txt]CC BY 4.0 International[/url] 
 
-[font_size=48]Tools[/font_size]
-[font_size=24]Godot[/font_size]
-[img=80]res:///template/assets/godot_engine_logo/logo_vertical_color_dark.png[/img]  
+[font_size=96]Tools[/font_size]
+[font_size=48]Godot[/font_size]
+[img=160]res:///template/assets/godot_engine_logo/logo_vertical_color_dark.png[/img]  
 Author: [url=https://godotengine.org/contact]Juan Linietsky, Ariel Manzur, and contributors[/url]  
 Source: [url=https://godotengine.org/]godotengine.org[/url]  
 License: [url=https://github.com/godotengine/godot/blob/master/LICENSE.txt]MIT License[/url] 
 
-[font_size=24]Godot Game Template[/font_size]
-[img=80]res:///template/assets/plugin_logo/logo.png[/img]  
+[font_size=48]Godot Game Template[/font_size]
+[img=160]res:///template/assets/plugin_logo/logo.png[/img]  
 Author: [url=https://github.com/Maaack/Godot-Game-Template/graphs/contributors]Marek Belski and contributors[/url]  
 Source: [url=https://github.com/Maaack/Godot-Game-Template]github: Godot-Game-Template[/url]  
 License: [url=LICENSE.txt]MIT License[/url]  
 
-[font_size=24]Git[/font_size]
-[img=80]res:///template/assets/git_logo/Git-Logo-2Color.png[/img]  
+[font_size=48]Git[/font_size]
+[img=160]res:///template/assets/git_logo/Git-Logo-2Color.png[/img]  
 Author: [url=https://github.com/torvalds]Linus Torvalds[/url]  
 Source: [url=https://git-scm.com/downloads]git-scm.com[/url]  
 License: [url=https://opensource.org/licenses/GPL-2.0]GNU General Public License version 2[/url]
@@ -67,6 +66,7 @@ scroll_active = false
 horizontal_alignment = 1
 script = ExtResource("1_hbpko")
 attribution_file_path = "res://template/ATTRIBUTION.md"
+auto_update = false
 h1_font_size = 128
 h2_font_size = 96
 h3_font_size = 64

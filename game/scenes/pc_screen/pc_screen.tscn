@@ -2,15 +2,18 @@
 
 [ext_resource type="Script" uid="uid://bsxfkt70612yq" path="res://game/scripts/pc_screen/pc_screen.gd" id="1_ib41a"]
 [ext_resource type="Script" uid="uid://baylt4lsmmrfk" path="res://game/scripts/die.gd" id="2_8vsnj"]
-[ext_resource type="Texture2D" uid="uid://da1tl6w8xc6s7" path="res://game/art/placeholders/arko.png" id="2_hw7br"]
-[ext_resource type="Texture2D" uid="uid://bh1hk7mnp5u5j" path="res://game/scenes/pc_screen/minigames/snake_game/assets/spikes.png" id="3_qcrff"]
-[ext_resource type="Texture2D" uid="uid://crwmxws8q14e" path="res://game/scenes/pc_screen/minigames/maze_game/assets/goal.png" id="4_ax7l3"]
-[ext_resource type="Texture2D" uid="uid://d4h4gi0nlp25c" path="res://game/scenes/pc_screen/minigames/maze_game/assets/PrototypeGridSquare2.png" id="5_leom6"]
-[ext_resource type="Texture2D" uid="uid://lloyhyepsu0x" path="res://game/scenes/pc_screen/minigames/maze_game/assets/PrototypeCharacter.png" id="6_5e5m8"]
-[ext_resource type="Texture2D" uid="uid://4xotooeatb40" path="res://game/scenes/pc_screen/minigames/snake_game/assets/Square.png" id="7_dnf0m"]
-[ext_resource type="Texture2D" uid="uid://buoe86bqyfknb" path="res://icon.svg" id="8_6nmus"]
+[ext_resource type="Texture2D" uid="uid://db1vuwsopducl" path="res://game/art/dice/die_1.png" id="3_qcrff"]
+[ext_resource type="Texture2D" uid="uid://d4b8q11i5gc5w" path="res://game/art/dice/die_2.png" id="4_ax7l3"]
+[ext_resource type="Texture2D" uid="uid://cnmaedy0wsts6" path="res://game/art/dice/die_3.png" id="5_leom6"]
+[ext_resource type="Texture2D" uid="uid://dud08xd212kv5" path="res://game/art/dice/die_4.png" id="6_5e5m8"]
+[ext_resource type="Texture2D" uid="uid://cl5i63tcci287" path="res://game/art/dice/die_5.png" id="7_dnf0m"]
+[ext_resource type="Texture2D" uid="uid://c735wvdvvwkbq" path="res://game/art/dice/die_6.png" id="8_6nmus"]
+[ext_resource type="Texture2D" uid="uid://bd5pxjt8gh7ur" path="res://game/art/mascot/Mascots-1_2.png" id="9_ax7l3"]
 [ext_resource type="PackedScene" uid="uid://bxcrjj54yj4ok" path="res://game/shaders/CRTShader.tscn" id="10_8vsnj"]
+[ext_resource type="Texture2D" uid="uid://i6dl4cnh5gk8" path="res://game/art/mascot/Mascots-2_2.png" id="10_leom6"]
 [ext_resource type="Script" uid="uid://c0j7kjrbqnb8r" path="res://game/scripts/progress_bar_preview.gd" id="10_qcrff"]
+[ext_resource type="PackedScene" uid="uid://bnht3atq3ov0a" path="res://game/scenes/pc_screen/keyboard_key.tscn" id="11_5e5m8"]
+[ext_resource type="Script" uid="uid://bwgtkqr83k5h4" path="res://game/scripts/pc_screen/keys_container.gd" id="13_5e5m8"]
 
 [sub_resource type="Gradient" id="Gradient_88wer"]
 offsets = PackedFloat32Array(0)
@@ -101,34 +104,40 @@ position = Vector2(512, 384)
 script = ExtResource("2_8vsnj")
 face_textures = Array[Texture2D]([ExtResource("3_qcrff"), ExtResource("4_ax7l3"), ExtResource("5_leom6"), ExtResource("6_5e5m8"), ExtResource("7_dnf0m"), ExtResource("8_6nmus")])
 
-[node name="GameTitleLabel" type="Label" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame" unique_id=1136782896]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_bottom = 67.0
-grow_horizontal = 2
-theme_override_font_sizes/font_size = 96
-text = "The Devil's Casino"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="DevilImage" type="TextureRect" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame" unique_id=2078176918]
+custom_minimum_size = Vector2(128, 128)
+custom_maximum_size = Vector2(256, 256)
+layout_mode = 0
+offset_top = 132.0
+offset_right = 256.0
+offset_bottom = 388.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("9_ax7l3")
+
+[node name="DevilImage2" type="TextureRect" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame" unique_id=640161526]
+custom_minimum_size = Vector2(128, 128)
+custom_maximum_size = Vector2(256, 256)
+layout_mode = 0
+offset_left = 768.0
+offset_top = 132.0
+offset_right = 1024.0
+offset_bottom = 388.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("10_leom6")
 
 [node name="DevilContainer" type="HBoxContainer" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame" unique_id=1108223770]
+unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
-offset_top = 132.0
-offset_bottom = 317.0
+offset_top = 126.0
+offset_bottom = 311.0
 grow_horizontal = 2
 theme_override_constants/separation = 16
 alignment = 1
-
-[node name="DevilImage" type="TextureRect" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame/DevilContainer" unique_id=2078176918]
-custom_minimum_size = Vector2(128, 128)
-custom_maximum_size = Vector2(256, 256)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("2_hw7br")
 
 [node name="TextBox" type="Panel" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame/DevilContainer" unique_id=340782439]
 custom_minimum_size = Vector2(500, 140)
@@ -142,39 +151,71 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(500, 140)
 custom_maximum_size = Vector2(500, 140)
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 15.0
-offset_top = -1.0
-offset_right = -15.0
-offset_bottom = 1.0
+offset_left = 16.0
+offset_right = -16.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 28
 bbcode_enabled = true
 text = "Roll the Dice."
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="DiceRollLabel" type="Label" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame" unique_id=907658553]
+[node name="Contract" type="Panel" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame" unique_id=871457805]
 unique_name_in_owner = true
-visible = false
+custom_minimum_size = Vector2(500, 100)
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -11.5
-offset_right = 20.0
-offset_bottom = 11.5
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 250.0
+offset_top = 148.0
+offset_right = -250.0
+offset_bottom = -252.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 128
-text = "6"
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_7np4j")
+
+[node name="Text" type="RichTextLabel" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame/Contract" unique_id=1023600327]
+custom_minimum_size = Vector2(500, 140)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "[font_size=48]CONTRACT[/font_size]
+[font_size=24]
+You get [color=#0047CC]points[/color] for winning games
+We get [color=#c0392b]points[/color] when you lose them
+Reach 100 [color=#0047CC]points[/color] and [b]GET YOUR PRIZE[/b]
+Reach 100 [color=#c0392b]points[/color] and [b]EXPECT A VISIT[/b][/font_size]
+
+Do you agree to the terms?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GameTitleLabel" type="Label" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame" unique_id=1136782896]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 132.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 96
+text = "Crow's Gambit"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="ButtonsContainer" type="HBoxContainer" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame" unique_id=1594494237]
 unique_name_in_owner = true
@@ -188,8 +229,15 @@ grow_vertical = 2
 theme_override_constants/separation = 8
 alignment = 1
 
+[node name="AcceptContractButton" type="Button" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame/ButtonsContainer" unique_id=1931592526]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "ACCEPT"
+
 [node name="RollDiceButton" type="Button" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame/ButtonsContainer" unique_id=1728304166]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 theme_override_styles/focus = SubResource("StyleBoxFlat_8vsnj")
@@ -209,7 +257,7 @@ visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 theme_override_styles/focus = SubResource("StyleBoxFlat_qcrff")
-text = "REROLL DICE"
+text = "REROLL"
 
 [node name="StartButton" type="Button" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame/ButtonsContainer" unique_id=2079948144]
 unique_name_in_owner = true
@@ -233,6 +281,13 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 32
 theme_override_styles/focus = SubResource("StyleBoxFlat_qcrff")
 text = "ACCEPT"
+
+[node name="ClaimPrizeButton" type="Button" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame/ButtonsContainer" unique_id=972201603]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "CLAIM PRIZE"
 
 [node name="ProgressBars" type="HBoxContainer" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame" unique_id=1910302855]
 layout_mode = 1
@@ -268,6 +323,15 @@ fill_mode = 1
 show_percentage = false
 script = ExtResource("10_qcrff")
 
+[node name="ProgressBarPreviewLabel" type="Label" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame/ProgressBars/ProgressBar" unique_id=555504606]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_top = -50.0
+offset_right = 40.0
+offset_bottom = -5.0
+offset_transform_position = Vector2(0, -50)
+
 [node name="DoomBar" type="ProgressBar" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame/ProgressBars" unique_id=1258160088]
 unique_name_in_owner = true
 modulate = Color(0.7529412, 0.22352941, 0.16862746, 1)
@@ -287,6 +351,15 @@ grow_horizontal = 2
 grow_vertical = 2
 show_percentage = false
 script = ExtResource("10_qcrff")
+
+[node name="DoomBarPreviewLabel" type="Label" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame/ProgressBars/DoomBar" unique_id=442215768]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_top = -50.0
+offset_right = 40.0
+offset_bottom = -5.0
+offset_transform_position = Vector2(0, -50)
 
 [node name="DifficultyBoxes" type="GridContainer" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame" unique_id=516977126]
 unique_name_in_owner = true
@@ -338,14 +411,75 @@ text = "Hard"
 [node name="CRTShader" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame" unique_id=1925341764 groups=["crt_shader"] instance=ExtResource("10_8vsnj")]
 layout_mode = 0
 
+[node name="KeysContainer" type="VBoxContainer" parent="." unique_id=1436473920]
+unique_name_in_owner = true
+visible = false
+z_index = 20
+offset_left = 750.0
+offset_top = 500.0
+offset_right = 950.0
+offset_bottom = 564.0
+theme_override_constants/separation = 64
+script = ExtResource("13_5e5m8")
+key_groups = [[NodePath("TopHalfContainer/UpKey"), NodePath("BottomHalfContainer/LeftKey"), NodePath("BottomHalfContainer/DownKey"), NodePath("BottomHalfContainer/RightKey")], [NodePath("TopHalfContainer/WKey"), NodePath("BottomHalfContainer/AKey"), NodePath("BottomHalfContainer/SKey"), NodePath("BottomHalfContainer/DKey")]]
+
+[node name="TopHalfContainer" type="HBoxContainer" parent="KeysContainer" unique_id=857075450]
+layout_mode = 2
+theme_override_constants/separation = 64
+alignment = 1
+
+[node name="WKey" parent="KeysContainer/TopHalfContainer" unique_id=1626954917 instance=ExtResource("11_5e5m8")]
+visible = false
+layout_mode = 2
+
+[node name="UpKey" parent="KeysContainer/TopHalfContainer" unique_id=731449868 instance=ExtResource("11_5e5m8")]
+layout_mode = 2
+key_name = "^"
+
+[node name="BottomHalfContainer" type="HBoxContainer" parent="KeysContainer" unique_id=434882697]
+layout_mode = 2
+theme_override_constants/separation = 64
+alignment = 1
+
+[node name="AKey" parent="KeysContainer/BottomHalfContainer" unique_id=53961074 instance=ExtResource("11_5e5m8")]
+visible = false
+layout_mode = 2
+key_name = "A"
+
+[node name="SKey" parent="KeysContainer/BottomHalfContainer" unique_id=385935552 instance=ExtResource("11_5e5m8")]
+visible = false
+layout_mode = 2
+key_name = "S"
+
+[node name="DKey" parent="KeysContainer/BottomHalfContainer" unique_id=908613273 instance=ExtResource("11_5e5m8")]
+visible = false
+layout_mode = 2
+key_name = "D"
+
+[node name="LeftKey" parent="KeysContainer/BottomHalfContainer" unique_id=1178048843 instance=ExtResource("11_5e5m8")]
+layout_mode = 2
+key_name = "<"
+
+[node name="DownKey" parent="KeysContainer/BottomHalfContainer" unique_id=1441296925 instance=ExtResource("11_5e5m8")]
+layout_mode = 2
+key_name = "v"
+
+[node name="RightKey" parent="KeysContainer/BottomHalfContainer" unique_id=277030047 instance=ExtResource("11_5e5m8")]
+layout_mode = 2
+key_name = ">"
+
 [connection signal="roll_finished" from="SubViewportContainer/SubViewport/ScreenContent/MetaGame/Die" to="." method="_on_die_roll_finished"]
+[connection signal="pressed" from="SubViewportContainer/SubViewport/ScreenContent/MetaGame/ButtonsContainer/AcceptContractButton" to="." method="_on_accept_contract_button_pressed"]
 [connection signal="pressed" from="SubViewportContainer/SubViewport/ScreenContent/MetaGame/ButtonsContainer/RollDiceButton" to="." method="_on_roll_dice_button_pressed"]
 [connection signal="pressed" from="SubViewportContainer/SubViewport/ScreenContent/MetaGame/ButtonsContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
 [connection signal="focus_entered" from="SubViewportContainer/SubViewport/ScreenContent/MetaGame/ButtonsContainer/RerollDiceButton" to="." method="_on_reroll_dice_button_focus_entered"]
 [connection signal="focus_exited" from="SubViewportContainer/SubViewport/ScreenContent/MetaGame/ButtonsContainer/RerollDiceButton" to="." method="_on_reroll_dice_button_focus_exited"]
+[connection signal="mouse_entered" from="SubViewportContainer/SubViewport/ScreenContent/MetaGame/ButtonsContainer/RerollDiceButton" to="." method="_on_reroll_dice_button_mouse_entered"]
+[connection signal="mouse_exited" from="SubViewportContainer/SubViewport/ScreenContent/MetaGame/ButtonsContainer/RerollDiceButton" to="." method="_on_reroll_dice_button_mouse_exited"]
 [connection signal="pressed" from="SubViewportContainer/SubViewport/ScreenContent/MetaGame/ButtonsContainer/RerollDiceButton" to="." method="_on_reroll_dice_button_pressed"]
 [connection signal="pressed" from="SubViewportContainer/SubViewport/ScreenContent/MetaGame/ButtonsContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="SubViewportContainer/SubViewport/ScreenContent/MetaGame/ButtonsContainer/AcceptRollButton" to="." method="_on_accept_roll_button_pressed"]
+[connection signal="pressed" from="SubViewportContainer/SubViewport/ScreenContent/MetaGame/ButtonsContainer/ClaimPrizeButton" to="." method="_on_claim_prize_button_pressed"]
 [connection signal="pressed" from="SubViewportContainer/SubViewport/ScreenContent/MetaGame/DifficultyBoxes/EasyCheckBox" to="." method="_on_easy_check_box_pressed"]
 [connection signal="pressed" from="SubViewportContainer/SubViewport/ScreenContent/MetaGame/DifficultyBoxes/MediumCheckBox" to="." method="_on_medium_check_box_pressed"]
 [connection signal="pressed" from="SubViewportContainer/SubViewport/ScreenContent/MetaGame/DifficultyBoxes/HardCheckBox" to="." method="_on_hard_check_box_pressed"]

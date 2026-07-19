@@ -1,12 +1,48 @@
 [gd_scene format=3 uid="uid://c58j3q1h3y52m"]
 
 [ext_resource type="Script" uid="uid://ben2627almgnb" path="res://game/scenes/pc_screen/minigames/maze_game/scripts/player.gd" id="1_mwpwl"]
-[ext_resource type="Texture2D" uid="uid://lloyhyepsu0x" path="res://game/scenes/pc_screen/minigames/maze_game/assets/PrototypeCharacter.png" id="2_aq0g4"]
+[ext_resource type="Texture2D" uid="uid://oajo3shjdw3y" path="res://game/scenes/pc_screen/minigames/maze_game/assets/Player.png" id="2_mwpwl"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_li6ia"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_mwpwl")
+}],
+"loop": 1,
+"name": &"walk_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_mwpwl")
+}],
+"loop": 1,
+"name": &"walk_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_mwpwl")
+}],
+"loop": 1,
+"name": &"walk_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_mwpwl")
+}],
+"loop": 1,
+"name": &"walk_up",
+"speed": 5.0
+}]
 
 [node name="Player" type="Node2D" unique_id=242852718]
 script = ExtResource("1_mwpwl")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=698249919]
-scale = Vector2(0.75, 0.75)
-texture = ExtResource("2_aq0g4")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1197325642]
+scale = Vector2(0.375, 0.375)
+sprite_frames = SubResource("SpriteFrames_li6ia")
+animation = &"walk_up"
 centered = false

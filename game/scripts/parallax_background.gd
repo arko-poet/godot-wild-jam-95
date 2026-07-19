@@ -9,7 +9,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	print(main_game.monster_stage)
+	#print(main_game.monster_stage)
 	match main_game.monster_stage:
 		-1:
 			%Monster.visible = true
@@ -55,9 +55,9 @@ func _process(delta: float) -> void:
 			%MonsterTopHalf.visible = true
 			%MonsterBottomHalf.visible = true
 		5:
-			%Monster.visible = true
-			%Monster.z_index = 19
+			%Monster.visible = false
+			%Monster.z_index = 119
 			%Monster.scale = Vector2(2, 2)
-			%Monster.position = Vector2(675, -160)
+			%Monster.position = Vector2(0, -160)
 			%MonsterTopHalf.visible = true
 			%MonsterBottomHalf.visible = true

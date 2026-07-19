@@ -1,11 +1,11 @@
 class_name RollingPlayer extends CharacterBody2D
 
-const MOVE_SPEED_RAMP = 2.0 ## How quickly the player's momentum increases or decreases
-const AIR_CONTROL = 0.5 ## How much the player can influence direction while airborne, 1.0 is full control
+const MOVE_SPEED_RAMP = 3.0 ## How quickly the player's momentum increases or decreases
+const AIR_CONTROL = 0.7 ## How much the player can influence direction while airborne, 1.0 is full control
 const MAX_MOVE_SPEED = 500.0 ## The fastest the move speed can be in either direction
-const JUMP_VELOCITY = -250.0 ## jump height, should be negative, lower means jump higher
-const KNOCKBACK_DIST = 200.0 ## How far back the player is knocked when colliding with an obstacle
-const ROLLING_FRICTION = 150.0 ## How much reduction in speed the player gets while on the ground and not accelerating
+const JUMP_VELOCITY = -300.0 ## jump height, should be negative, lower means jump higher
+const KNOCKBACK_DIST = 175.0 ## How far back the player is knocked when colliding with an obstacle
+const ROLLING_FRICTION = 300.0 ## How much reduction in speed the player gets while on the ground and not accelerating
 
 # all of these can be updated for whatever input action strings are for these buttons
 const INPUT_JUMP: StringName = "ui_up"
@@ -44,6 +44,7 @@ func _physics_process(delta: float) -> void:
 		if _is_on_floor:
 			if Input.is_action_just_pressed(INPUT_JUMP):
 				velocity.y = JUMP_VELOCITY
+				GameplayAudioController.minigame_progress.emit(7)
 		else:
 			_x_mod *= AIR_CONTROL
 		_x = clamp(_x + _x_mod, MAX_MOVE_SPEED * -1, MAX_MOVE_SPEED)
