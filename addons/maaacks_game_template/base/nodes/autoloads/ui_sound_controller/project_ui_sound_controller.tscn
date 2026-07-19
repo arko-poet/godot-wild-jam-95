@@ -16,6 +16,7 @@
 [ext_resource type="AudioStream" uid="uid://32tmkum5iac0" path="res://game/audio/sound effects/Dice2_1.wav" id="9_jbral"]
 [ext_resource type="AudioStream" uid="uid://bah6t8lsihmmq" path="res://game/audio/sound effects/Dice3_1.wav" id="10_rchii"]
 [ext_resource type="AudioStream" uid="uid://0w6bpnxlfltb" path="res://game/audio/sound effects/Dice4_1.wav" id="11_ypev8"]
+[ext_resource type="AudioStream" uid="uid://bvtu3lrqosgbx" path="res://game/audio/sound effects/Collide3_1.wav" id="12_81xko"]
 [ext_resource type="AudioStream" uid="uid://cbxhc18d4r06p" path="res://game/audio/sound effects/Footstep1_1.wav" id="13_81xko"]
 [ext_resource type="AudioStream" uid="uid://bhooon0ff2mvn" path="res://game/audio/sound effects/Entity_Step1_1.wav" id="14_g232p"]
 [ext_resource type="AudioStream" uid="uid://sfntamgl78kv" path="res://game/audio/sound effects/Footstep3_1.wav" id="15_n4pur"]
@@ -55,6 +56,7 @@ slider_focused = ExtResource("7_67wfu")
 minigame_won = Array[AudioStream]([ExtResource("8_twkjo")])
 minigame_lost = Array[AudioStream]([ExtResource("9_81xko")])
 minigame_good_event = Array[AudioStream]([ExtResource("4_qffex"), ExtResource("5_saweg"), ExtResource("6_wvaau")])
-minigame_progress = Array[AudioStream]([ExtResource("13_81xko"), ExtResource("7_x4ljq"), ExtResource("15_n4pur"), ExtResource("16_wantl"), ExtResource("17_r0xqn"), ExtResource("18_f3bpy"), ExtResource("19_lxger")])
+minigame_bad_event = Array[AudioStream]([ExtResource("12_81xko")])
+minigame_progress = Array[AudioStream]([ExtResource("13_81xko"), ExtResource("7_x4ljq"), ExtResource("15_n4pur"), ExtResource("16_wantl"), ExtResource("17_r0xqn"), ExtResource("18_f3bpy"), ExtResource("19_lxger"), ExtResource("6_ojugw")])
 dice_roll = Array[AudioStream]([SubResource("AudioStreamRandomizer_wvaau")])
 entity_step = Array[AudioStream]([SubResource("AudioStreamRandomizer_saweg")])

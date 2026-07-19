@@ -44,6 +44,7 @@ func _physics_process(delta: float) -> void:
 		if _is_on_floor:
 			if Input.is_action_just_pressed(INPUT_JUMP):
 				velocity.y = JUMP_VELOCITY
+				GameplayAudioController.minigame_progress.emit(7)
 		else:
 			_x_mod *= AIR_CONTROL
 		_x = clamp(_x + _x_mod, MAX_MOVE_SPEED * -1, MAX_MOVE_SPEED)
