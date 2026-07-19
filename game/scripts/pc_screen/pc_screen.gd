@@ -80,8 +80,10 @@ var _progress := 0.0:
 
 @onready var _progress_bar: ProgressBar = %ProgressBar
 @onready var _progress_bar_preview: ProgressBar = %ProgressBarPreview
+@onready var _progress_bar_preview_label: Label = %ProgressBarPreviewLabel
 @onready var _doom_bar: ProgressBar = %DoomBar
 @onready var _doom_bar_preview: ProgressBar = %DoomBarPreview
+@onready var _doom_bar_preview_label: Label = %DoomBarPreviewLabel
 
 @onready var _die: Sprite2D = %Die
 @onready var _roll_dice_button: Button = %RollDiceButton
@@ -288,7 +290,10 @@ func _on_start_button_pressed() -> void:
 	_start_button.hide()
 	_difficulty_boxes.hide()
 	_doom_bar_preview.hide()
+	_doom_bar_preview_label.hide()
 	_progress_bar_preview.hide()
+	_progress_bar_preview_label.hide()
+	
 	
 	if MinigameTimeTrials.trials_active:
 		MinigameTimeTrials.start_timer()
@@ -331,10 +336,18 @@ func _get_difficulty() -> Minigame.Difficulty:
 
 
 func _show_bar_previews() -> void:
+	
 	_progress_bar_preview.show()
 	_progress_bar_preview.value = _progress + _DOOM_AND_PROGRESS[_get_difficulty()]
+	_progress_bar_preview_label.show()
+	_progress_bar_preview_label.text = "+" + str(int(_DOOM_AND_PROGRESS[_get_difficulty()] * 100)) + "%"
+	_progress_bar_preview_label.position.x = _progress_bar_preview.position.x + _progress_bar_preview.size.x * clamp(1 - _progress_bar_preview.value, 0.1, 0.9) - _progress_bar_preview_label.size.x
+	
 	_doom_bar_preview.show()
 	_doom_bar_preview.value = _doom + _DOOM_AND_PROGRESS[_get_difficulty()]
+	_doom_bar_preview_label.show()
+	_doom_bar_preview_label.text = "+" + str(int(_DOOM_AND_PROGRESS[_get_difficulty()] * 100)) + "%"
+	_doom_bar_preview_label.position.x = _doom_bar_preview.position.x + _doom_bar_preview.size.x * clamp(_doom_bar_preview.value, 0.05, 0.9)
 
 func show_roll_die_bar_preview() -> void:
 	_doom_bar_preview.show()

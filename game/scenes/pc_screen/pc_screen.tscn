@@ -321,6 +321,14 @@ fill_mode = 1
 show_percentage = false
 script = ExtResource("10_qcrff")
 
+[node name="ProgressBarPreviewLabel" type="Label" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame/ProgressBars/ProgressBar" unique_id=555504606]
+unique_name_in_owner = true
+layout_mode = 0
+offset_top = -50.0
+offset_right = 40.0
+offset_bottom = -5.0
+offset_transform_position = Vector2(0, -50)
+
 [node name="DoomBar" type="ProgressBar" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame/ProgressBars" unique_id=1258160088]
 unique_name_in_owner = true
 modulate = Color(0.7529412, 0.22352941, 0.16862746, 1)
@@ -340,6 +348,14 @@ grow_horizontal = 2
 grow_vertical = 2
 show_percentage = false
 script = ExtResource("10_qcrff")
+
+[node name="DoomBarPreviewLabel" type="Label" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame/ProgressBars/DoomBar" unique_id=442215768]
+unique_name_in_owner = true
+layout_mode = 0
+offset_top = -50.0
+offset_right = 40.0
+offset_bottom = -5.0
+offset_transform_position = Vector2(0, -50)
 
 [node name="DifficultyBoxes" type="GridContainer" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame" unique_id=516977126]
 unique_name_in_owner = true
