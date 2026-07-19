@@ -119,7 +119,6 @@ func _ready() -> void:
 	_prepare_next_minigame()
 	
 
-
 func play_power_on_animation() -> void:
 	show()
 	

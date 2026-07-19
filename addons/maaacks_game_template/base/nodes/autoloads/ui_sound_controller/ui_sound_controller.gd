@@ -24,6 +24,11 @@ const MAX_DEPTH = 16
 @export var button_focused : AudioStream
 @export var button_pressed : Array[AudioStream] = []
 
+@export_group("Texture Button Sounds")
+@export var texture_button_hovered : AudioStream
+@export var texture_button_focused : AudioStream
+@export var texture_button_pressed : Array[AudioStream] = []
+
 @export_group("TabBar Sounds")
 @export var tab_hovered : AudioStream
 @export var tab_changed : AudioStream
@@ -65,6 +70,10 @@ const MAX_DEPTH = 16
 var button_hovered_player : AudioStreamPlayer
 var button_focused_player : AudioStreamPlayer
 var button_pressed_player : AudioStreamPlayer
+
+var texture_button_hovered_player : AudioStreamPlayer
+var texture_button_focused_player : AudioStreamPlayer
+var texture_button_pressed_player : AudioStreamPlayer
 
 var tab_hovered_player : AudioStreamPlayer
 var tab_changed_player : AudioStreamPlayer
@@ -126,6 +135,12 @@ func _build_button_stream_players() -> void:
 	button_focused_player = _build_stream_player(button_focused, "ButtonFocused")
 	button_pressed_player = _build_stream_player(_first_stream(button_pressed), "ButtonClicked")
 
+func _build_texture_button_stream_players() -> void:
+	texture_button_hovered_player = _build_stream_player(texture_button_hovered, "ButtonHovered")
+	texture_button_focused_player = _build_stream_player(texture_button_focused, "ButtonFocused")
+	texture_button_pressed_player = _build_stream_player(_first_stream(texture_button_pressed), "ButtonClicked")
+
+
 func _build_tab_stream_players() -> void:
 	tab_hovered_player = _build_stream_player(tab_hovered, "TabHovered")
 	tab_changed_player = _build_stream_player(tab_changed, "TabChanged")
@@ -169,6 +184,7 @@ func _build_minigame_stream_players() -> void:
 
 func _build_all_stream_players() -> void:
 	_build_button_stream_players()
+	_build_texture_button_stream_players()
 	_build_tab_stream_players()
 	_build_slider_stream_players()
 	_build_line_stream_players()
@@ -217,7 +233,14 @@ func _connect_stream_player(node : Node, stream_player : AudioStreamPlayer, sign
 		node.connect(signal_name, callable.bind(stream_player))
 
 func connect_ui_sounds(node: Node) -> void:
-	if node is Button:
+	if node is TextureButton:
+		_connect_stream_player(node, texture_button_hovered_player, &"mouse_entered", _play_stream)
+		_connect_stream_player(node, texture_button_focused_player, &"focus_entered", _play_stream)
+		if button_pressed_player != null and not node.pressed.is_connected(_button_pressed_play_stream):
+			node.pressed.connect(_button_pressed_play_stream.bind(node, button_pressed_player))
+		#_connect_stream_player(node, button_pressed_player, &"pressed", _play_stream)
+		node.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
+	elif node is Button:
 		_connect_stream_player(node, button_hovered_player, &"mouse_entered", _play_stream)
 		_connect_stream_player(node, button_focused_player, &"focus_entered", _play_stream)
 		if button_pressed_player != null and not node.pressed.is_connected(_button_pressed_play_stream):
