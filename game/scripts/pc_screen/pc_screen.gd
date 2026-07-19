@@ -23,7 +23,7 @@ const _DOOM_REROLL_PRICE := 0.01
 
 const _CONGRATULATIONS_TEXT := "Congratulations, you win. Claim your prize."
 const _TEXT_ROLL_DICE := "Lets play a [b][u]%s[/u][/b] game. Roll the dice."
-const _TEXT_REROLL_DICE := "I'll give you [b][u]%ss[/u][/b] to complete the game for that roll."
+const _TEXT_REROLL_DICE := "We'll give you [b][u]%ss[/u][/b] to complete the game for that roll."
 const _TEXT_CHOOSE_DIFFICULTY := "Choose difficulty."
 
 const  _TEXT_WON := [
@@ -31,7 +31,7 @@ const  _TEXT_WON := [
 	"Hmm. Beginner's luck, that's all.",
 	"Fine. You earned a second of relief.",
 	"You won't be so lucky next time.",
-	"Next time, I'll make sure you struggle.",
+	"Next time, We'll make sure you struggle.",
 ]
 
 const _TEXT_LOSE := [
