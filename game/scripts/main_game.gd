@@ -47,7 +47,8 @@ func _on_menu_button_pressed() -> void:
 
 func _on_pc_screen_progress_bar_filled() -> void:
 	monster.hide()
-	claim_prize_button.show()
+	SceneLoader.load_scene("res://template/scenes/end_credits/end_credits.tscn")
+	#claim_prize_button.show()
 
 
 func _on_pc_screen_doom_changed(percentage: float) -> void:

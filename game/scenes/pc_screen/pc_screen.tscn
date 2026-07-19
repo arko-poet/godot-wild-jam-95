@@ -265,6 +265,13 @@ theme_override_font_sizes/font_size = 32
 theme_override_styles/focus = SubResource("StyleBoxFlat_qcrff")
 text = "ACCEPT"
 
+[node name="ClaimPrizeButton" type="Button" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame/ButtonsContainer" unique_id=972201603]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "CLAIM PRIZE"
+
 [node name="ProgressBars" type="HBoxContainer" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame" unique_id=1910302855]
 layout_mode = 1
 anchors_preset = -1
@@ -378,6 +385,7 @@ layout_mode = 0
 [connection signal="pressed" from="SubViewportContainer/SubViewport/ScreenContent/MetaGame/ButtonsContainer/RerollDiceButton" to="." method="_on_reroll_dice_button_pressed"]
 [connection signal="pressed" from="SubViewportContainer/SubViewport/ScreenContent/MetaGame/ButtonsContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="SubViewportContainer/SubViewport/ScreenContent/MetaGame/ButtonsContainer/AcceptRollButton" to="." method="_on_accept_roll_button_pressed"]
+[connection signal="pressed" from="SubViewportContainer/SubViewport/ScreenContent/MetaGame/ButtonsContainer/ClaimPrizeButton" to="." method="_on_claim_prize_button_pressed"]
 [connection signal="pressed" from="SubViewportContainer/SubViewport/ScreenContent/MetaGame/DifficultyBoxes/EasyCheckBox" to="." method="_on_easy_check_box_pressed"]
 [connection signal="pressed" from="SubViewportContainer/SubViewport/ScreenContent/MetaGame/DifficultyBoxes/MediumCheckBox" to="." method="_on_medium_check_box_pressed"]
 [connection signal="pressed" from="SubViewportContainer/SubViewport/ScreenContent/MetaGame/DifficultyBoxes/HardCheckBox" to="." method="_on_hard_check_box_pressed"]
