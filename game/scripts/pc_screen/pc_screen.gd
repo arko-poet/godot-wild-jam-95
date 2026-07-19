@@ -391,6 +391,12 @@ func _on_reroll_dice_button_focus_entered() -> void:
 func _on_reroll_dice_button_focus_exited() -> void:
 	hide_reroll_die_bar_preview()
 
+func _on_reroll_dice_button_mouse_entered() -> void:
+	show_reroll_die_bar_preview()
+
+func _on_reroll_dice_button_mouse_exited() -> void:
+	hide_reroll_die_bar_preview()
+
 
 func _on_accept_contract_button_pressed() -> void:
 	accept_contract_button.hide()
