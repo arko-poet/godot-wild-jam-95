@@ -10,7 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://c735wvdvvwkbq" path="res://game/art/dice/die_6.png" id="8_6nmus"]
 [ext_resource type="Texture2D" uid="uid://bd5pxjt8gh7ur" path="res://game/art/mascot/Mascots-1_2.png" id="9_ax7l3"]
 [ext_resource type="PackedScene" uid="uid://bxcrjj54yj4ok" path="res://game/shaders/CRTShader.tscn" id="10_8vsnj"]
-[ext_resource type="Script" uid="uid://q2g51equkurx" path="res://game/scenes/pc_screen/keys_container.gd" id="10_leom6"]
 [ext_resource type="Texture2D" uid="uid://i6dl4cnh5gk8" path="res://game/art/mascot/Mascots-2_2.png" id="10_leom6"]
 [ext_resource type="Script" uid="uid://c0j7kjrbqnb8r" path="res://game/scripts/progress_bar_preview.gd" id="10_qcrff"]
 [ext_resource type="PackedScene" uid="uid://bnht3atq3ov0a" path="res://game/scenes/pc_screen/keyboard_key.tscn" id="11_5e5m8"]
@@ -196,11 +195,11 @@ theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 24
 bbcode_enabled = true
 text = "[font_size=48]CONTRACT[/font_size]
-
-1. You get [color=#3498db]points[/color] for winning games.
-2. We gain [color=#c0392b]points[/color] whenever you loose.
-3. Reach 100 [color=#3498db]points[/color] and you become rich.
-4. If we reach 100 [color=#c0392b]points[/color] , you die.
+[font_size=24]
+You get [color=#0047CC]points[/color] for winning games
+We get [color=#c0392b]points[/color] when you lose them
+Reach 100 [color=#0047CC]points[/color] and [b]GET YOUR PRIZE[/b]
+Reach 100 [color=#c0392b]points[/color] and [b]EXPECT A VISIT[/b][/font_size]
 
 Do you agree to the terms?"
 horizontal_alignment = 1
@@ -418,8 +417,6 @@ offset_top = 500.0
 offset_right = 950.0
 offset_bottom = 564.0
 theme_override_constants/separation = 64
-script = ExtResource("10_leom6")
-key_groups = [[NodePath("TopHalfContainer/UpKey"), NodePath("BottomHalfContainer/LeftKey"), NodePath("BottomHalfContainer/DownKey"), NodePath("BottomHalfContainer/RightKey")], [NodePath("TopHalfContainer/WKey"), NodePath("BottomHalfContainer/AKey"), NodePath("BottomHalfContainer/SKey"), NodePath("BottomHalfContainer/DKey")]]
 
 [node name="TopHalfContainer" type="HBoxContainer" parent="KeysContainer" unique_id=857075450]
 layout_mode = 2
