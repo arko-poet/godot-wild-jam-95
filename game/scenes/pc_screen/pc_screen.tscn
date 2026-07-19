@@ -10,7 +10,9 @@
 [ext_resource type="Texture2D" uid="uid://cl5i63tcci287" path="res://game/art/dice/die_5.png" id="7_dnf0m"]
 [ext_resource type="Texture2D" uid="uid://c735wvdvvwkbq" path="res://game/art/dice/die_6.png" id="8_6nmus"]
 [ext_resource type="PackedScene" uid="uid://bxcrjj54yj4ok" path="res://game/shaders/CRTShader.tscn" id="10_8vsnj"]
+[ext_resource type="Script" uid="uid://q2g51equkurx" path="res://game/scenes/pc_screen/keys_container.gd" id="10_leom6"]
 [ext_resource type="Script" uid="uid://c0j7kjrbqnb8r" path="res://game/scripts/progress_bar_preview.gd" id="10_qcrff"]
+[ext_resource type="PackedScene" uid="uid://bnht3atq3ov0a" path="res://game/scenes/pc_screen/keyboard_key.tscn" id="11_5e5m8"]
 
 [sub_resource type="Gradient" id="Gradient_88wer"]
 offsets = PackedFloat32Array(0)
@@ -215,6 +217,62 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 32
 theme_override_styles/focus = SubResource("StyleBoxFlat_qcrff")
 text = "ACCEPT"
+
+[node name="KeysContainer" type="VBoxContainer" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame" unique_id=1577316603]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 650.0
+offset_top = 500.0
+offset_right = 850.0
+offset_bottom = 564.0
+theme_override_constants/separation = 64
+script = ExtResource("10_leom6")
+key_groups = [[NodePath("TopHalfContainer/UpKey"), NodePath("BottomHalfContainer/LeftKey"), NodePath("BottomHalfContainer/DownKey"), NodePath("BottomHalfContainer/RightKey")], [NodePath("TopHalfContainer/WKey"), NodePath("BottomHalfContainer/AKey"), NodePath("BottomHalfContainer/SKey"), NodePath("BottomHalfContainer/DKey")]]
+
+[node name="TopHalfContainer" type="HBoxContainer" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame/KeysContainer" unique_id=638019926]
+layout_mode = 2
+theme_override_constants/separation = 64
+alignment = 1
+
+[node name="WKey" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame/KeysContainer/TopHalfContainer" unique_id=1626954917 instance=ExtResource("11_5e5m8")]
+visible = false
+layout_mode = 2
+
+[node name="UpKey" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame/KeysContainer/TopHalfContainer" unique_id=894852644 instance=ExtResource("11_5e5m8")]
+layout_mode = 2
+key_name = "^"
+
+[node name="BottomHalfContainer" type="HBoxContainer" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame/KeysContainer" unique_id=405974512]
+layout_mode = 2
+theme_override_constants/separation = 64
+alignment = 1
+
+[node name="AKey" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame/KeysContainer/BottomHalfContainer" unique_id=1002474850 instance=ExtResource("11_5e5m8")]
+visible = false
+layout_mode = 2
+key_name = "A"
+
+[node name="SKey" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame/KeysContainer/BottomHalfContainer" unique_id=2067279956 instance=ExtResource("11_5e5m8")]
+visible = false
+layout_mode = 2
+key_name = "S"
+
+[node name="DKey" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame/KeysContainer/BottomHalfContainer" unique_id=103545817 instance=ExtResource("11_5e5m8")]
+visible = false
+layout_mode = 2
+key_name = "D"
+
+[node name="LeftKey" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame/KeysContainer/BottomHalfContainer" unique_id=703424550 instance=ExtResource("11_5e5m8")]
+layout_mode = 2
+key_name = "<"
+
+[node name="DownKey" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame/KeysContainer/BottomHalfContainer" unique_id=152476910 instance=ExtResource("11_5e5m8")]
+layout_mode = 2
+key_name = "v"
+
+[node name="RightKey" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame/KeysContainer/BottomHalfContainer" unique_id=1844916614 instance=ExtResource("11_5e5m8")]
+layout_mode = 2
+key_name = ">"
 
 [node name="ProgressBars" type="HBoxContainer" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame" unique_id=1910302855]
 layout_mode = 1

@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://bnht3atq3ov0a"]
+
+[ext_resource type="Script" uid="uid://cwlo6m2stbd44" path="res://game/scripts/pc_screen/keyboard_key.gd" id="1_5dy3i"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jwl2k"]
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_li6ia"]
+bg_color = Color(0.2673042, 0.26730424, 0.2673041, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[node name="KeyboardKey" type="Control" unique_id=1626954917]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_5dy3i")
+key_name = "W"
+
+[node name="OuterPanel" type="Panel" parent="." unique_id=214273]
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_jwl2k")
+
+[node name="InnerPanel" type="Panel" parent="." unique_id=1496473934]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 56.0
+offset_bottom = 56.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_li6ia")
+
+[node name="Label" type="Label" parent="." unique_id=1041131533]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 45.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "KEY"
+horizontal_alignment = 1
+vertical_alignment = 1
