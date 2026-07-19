@@ -34,11 +34,16 @@ size = Vector2(1554, 180)
 size = Vector2(6877, 724)
 
 [sub_resource type="LabelSettings" id="LabelSettings_1kjc7"]
-font_size = 22
+font_size = 26
 outline_size = 10
 outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3owqy"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_kyo1j"]
+font_size = 26
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cmei7"]
 size = Vector2(544, 178)
@@ -139,7 +144,7 @@ theme_override_styles/panel = SubResource("StyleBoxEmpty_3owqy")
 [node name="TimerComponent" parent="Camera2D/HBoxContainer" unique_id=1166255049 instance=ExtResource("5_cmei7")]
 unique_name_in_owner = true
 layout_mode = 2
-label_settings = SubResource("LabelSettings_1kjc7")
+label_settings = SubResource("LabelSettings_kyo1j")
 metadata/_edit_use_anchors_ = true
 
 [node name="CRTShader" parent="Camera2D" unique_id=1925341764 instance=ExtResource("4_1kjc7")]

@@ -42,20 +42,6 @@ func _ready() -> void:
 	_add_platform(3, curr_y, true)
 	%Goal.position = Vector2(547, curr_y)
 
-#func _process(delta: float) -> void:
-	#%Goal.rotate(PI * delta)
-
-
-func _input(event: InputEvent) -> void:
-	if OS.is_debug_build():
-		if Input.is_key_pressed(KEY_L):
-			#print("game_lost signal emitted")
-			GameplayAudioController.minigame_lost.emit()
-			game_lost.emit()
-		if Input.is_key_pressed(KEY_K):
-			#print("game_won signal emitted")
-			GameplayAudioController.minigame_won.emit()
-			game_won.emit()
 
 func _on_kill_plane_body_entered(body: Node2D) -> void:
 	#print("game_lost signal emitted")
