@@ -21,35 +21,48 @@ const _DOOM_AND_PROGRESS := {
 const _DOOM_ROLL_PRICE := 0.05
 const _DOOM_REROLL_PRICE := 0.01
 
-const _CONGRATULATIONS_TEXT := "Congratulations, you win. Claim your prize."
-const _TEXT_ROLL_DICE := "Lets play a [b][u]%s[/u][/b] game. Roll the dice."
-const _TEXT_REROLL_DICE := "We'll give you [b][u]%ss[/u][/b] to complete the game for that roll."
-const _TEXT_CHOOSE_DIFFICULTY := "Choose difficulty."
+const _CONGRATULATIONS_TEXT := "YOU MADE IT THIS TIME. YOU'LL BE BACK."
+const _TEXT_ROLL_DICE := "TIME FOR A [b]%s[/b] GAME. ROLL NOW."
+const _TEXT_REROLL_DICE := "WE WILL GIVE YOU [b]%s[/b] TIME WITH THAT ROLL."
+const _TEXT_CHOOSE_DIFFICULTY := "CHOOSE YOUR DIFFICULTY"
+
+const _DICE_RESULT_DESCRIPTOR = {
+	1: "BARELY ANY",
+	2: "A LITTLE",
+	3: "ENOUGH",
+	4: "SOME EXTRA",
+	5: "PLENTY OF",
+	6: "AN EXCESS OF",
+}
 
 const  _TEXT_WON := [
-	"Not bad... for now.",
-	"Hmm. Beginner's luck, that's all.",
-	"Fine. You earned a second of relief.",
-	"You won't be so lucky next time.",
-	"Next time, We'll make sure you struggle.",
+	"ALMOST GOT YOU.",
+	"GOOD. KEEP GOING.",
+	"YES. YES. YES. YES.",
+	"LOOK AT HOW GOOD YOU ARE DOING.",
+	"FEELING COMFORTABLE? STILL?",
+	"WE ARE STILL GETTING CLOSER.",
+	"DO NOT FORGET WHAT IS ON THE LINE HERE.",
 ]
 
 const _TEXT_LOSE := [
-	"As expected of a mere mortal.",
-	"Oh, was that too difficult for you? Too bad.",
-	"Struggling already? Keep it up!",
-	"Don't worry, you won't win next time too.",
-	"Bruh",
+	"WE CAN SMELL YOU.",
+	"IT'S GETTING EXCITING.",
+	"WE ARE ON OUR WAY.",
+	"CAREFUL. DON'T LOSE TOO FAST.",
+	"DO YOU SEE US?",
+	"ARE YOU WORRIED? WE ARE WORRIED.",
+	"WE CANNOT WAIT. CANNOT WAIT. CANNOT WAIT."
 ]
 
 const _REACTION_TIME := 1.5
 
 # for TEXT_ROLL_DICE
-const _MAZE_GAME_NAME := "searching"
-const _EXAMPLE_GAME_NAME := "stupid"
-const _FALLING_GAME_NAME := "falling"
-const _STRATAGEM_GAME_NAME := "quick"
-const _SNAKE_GAME_NAME := "eating" # or slithering??
+const _MAZE_GAME_NAME := "SEARCHING"
+const _EXAMPLE_GAME_NAME := "STUPID"
+const _FALLING_GAME_NAME := "FALLING"
+const _STRATAGEM_GAME_NAME := "QUICK"
+const _SNAKE_GAME_NAME := "SLITHERING" # or slithering??
 
 const BAR_FILL_TIME := 0.5
 
@@ -75,6 +88,8 @@ var _progress := 0.0:
 			_progress_bar_filled()
 
 var _show_keyboard_controls := true
+
+var _games_finished: int = 0
 
 @onready var _meta_game: Control = %MetaGame
 @onready var _screen_content: Control = %ScreenContent
@@ -153,7 +168,8 @@ func _on_minigame_won() -> void:
 	_progress += _DOOM_AND_PROGRESS[_get_difficulty()]
 	
 	#await _show_reaction(true)
-	_devil_line.text = _TEXT_WON[randi() % len(_TEXT_WON)]
+	_games_finished += 1
+	_devil_line.text = _get_devil_line_text(true)
 	_continue_button.show()
 	if _current_minigame:
 		_current_minigame.queue_free()
@@ -168,7 +184,8 @@ func _on_minigame_lost() -> void:
 	_doom += _DOOM_AND_PROGRESS[_get_difficulty()]
 	
 	#await _show_reaction(false)
-	_devil_line.text = _TEXT_LOSE[randi() % len(_TEXT_LOSE)]
+	_games_finished += 1
+	_devil_line.text = _get_devil_line_text(false)
 	_continue_button.show()
 	if _current_minigame:
 		_current_minigame.queue_free()
@@ -178,24 +195,6 @@ func _on_minigame_lost() -> void:
 	_continue_button.grab_focus()
 	#_prepare_next_minigame()
 
-
-#func _show_reaction(won: bool) -> void:
-	#if won:
-		#_devil_line.text = _TEXT_WON[randi() % len(_TEXT_WON)]
-	#else:
-		#_devil_line.text = _TEXT_LOSE[randi() % len(_TEXT_LOSE)]
-	#
-	#_roll_dice_button.hide()
-	#_reroll_dice_button.hide()
-	#_or_label.hide()
-	#_accept_roll_button.hide()
-	#_dice_roll_label.hide()
-	#_start_button.hide()
-	#_difficulty_boxes.hide()
-	#
-	#_meta_game.show()
-	#
-	#await get_tree().create_timer(_REACTION_TIME).timeout
 
 
 func _prepare_next_minigame() -> void:
@@ -247,7 +246,7 @@ func _on_roll_dice_button_pressed() -> void:
 	await _roll_dice()
 	_current_minigame.dice_roll = _current_dice_roll
 	
-	_devil_line.text = _TEXT_REROLL_DICE % _current_minigame.get_time_limit()
+	_devil_line.text = _TEXT_REROLL_DICE % _DICE_RESULT_DESCRIPTOR[_current_dice_roll]
 	
 	_roll_dice_button.hide()
 	
@@ -264,7 +263,7 @@ func _on_roll_dice_button_pressed() -> void:
 func _on_reroll_dice_button_pressed() -> void:
 	await _roll_dice()
 	_current_minigame.dice_roll = _current_dice_roll
-	_devil_line.text = _TEXT_REROLL_DICE % _current_minigame.get_time_limit()
+	_devil_line.text = _TEXT_REROLL_DICE % _DICE_RESULT_DESCRIPTOR[_current_dice_roll]
 	_reroll_dice_button.grab_focus()
 	
 	_doom += _DOOM_REROLL_PRICE
@@ -420,3 +419,17 @@ func _progress_bar_filled() -> void:
 
 func _on_claim_prize_button_pressed() -> void:
 	progress_bar_filled.emit()
+
+
+func _get_devil_line_text(_won: bool) -> String:
+	if _games_finished == 1:
+		return "WE CAN SEE YOU. WELCOME BACK."
+	elif _games_finished == 4:
+		return "YOU MUST REALLY BE DESPERATE IF YOU ARE BACK."
+	elif _games_finished == 6:
+		return "WE ARE ALWAYS HERE FOR YOU WHEN YOU NEED US"
+	elif _won:
+		return _TEXT_WON[randi() % len(_TEXT_WON)]
+	else:
+		return _TEXT_LOSE[randi() % len(_TEXT_WON)]
+	
