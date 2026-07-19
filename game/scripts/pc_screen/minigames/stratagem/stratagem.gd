@@ -8,7 +8,7 @@ enum _Direction {
 }
 
 const CARD_SIZE = 700.0 ## This will be the height and width of the direction cards
-const SPRITE_PATH := "res://game/art/directioncard_%s.png"
+const SPRITE_PATH := "res://game/art/stratagem/directioncard_%s.png"
 const _TIME_LIMITS := {
 	1: 15.0,
 	2: 17.5,
@@ -79,7 +79,7 @@ func get_time_limit() -> float:
 func _player_action(direction: _Direction) -> void:
 	if direction == _current_sequence[_sequence_pointer]:
 		GameplayAudioController.minigame_progress.emit()
-		_arrow_container.get_children()[_sequence_pointer].modulate = Color.GREEN
+		_arrow_container.get_children()[_sequence_pointer].modulate = Color.DIM_GRAY
 		if _sequence_pointer == _current_sequence.size() - 1:
 			_sequence_completed()
 		else:
@@ -108,7 +108,7 @@ func _set_current_sequence() -> void:
 	for child in _arrow_container.get_children():
 		child.queue_free()
 	
-	var sequence_length = _SEQUENCE_LENGTHS[difficulty] + (randi() % 3 - 1)
+	var sequence_length = clamp(_SEQUENCE_LENGTHS[difficulty] + (randi() % 3 - 1), 1, 9)
 	for i in sequence_length:
 		_current_sequence.append(_Direction.values().pick_random())
 	#print(_current_sequence)

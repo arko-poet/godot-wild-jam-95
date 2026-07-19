@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ckvkr4bwuuejh"
-path="res://.godot/imported/directioncard_0.png-c6c4615364da6be4342c84cf2b1ecc93.ctex"
+uid="uid://btwysuoljny15"
+path="res://.godot/imported/felt_texture.png-5c43d701b0208ab4919bbd3cfd88b17e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://game/art/directioncard_0.png"
-dest_files=["res://.godot/imported/directioncard_0.png-c6c4615364da6be4342c84cf2b1ecc93.ctex"]
+source_file="res://game/art/stratagem/felt_texture.png"
+dest_files=["res://.godot/imported/felt_texture.png-5c43d701b0208ab4919bbd3cfd88b17e.ctex"]
 
 [params]
 

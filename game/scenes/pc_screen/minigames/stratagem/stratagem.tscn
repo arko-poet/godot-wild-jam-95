@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dawchbda7r7ku" path="res://game/scripts/pc_screen/minigames/stratagem/stratagem.gd" id="1_wwame"]
 [ext_resource type="PackedScene" uid="uid://bb5isa4txkp3f" path="res://game/scenes/pc_screen/minigames/timer_component.tscn" id="2_gwb6g"]
 [ext_resource type="PackedScene" uid="uid://bxcrjj54yj4ok" path="res://game/shaders/CRTShader.tscn" id="3_pfiww"]
-[ext_resource type="Texture2D" uid="uid://btwysuoljny15" path="res://game/art/felt_texture.png" id="4_81fxt"]
+[ext_resource type="Texture2D" uid="uid://btwysuoljny15" path="res://game/art/stratagem/felt_texture.png" id="4_81fxt"]
 
 [node name="Stratagem" type="Node" unique_id=341402236]
 script = ExtResource("1_wwame")
@@ -60,7 +60,7 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.15, 0.15)
 pivot_offset_ratio = Vector2(0.5, 0.5)
-theme_override_constants/separation = 64
+theme_override_constants/separation = 20
 alignment = 1
 
 [node name="CRTShader" parent="." unique_id=1925341764 instance=ExtResource("3_pfiww")]

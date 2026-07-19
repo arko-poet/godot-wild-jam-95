@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://2p16bck0bm6p"
-path="res://.godot/imported/directioncard_2.png-b97e18d5a7178216c4faaf27d6302ae5.ctex"
+path="res://.godot/imported/directioncard_2.png-aaed9e80e91b45c274205cf6542d78c9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://game/art/directioncard_2.png"
-dest_files=["res://.godot/imported/directioncard_2.png-b97e18d5a7178216c4faaf27d6302ae5.ctex"]
+source_file="res://game/art/stratagem/directioncard_2.png"
+dest_files=["res://.godot/imported/directioncard_2.png-aaed9e80e91b45c274205cf6542d78c9.ctex"]
 
 [params]
 
