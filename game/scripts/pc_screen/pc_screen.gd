@@ -56,7 +56,7 @@ var _minigame_queue: Array
 var _current_minigame: Minigame
 var _current_dice_roll: int
 
-var _doom := 0.90:
+var _doom := 0.0:
 	set(value):
 		var tween = create_tween()
 		tween.tween_property(_doom_bar, ^"value", min(value, _MAX_DOOM), BAR_FILL_TIME)
@@ -64,7 +64,7 @@ var _doom := 0.90:
 		_doom = min(value, _MAX_DOOM)
 		doom_changed.emit(_doom)
 		
-var _progress := 0.9:
+var _progress := 0.0:
 	set(value):
 		var tween = create_tween()
 		tween.tween_property(_progress_bar, ^"value", min(value, _MAX_PROGRESS), BAR_FILL_TIME)
