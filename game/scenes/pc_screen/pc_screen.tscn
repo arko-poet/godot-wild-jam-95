@@ -8,9 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://dud08xd212kv5" path="res://game/art/dice/die_4.png" id="6_5e5m8"]
 [ext_resource type="Texture2D" uid="uid://cl5i63tcci287" path="res://game/art/dice/die_5.png" id="7_dnf0m"]
 [ext_resource type="Texture2D" uid="uid://c735wvdvvwkbq" path="res://game/art/dice/die_6.png" id="8_6nmus"]
-[ext_resource type="Texture2D" uid="uid://7jf24tck5q4o" path="res://game/art/mascot/Mascots-1.png" id="9_qcrff"]
+[ext_resource type="Texture2D" uid="uid://bd5pxjt8gh7ur" path="res://game/art/mascot/Mascots-1_2.png" id="9_ax7l3"]
 [ext_resource type="PackedScene" uid="uid://bxcrjj54yj4ok" path="res://game/shaders/CRTShader.tscn" id="10_8vsnj"]
-[ext_resource type="Texture2D" uid="uid://bkgal0hqrjmg4" path="res://game/art/mascot/Mascots-2.png" id="10_ax7l3"]
+[ext_resource type="Texture2D" uid="uid://i6dl4cnh5gk8" path="res://game/art/mascot/Mascots-2_2.png" id="10_leom6"]
 [ext_resource type="Script" uid="uid://c0j7kjrbqnb8r" path="res://game/scripts/progress_bar_preview.gd" id="10_qcrff"]
 
 [sub_resource type="Gradient" id="Gradient_88wer"]
@@ -111,7 +111,7 @@ offset_right = 256.0
 offset_bottom = 388.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture = ExtResource("9_qcrff")
+texture = ExtResource("9_ax7l3")
 
 [node name="DevilImage2" type="TextureRect" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame" unique_id=640161526]
 custom_minimum_size = Vector2(128, 128)
@@ -123,7 +123,7 @@ offset_right = 1024.0
 offset_bottom = 388.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture = ExtResource("10_ax7l3")
+texture = ExtResource("10_leom6")
 
 [node name="DevilContainer" type="HBoxContainer" parent="SubViewportContainer/SubViewport/ScreenContent/MetaGame" unique_id=1108223770]
 unique_name_in_owner = true
