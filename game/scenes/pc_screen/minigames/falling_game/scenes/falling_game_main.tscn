@@ -34,6 +34,7 @@ size = Vector2(1554, 180)
 size = Vector2(6877, 724)
 
 [sub_resource type="LabelSettings" id="LabelSettings_1kjc7"]
+font_size = 22
 outline_size = 10
 outline_color = Color(0, 0, 0, 1)
 
@@ -118,10 +119,11 @@ anchor_mode = 0
 script = ExtResource("2_4oggc")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Camera2D" unique_id=521715829]
-offset_left = 587.0
+offset_left = 386.0
 offset_top = 21.0
-offset_right = 865.0
+offset_right = 664.0
 offset_bottom = 61.0
+alignment = 2
 
 [node name="PlatformCounter" type="Label" parent="Camera2D/HBoxContainer" unique_id=2082655608]
 unique_name_in_owner = true
