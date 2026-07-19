@@ -137,6 +137,8 @@ func play_power_on_animation() -> void:
 		.set_delay(0.15)
 	
 	_roll_dice_button.grab_focus()
+	_reroll_dice_button.release_focus()
+	hide_reroll_die_bar_preview()
 
 
 func _on_minigame_won() -> void:
@@ -215,7 +217,6 @@ func _prepare_next_minigame() -> void:
 	else: # example minigame
 		_devil_line.text = _TEXT_ROLL_DICE % _EXAMPLE_GAME_NAME
 	
-	
 	show_roll_die_bar_preview()
 	_roll_dice_button.grab_focus()
 	_meta_game.show()
@@ -250,6 +251,8 @@ func _on_roll_dice_button_pressed() -> void:
 	_or_label.show()
 	_accept_roll_button.show()
 	_accept_roll_button.grab_focus()
+	_doom_bar_preview.hide()
+	_doom_bar_preview_label.hide()
 	
 	_doom += _DOOM_ROLL_PRICE
 
@@ -358,13 +361,19 @@ func _show_bar_previews() -> void:
 func show_roll_die_bar_preview() -> void:
 	_doom_bar_preview.show()
 	_doom_bar_preview.value = _doom + _DOOM_ROLL_PRICE
+	_doom_bar_preview_label.show()
+	_doom_bar_preview_label.text = "+" + str(int(_DOOM_ROLL_PRICE * 100)) + "%"
 
 func show_reroll_die_bar_preview() -> void:
 	_doom_bar_preview.show()
 	_doom_bar_preview.value = _doom + _DOOM_REROLL_PRICE
+	_doom_bar_preview_label.show()
+	_doom_bar_preview_label.text = "+" + str(int(_DOOM_REROLL_PRICE * 100)) + "%"
 
 func hide_reroll_die_bar_preview() -> void:
 	_doom_bar_preview.hide()
+	_doom_bar_preview_label.hide()
+	_progress_bar_preview_label.hide()
 
 func _on_continue_button_pressed() -> void:
 	_continue_button.hide()
@@ -384,6 +393,10 @@ func _on_accept_contract_button_pressed() -> void:
 	contract.hide()
 	_roll_dice_button.show()
 	devil_container.show()
+	_progress_bar_preview_label.hide()
+	_roll_dice_button.grab_focus()
+	show_roll_die_bar_preview()
+	
 
 func _progress_bar_filled() -> void:
 	_devil_line.text = _CONGRATULATIONS_TEXT
