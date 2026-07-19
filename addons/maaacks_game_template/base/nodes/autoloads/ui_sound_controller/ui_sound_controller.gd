@@ -276,7 +276,8 @@ func play_dice_roll(sfx_index: int = 0) -> void:
 	_play_indexed_stream(sfx_index, dice_roll, dice_roll_player)
 	
 func play_entity_step(sfx_index: int = 0) -> void:
-	_play_indexed_stream(sfx_index, entity_step, entity_step_player)
+	if entity_step_player.playing == false:
+		_play_indexed_stream(sfx_index, entity_step, entity_step_player)
 
 func _minigame_bus_connections() -> Dictionary:
 	return {
